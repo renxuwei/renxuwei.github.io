@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="数据库  - 实现项目中的数据持久化数据库的类别：
+关系型数据库  - MySQL1、理论基础：集合论和关系代数2、用二维表来组织数据（行（记录）和 列（字段））3、SQL - 结构化查询语言
+
+关系型数据库产品：1、Oracle - 甲骨文2、MySQL  - 甲骨文 - MariaDB3、DB2">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>MySQL安装 | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据库  - 实现项目中的数据持久化数据库的类别： 关系型数据库  - MySQL1、理论基础：集合论和关系代数2、用二维表来组织数据（行（记录）和 列（字段））3、SQL - 结构化查询语言  关系型数据库产品：1、Oracle - 甲骨文2、MySQL  - 甲骨文 - MariaDB3、DB2、SQLServer、PostgreSQL、SQLite  NoSQL数据库   - Redis1、">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL安装">
+<meta property="og:url" content="http://yoursite.com/2018/12/24/MySQL安装/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="数据库  - 实现项目中的数据持久化数据库的类别： 关系型数据库  - MySQL1、理论基础：集合论和关系代数2、用二维表来组织数据（行（记录）和 列（字段））3、SQL - 结构化查询语言  关系型数据库产品：1、Oracle - 甲骨文2、MySQL  - 甲骨文 - MariaDB3、DB2、SQLServer、PostgreSQL、SQLite  NoSQL数据库   - Redis1、">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-24T07:33:53.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL安装">
+<meta name="twitter:description" content="数据库  - 实现项目中的数据持久化数据库的类别： 关系型数据库  - MySQL1、理论基础：集合论和关系代数2、用二维表来组织数据（行（记录）和 列（字段））3、SQL - 结构化查询语言  关系型数据库产品：1、Oracle - 甲骨文2、MySQL  - 甲骨文 - MariaDB3、DB2、SQLServer、PostgreSQL、SQLite  NoSQL数据库   - Redis1、">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-MySQL安装" class="post-MySQL安装 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      MySQL安装
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq209qse0000jcve7hdjo36y" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="数据库-实现项目中的数据持久化"><a href="#数据库-实现项目中的数据持久化" class="headerlink" title="数据库  - 实现项目中的数据持久化"></a>数据库  - 实现项目中的数据持久化</h3><h4 id="数据库的类别："><a href="#数据库的类别：" class="headerlink" title="数据库的类别："></a>数据库的类别：</h4><ul>
+<li>关系型数据库  - MySQL<br>1、理论基础：集合论和关系代数<br>2、用二维表来组织数据（行（记录）和 列（字段））<br>3、SQL - 结构化查询语言</li>
+</ul>
+<h4 id="关系型数据库产品："><a href="#关系型数据库产品：" class="headerlink" title="关系型数据库产品："></a>关系型数据库产品：</h4><p>1、Oracle - 甲骨文<br>2、MySQL  - 甲骨文 - MariaDB<br>3、DB2、SQLServer、PostgreSQL、SQLite</p>
+<ul>
+<li><h5 id="NoSQL数据库-Redis"><a href="#NoSQL数据库-Redis" class="headerlink" title="NoSQL数据库   - Redis"></a>NoSQL数据库   - Redis</h5><p>1、MongoDB - 文档数据库 - 适合量大但是价值低的数据库<br>2、Redis   - KV数据库  - 性能特别好适合做告诉缓存服务<br>3、ElasticSearch - 搜索引擎</p>
+</li>
+<li><p>Linux安装软件<br>1、包管理工具 - yum / rpm</p>
+<p>​</p>
+</li>
+</ul>
+<h5 id="Docker-提供虚拟化服务，创建虚拟化容器并安装软件"><a href="#Docker-提供虚拟化服务，创建虚拟化容器并安装软件" class="headerlink" title="Docker - 提供虚拟化服务，创建虚拟化容器并安装软件"></a>Docker - 提供虚拟化服务，创建虚拟化容器并安装软件</h5><p>yum -y install docker-io(安装Docker)</p>
+<p>yum info docker-io(查询docker)</p>
+<p>yum remove docker-io(删除docker)</p>
+<p>systemctl start docker(启动docker)<br>systemctl stop docker(停止docker)<br>systemctl restart docker(重启docker)<br>systemctl enable docker(开机启动)<br>systemctl disable docker(开机不启动)<br>systemctl status docker(查询状态)</p>
+<h4 id="使用docker命令："><a href="#使用docker命令：" class="headerlink" title="使用docker命令："></a>使用docker命令：</h4><h5 id="1、查看已经下载的镜像文件（安装包）："><a href="#1、查看已经下载的镜像文件（安装包）：" class="headerlink" title="1、查看已经下载的镜像文件（安装包）："></a>1、查看已经下载的镜像文件（安装包）：</h5><p>docker images</p>
+<h5 id="2、下载MySQL的镜像文件："><a href="#2、下载MySQL的镜像文件：" class="headerlink" title="2、下载MySQL的镜像文件："></a>2、下载MySQL的镜像文件：</h5><p>docker pull mysql:5.7</p>
+<p>MySQL数据库超级管理员账号 - root<br>Oracle 数据库超级管理员账号 - sys<br>SQLServer、数据库超级管理员账号 - sa</p>
+<h5 id="3、创建并运行容器"><a href="#3、创建并运行容器" class="headerlink" title="3、创建并运行容器"></a>3、创建并运行容器</h5><p>docker run -d -p 3306:3306 –name mysql57 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</p>
+<h5 id="4、查看运行中的命令"><a href="#4、查看运行中的命令" class="headerlink" title="4、查看运行中的命令"></a>4、查看运行中的命令</h5><p>docker ps</p>
+<h5 id="5、查看所有的的容器"><a href="#5、查看所有的的容器" class="headerlink" title="5、查看所有的的容器"></a>5、查看所有的的容器</h5><p>docker container ls -a</p>
+<h5 id="6、停止容器"><a href="#6、停止容器" class="headerlink" title="6、停止容器"></a>6、停止容器</h5><p>docker stop mysql57</p>
+<h5 id="7、启动容器"><a href="#7、启动容器" class="headerlink" title="7、启动容器"></a>7、启动容器</h5><p>docker start mysql57</p>
+<h5 id="8、删除容器"><a href="#8、删除容器" class="headerlink" title="8、删除容器"></a>8、删除容器</h5><p>docker rm -f mysql57</p>
+<p>##### </p>
+<p>安装MySQL客户端工具：<br>Navicat   - 猫<br>SQLyog    - 海豚<br>Toad for MySQL  - 蛤蟆</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/24/MySQL安装/">
+    <time datetime="2018-12-24T07:01:40.000Z" class="entry-date">
+        2018-12-24
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2018/12/22/Nginx安装/" rel="next">Nginx服务器安装 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/24/MySQL安装/">MySQL安装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/22/Nginx安装/">Nginx服务器安装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/22/blog/">vim编辑器基本操作</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/21/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 20px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
