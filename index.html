@@ -77,7 +77,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq20nnfw00023kve68orbquk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq24uxut00006gvegy5hcz6j" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -107,8 +107,15 @@
 <h5 id="6、停止容器"><a href="#6、停止容器" class="headerlink" title="6、停止容器"></a>6、停止容器</h5><p>docker stop mysql57</p>
 <h5 id="7、启动容器"><a href="#7、启动容器" class="headerlink" title="7、启动容器"></a>7、启动容器</h5><p>docker start mysql57</p>
 <h5 id="8、删除容器"><a href="#8、删除容器" class="headerlink" title="8、删除容器"></a>8、删除容器</h5><p>docker rm -f mysql57</p>
-<p>##### </p>
 <p>安装MySQL客户端工具：<br>Navicat   - 猫<br>SQLyog    - 海豚<br>Toad for MySQL  - 蛤蟆</p>
+<h3 id="数据库-创建数据库及表"><a href="#数据库-创建数据库及表" class="headerlink" title="数据库  - 创建数据库及表"></a>数据库  - 创建数据库及表</h3><h5 id="–-SQL（结构化查询语言-分为三组："><a href="#–-SQL（结构化查询语言-分为三组：" class="headerlink" title="–     SQL（结构化查询语言)分为三组："></a>–     SQL（结构化查询语言)分为三组：</h5><p>– 1、DDL（数据定义语言）：create(创建数据库) / dorp（删除数据库） / alter（修改数据库）<br>– 2、DML（数据操作语言）：insert / delete / epdate / select<br>– 3、DCL (数据控制语言)：grant / revoke /commit / rollback</p>
+<p>– drop database if exists srs; – 如果存在名为srs的数据库，就删除srs数据库（不能乱写）</p>
+<h4 id="–-1、创建名为srs的数据库（并设置utf8）"><a href="#–-1、创建名为srs的数据库（并设置utf8）" class="headerlink" title="– 1、创建名为srs的数据库（并设置utf8）"></a>– 1、创建名为srs的数据库（并设置utf8）</h4><p>create database srs default charset utf8;</p>
+<h4 id="–-2、切换数据库"><a href="#–-2、切换数据库" class="headerlink" title="– 2、切换数据库"></a>– 2、切换数据库</h4><p>use srs;  </p>
+<h4 id="–-3、创建学生表tb-student"><a href="#–-3、创建学生表tb-student" class="headerlink" title="– 3、创建学生表tb_student"></a>– 3、创建学生表tb_student</h4><p>– 在学生表中学号可以唯一标记一条学生记录<br>– 我们通常称这样的列为主键列<br>create table tb_student<br>(<br>stuid int not null comment ‘学号’, – 学生的学号，int类型，not null非空约束<br>stuname varchar(10) not null comment ‘姓名’ , – 学生的名字，varchar(10)限定最大字符为10个<br>stusex bit default 1 comment ‘性别’, – 学生的性别，bit型只有两种类型（是0 或者1），default 1默认为1<br>stubirth date comment ‘出生日期’, – 学生的出生日期：datetime日期时间，time时间<br>stuaddr varchar(255) comment ‘家庭住址’, – 学生的家庭住址，varchar(255)可变字符，最大为255<br>primary key(stuid) – 学生的的学号为主键<br>);</p>
+<p>– 修改学生表，添加练习方式列<br>alter table tb_student add column stutel char(11); – char(11)定长字符串</p>
+<p>– 修改学生表 删除stutel列<br>alter table tb_student drop column stutel;</p>
+<p>– 向学生表插入数据<br>insert into tb_student values<br>(1001, ‘骆昊’, 1, ‘1980-11-28’, ‘四川成都’);<br>insert into tb_student (stuid, stuname) values<br>(1002, ‘王大锤’);<br>insert into tb_student values<br>(1003, ‘白元芳’, 1, ‘1988-5-5’, null),<br>(1004, ‘白洁’, 0, null, null),<br>(1005, ‘狄仁杰’, default, ‘1992-3-8’, ‘四川成都’);</p>
 
       
     </div><!-- .entry-content -->
@@ -148,7 +155,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjq20nnfl00003kve5uasefmn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjq24uxv500026gve6rsz1gv6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -246,7 +253,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjq20nng800053kvesyyzvss1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjq24uxvd00046gvemv83tr6w" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -304,7 +311,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjq20nng400043kvek9cez9mo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjq24uxvg00056gve8pmu6yu5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
