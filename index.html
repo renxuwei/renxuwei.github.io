@@ -77,7 +77,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjq3abdxs0000hgveugpyfr1k" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjq3avvim0002eovek50nfs2f" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -87,7 +87,8 @@
 <p>netstat -nap | grep 3306  查询3306端口状态</p>
 <h3 id="–创建srs数据库"><a href="#–创建srs数据库" class="headerlink" title="–创建srs数据库"></a>–创建srs数据库</h3><p>drop database if exists SRS;<br>create database SRS default charset utf8 collate utf8_bin;</p>
 <h5 id="–-切换到SRS数据库"><a href="#–-切换到SRS数据库" class="headerlink" title="– 切换到SRS数据库"></a>– 切换到SRS数据库</h5><p>use SRS;</p>
-<h4 id="–-创建学院表："><a href="#–-创建学院表：" class="headerlink" title="– 创建学院表："></a>– 创建学院表：</h4><h4 id="create-table-tb-college"><a href="#create-table-tb-college" class="headerlink" title="create table tb_college"></a>create table tb_college</h4><p>(<br>collid int not null auto_increment comment ‘学院编号’,<br>collname varchar(50) not null comment ‘学院名称’,<br>collmaster varchar(20) not null comment ‘院长姓名’,<br>collweb varchar(511) default ‘’ comment ‘学院网站’,<br>primary key (collid)<br>);</p>
+<h4 id="–-创建学院表："><a href="#–-创建学院表：" class="headerlink" title="– 创建学院表："></a>– 创建学院表：</h4><p>create table tb_college</p>
+<p>(<br>collid int not null auto_increment comment ‘学院编号’,<br>collname varchar(50) not null comment ‘学院名称’,<br>collmaster varchar(20) not null comment ‘院长姓名’,<br>collweb varchar(511) default ‘’ comment ‘学院网站’,<br>primary key (collid)<br>);</p>
 <h5 id="–-添加唯一约束"><a href="#–-添加唯一约束" class="headerlink" title="– 添加唯一约束"></a>– 添加唯一约束</h5><p>alter table tb_college add constraint uni_college_collname unique (collname);</p>
 <h4 id="–-创建学生表："><a href="#–-创建学生表：" class="headerlink" title="– 创建学生表："></a>– 创建学生表：</h4><p>create table tb_student</p>
 <p>(</p>
@@ -96,24 +97,26 @@
 <h4 id="–-创建教师表："><a href="#–-创建教师表：" class="headerlink" title="– 创建教师表："></a>– 创建教师表：</h4><p>create table tb_teacher<br>(<br>teaid int not null comment ‘教师工号’,<br>tname varchar(20) not null comment ‘教师姓名’,<br>title varchar(10) default ‘’ comment ‘职称’,<br>collid int not null comment ‘所属学院编号’<br>);</p>
 <h5 id="–-添加主键约束"><a href="#–-添加主键约束" class="headerlink" title="– 添加主键约束"></a>– 添加主键约束</h5><p>alter table tb_teacher add constraint pk_teacher primary key (teaid);</p>
 <h5 id="–-添加外键约束-1"><a href="#–-添加外键约束-1" class="headerlink" title="– 添加外键约束"></a>– 添加外键约束</h5><p>alter table tb_teacher add constraint fk_teacher_collid foreign key (collid) references tb_college (collid);</p>
-<h5 id="–-创建课程表"><a href="#–-创建课程表" class="headerlink" title="– 创建课程表"></a>– 创建课程表</h5><p>create table tb_course<br>(<br>couid int not null comment ‘课程编号’,<br>cname varchar(50) not null comment ‘课程名称’,<br>credit tinyint not null comment ‘学分’,<br>teaid int not null comment ‘教师工号’,<br>primary key (couid)<br>);</p>
-<h5 id="–-添加外键约束-2"><a href="#–-添加外键约束-2" class="headerlink" title="– 添加外键约束"></a>– 添加外键约束</h5><p>alter table tb_course add constraint fk_course_tid foreign key (teaid) references tb_teacher (teaid);</p>
-<h4 id="–-创建学生选课表"><a href="#–-创建学生选课表" class="headerlink" title="– 创建学生选课表"></a>– 创建学生选课表</h4><p>create table tb_score<br>(<br>scid int not null auto_increment comment ‘选课编号’,<br>sid int not null comment ‘学号’,<br>cid int not null comment ‘课程编号’,<br>seldate date comment ‘选课时间日期’,<br>mark decimal(4,1) comment ‘考试成绩’,<br>primary key (scid)<br>);</p>
+<h4 id="–-创建课程表："><a href="#–-创建课程表：" class="headerlink" title="– 创建课程表："></a>– 创建课程表：</h4><p>create table tb_course<br>(<br>couid int not null comment ‘课程编号’,<br>cname varchar(50) not null comment ‘课程名称’,<br>credit tinyint not null comment ‘学分’,<br>teaid int not null comment ‘教师工号’,<br>primary key (couid)<br>);</p>
+<h4 id="–-添加外键约束-2"><a href="#–-添加外键约束-2" class="headerlink" title="– 添加外键约束"></a>– 添加外键约束</h4><p>alter table tb_course add constraint fk_course_tid foreign key (teaid) references tb_teacher (teaid);</p>
+<h4 id="–-创建学生选课表："><a href="#–-创建学生选课表：" class="headerlink" title="– 创建学生选课表："></a>– 创建学生选课表：</h4><p>create table tb_score<br>(<br>scid int not null auto_increment comment ‘选课编号’,<br>sid int not null comment ‘学号’,<br>cid int not null comment ‘课程编号’,<br>seldate date comment ‘选课时间日期’,<br>mark decimal(4,1) comment ‘考试成绩’,<br>primary key (scid)<br>);</p>
 <h5 id="–-添加外键约束-3"><a href="#–-添加外键约束-3" class="headerlink" title="– 添加外键约束"></a>– 添加外键约束</h5><p>alter table tb_score add constraint fk_score_sid foreign key (sid) references tb_student (stuid);<br>alter table tb_score add constraint fk_score_cid foreign key (cid) references tb_course (couid);</p>
 <h5 id="–-添加唯一约束-1"><a href="#–-添加唯一约束-1" class="headerlink" title="– 添加唯一约束"></a>– 添加唯一约束</h5><p>alter table tb_score add constraint uni_score_sid_cid unique (sid, cid);</p>
 <p><img src="/images/QQ截图20181225130210.png" alt="表关联图"></p>
 <h5 id="–-插入学院数据："><a href="#–-插入学院数据：" class="headerlink" title="– 插入学院数据："></a>– 插入学院数据：</h5><p>insert into tb_college (collname, collmaster, collweb) values<br>(‘计算机学院’, ‘左冷禅’, ‘<a href="http://www.abc.com&#39;)" target="_blank" rel="noopener">http://www.abc.com&#39;)</a>,<br>(‘外国语学院’, ‘岳不群’, ‘<a href="http://www.xyz.com&#39;)" target="_blank" rel="noopener">http://www.xyz.com&#39;)</a>,<br>(‘经济管理学院’, ‘风清扬’, ‘<a href="http://www.foo.com&#39;)" target="_blank" rel="noopener">http://www.foo.com&#39;)</a>;</p>
 <h5 id="–-插入学生数据："><a href="#–-插入学生数据：" class="headerlink" title="– 插入学生数据："></a>– 插入学生数据：</h5><p>insert into tb_student (stuid, sname, gender, birth, addr, collid) values<br>(1001, ‘杨逍’, 1, ‘1990-3-4’, ‘四川成都’, 1),<br>(1002, ‘任我行’, 1, ‘1992-2-2’, ‘湖南长沙’, 1),<br>(1033, ‘王语嫣’, 0, ‘1989-12-3’, ‘四川成都’, 1),<br>(1572, ‘岳不群’, 1, ‘1993-7-19’, ‘陕西咸阳’, 1),<br>(1378, ‘纪嫣然’, 0, ‘1995-8-12’, ‘四川绵阳’, 1),<br>(1954, ‘林平之’, 1, ‘1994-9-20’, ‘福建莆田’, 1),<br>(2035, ‘东方不败’, 1, ‘1988-6-30’, null, 2),<br>(3011, ‘林震南’, 1, ‘1985-12-12’, ‘福建莆田’, 3),<br>(3755, ‘项少龙’, 1, ‘1993-1-25’, null, 3),<br>(3923, ‘杨不悔’, 0, ‘1985-4-17’, ‘四川成都’, 3);</p>
-<h5 id="–-插入老师数据"><a href="#–-插入老师数据" class="headerlink" title="– 插入老师数据"></a>– 插入老师数据</h5><p>insert into tb_teacher (teaid, tname, title, collid) values<br>(1122, ‘张三丰’, ‘教授’, 1),</p>
-<h5 id="1133-‘宋远桥’-‘副教授’-1"><a href="#1133-‘宋远桥’-‘副教授’-1" class="headerlink" title="(1133, ‘宋远桥’, ‘副教授’, 1),"></a>(1133, ‘宋远桥’, ‘副教授’, 1),</h5><p>(1144, ‘杨逍’, ‘副教授’, 1),<br>(2255, ‘范遥’, ‘副教授’, 2),<br>(3366, ‘韦一笑’, ‘讲师’, 3);</p>
-<h5 id="–-插入课程数据"><a href="#–-插入课程数据" class="headerlink" title="– 插入课程数据"></a>– 插入课程数据</h5><p>insert into tb_course (couid, cname, credit, teaid) values<br>(1111, ‘Python程序设计’, 3, 1122),<br>(2222, ‘Web前端开发’, 2, 1122),<br>(3333, ‘操作系统’, 4, 1122),<br>(4444, ‘计算机网络’, 2, 1133),<br>(5555, ‘编译原理’, 4, 1144),<br>(6666, ‘算法和数据结构’, 3, 1144),<br>(7777, ‘经贸法语’, 3, 2255),<br>(8888, ‘成本会计’, 2, 3366),<br>(9999, ‘审计学’, 3, 3366);</p>
-<h5 id="–-插入选课数据"><a href="#–-插入选课数据" class="headerlink" title="– 插入选课数据"></a>– 插入选课数据</h5><p>insert into tb_score (sid, cid, seldate, mark) values<br>(1001, 1111, ‘2017-09-01’, 95),<br>(1001, 2222, ‘2017-09-01’, 87.5),<br>(1001, 3333, ‘2017-09-01’, 100),<br>(1001, 4444, ‘2018-09-03’, null),<br>(1001, 6666, ‘2017-09-02’, 100),<br>(1002, 1111, ‘2017-09-03’, 65),<br>(1002, 5555, ‘2017-09-01’, 42),<br>(1033, 1111, ‘2017-09-03’, 92.5),<br>(1033, 4444, ‘2017-09-01’, 78),<br>(1033, 5555, ‘2017-09-01’, 82.5),<br>(1572, 1111, ‘2017-09-02’, 78),<br>(1378, 1111, ‘2017-09-05’, 82),<br>(1378, 7777, ‘2017-09-02’, 65.5),<br>(2035, 7777, ‘2018-09-03’, 88),<br>(2035, 9999, date(now()), null),<br>(3755, 1111, date(now()), null),<br>(3755, 8888, date(now()), null),<br>(3755, 9999, ‘2017-09-01’, 92);</p>
+<h5 id="–-插入老师数据："><a href="#–-插入老师数据：" class="headerlink" title="– 插入老师数据："></a>– 插入老师数据：</h5><p>insert into tb_teacher (teaid, tname, title, collid) values<br>(1122, ‘张三丰’, ‘教授’, 1),</p>
+<p>(1133, ‘宋远桥’, ‘副教授’, 1),</p>
+<p>(1144, ‘杨逍’, ‘副教授’, 1),<br>(2255, ‘范遥’, ‘副教授’, 2),</p>
+<h5 id="3366-‘韦一笑’-‘讲师’-3"><a href="#3366-‘韦一笑’-‘讲师’-3" class="headerlink" title="(3366, ‘韦一笑’, ‘讲师’, 3);"></a>(3366, ‘韦一笑’, ‘讲师’, 3);</h5><h5 id="–-插入课程数据："><a href="#–-插入课程数据：" class="headerlink" title="– 插入课程数据："></a>– 插入课程数据：</h5><p>insert into tb_course (couid, cname, credit, teaid) values<br>(1111, ‘Python程序设计’, 3, 1122),<br>(2222, ‘Web前端开发’, 2, 1122),<br>(3333, ‘操作系统’, 4, 1122),<br>(4444, ‘计算机网络’, 2, 1133),<br>(5555, ‘编译原理’, 4, 1144),<br>(6666, ‘算法和数据结构’, 3, 1144),<br>(7777, ‘经贸法语’, 3, 2255),<br>(8888, ‘成本会计’, 2, 3366),<br>(9999, ‘审计学’, 3, 3366);</p>
+<h5 id="–-插入选课数据："><a href="#–-插入选课数据：" class="headerlink" title="– 插入选课数据："></a>– 插入选课数据：</h5><p>insert into tb_score (sid, cid, seldate, mark) values </p>
+<p>insert into tb_score (sid, cid, seldate, mark) values<br>(1001, 1111, ‘2017-09-01’, 95),<br>(1001, 2222, ‘2017-09-01’, 87.5),<br>(1001, 3333, ‘2017-09-01’, 100),<br>(1001, 4444, ‘2018-09-03’, null),<br>(1001, 6666, ‘2017-09-02’, 100),<br>(1002, 1111, ‘2017-09-03’, 65),<br>(1002, 5555, ‘2017-09-01’, 42),<br>(1033, 1111, ‘2017-09-03’, 92.5),<br>(1033, 4444, ‘2017-09-01’, 78),<br>(1033, 5555, ‘2017-09-01’, 82.5),<br>(1572, 1111, ‘2017-09-02’, 78),<br>(1378, 1111, ‘2017-09-05’, 82),<br>(1378, 7777, ‘2017-09-02’, 65.5),<br>(2035, 7777, ‘2018-09-03’, 88),<br>(2035, 9999, date(now()), null),<br>(3755, 1111, date(now()), null),<br>(3755, 8888, date(now()), null),<br>(3755, 9999, ‘2017-09-01’, 92);</p>
 <p><img src="/images/QQ截图20181225130433.png" alt="tb_college"></p>
 <p><img src="/images/QQ截图20181225130448.png" alt="tb_course"></p>
 <p><img src="/images/QQQQ截图20181225130502.png" alt="tb_score"></p>
 <p><img src="/images/QQ截图20181225130517.png" alt="tb_student"></p>
 <p><img src="/images/QQ截图20181225130533.png" alt="tb_teacher"></p>
-
+<h3 id="–-数据库查询"><a href="#–-数据库查询" class="headerlink" title="– 数据库查询"></a>– 数据库查询</h3>
       
     </div><!-- .entry-content -->
 
@@ -152,7 +155,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq3abdyi0006hgve6ogc9k8v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq3avvi60000eovehwr06c0p" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -240,7 +243,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjq3abdy40002hgve2hrqx78p" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjq3avviv0004eove9myqb4h7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -338,7 +341,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjq3abdyb0004hgve02imuwv7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjq3avviz0005eoveicqtqsuk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -396,7 +399,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjq3abdye0005hgvetx4z9zj8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjq3avvj20006eoveuskfr4c8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
