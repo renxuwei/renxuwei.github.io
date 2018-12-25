@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="MySQL表关联(day-02)ps -ef | grep docker   查询docker运行状态
+netstat -nap | grep 3306  查询3306端口状态
+–创建srs数据库drop database if exists SRS;create database SRS defa">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>MySQL表关联(day-02) | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MySQL表关联(day-02)ps -ef | grep docker   查询docker运行状态 netstat -nap | grep 3306  查询3306端口状态 –创建srs数据库drop database if exists SRS;create database SRS default charset utf8 collate utf8_bin; – 切换到SRS数据库use">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL表关联(day-02)">
+<meta property="og:url" content="http://yoursite.com/2018/12/25/MySQL建表day-02/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="MySQL表关联(day-02)ps -ef | grep docker   查询docker运行状态 netstat -nap | grep 3306  查询3306端口状态 –创建srs数据库drop database if exists SRS;create database SRS default charset utf8 collate utf8_bin; – 切换到SRS数据库use">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20181225130210.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20181225130433.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20181225130448.png">
+<meta property="og:image" content="http://yoursite.com/images/QQQQ截图20181225130502.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20181225130517.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20181225130533.png">
+<meta property="og:updated_time" content="2018-12-25T05:13:11.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL表关联(day-02)">
+<meta name="twitter:description" content="MySQL表关联(day-02)ps -ef | grep docker   查询docker运行状态 netstat -nap | grep 3306  查询3306端口状态 –创建srs数据库drop database if exists SRS;create database SRS default charset utf8 collate utf8_bin; – 切换到SRS数据库use">
+<meta name="twitter:image" content="http://yoursite.com/images/QQ截图20181225130210.png">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-MySQL建表day-02" class="post-MySQL建表day-02 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      MySQL表关联(day-02)
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjq3abdxs0000hgveugpyfr1k" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="MySQL表关联-day-02"><a href="#MySQL表关联-day-02" class="headerlink" title="MySQL表关联(day-02)"></a>MySQL表关联(day-02)</h2><p>ps -ef | grep docker   查询docker运行状态</p>
+<p>netstat -nap | grep 3306  查询3306端口状态</p>
+<h3 id="–创建srs数据库"><a href="#–创建srs数据库" class="headerlink" title="–创建srs数据库"></a>–创建srs数据库</h3><p>drop database if exists SRS;<br>create database SRS default charset utf8 collate utf8_bin;</p>
+<h5 id="–-切换到SRS数据库"><a href="#–-切换到SRS数据库" class="headerlink" title="– 切换到SRS数据库"></a>– 切换到SRS数据库</h5><p>use SRS;</p>
+<h4 id="–-创建学院表："><a href="#–-创建学院表：" class="headerlink" title="– 创建学院表："></a>– 创建学院表：</h4><h4 id="create-table-tb-college"><a href="#create-table-tb-college" class="headerlink" title="create table tb_college"></a>create table tb_college</h4><p>(<br>collid int not null auto_increment comment ‘学院编号’,<br>collname varchar(50) not null comment ‘学院名称’,<br>collmaster varchar(20) not null comment ‘院长姓名’,<br>collweb varchar(511) default ‘’ comment ‘学院网站’,<br>primary key (collid)<br>);</p>
+<h5 id="–-添加唯一约束"><a href="#–-添加唯一约束" class="headerlink" title="– 添加唯一约束"></a>– 添加唯一约束</h5><p>alter table tb_college add constraint uni_college_collname unique (collname);</p>
+<h4 id="–-创建学生表："><a href="#–-创建学生表：" class="headerlink" title="– 创建学生表："></a>– 创建学生表：</h4><p>create table tb_student</p>
+<p>(</p>
+<p>stuid int not null comment ‘学号’,<br>sname varchar(20) not null comment ‘学生姓名’,<br>gender bit default 1 comment ‘性别’,<br>birth date not null comment ‘出生日期’,<br>addr varchar(255) default ‘’ comment ‘籍贯’,<br>collid int not null comment ‘所属学院编号’,<br>primary key (stuid)<br>);</p>
+<h5 id="–-添加外键约束"><a href="#–-添加外键约束" class="headerlink" title="– 添加外键约束"></a>– 添加外键约束</h5><p>alter table tb_student add constraint fk_student_collid foreign key (collid) references tb_college (collid);</p>
+<h4 id="–-创建教师表："><a href="#–-创建教师表：" class="headerlink" title="– 创建教师表："></a>– 创建教师表：</h4><p>create table tb_teacher<br>(<br>teaid int not null comment ‘教师工号’,<br>tname varchar(20) not null comment ‘教师姓名’,<br>title varchar(10) default ‘’ comment ‘职称’,<br>collid int not null comment ‘所属学院编号’<br>);</p>
+<h5 id="–-添加主键约束"><a href="#–-添加主键约束" class="headerlink" title="– 添加主键约束"></a>– 添加主键约束</h5><p>alter table tb_teacher add constraint pk_teacher primary key (teaid);</p>
+<h5 id="–-添加外键约束-1"><a href="#–-添加外键约束-1" class="headerlink" title="– 添加外键约束"></a>– 添加外键约束</h5><p>alter table tb_teacher add constraint fk_teacher_collid foreign key (collid) references tb_college (collid);</p>
+<h5 id="–-创建课程表"><a href="#–-创建课程表" class="headerlink" title="– 创建课程表"></a>– 创建课程表</h5><p>create table tb_course<br>(<br>couid int not null comment ‘课程编号’,<br>cname varchar(50) not null comment ‘课程名称’,<br>credit tinyint not null comment ‘学分’,<br>teaid int not null comment ‘教师工号’,<br>primary key (couid)<br>);</p>
+<h5 id="–-添加外键约束-2"><a href="#–-添加外键约束-2" class="headerlink" title="– 添加外键约束"></a>– 添加外键约束</h5><p>alter table tb_course add constraint fk_course_tid foreign key (teaid) references tb_teacher (teaid);</p>
+<h4 id="–-创建学生选课表"><a href="#–-创建学生选课表" class="headerlink" title="– 创建学生选课表"></a>– 创建学生选课表</h4><p>create table tb_score<br>(<br>scid int not null auto_increment comment ‘选课编号’,<br>sid int not null comment ‘学号’,<br>cid int not null comment ‘课程编号’,<br>seldate date comment ‘选课时间日期’,<br>mark decimal(4,1) comment ‘考试成绩’,<br>primary key (scid)<br>);</p>
+<h5 id="–-添加外键约束-3"><a href="#–-添加外键约束-3" class="headerlink" title="– 添加外键约束"></a>– 添加外键约束</h5><p>alter table tb_score add constraint fk_score_sid foreign key (sid) references tb_student (stuid);<br>alter table tb_score add constraint fk_score_cid foreign key (cid) references tb_course (couid);</p>
+<h5 id="–-添加唯一约束-1"><a href="#–-添加唯一约束-1" class="headerlink" title="– 添加唯一约束"></a>– 添加唯一约束</h5><p>alter table tb_score add constraint uni_score_sid_cid unique (sid, cid);</p>
+<p><img src="/images/QQ截图20181225130210.png" alt="表关联图"></p>
+<h5 id="–-插入学院数据："><a href="#–-插入学院数据：" class="headerlink" title="– 插入学院数据："></a>– 插入学院数据：</h5><p>insert into tb_college (collname, collmaster, collweb) values<br>(‘计算机学院’, ‘左冷禅’, ‘<a href="http://www.abc.com&#39;)" target="_blank" rel="noopener">http://www.abc.com&#39;)</a>,<br>(‘外国语学院’, ‘岳不群’, ‘<a href="http://www.xyz.com&#39;)" target="_blank" rel="noopener">http://www.xyz.com&#39;)</a>,<br>(‘经济管理学院’, ‘风清扬’, ‘<a href="http://www.foo.com&#39;)" target="_blank" rel="noopener">http://www.foo.com&#39;)</a>;</p>
+<h5 id="–-插入学生数据："><a href="#–-插入学生数据：" class="headerlink" title="– 插入学生数据："></a>– 插入学生数据：</h5><p>insert into tb_student (stuid, sname, gender, birth, addr, collid) values<br>(1001, ‘杨逍’, 1, ‘1990-3-4’, ‘四川成都’, 1),<br>(1002, ‘任我行’, 1, ‘1992-2-2’, ‘湖南长沙’, 1),<br>(1033, ‘王语嫣’, 0, ‘1989-12-3’, ‘四川成都’, 1),<br>(1572, ‘岳不群’, 1, ‘1993-7-19’, ‘陕西咸阳’, 1),<br>(1378, ‘纪嫣然’, 0, ‘1995-8-12’, ‘四川绵阳’, 1),<br>(1954, ‘林平之’, 1, ‘1994-9-20’, ‘福建莆田’, 1),<br>(2035, ‘东方不败’, 1, ‘1988-6-30’, null, 2),<br>(3011, ‘林震南’, 1, ‘1985-12-12’, ‘福建莆田’, 3),<br>(3755, ‘项少龙’, 1, ‘1993-1-25’, null, 3),<br>(3923, ‘杨不悔’, 0, ‘1985-4-17’, ‘四川成都’, 3);</p>
+<h5 id="–-插入老师数据"><a href="#–-插入老师数据" class="headerlink" title="– 插入老师数据"></a>– 插入老师数据</h5><p>insert into tb_teacher (teaid, tname, title, collid) values<br>(1122, ‘张三丰’, ‘教授’, 1),</p>
+<h5 id="1133-‘宋远桥’-‘副教授’-1"><a href="#1133-‘宋远桥’-‘副教授’-1" class="headerlink" title="(1133, ‘宋远桥’, ‘副教授’, 1),"></a>(1133, ‘宋远桥’, ‘副教授’, 1),</h5><p>(1144, ‘杨逍’, ‘副教授’, 1),<br>(2255, ‘范遥’, ‘副教授’, 2),<br>(3366, ‘韦一笑’, ‘讲师’, 3);</p>
+<h5 id="–-插入课程数据"><a href="#–-插入课程数据" class="headerlink" title="– 插入课程数据"></a>– 插入课程数据</h5><p>insert into tb_course (couid, cname, credit, teaid) values<br>(1111, ‘Python程序设计’, 3, 1122),<br>(2222, ‘Web前端开发’, 2, 1122),<br>(3333, ‘操作系统’, 4, 1122),<br>(4444, ‘计算机网络’, 2, 1133),<br>(5555, ‘编译原理’, 4, 1144),<br>(6666, ‘算法和数据结构’, 3, 1144),<br>(7777, ‘经贸法语’, 3, 2255),<br>(8888, ‘成本会计’, 2, 3366),<br>(9999, ‘审计学’, 3, 3366);</p>
+<h5 id="–-插入选课数据"><a href="#–-插入选课数据" class="headerlink" title="– 插入选课数据"></a>– 插入选课数据</h5><p>insert into tb_score (sid, cid, seldate, mark) values<br>(1001, 1111, ‘2017-09-01’, 95),<br>(1001, 2222, ‘2017-09-01’, 87.5),<br>(1001, 3333, ‘2017-09-01’, 100),<br>(1001, 4444, ‘2018-09-03’, null),<br>(1001, 6666, ‘2017-09-02’, 100),<br>(1002, 1111, ‘2017-09-03’, 65),<br>(1002, 5555, ‘2017-09-01’, 42),<br>(1033, 1111, ‘2017-09-03’, 92.5),<br>(1033, 4444, ‘2017-09-01’, 78),<br>(1033, 5555, ‘2017-09-01’, 82.5),<br>(1572, 1111, ‘2017-09-02’, 78),<br>(1378, 1111, ‘2017-09-05’, 82),<br>(1378, 7777, ‘2017-09-02’, 65.5),<br>(2035, 7777, ‘2018-09-03’, 88),<br>(2035, 9999, date(now()), null),<br>(3755, 1111, date(now()), null),<br>(3755, 8888, date(now()), null),<br>(3755, 9999, ‘2017-09-01’, 92);</p>
+<p><img src="/images/QQ截图20181225130433.png" alt="tb_college"></p>
+<p><img src="/images/QQ截图20181225130448.png" alt="tb_course"></p>
+<p><img src="/images/QQQQ截图20181225130502.png" alt="tb_score"></p>
+<p><img src="/images/QQ截图20181225130517.png" alt="tb_student"></p>
+<p><img src="/images/QQ截图20181225130533.png" alt="tb_teacher"></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/25/MySQL建表day-02/">
+    <time datetime="2018-12-25T01:44:08.000Z" class="entry-date">
+        2018-12-25
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2018/12/24/MySQL安装/" rel="next">MySQL安装(day-01) <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/25/MySQL建表day-02/">MySQL表关联(day-02)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/24/MySQL安装/">MySQL安装(day-01)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/22/Nginx安装/">Nginx服务器安装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/22/blog/">vim编辑器基本操作</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/21/hello-world/">My homepage</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 10px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
