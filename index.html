@@ -62,6 +62,173 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-redis数据库安装及应用" class="post-redis数据库安装及应用 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/12/27/redis数据库安装及应用/">day-04redis数据库安装及操作（和本地mysql安装）</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjq6al0qv0008e4vexoyl8di6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="一、windows本地mysql安装"><a href="#一、windows本地mysql安装" class="headerlink" title="一、windows本地mysql安装"></a>一、windows本地mysql安装</h3><p><img src="/images/QQ图片20181227100619.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227100642.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227100648.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227100908.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227101746.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227101757.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227102053.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227102236.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227102300.jpg" alt=""></p>
+<h3 id="二、Redis数据库应用命令"><a href="#二、Redis数据库应用命令" class="headerlink" title="二、Redis数据库应用命令"></a>二、Redis数据库应用命令</h3><p>下载：wget <a href="http://download.redis.io/releases/redis-5.0.3.tar.gz" target="_blank" rel="noopener">http://download.redis.io/releases/redis-5.0.3.tar.gz</a></p>
+<p>gunzip redis-5.0.3.tar.gz  -(解压)</p>
+<p>tar -xvf redis-5.0.3.tar  -(-xvf解归档 /-cvf)</p>
+<p>cd redis-5.0.3</p>
+<p>gcc –version  -检查c的环境</p>
+<p>make &amp;&amp; make install - 安装</p>
+<p>Redis运行:</p>
+<pre><code>ctrl + c   - 终止进程
+
+ctrl + z   - 跳出前台进程
+
+jobs    - 查看后台任务
+
+bg %1    - 后台运行
+
+fg %1      - 前台运行
+
+redis-server   - 启动redis
+
+redis-server  &amp;  - 启动redis时 后台自动运行
+
+    （redis-server --requirepass 1qaz2wsx --appendonly yes &gt; redis.log 2&gt; redis-error.log &amp;）启动服务器，创建密码，打开ADF，创建日志
+
+netstat -nap | grep 6379   - 查看进程6379
+</code></pre><p>特点：提供高速缓存服务 - 缓存热点数据（访问量大，数据量不大）</p>
+<pre><code>缓解了数据的压力（高频访问数据不用直接访问数据库）
+</code></pre><p>redis提供了两种持久化数据的方案：</p>
+<pre><code>1、RDA - 默认开启
+
+2、AOF  - 默认关闭  -- appenddonly yes
+</code></pre><p>服务器连接：</p>
+<pre><code>redis-cli   -连接服务器
+
+auth 123456  -输入密码
+
+ping  -心跳事件（检查是否连接上）
+</code></pre><p>数据库操作：</p>
+<pre><code>set username jackfrued  -存储数据（用：set 键 值）
+
+get username                   -取出数据（用：get 键） --&gt;&quot;jackfrued&quot;
+
+
+
+set yuting 1000 ex 30   - 30秒自动失效
+
+expirt  -设置超时时间
+
+ttl yuting    -检查还有多少时间
+
+keys*   - 只取key的部分
+
+exists 键  - 判断键是否存在
+
+flushdb   - 清洗数据库
+
+flushall - 清除所有数据库中的所有键值对
+
+select 1 - 切换到第二个数据库（默认16个数据库）
+
+dbsisze  - 查看当前数据库有多少键值对
+
+save - 保存
+
+bgsave - 后台保存
+
+
+
+stutdown [save|no save] -关闭服务器(关闭服务器时，默认save保存状态
+
+quit  -退出
+</code></pre><p>redis命令大全：redisdoc.com</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/27/redis数据库安装及应用/">
+    <time datetime="2018-12-27T06:32:09.000Z" class="entry-date">
+        2018-12-27
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-本地mysql安装" class="post-本地mysql安装 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/12/27/本地mysql安装/">本地mysql安装</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/本地mysql安装/" data-id="cjq6al0ry000he4veishhst9n" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/27/本地mysql安装/">
+    <time datetime="2018-12-27T06:31:45.000Z" class="entry-date">
+        2018-12-27
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-day-03通过PyCharm操作MySQL" class="post-day-03通过PyCharm操作MySQL post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +244,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjq50iua7000b9gve9oyyfdhb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjq6al0s0000ie4vel86795yt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -126,7 +293,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjq50iuax000g9gveobehuniv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjq6al0us000le4vetdip5dam" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -174,7 +341,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjq50iua200099gve3xj2o7v6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjq6al0up000je4vef8a0y07z" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -238,7 +405,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjq50iu9300009gve5haozu08" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjq6al0ov0000e4ve7000yp0b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -343,7 +510,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjq50iu9h00029gvexf38yy40" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjq6al0qo0004e4vezlcabrdy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -409,7 +576,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjq50iube000n9gveq9g1mqim" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjq6al0uw000ne4veoca6h6rh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -520,7 +687,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq50iu9o00049gve1216jyjb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq6al0qd0001e4vejyycso1u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -608,7 +775,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjq50iu9r00059gvelv3lme2a" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjq6al0qk0003e4vejotfaghw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -691,115 +858,12 @@ location / {
 
 
   
-    <article id="post-blog" class="post-blog post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/12/22/blog/">vim编辑器基本操作</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjq50iu9u00069gve5d1b4iqz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h3 id="配置vimrc配置"><a href="#配置vimrc配置" class="headerlink" title="配置vimrc配置"></a>配置vimrc配置</h3><p>在shell中可以通过 <code>vim ~/.vimrc</code> 或者 <code>vim /etc/vimrc</code> 打开vimrc文件对vim进行配置。在这个文件中可以进行很多和vim相关的配置，常用的如下（如果对其他配置感兴趣的可以自己百度）：</p>
-<p><img src="/images/vim1.png" alt=""> </p>
-<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><h4 id="1-模式切换"><a href="#1-模式切换" class="headerlink" title="1.模式切换"></a>1.模式切换</h4><p>我们可以将vim分为命令模式、编辑模式和末行模式三种<br><strong>命令模式：</strong>进入vim的时候vim是处于命令模式状态下的，这个时候输入内容不会出现在编辑区  (最末什么都没有)</p>
-<p><strong>末行模式：</strong>在命令模式下输入冒号，让vim进入末行模式。在末行模式的冒号后面可以输入相关的一些指令进行相关操作  (最后有一个冒号)</p>
-<p><strong>编辑模式：</strong>在命令模式下按’i’进入编辑模式。在编辑模式下可以对文件内容进行编辑 (最后 –INSERT– 或者 –插入–)  </p>
-<h4 id="2-保存和退出"><a href="#2-保存和退出" class="headerlink" title="2.保存和退出"></a>2.保存和退出</h4><p>在末行模式下输入相应的指令可以对编辑区的内容进行保存和退出vim界面<br><strong>w</strong> – 只保存(类似快捷键ctr+s)<br><strong>q</strong> – 退出（在编辑区的内容全部都保存的情况下才有效）<br><strong>wq</strong> – 保存并退出<br><strong>q!</strong>  – 强制退出（不保存修改信息）    </p>
-<h4 id="3-光标操作"><a href="#3-光标操作" class="headerlink" title="3.光标操作"></a>3.光标操作</h4><p>以下光标操作都是在命令模式下输入的<br><strong>^(shift+6)</strong>  – 移动到行首<br><strong>$(shift+4)</strong>  – 移动到行尾<br><strong>G(shift+g)</strong>    – 移动到文件末尾<br><strong>行号G</strong>            – 移动到指定行,例如:30G, 让光标直接跳转到行号是30的那一行<br><strong>gg</strong>                – 移动到文件开头  </p>
-<h4 id="4-文本操作"><a href="#4-文本操作" class="headerlink" title="4.文本操作"></a>4.文本操作</h4><p>以下操作不带冒号的是在命令模式下输入，前面有冒号代码后面的内容是在末行模式下输入<br><strong>dd</strong>            – 删除光标所在的行<br><strong>数字dd</strong>        – 从光标所在行开始往后面开始删，删除指定数量行内容<br><strong>:%d</strong>        – 删除所有     </p>
-<p><strong>yy</strong>         – 复制光标所在的行<br><strong>数字yy</strong>        – 从光标所在行开始复制指定行数的内容<br><strong>p</strong>            – 将复制的内容粘贴到光标所在的位置<br><strong>u</strong>            – 撤销<br><strong>ctr+r</strong>    – 反撤销    </p>
-<p><strong>:%!sort</strong>  – 对内容排序  </p>
-<p><strong>:/查找对象[/gice]</strong>    – 搜索匹配正则表达式的内容，按回车回到命令模式后按n往前查找，按N往后查找  </p>
-<p>*<em>:1,$s/被替换对象/替换内容[/gice</em>]*    – 将正则表达式匹配到的内容替换成指定内容   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-	g: 全局匹配  </span><br><span class="line">- 	i: 忽略大小写 </span><br><span class="line">-   c: 替换时需要提示  </span><br><span class="line">-   e: 忽略错误</span><br></pre></td></tr></table></figure>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/12/22/blog/">
-    <time datetime="2018-12-22T06:45:12.000Z" class="entry-date">
-        2018-12-22
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux学习/">Linux学习</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/12/21/hello-world/">My homepage</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjq50iuae000e9gvebflmbtan" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/12/21/hello-world/">
-    <time datetime="2018-12-21T05:08:15.071Z" class="entry-date">
-        2018-12-21
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      </nav>
+    </nav>
   
 
 </div></div>
@@ -823,6 +887,14 @@ location / {
       <ul>
         
           <li>
+            <a href="/2018/12/27/redis数据库安装及应用/">day-04redis数据库安装及操作（和本地mysql安装）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/27/本地mysql安装/">本地mysql安装</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/26/day-03通过PyCharm操作MySQL/">day-03通过PyCharm操作MySQL</a>
           </li>
         
@@ -834,14 +906,6 @@ location / {
             <a href="/2018/12/26/day-02练习/">day-02练习</a>
           </li>
         
-          <li>
-            <a href="/2018/12/26/Linux指令系统/">Linux指令系统</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/26/Linux文档管理/">git常用指令</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -851,7 +915,7 @@ location / {
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">5</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">6</span></li></ul>
     </div>
   </aside>
 

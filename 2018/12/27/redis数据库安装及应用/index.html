@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="一、windows本地mysql安装
+
+
+
+
+
+
+
+
+二、Redis数据库应用命令下载：wget http://download.redis.io/releases/redis-5.0.3.tar.gz
+gunzip redis-5.0.3.tar.gz  -(解压)
+tar -xvf redis-">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>day-04redis数据库安装及操作（和本地mysql安装） | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、windows本地mysql安装         二、Redis数据库应用命令下载：wget http://download.redis.io/releases/redis-5.0.3.tar.gz gunzip redis-5.0.3.tar.gz  -(解压) tar -xvf redis-5.0.3.tar  -(-xvf解归档 /-cvf) cd redis-5.0.3 gcc –ve">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day-04redis数据库安装及操作（和本地mysql安装）">
+<meta property="og:url" content="http://yoursite.com/2018/12/27/redis数据库安装及应用/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="一、windows本地mysql安装         二、Redis数据库应用命令下载：wget http://download.redis.io/releases/redis-5.0.3.tar.gz gunzip redis-5.0.3.tar.gz  -(解压) tar -xvf redis-5.0.3.tar  -(-xvf解归档 /-cvf) cd redis-5.0.3 gcc –ve">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227100619.jpg">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227100642.jpg">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227100648.jpg">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227100908.jpg">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227101746.jpg">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227101757.jpg">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227102053.jpg">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227102236.jpg">
+<meta property="og:image" content="http://yoursite.com/images/QQ图片20181227102300.jpg">
+<meta property="og:updated_time" content="2018-12-27T09:10:19.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day-04redis数据库安装及操作（和本地mysql安装）">
+<meta name="twitter:description" content="一、windows本地mysql安装         二、Redis数据库应用命令下载：wget http://download.redis.io/releases/redis-5.0.3.tar.gz gunzip redis-5.0.3.tar.gz  -(解压) tar -xvf redis-5.0.3.tar  -(-xvf解归档 /-cvf) cd redis-5.0.3 gcc –ve">
+<meta name="twitter:image" content="http://yoursite.com/images/QQ图片20181227100619.jpg">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-redis数据库安装及应用" class="post-redis数据库安装及应用 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      day-04redis数据库安装及操作（和本地mysql安装）
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjq6al0qv0008e4vexoyl8di6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="一、windows本地mysql安装"><a href="#一、windows本地mysql安装" class="headerlink" title="一、windows本地mysql安装"></a>一、windows本地mysql安装</h3><p><img src="/images/QQ图片20181227100619.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227100642.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227100648.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227100908.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227101746.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227101757.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227102053.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227102236.jpg" alt=""></p>
+<p><img src="/images/QQ图片20181227102300.jpg" alt=""></p>
+<h3 id="二、Redis数据库应用命令"><a href="#二、Redis数据库应用命令" class="headerlink" title="二、Redis数据库应用命令"></a>二、Redis数据库应用命令</h3><p>下载：wget <a href="http://download.redis.io/releases/redis-5.0.3.tar.gz" target="_blank" rel="noopener">http://download.redis.io/releases/redis-5.0.3.tar.gz</a></p>
+<p>gunzip redis-5.0.3.tar.gz  -(解压)</p>
+<p>tar -xvf redis-5.0.3.tar  -(-xvf解归档 /-cvf)</p>
+<p>cd redis-5.0.3</p>
+<p>gcc –version  -检查c的环境</p>
+<p>make &amp;&amp; make install - 安装</p>
+<p>Redis运行:</p>
+<pre><code>ctrl + c   - 终止进程
+
+ctrl + z   - 跳出前台进程
+
+jobs    - 查看后台任务
+
+bg %1    - 后台运行
+
+fg %1      - 前台运行
+
+redis-server   - 启动redis
+
+redis-server  &amp;  - 启动redis时 后台自动运行
+
+    （redis-server --requirepass 1qaz2wsx --appendonly yes &gt; redis.log 2&gt; redis-error.log &amp;）启动服务器，创建密码，打开ADF，创建日志
+
+netstat -nap | grep 6379   - 查看进程6379
+</code></pre><p>特点：提供高速缓存服务 - 缓存热点数据（访问量大，数据量不大）</p>
+<pre><code>缓解了数据的压力（高频访问数据不用直接访问数据库）
+</code></pre><p>redis提供了两种持久化数据的方案：</p>
+<pre><code>1、RDA - 默认开启
+
+2、AOF  - 默认关闭  -- appenddonly yes
+</code></pre><p>服务器连接：</p>
+<pre><code>redis-cli   -连接服务器
+
+auth 123456  -输入密码
+
+ping  -心跳事件（检查是否连接上）
+</code></pre><p>数据库操作：</p>
+<pre><code>set username jackfrued  -存储数据（用：set 键 值）
+
+get username                   -取出数据（用：get 键） --&gt;&quot;jackfrued&quot;
+
+
+
+set yuting 1000 ex 30   - 30秒自动失效
+
+expirt  -设置超时时间
+
+ttl yuting    -检查还有多少时间
+
+keys*   - 只取key的部分
+
+exists 键  - 判断键是否存在
+
+flushdb   - 清洗数据库
+
+flushall - 清除所有数据库中的所有键值对
+
+select 1 - 切换到第二个数据库（默认16个数据库）
+
+dbsisze  - 查看当前数据库有多少键值对
+
+save - 保存
+
+bgsave - 后台保存
+
+
+
+stutdown [save|no save] -关闭服务器(关闭服务器时，默认save保存状态
+
+quit  -退出
+</code></pre><p>redis命令大全：redisdoc.com</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/27/redis数据库安装及应用/">
+    <time datetime="2018-12-27T06:32:09.000Z" class="entry-date">
+        2018-12-27
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2018/12/27/本地mysql安装/" rel="next">本地mysql安装 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/27/redis数据库安装及应用/">day-04redis数据库安装及操作（和本地mysql安装）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/27/本地mysql安装/">本地mysql安装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/26/day-03通过PyCharm操作MySQL/">day-03通过PyCharm操作MySQL</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/26/数据库新建用户和权限的授权与招回/">数据库新建用户和权限的授权与招回</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/26/day-02练习/">day-02练习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">6</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 10px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
