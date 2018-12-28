@@ -62,6 +62,135 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-day-05Redis数据库应用" class="post-day-05Redis数据库应用 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/12/28/day-05Redis数据库应用/">day-05Redis数据库应用</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/28/day-05Redis数据库应用/" data-id="cjq7gxjl5000ez4ve6wp6usau" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>redis命令大全：redisdoc.com</p>
+<p>redis的list类型 - 经典的数据存储结构：</p>
+<pre><code>栈（stack）-FILO - 先进后出 -  lpush + lpop / rpush + rpop 
+
+列如：def f(num):    - 递归函数，自己调用自己（列：5的阶乘）
+
+            if num in (0,1):
+
+            return 1
+
+           return num * f(num-1)
+
+队列（queue）- fFIFO - 先进先出 - lpush +rpop / rpush + lpop
+</code></pre><p>一、字符串：String</p>
+<pre><code>setnx   键 值   - 如果key不存在，才能放键值对
+
+mest   键1 值1 键2 值2 ...   - 一次存放多个键值对
+
+mget   键1 键2   - 一次也可通过多个键 取出值
+
+getset  键1 值3    - 将键1的值修改值3
+
+append - 字符串后面追加
+
+setbit  foo 128   -第128位为1其他位0
+
+gitbit foo 127    - 取127位的bit值
+
+type 键   - 键对应别的值类型（字符串/集合/哈希......）
+
+object encodiung 键    - 底层的数据类型
+</code></pre><p>二、哈希：Hash（字典里的值还是字典）</p>
+<pre><code>hset stu1 stuid 1001   - 创建哈希列表
+
+hget stu1 stuid             - 取值
+
+hegetall                          - 取出所有的键值对
+
+hvals                               - 取出所有键值对的值 
+
+ hmset/hmget                - 存/取 多个键值对
+
+hdel                                 - 删除字段
+
+hkeys                               - 
+</code></pre><p>三、列表：List</p>
+<pre><code>lpush/rpush  list1 100 200 300 400 500      - 从左/右边 存 放元素
+
+lrange list1 0 -1                    - 查看（（0 -1）索引范围）
+
+lpop/rpop                               - 从左/右边 取 元素
+
+lindex list1 下标                   - 指定下标取元素
+
+blpop/brpop    list1 time      - 按时间 阻塞 取出元素，没有了会按规定时间返回nil
+</code></pre><p>四、集合：Set</p>
+<pre><code>sadd set1 100,200,200,300       - 创建集合元素
+
+smembers set1                           - 获取元素    
+
+sinter set1 set2                            - 交集    
+
+sunion set1 set2                         - 并集
+
+sdiff set1 set2                              - 差集    
+
+srem set1 100                              - 移除元素
+
+sismember set1 元素              - 查看元素是否在集合里
+
+scard set1                                     - 查看集合有多少个元素
+
+spop                                              - 取元素
+
+srandmember                             - 随机取元素    
+</code></pre><p>五、有序结合：Zset</p>
+<pre><code>zadd paihangbang 100 yuting 200 xiaownag 1000 luohao   - 添加元素
+
+zrange paihangbang 0 -1   - 从小到大排序
+
+zrevrange paihangbang 0 -1 - 从大到小拍讯
+
+zincrby paihangbang 20000 yuting    - 增加值
+</code></pre><p>​         </p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/28/day-05Redis数据库应用/">
+    <time datetime="2018-12-28T03:17:08.000Z" class="entry-date">
+        2018-12-28
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-redis数据库安装及应用" class="post-redis数据库安装及应用 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +206,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjq6al0qv0008e4vexoyl8di6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjq7gxjlm000jz4veqqrhh9l4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -202,7 +331,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/本地mysql安装/" data-id="cjq6al0ry000he4veishhst9n" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/本地mysql安装/" data-id="cjq7gxjlt000oz4vezh6vdk53" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -244,7 +373,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjq6al0s0000ie4vel86795yt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjq7gxjl1000bz4ves5zbkvhy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -293,7 +422,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjq6al0us000le4vetdip5dam" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjq7gxjlp000lz4veugzqi0po" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -341,7 +470,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjq6al0up000je4vef8a0y07z" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjq7gxjkx0009z4veh7dpjm2h" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -405,7 +534,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjq6al0ov0000e4ve7000yp0b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjq7gxjk00000z4veviqmo0d5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -510,7 +639,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjq6al0qo0004e4vezlcabrdy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjq7gxjkd0002z4ve2qm68g7n" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -576,7 +705,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjq6al0uw000ne4veoca6h6rh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjq7gxjm2000sz4ve3eqetjd2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -687,7 +816,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq6al0qd0001e4vejyycso1u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjq7gxjkk0004z4vebuum0269" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -760,104 +889,6 @@ quit  -退出
 
 
   
-    <article id="post-Nginx安装" class="post-Nginx安装 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/12/22/Nginx安装/">Nginx服务器安装</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjq6al0qk0003e4vejotfaghw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Nginx服务器</p>
-<p>1.阿里云添加80端口</p>
-<p>阿里云上默认只有一个22端口用来做远程登录，如果希望在阿里云上安装支持http请求的nginx服务器，需要给阿里云添加80端口</p>
-<p>  <img src="/images/aliyun0.png" alt="打开安全组设置"></p>
-<p><img src="/images/aliyun2.png" alt=""></p>
-<p><img src="/images/aliyun3.png" alt=""></p>
-<p><img src="/images/aliyun4.png" alt=""></p>
-<ol start="2">
-<li>安装nginx</li>
-</ol>
-<p>a) 添加nginx存储库  </p>
-<pre><code>yum install epel-release
-</code></pre><p>b) 安装nginx</p>
-<pre><code>yum install nginx
-</code></pre><p>c) 运行nginx  </p>
-<p>Nginx不会自行启动。要运行Nginx  </p>
-<pre><code>systemctl start nginx
-</code></pre><p>nginx的运行命令:  </p>
-<pre><code>systemctl status nginx 查看nginx的状态  
-systemctl start/stop/enable/disable nginx 启动/关闭/设置开机启动/禁止开机启动  
-</code></pre><p>d) 系统启动时启动Nginx  </p>
-<pre><code>systemctl enable nginx
-</code></pre><p>e）如果您正在运行防火墙，请运行以下命令以允许HTTP和HTTPS通信：   </p>
-<pre><code>sudo firewall-cmd --permanent --zone=public --add-service=http 
-
-sudo firewall-cmd --permanent --zone=public --add-service=https
-
-sudo firewall-cmd --reload
-</code></pre><p>3.nginx目录共享配置</p>
-<p>a) 在contOS目录中确定一个需要共享的文件夹，例如： /home/yuting  </p>
-<p>b) 打开 etc/nginx/nginx.conf 文件，设置server</p>
-<pre><code>#共享设置 - 在浏览器中输入服务器ip地址，会展示共享目录的文件列表
-root /home/yuting;
-location / {
-       autoindex on;
-       autoindex_exact_size on;
-       autoindex_localtime on;
-}  
-</code></pre><p>除了可以共享文件，还可以自定义页面</p>
-<pre><code>#自定义服务器页面
-location / {
-        root /home/yuting;
-        index index.html index.htm;
-}
-</code></pre><p>注意： 如果出现权限问题，可以修改目录的权限  </p>
-<p>ssh密钥认证</p>
-<p>1.在主机和从机上执行：ssh-keygen</p>
-<p>2.在从机上执行:  scp  id_rsa.pub  root@主机地址:~/.ssh/master.pub</p>
-<p>(上面这条指令是将从机上的 id_rsa.pub文件拷贝传递给到主机的.ssh文件夹下，并且命名为’master.pub’)</p>
-<p>3.在主机中的.ssh文件夹中创建authorized_keys文件： touch authorized_keys </p>
-<p>4.修改文件authorized_keys的权限: chmod 600  authorized_keys  </p>
-<p>5.将master.pub放进authorized_keys文件中:  cat master.pub &gt;&gt;  authorized_keys</p>
-<p>6.在操作主机的时候，需要主机能够自己免密访问自己就将自己的公钥放在自己的authorized_keys文件中</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/12/22/Nginx安装/">
-    <time datetime="2018-12-22T07:40:11.000Z" class="entry-date">
-        2018-12-22
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux学习/">Linux学习</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -887,6 +918,10 @@ location / {
       <ul>
         
           <li>
+            <a href="/2018/12/28/day-05Redis数据库应用/">day-05Redis数据库应用</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/27/redis数据库安装及应用/">day-04redis数据库安装及操作（和本地mysql安装）</a>
           </li>
         
@@ -902,10 +937,6 @@ location / {
             <a href="/2018/12/26/数据库新建用户和权限的授权与招回/">数据库新建用户和权限的授权与招回</a>
           </li>
         
-          <li>
-            <a href="/2018/12/26/day-02练习/">day-02练习</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -915,7 +946,7 @@ location / {
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">6</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">7</span></li></ul>
     </div>
   </aside>
 

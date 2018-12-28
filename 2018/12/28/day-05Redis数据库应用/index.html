@@ -4,8 +4,13 @@
   <meta charset="utf-8">
   
   
-  <meta name="description" content="use hrs;– 事务：多个数据操作要么全都成功要么全都失败（不可分割） - 一致性问题(列如：银行存取钱)start transaction;  – 或者 begin;  -（开启事务）commit;  – 提交事务rollback;  – 回滚  - 修改数据在没 提交 之前开可以找回
-cre">
+  <meta name="description" content="redis命令大全：redisdoc.com
+redis的list类型 - 经典的数据存储结构：
+栈（stack）-FILO - 先进后出 -  lpush + lpop / rpush + rpop 
+
+列如：def f(num):    - 递归函数，自己调用自己（列：5的阶乘）
+
+      ">
   
 
   
@@ -14,20 +19,20 @@ cre">
   
   
   
-  <title>数据库新建用户和权限的授权与招回 | Ren</title>
+  <title>day-05Redis数据库应用 | Ren</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="use hrs;– 事务：多个数据操作要么全都成功要么全都失败（不可分割） - 一致性问题(列如：银行存取钱)start transaction;  – 或者 begin;  -（开启事务）commit;  – 提交事务rollback;  – 回滚  - 修改数据在没 提交 之前开可以找回 create user hellokitty@’%’ identified by ‘123123’;  –">
+  <meta name="description" content="redis命令大全：redisdoc.com redis的list类型 - 经典的数据存储结构： 栈（stack）-FILO - 先进后出 -  lpush + lpop / rpush + rpop   列如：def f(num):    - 递归函数，自己调用自己（列：5的阶乘）              if num in (0,1):              return 1">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库新建用户和权限的授权与招回">
-<meta property="og:url" content="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/index.html">
+<meta property="og:title" content="day-05Redis数据库应用">
+<meta property="og:url" content="http://yoursite.com/2018/12/28/day-05Redis数据库应用/index.html">
 <meta property="og:site_name" content="Ren">
-<meta property="og:description" content="use hrs;– 事务：多个数据操作要么全都成功要么全都失败（不可分割） - 一致性问题(列如：银行存取钱)start transaction;  – 或者 begin;  -（开启事务）commit;  – 提交事务rollback;  – 回滚  - 修改数据在没 提交 之前开可以找回 create user hellokitty@’%’ identified by ‘123123’;  –">
+<meta property="og:description" content="redis命令大全：redisdoc.com redis的list类型 - 经典的数据存储结构： 栈（stack）-FILO - 先进后出 -  lpush + lpop / rpush + rpop   列如：def f(num):    - 递归函数，自己调用自己（列：5的阶乘）              if num in (0,1):              return 1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-26T09:20:06.380Z">
+<meta property="og:updated_time" content="2018-12-28T03:18:56.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库新建用户和权限的授权与招回">
-<meta name="twitter:description" content="use hrs;– 事务：多个数据操作要么全都成功要么全都失败（不可分割） - 一致性问题(列如：银行存取钱)start transaction;  – 或者 begin;  -（开启事务）commit;  – 提交事务rollback;  – 回滚  - 修改数据在没 提交 之前开可以找回 create user hellokitty@’%’ identified by ‘123123’;  –">
+<meta name="twitter:title" content="day-05Redis数据库应用">
+<meta name="twitter:description" content="redis命令大全：redisdoc.com redis的list类型 - 经典的数据存储结构： 栈（stack）-FILO - 先进后出 -  lpush + lpop / rpush + rpop   列如：def f(num):    - 递归函数，自己调用自己（列：5的阶乘）              if num in (0,1):              return 1">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -68,7 +73,7 @@ cre">
 </header>
 
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-数据库新建用户和权限的授权与招回" class="post-数据库新建用户和权限的授权与招回 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-day-05Redis数据库应用" class="post-day-05Redis数据库应用 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -76,30 +81,111 @@ cre">
         
   
     <h1 class="entry-title article-title">
-      数据库新建用户和权限的授权与招回
+      day-05Redis数据库应用
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjq7gxjlp000lz4veugzqi0po" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/28/day-05Redis数据库应用/" data-id="cjq7gxjl5000ez4ve6wp6usau" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>use hrs;<br>– 事务：多个数据操作要么全都成功要么全都失败（不可分割） - 一致性问题(列如：银行存取钱)<br>start transaction;  – 或者 begin;  -（开启事务）<br>commit;  – 提交事务<br>rollback;  – 回滚  - 修改数据在没 提交 之前开可以找回</p>
-<p>create user hellokitty@’%’ identified by ‘123123’;  – 创建helloKitty用户<br>grant select on HRS.<em> to hellokitty@’%’;  – 授权给helloKitty<br>grant insert on HRS.</em> to hellokitty@’%’;  – 授权增加的权限<br>grant all privileges on <em>.</em> to hellokitty@’%’;  – 授权所有的权限<br>grant all privileges on <em>.</em> to hellokitty@’%’ with grant option; – 不仅或得了权限，而且还可以分配给人</p>
-<p>revoke all privileges on <em>.</em> from hellokitty@’%’; – 招回权限<br>drop user hellokitty@’%’  – 删除hellokitty用户</p>
+        <p>redis命令大全：redisdoc.com</p>
+<p>redis的list类型 - 经典的数据存储结构：</p>
+<pre><code>栈（stack）-FILO - 先进后出 -  lpush + lpop / rpush + rpop 
+
+列如：def f(num):    - 递归函数，自己调用自己（列：5的阶乘）
+
+            if num in (0,1):
+
+            return 1
+
+           return num * f(num-1)
+
+队列（queue）- fFIFO - 先进先出 - lpush +rpop / rpush + lpop
+</code></pre><p>一、字符串：String</p>
+<pre><code>setnx   键 值   - 如果key不存在，才能放键值对
+
+mest   键1 值1 键2 值2 ...   - 一次存放多个键值对
+
+mget   键1 键2   - 一次也可通过多个键 取出值
+
+getset  键1 值3    - 将键1的值修改值3
+
+append - 字符串后面追加
+
+setbit  foo 128   -第128位为1其他位0
+
+gitbit foo 127    - 取127位的bit值
+
+type 键   - 键对应别的值类型（字符串/集合/哈希......）
+
+object encodiung 键    - 底层的数据类型
+</code></pre><p>二、哈希：Hash（字典里的值还是字典）</p>
+<pre><code>hset stu1 stuid 1001   - 创建哈希列表
+
+hget stu1 stuid             - 取值
+
+hegetall                          - 取出所有的键值对
+
+hvals                               - 取出所有键值对的值 
+
+ hmset/hmget                - 存/取 多个键值对
+
+hdel                                 - 删除字段
+
+hkeys                               - 
+</code></pre><p>三、列表：List</p>
+<pre><code>lpush/rpush  list1 100 200 300 400 500      - 从左/右边 存 放元素
+
+lrange list1 0 -1                    - 查看（（0 -1）索引范围）
+
+lpop/rpop                               - 从左/右边 取 元素
+
+lindex list1 下标                   - 指定下标取元素
+
+blpop/brpop    list1 time      - 按时间 阻塞 取出元素，没有了会按规定时间返回nil
+</code></pre><p>四、集合：Set</p>
+<pre><code>sadd set1 100,200,200,300       - 创建集合元素
+
+smembers set1                           - 获取元素    
+
+sinter set1 set2                            - 交集    
+
+sunion set1 set2                         - 并集
+
+sdiff set1 set2                              - 差集    
+
+srem set1 100                              - 移除元素
+
+sismember set1 元素              - 查看元素是否在集合里
+
+scard set1                                     - 查看集合有多少个元素
+
+spop                                              - 取元素
+
+srandmember                             - 随机取元素    
+</code></pre><p>五、有序结合：Zset</p>
+<pre><code>zadd paihangbang 100 yuting 200 xiaownag 1000 luohao   - 添加元素
+
+zrange paihangbang 0 -1   - 从小到大排序
+
+zrevrange paihangbang 0 -1 - 从大到小拍讯
+
+zincrby paihangbang 20000 yuting    - 增加值
+</code></pre><p>​         </p>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/12/26/数据库新建用户和权限的授权与招回/">
-    <time datetime="2018-12-26T09:19:20.000Z" class="entry-date">
-        2018-12-26
+    <a href="/2018/12/28/day-05Redis数据库应用/">
+    <time datetime="2018-12-28T03:17:08.000Z" class="entry-date">
+        2018-12-28
     </time>
 </a>
     
@@ -115,10 +201,8 @@ cre">
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
-        <span class="nav-previous"><a href="/2018/12/26/day-03通过PyCharm操作MySQL/" rel="prev"><span class="meta-nav">←</span> day-03通过PyCharm操作MySQL</a></span>
     
-    
-        <span class="nav-next"><a href="/2018/12/26/day-02练习/" rel="next">day-02练习 <span class="meta-nav">→</span></a></span>
+        <span class="nav-next"><a href="/2018/12/27/redis数据库安装及应用/" rel="next">day-04redis数据库安装及操作（和本地mysql安装） <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
 
