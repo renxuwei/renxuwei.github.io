@@ -25,12 +25,18 @@
 <meta property="og:site_name" content="Ren">
 <meta property="og:description" content="Django虚拟环境安装: pip install virtualenv使用: virtualenv –no-site-packages -p D:\python3\python.exe name –no-site-packages: 表示创建的虚拟环境为纯净的环境，不安装有其他的库 -p: 表示虚拟环境中的python版本  pip使用 pip list: 插看安装的库 pip install">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190102192808.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190102192637.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190102192718.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190102192747.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190102192848.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190102192907.png">
 <meta property="og:image" content="http://yoursite.com/images/Django.png">
-<meta property="og:updated_time" content="2019-01-02T08:48:02.961Z">
+<meta property="og:updated_time" content="2019-01-02T11:39:07.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="day-01 Django">
 <meta name="twitter:description" content="Django虚拟环境安装: pip install virtualenv使用: virtualenv –no-site-packages -p D:\python3\python.exe name –no-site-packages: 表示创建的虚拟环境为纯净的环境，不安装有其他的库 -p: 表示虚拟环境中的python版本  pip使用 pip list: 插看安装的库 pip install">
-<meta name="twitter:image" content="http://yoursite.com/images/Django.png">
+<meta name="twitter:image" content="http://yoursite.com/images/QQ截图20190102192808.png">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -86,7 +92,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django/" data-id="cjqexw1ai0000ugvebcm1vy3d" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django/" data-id="cjqf409j20000gsve721xbqn1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -108,11 +114,17 @@
 <li>Windows/Mac/Linux/Ubuntu: 直接执行deactivate</li>
 </ul>
 <h2 id="Django项目"><a href="#Django项目" class="headerlink" title="Django项目"></a>Django项目</h2><h3 id="创建-django-amdin-startproject-项目名称"><a href="#创建-django-amdin-startproject-项目名称" class="headerlink" title="创建: django-amdin startproject 项目名称"></a>创建: django-amdin startproject 项目名称</h3><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><ul>
-<li>启动命令: python manage.py runserver。默认IP为127.0.0.1  默认端口为8000</li>
-<li>修改启动端口: python manage.py runserver 端口</li>
-<li>修改IP和端口: python manage.py runserver IP:端口</li>
-<li>IP参数: 如果为0.0.0.0表示任何人都可以通过公网IP访问django项目</li>
-<li>端口PORT参数: 如果端口设置为80，表示该端口可以不用写</li>
+<li><p>启动命令: python manage.py runserver。默认IP为127.0.0.1  默认端口为8000</p>
+</li>
+<li><p>修改启动端口: python manage.py runserver 端口</p>
+</li>
+<li><p>修改IP和端口: python manage.py runserver IP:端口</p>
+</li>
+<li><p>IP参数: 如果为0.0.0.0表示任何人都可以通过公网IP访问django项目</p>
+</li>
+<li><p>端口PORT参数: 如果端口设置为80，表示该端口可以不用写</p>
+<p><img src="/images/QQ截图20190102192808.png" alt=""></p>
+</li>
 </ul>
 <h2 id="Django模式"><a href="#Django模式" class="headerlink" title="Django模式"></a>Django模式</h2><h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><ul>
 <li>模型层: 定义模型和数据库中的表之间的关联关系</li>
@@ -124,20 +136,34 @@
 <li>模板: HTML页面</li>
 </ul>
 <h2 id="数据库准备工作"><a href="#数据库准备工作" class="headerlink" title="数据库准备工作"></a>数据库准备工作</h2><h3 id="settings-py中配置"><a href="#settings-py中配置" class="headerlink" title="settings.py中配置"></a>settings.py中配置</h3><ul>
-<li>USER参数: 访问用户</li>
-<li>PASSWORD参数: 密码</li>
-<li>HOST参数: 访问数据库的地址</li>
-<li>PORT参数: 访问数据库的端口</li>
-<li>NAME参数: 数据库名</li>
-<li>‘OPTIONS’:{‘isolation_level’:None}</li>
+<li><p>USER参数: 访问用户</p>
+</li>
+<li><p>PASSWORD参数: 密码</p>
+</li>
+<li><p>HOST参数: 访问数据库的地址</p>
+</li>
+<li><p>PORT参数: 访问数据库的端口</p>
+</li>
+<li><p>NAME参数: 数据库名</p>
+</li>
+<li><p>‘OPTIONS’:{‘isolation_level’:None}</p>
+<p>​</p>
+<p><img src="/images/QQ截图20190102192637.png" alt=""></p>
+<p><img src="/images/QQ截图20190102192718.png" alt=""></p>
+</li>
 </ul>
+<p><img src="/images/QQ截图20190102192747.png" alt=""></p>
+<p><img src="/images/QQ截图20190102192848.png" alt=""></p>
 <h3 id="安装pymysql"><a href="#安装pymysql" class="headerlink" title="安装pymysql"></a>安装pymysql</h3><ul>
 <li>使用pymysql连接数据库: 因为python3没有MySQLdb驱动，无法直接连接MySQL</li>
 <li>在工程目录的<strong>init</strong>.py文件中定义  pymysql.install_as_MySQLdb()</li>
 </ul>
 <h3 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h3><ul>
-<li>第一次迁移: python manege.py migrate</li>
-<li>除开第一次迁移<ul>
+<li><p>第一次迁移: python manege.py migrate</p>
+</li>
+<li><p>除开第一次迁移</p>
+<p><img src="/images/QQ截图20190102192907.png" alt=""></p>
+<ul>
 <li>生成迁移文件: python manage.py makemigrations</li>
 <li>执行迁移文件: python manage.py migrate</li>
 </ul>
