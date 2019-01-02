@@ -62,6 +62,107 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="day-01-Django" class="day-01-Django post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/01/02/Django/">day-01 Django</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django/" data-id="cjqexw1ai0000ugvebcm1vy3d" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h1><h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><h3 id="安装-pip-install-virtualenv"><a href="#安装-pip-install-virtualenv" class="headerlink" title="安装: pip install virtualenv"></a>安装: pip install virtualenv</h3><h3 id="使用-virtualenv-–no-site-packages-p-D-python3-python-exe-name"><a href="#使用-virtualenv-–no-site-packages-p-D-python3-python-exe-name" class="headerlink" title="使用: virtualenv –no-site-packages -p D:\python3\python.exe name"></a>使用: virtualenv –no-site-packages -p D:\python3\python.exe name</h3><ul>
+<li>–no-site-packages: 表示创建的虚拟环境为纯净的环境，不安装有其他的库</li>
+<li>-p: 表示虚拟环境中的python版本</li>
+</ul>
+<h3 id="pip使用"><a href="#pip使用" class="headerlink" title="pip使用"></a>pip使用</h3><ul>
+<li>pip list: 插看安装的库</li>
+<li>pip install xxx: 安装</li>
+</ul>
+<h3 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h3><ul>
+<li>Windows: 直接执行activate命令</li>
+<li>Mac/Linux/Ubuntu: 直接执行source activate命令</li>
+</ul>
+<h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><ul>
+<li>Windows/Mac/Linux/Ubuntu: 直接执行deactivate</li>
+</ul>
+<h2 id="Django项目"><a href="#Django项目" class="headerlink" title="Django项目"></a>Django项目</h2><h3 id="创建-django-amdin-startproject-项目名称"><a href="#创建-django-amdin-startproject-项目名称" class="headerlink" title="创建: django-amdin startproject 项目名称"></a>创建: django-amdin startproject 项目名称</h3><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><ul>
+<li>启动命令: python manage.py runserver。默认IP为127.0.0.1  默认端口为8000</li>
+<li>修改启动端口: python manage.py runserver 端口</li>
+<li>修改IP和端口: python manage.py runserver IP:端口</li>
+<li>IP参数: 如果为0.0.0.0表示任何人都可以通过公网IP访问django项目</li>
+<li>端口PORT参数: 如果端口设置为80，表示该端口可以不用写</li>
+</ul>
+<h2 id="Django模式"><a href="#Django模式" class="headerlink" title="Django模式"></a>Django模式</h2><h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><ul>
+<li>模型层: 定义模型和数据库中的表之间的关联关系</li>
+</ul>
+<h3 id="V"><a href="#V" class="headerlink" title="V"></a>V</h3><ul>
+<li>视图层: 定义业务逻辑</li>
+</ul>
+<h3 id="T"><a href="#T" class="headerlink" title="T"></a>T</h3><ul>
+<li>模板: HTML页面</li>
+</ul>
+<h2 id="数据库准备工作"><a href="#数据库准备工作" class="headerlink" title="数据库准备工作"></a>数据库准备工作</h2><h3 id="settings-py中配置"><a href="#settings-py中配置" class="headerlink" title="settings.py中配置"></a>settings.py中配置</h3><ul>
+<li>USER参数: 访问用户</li>
+<li>PASSWORD参数: 密码</li>
+<li>HOST参数: 访问数据库的地址</li>
+<li>PORT参数: 访问数据库的端口</li>
+<li>NAME参数: 数据库名</li>
+<li>‘OPTIONS’:{‘isolation_level’:None}</li>
+</ul>
+<h3 id="安装pymysql"><a href="#安装pymysql" class="headerlink" title="安装pymysql"></a>安装pymysql</h3><ul>
+<li>使用pymysql连接数据库: 因为python3没有MySQLdb驱动，无法直接连接MySQL</li>
+<li>在工程目录的<strong>init</strong>.py文件中定义  pymysql.install_as_MySQLdb()</li>
+</ul>
+<h3 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h3><ul>
+<li>第一次迁移: python manege.py migrate</li>
+<li>除开第一次迁移<ul>
+<li>生成迁移文件: python manage.py makemigrations</li>
+<li>执行迁移文件: python manage.py migrate</li>
+</ul>
+</li>
+</ul>
+<h3 id="插入管理员账号"><a href="#插入管理员账号" class="headerlink" title="插入管理员账号"></a>插入管理员账号</h3><ul>
+<li>python manage.py createsuperuser</li>
+</ul>
+<p><em>XMind: ZEN - Trial Version</em></p>
+<p><img src="/images/Django.png" alt=""></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/01/02/Django/">
+    <time datetime="2019-01-02T08:45:00.000Z" class="entry-date">
+        2019-01-02
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="day-06-Django安装" class="day-06-Django安装 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +178,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django安装/" data-id="cjqegvaii0000gove5moo1msu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django安装/" data-id="cjqexw1f00002ugvebeur52f2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -221,7 +322,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/29/rides命令与pycharm的应用/" data-id="cjqegvak1000lgovexjkhhptf" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/29/rides命令与pycharm的应用/" data-id="cjqexw1hd000jugve62a51o27" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -318,7 +419,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjqegvajy000jgove3p6lof09" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjqexw1gy000hugvei5wkyhao" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -443,7 +544,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjqegvajs000ggovei096etjw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjqexw1i7000vugveyz2ebis2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -492,7 +593,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjqegvak4000ngoveyj332r0x" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjqexw1hi000mugve5npjtdrx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -540,7 +641,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjqegvajf000bgovep9vs91g4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjqexw1fz000cugve8049ctcw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -604,7 +705,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjqegvaiu0002govec0m2or3o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjqexw1fe0005ugve8qm4w2yu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -709,7 +810,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjqegvaj20004goveg7ohkqzh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjqexw1fa0004ugve0d6abha5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -775,7 +876,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjqegvake000sgove7zpg0r0j" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjqexw1i9000wugvew4hoaxhk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -871,94 +972,6 @@ quit  -退出
 
 
   
-    <article id="post-MySQL安装" class="post-MySQL安装 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/12/24/MySQL安装/">MySQL安装(day-01)</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjqegvaj50005gove3hs85wza" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h3 id="数据库-实现项目中的数据持久化"><a href="#数据库-实现项目中的数据持久化" class="headerlink" title="数据库  - 实现项目中的数据持久化"></a>数据库  - 实现项目中的数据持久化</h3><h4 id="数据库的类别："><a href="#数据库的类别：" class="headerlink" title="数据库的类别："></a>数据库的类别：</h4><ul>
-<li>关系型数据库  - MySQL<br>1、理论基础：集合论和关系代数<br>2、用二维表来组织数据（行（记录）和 列（字段））<br>3、SQL - 结构化查询语言</li>
-</ul>
-<h4 id="关系型数据库产品："><a href="#关系型数据库产品：" class="headerlink" title="关系型数据库产品："></a>关系型数据库产品：</h4><p>1、Oracle - 甲骨文<br>2、MySQL  - 甲骨文 - MariaDB<br>3、DB2、SQLServer、PostgreSQL、SQLite</p>
-<ul>
-<li><h5 id="NoSQL数据库-Redis"><a href="#NoSQL数据库-Redis" class="headerlink" title="NoSQL数据库   - Redis"></a>NoSQL数据库   - Redis</h5><p>1、MongoDB - 文档数据库 - 适合量大但是价值低的数据库<br>2、Redis   - KV数据库  - 性能特别好适合做告诉缓存服务<br>3、ElasticSearch - 搜索引擎</p>
-</li>
-<li><p>Linux安装软件<br>1、包管理工具 - yum / rpm</p>
-<p>​</p>
-</li>
-</ul>
-<h5 id="Docker-提供虚拟化服务，创建虚拟化容器并安装软件"><a href="#Docker-提供虚拟化服务，创建虚拟化容器并安装软件" class="headerlink" title="Docker - 提供虚拟化服务，创建虚拟化容器并安装软件"></a>Docker - 提供虚拟化服务，创建虚拟化容器并安装软件</h5><p>yum -y install docker-io(安装Docker)</p>
-<p>yum info docker-io(查询docker)</p>
-<p>yum remove docker-io(删除docker)</p>
-<p>systemctl start docker(启动docker)<br>systemctl stop docker(停止docker)<br>systemctl restart docker(重启docker)<br>systemctl enable docker(开机启动)<br>systemctl disable docker(开机不启动)<br>systemctl status docker(查询状态)</p>
-<h4 id="使用docker命令："><a href="#使用docker命令：" class="headerlink" title="使用docker命令："></a>使用docker命令：</h4><h5 id="1、查看已经下载的镜像文件（安装包）："><a href="#1、查看已经下载的镜像文件（安装包）：" class="headerlink" title="1、查看已经下载的镜像文件（安装包）："></a>1、查看已经下载的镜像文件（安装包）：</h5><p>docker images</p>
-<h5 id="2、下载MySQL的镜像文件："><a href="#2、下载MySQL的镜像文件：" class="headerlink" title="2、下载MySQL的镜像文件："></a>2、下载MySQL的镜像文件：</h5><p>docker pull mysql:5.7</p>
-<p>MySQL数据库超级管理员账号 - root<br>Oracle 数据库超级管理员账号 - sys<br>SQLServer、数据库超级管理员账号 - sa</p>
-<h5 id="3、创建并运行容器"><a href="#3、创建并运行容器" class="headerlink" title="3、创建并运行容器"></a>3、创建并运行容器</h5><p>docker run -d -p 3306:3306 –name mysql57 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</p>
-<h5 id="4、查看运行中的命令"><a href="#4、查看运行中的命令" class="headerlink" title="4、查看运行中的命令"></a>4、查看运行中的命令</h5><p>docker ps</p>
-<h5 id="5、查看所有的的容器"><a href="#5、查看所有的的容器" class="headerlink" title="5、查看所有的的容器"></a>5、查看所有的的容器</h5><p>docker container ls -a</p>
-<h5 id="6、停止容器"><a href="#6、停止容器" class="headerlink" title="6、停止容器"></a>6、停止容器</h5><p>docker stop mysql57</p>
-<h5 id="7、启动容器"><a href="#7、启动容器" class="headerlink" title="7、启动容器"></a>7、启动容器</h5><p>docker start mysql57</p>
-<h5 id="8、删除容器"><a href="#8、删除容器" class="headerlink" title="8、删除容器"></a>8、删除容器</h5><p>docker rm -f mysql57</p>
-<p>安装MySQL客户端工具：<br>Navicat   - 猫<br>SQLyog    - 海豚<br>Toad for MySQL  - 蛤蟆</p>
-<h3 id="数据库-创建数据库及表"><a href="#数据库-创建数据库及表" class="headerlink" title="数据库  - 创建数据库及表"></a>数据库  - 创建数据库及表</h3><h5 id="–-SQL（结构化查询语言-分为三组："><a href="#–-SQL（结构化查询语言-分为三组：" class="headerlink" title="–     SQL（结构化查询语言)分为三组："></a>–     SQL（结构化查询语言)分为三组：</h5><p>– 1、DDL（数据定义语言）：create(创建数据库) / dorp（删除数据库） / alter（修改数据库）<br>– 2、DML（数据操作语言）：insert（插入数据） / delete（删除数据） / epdate（修改数据） / select（查询数据）<br>– 3、DCL (数据控制语言)：grant （）/ revoke（） /commit （）/ rollback（）</p>
-<p>– drop database if exists srs; – 如果存在名为srs的数据库，就删除srs数据库（不能乱写）</p>
-<h4 id="–-1、创建名为srs的数据库（并设置utf8）"><a href="#–-1、创建名为srs的数据库（并设置utf8）" class="headerlink" title="– 1、创建名为srs的数据库（并设置utf8）"></a>– 1、创建名为srs的数据库（并设置utf8）</h4><p>create database srs default charset utf8;</p>
-<h4 id="–-2、切换数据库"><a href="#–-2、切换数据库" class="headerlink" title="– 2、切换数据库"></a>– 2、切换数据库</h4><p>use srs;  </p>
-<h4 id="–-3、创建学生表tb-student"><a href="#–-3、创建学生表tb-student" class="headerlink" title="– 3、创建学生表tb_student"></a>– 3、创建学生表tb_student</h4><p>– 在学生表中学号可以唯一标记一条学生记录<br>– 我们通常称这样的列为主键列<br>create table tb_student<br>(<br>stuid int not null comment ‘学号’, – 学生的学号，int类型，not null非空约束<br>stuname varchar(10) not null comment ‘姓名’ , – 学生的名字，varchar(10)限定最大字符为10个<br>stusex bit default 1 comment ‘性别’, – 学生的性别，bit型只有两种类型（是0 或者1），default 1默认为1<br>stubirth date comment ‘出生日期’, – 学生的出生日期：datetime日期时间，time时间<br>stuaddr varchar(255) comment ‘家庭住址’, – 学生的家庭住址，varchar(255)可变字符，最大为255<br>primary key(stuid) – 学生的的学号为主键<br>);</p>
-<h5 id="–-修改学生表，添加练习方式列"><a href="#–-修改学生表，添加练习方式列" class="headerlink" title="– 修改学生表，添加练习方式列"></a>– 修改学生表，添加练习方式列</h5><p>alter table tb_student add column stutel char(11); – char(11)定长字符串</p>
-<h5 id="–-修改学生表-删除stutel列"><a href="#–-修改学生表-删除stutel列" class="headerlink" title="– 修改学生表 删除stutel列"></a>– 修改学生表 删除stutel列</h5><p>alter table tb_student drop column stutel;</p>
-<h5 id="–-向学生表插入数据"><a href="#–-向学生表插入数据" class="headerlink" title="– 向学生表插入数据"></a>– 向学生表插入数据</h5><p>insert into tb_student values<br>(1001, ‘骆昊’, 1, ‘1980-11-28’, ‘四川成都’);<br>insert into tb_student (stuid, stuname) values<br>(1002, ‘王大锤’);<br>insert into tb_student values<br>(1003, ‘白元芳’, 1, ‘1988-5-5’, null),<br>(1004, ‘白洁’, 0, null, null),<br>(1005, ‘狄仁杰’, default, ‘1992-3-8’, ‘四川成都’);</p>
-<h5 id="–-删除数据"><a href="#–-删除数据" class="headerlink" title="– 删除数据"></a>– 删除数据</h5><p>delete from tb_student where stuid=1002;</p>
-<h5 id="–-删除学号在1003到1005之间的学生"><a href="#–-删除学号在1003到1005之间的学生" class="headerlink" title="– 删除学号在1003到1005之间的学生"></a>– 删除学号在1003到1005之间的学生</h5><p>delete from tb_student where stuid&gt;=1002 and stuid&lt;=1005; – (或者)<br>– delete from tb_student where stuid in (1003, 1004, 1005); （或者）<br>– delete from tb_student where stuid between 1003 and 1005; </p>
-<h5 id="–-截断表（删除表中的所有数据）"><a href="#–-截断表（删除表中的所有数据）" class="headerlink" title="– 截断表（删除表中的所有数据）"></a>– 截断表（删除表中的所有数据）</h5><p>– truncate table tb_student;</p>
-<h5 id="–-更新学号为1002、1004两个学生的生日"><a href="#–-更新学号为1002、1004两个学生的生日" class="headerlink" title="– 更新学号为1002、1004两个学生的生日"></a>– 更新学号为1002、1004两个学生的生日</h5><p>update tb_student set stubirth=’1990-1-1’ where stuid=1002 or 1004;</p>
-<h5 id="–-更新学号为1002的姓名、性别、家庭住址"><a href="#–-更新学号为1002的姓名、性别、家庭住址" class="headerlink" title="– 更新学号为1002的姓名、性别、家庭住址"></a>– 更新学号为1002的姓名、性别、家庭住址</h5><p>update tb_student set stuname=’王小美’, stusex=0, stuaddr=’四川自贡’ where stuid=1002;</p>
-<h5 id="–-更新"><a href="#–-更新" class="headerlink" title="– 更新"></a>– 更新</h5><p>update tb_student set stuaddr=’四川绵阳’ where stuaddr is null;</p>
-<h5 id="–-筛选"><a href="#–-筛选" class="headerlink" title="– 筛选"></a>– 筛选</h5><p>select * from tb_student;</p>
-<h5 id="–投影"><a href="#–投影" class="headerlink" title="–投影"></a>–投影</h5><p>select stuname, stubirth from tb_student where stusex=0;<br>select stuname, stubirth from tb_student;</p>
-<h5 id="–-python1804班的教学视屏"><a href="#–-python1804班的教学视屏" class="headerlink" title="– python1804班的教学视屏"></a>– python1804班的教学视屏</h5><p>– 链接:<a href="https://pan.baidu.com/s/1nBQT5uLfDG_e_W6b7adbkw" target="_blank" rel="noopener">https://pan.baidu.com/s/1nBQT5uLfDG_e_W6b7adbkw</a>  密码:5iun</p>
-<h4 id="–-bug网站-https-stackoverflow-com"><a href="#–-bug网站-https-stackoverflow-com" class="headerlink" title="–  bug网站 (https://stackoverflow.com/)"></a>–  bug网站 (<a href="https://stackoverflow.com/" target="_blank" rel="noopener">https://stackoverflow.com/</a>)</h4><h5 id="–-crash-course-新手"><a href="#–-crash-course-新手" class="headerlink" title="–  crash course 新手"></a>–  crash course 新手</h5><h5 id="–-best-practice-最佳实践"><a href="#–-best-practice-最佳实践" class="headerlink" title="–  best practice 最佳实践"></a>–  best practice 最佳实践</h5><p>– filetype:doc 搜索引擎使用技巧</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/12/24/MySQL安装/">
-    <time datetime="2018-12-24T07:01:40.000Z" class="entry-date">
-        2018-12-24
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -988,6 +1001,10 @@ quit  -退出
       <ul>
         
           <li>
+            <a href="/2019/01/02/Django/">day-01 Django</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/02/Django安装/">day-o6 Django安装</a>
           </li>
         
@@ -1003,10 +1020,6 @@ quit  -退出
             <a href="/2018/12/26/day-03通过PyCharm操作MySQL/">day-03通过PyCharm操作MySQL</a>
           </li>
         
-          <li>
-            <a href="/2018/12/26/数据库新建用户和权限的授权与招回/">数据库新建用户和权限的授权与招回</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -1016,7 +1029,7 @@ quit  -退出
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -1025,7 +1038,7 @@ quit  -退出
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Linux学习/" style="font-size: 10px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a>
+      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a>
     </div>
   </aside>
 
