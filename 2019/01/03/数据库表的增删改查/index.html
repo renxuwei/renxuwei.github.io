@@ -32,7 +32,7 @@ V : 视图层(views.py 表的插入、删除、更新、查询)​    : 定义�
 <meta property="og:image" content="http://yoursite.com/images/QQ截图20190103120010.png">
 <meta property="og:image" content="http://yoursite.com/images/QQ截图20190103115954.png">
 <meta property="og:image" content="http://yoursite.com/images/QQ截图20190103120026.png">
-<meta property="og:updated_time" content="2019-01-03T05:13:31.878Z">
+<meta property="og:updated_time" content="2019-01-03T08:54:41.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="day-02 数据库表的增删改查">
 <meta name="twitter:description" content="M : 模型层（models.py）​    : 定义模型和数据库中的表之间的关联关系  urls.py 修改路由 V : 视图层(views.py 表的插入、删除、更新、查询)​    : 定义业务逻辑  一、插入（create）实现插入数据def add_stu(request): ​        第一种方式： ​    Student.objects.create(s_name=’小花’)">
@@ -92,7 +92,7 @@ V : 视图层(views.py 表的插入、删除、更新、查询)​    : 定义�
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/03/数据库表的增删改查/" data-id="cjqg5nqhr000m0wve3nlsl3vb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/03/数据库表的增删改查/" data-id="cjqgdszgx000ry4ve17dbl8q5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -126,30 +126,93 @@ V : 视图层(views.py 表的插入、删除、更新、查询)​    : 定义�
 <p>​    stu.s_name = ‘妲己2’</p>
 <p>​    stu.save()</p>
 <p>​    return HttpResponse(‘更新学生成功’)</p>
-<h4 id="四、查询"><a href="#四、查询" class="headerlink" title="四、查询"></a>四、查询</h4><h5 id="查询学生信息"><a href="#查询学生信息" class="headerlink" title="查询学生信息"></a>查询学生信息</h5><p>def sel_stu(request):</p>
-<h5 id="1、查询所有学生信息"><a href="#1、查询所有学生信息" class="headerlink" title="1、查询所有学生信息"></a>1、查询所有学生信息</h5><p>​    stus = Student.objects.all()</p>
-<p>​    for stu in stus:</p>
-<p>​        print(stu.s_name)</p>
-<p>​    </p>
-<p>​        #查询id=2的学生信息，filter()</p>
-<p>​    stu = Student.objects.filter(id=2)first()</p>
-<p>​    print(stu)</p>
-<p>​        #get() 取唯一的对象</p>
-<p>​        #get(条件) 条件必须成立，否则会报错</p>
-<p>​    stu = Student.objects.get(id=2)   #建议少用，一般使用filter（条件）</p>
-<p>​    print(stu)</p>
-<h5 id="2、过滤出不满足条件的信息"><a href="#2、过滤出不满足条件的信息" class="headerlink" title="2、过滤出不满足条件的信息"></a>2、过滤出不满足条件的信息</h5><p>​    stus = Student.objects.filter(s_gender=1) #所有的男生</p>
-<p>​    stus = Student.objects.exclude(s_gender=0) #不包含女生</p>
-<p>​    print（stus）</p>
-<h5 id="3、排序order-by"><a href="#3、排序order-by" class="headerlink" title="3、排序order_by"></a>3、排序order_by</h5><p>​    stus = Student.objects.order_by(‘id’) #升序</p>
-<p>​    stus = Student.objects.order_by(‘-id’) #降序</p>
-<p>​    print(stus)</p>
-<h5 id="4、取出对象中的某个字段"><a href="#4、取出对象中的某个字段" class="headerlink" title="4、取出对象中的某个字段"></a>4、取出对象中的某个字段</h5><p>​    stus = Student.objects.all().values() #全部的字段</p>
-<p>​    stus = Student.objects.all().values(‘s_name’,’s_age’) #只取名字和年龄字段</p>
-<p>​    print(stus)</p>
-<p>​    return HttpResponse(‘查询学生信息成功’)</p>
-<p>​    </p>
+<h4 id="四、查询"><a href="#四、查询" class="headerlink" title="四、查询"></a>四、查询</h4><pre><code># 查询学生信息
 
+# a.查询所有的学生信息
+stus = Student.objects.all()
+for stu in stus:
+    print(stu.s_name)
+
+# 查询id=2的学生信息，filter()
+stu = Student.objects.filter(id=2).first()
+print(stu)
+# get（）取唯一的一个对象
+# get（条件）条件必须成立（会报错）
+stu = Student.objects.get(id=2)  # 建议少用，一般使用filter（条件）
+print(stu)
+
+# b.过滤出不满足条件的信息
+stus = Student.objects.filter(s_gender=1)  # 所有的男生
+print(stus)
+stus = Student.objects.exclude(s_gender=0)  # exclude(s_gender=0)不包含女生
+print(stus)
+
+# c.排序order_by
+stus = Student.objects.order_by(&apos;id&apos;)  # 升序；降序（&apos;-id&apos;）
+print(stus)
+
+# 取出对象中的某个字段
+stus = Student.objects.all().values()  # 全部的字段
+print(stus)
+stus = Student.objects.all().values(&apos;s_name&apos;, &apos;s_age&apos;)  # 只取名字和年龄字段
+print(stus)
+
+# =========================================================================
+# 判断查询结果是否存在
+a = Student.objects.filter(s_name=&apos;小张&apos;).exists()
+print(a)
+# 计算有多少条数据
+b = Student.objects.filter(s_gender=1).count()
+print(b)
+
+# contains   - 包含、模糊查询
+# 语法：字段__运算符 ： 查询包含‘小明’的所有字符的字段
+stus = Student.objects.filter(s_name__contains=&apos;小明&apos;)
+print(stus)
+
+# like &apos;小%&apos; &apos;%明&apos;
+# startswith  endswith ： 以“ ”字符开始；以“ ”字符结束
+stus = Student.objects.filter(s_name__startswith=&apos;小&apos;)
+print(stus)
+stus = Student.objects.filter(s_name__endswith=&apos;明&apos;)
+print(stus)
+
+# sql where id in (1,2,3,4,5,6,7,8)
+stus = Student.objects.filter(id__in=[1, 2, 3, 4])  # id字段
+print(stus)
+stus = Student.objects.filter(pk__in=[1, 2, 3, 4])  # pk代表主键
+print(stus)
+
+# gte gt lt lte- 大于等于;大于;小于；小于等于
+stus = Student.objects.filter(s_age__gte=18, s_age__lt=20)
+# 或者 stus = Student.objects.filter(s_age__gte=18).filter(s_age__lt=20)
+print(stus)
+
+# 聚合 Avg Max Sum Min Count
+age_avg = Student.objects.all().aggregate(Avg(&apos;s_age&apos;))
+age_sum = Student.objects.all().aggregate(Sum(&apos;s_age&apos;))
+print(age_avg,age_sum)
+
+# 查询年龄大约等于18 且 小于20
+stus1 = Student.objects.filter(s_age__gte=18, s_age__lt=20)
+# 查询年龄大=大于等于18 或 小于20: Q()
+stus = Student.objects.filter(Q(s_age__gte=18) | Q(s_age__lt=20)) # | ：或
+stus = Student.objects.filter(Q(s_age__gte=18) &amp; Q(s_age__lt=20)) # &amp; ：且  - 与stus1一样
+stus = Student.objects.filter(~Q(s_age__gte=18)) # ~ ：取反
+print(stus)
+
+# 查询物理成绩大于数学成绩的学生
+stus = Student.objects.all()
+for stu in stus:
+    if stu.wuli &gt; stu.math:
+        print(stu.s_name)
+
+stus = Student.objects.filter(wuli__gt=F(&apos;math&apos;))
+print(stus)
+
+
+return HttpResponse(&apos;查询所有的学生信息&apos;)
+</code></pre>
       
     </div><!-- .entry-content -->
 
