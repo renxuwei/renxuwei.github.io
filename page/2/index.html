@@ -62,6 +62,72 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-Linux文档管理" class="post-Linux文档管理 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/12/26/Linux文档管理/">git常用指令</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjqi0njtb0005jcvenfjxmet3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="git常用指令"><a href="#git常用指令" class="headerlink" title="git常用指令"></a>git常用指令</h3><h4 id="1-基本指令"><a href="#1-基本指令" class="headerlink" title="1.基本指令"></a>1.基本指令</h4><p>git init       ——  新建git仓库      </p>
+<p>git add 文件/文件夹       ——  将文件添加到缓存区中  </p>
+<p>git add -A       — 添加所有内容到缓存区中</p>
+<p>git stutas      ———    查看git状态  </p>
+<p>git commit -m  ‘提交信息’       ——  将缓存区中的内容全部提交到git本地仓库中  </p>
+<p>git log        ——-    查看提交日志  </p>
+<p>git reset  - - hard   HEAD       ——   让工作目录中的内容和仓库中的内容保持一致  </p>
+<p>git reset  –hard HEAD^        ——  回到上一个版本  </p>
+<p>git  reset  - - hard 版本号       ——  回到指定的版本  </p>
+<p>git checkout  - -  文件名        ——  从暂存区中恢复工作目录中的内容(让工作区中的指定文件，回到上次提交的时候的状态)  </p>
+<p>git clone <url> - 将服务器上的项目(仓库)克隆 (使用https地址需要输入密码，使用ssh地址需要添加公钥)  </url></p>
+<p>git remote add origin 地址           —– 关联远程仓库(只需要关联一次)</p>
+<p>git push [-u] origin master       —– 提交(-u在第一次提交分之的时候才用)  </p>
+<h4 id="2-分之管理"><a href="#2-分之管理" class="headerlink" title="2.分之管理"></a>2.分之管理</h4><p>创建仓库会默认给我们创建一个master分之,这个分之一般作为提交和发布分之;开发一般会自己创建一个develop分之，用来开发和测试;多人协作的时候还可能根据不同的人或者(不同的功能)创建不同的分之，用来独立开发  </p>
+<p>常见分之： master(主要是合并develop), develop(主要合并下面的其他分支), 功能/人员分之(开发)  </p>
+<p>git branch [-a]                - 查看分之   </p>
+<p>git branch 分之名             - 创建分之   </p>
+<p>git checkout   分支名             -   切换分之      </p>
+<p>git checkout -b 分之名                 - 切换并创建新的分之   </p>
+<p>git diff    分之1  分之2             - 查看两个分之之间的差异  </p>
+<p>git merge 分之名                 - 让当前分之和指定分之进行合并     </p>
+<h5 id="注意-切换分之、push、pull，这些操作前要保证工作区是clean"><a href="#注意-切换分之、push、pull，这些操作前要保证工作区是clean" class="headerlink" title="注意: 切换分之、push、pull，这些操作前要保证工作区是clean"></a>注意: 切换分之、push、pull，这些操作前要保证工作区是clean</h5><h5 id="怎么避免冲突：-不要发生多个分之对同一个文件在同一个版本下进行修改-和同伴确认和商量"><a href="#怎么避免冲突：-不要发生多个分之对同一个文件在同一个版本下进行修改-和同伴确认和商量" class="headerlink" title="怎么避免冲突：  不要发生多个分之对同一个文件在同一个版本下进行修改(和同伴确认和商量)"></a>怎么避免冲突：  不要发生多个分之对同一个文件在同一个版本下进行修改(和同伴确认和商量)</h5>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/26/Linux文档管理/">
+    <time datetime="2018-12-26T00:42:22.000Z" class="entry-date">
+        2018-12-26
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux学习/">Linux学习</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-MySQL建表day-02" class="post-MySQL建表day-02 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +143,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjqgdtw1s000w14ve10i1cre2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjqi0njv5000wjcve98ebxdyq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -188,7 +254,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjqgdtw0k000614ve6xrtceqw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjqi0njt90004jcveqxj2zykn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -276,7 +342,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjqgdtw0p000914vet89goja2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjqi0njtg0008jcvetgygqy80" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -374,7 +440,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjqgdtw0s000b14vetq6gwy2h" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjqi0njti0009jcvexicvvhy6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -432,7 +498,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjqgdtw18000j14vexl6henwx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjqi0njtz000gjcveq0snxqpd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -497,6 +563,10 @@ location / {
       <ul>
         
           <li>
+            <a href="/2019/01/04/django数据库模型设计/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/03/数据库表的增删改查/">day-02 数据库表的增删改查</a>
           </li>
         
@@ -510,10 +580,6 @@ location / {
         
           <li>
             <a href="/2018/12/29/rides命令与pycharm的应用/">day-05 Rides命令与Pycharm的应用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/27/redis数据库安装及应用/">day-04redis数据库安装及操作（和本地mysql安装）</a>
           </li>
         
       </ul>

@@ -62,6 +62,194 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-django数据库模型设计" class="post-django数据库模型设计 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/04/django数据库模型设计/" data-id="cjqi0njv9000yjcvek56ohskw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>models.py文件<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>from django.db import models</p>
+<p>class Grade(models.Model):<br>    g_name = models.CharField(max_length=10, unique=True)</p>
+<pre><code>class Meta:
+    db_table = &apos;grade&apos;
+</code></pre><p>class Student(models.Model):<br>    s_name = models.CharField(max_length=10, unique=True)<br>    s_age = models.IntegerField(default=20)<br>    s_gender = models.BooleanField(default=0)</p>
+<pre><code># auto_now_add=True 创建时，默认字段赋值为最新时间
+create_time = models.DateTimeField(auto_now_add=True)
+# auto_now=True 修改数据时，自动赋值为更新字段时 的时间
+undate_time = models.DateTimeField(auto_now=True)
+math = models.DecimalField(max_digits=3, decimal_places=1, null=True)
+wuli = models.DecimalField(max_digits=3, decimal_places=1, null=True)
+# 一对多的外键定义（定义在多的哪一方）
+g = models.ForeignKey(Grade, null=True, related_name=&apos;stu&apos;, on_delete=models.CASCADE)
+
+class Meta:
+    db_table = &apos;student&apos;
+</code></pre><p>class StudentInfo(models.Model):<br>    s_no = models.CharField(max_length=10, null=False)<br>    phone = models.CharField(max_length=11, null=True)<br>    name = models.CharField(max_length=10, null=True)</p>
+<pre><code># 定义一对一的关联关系
+# on_delete=models.CASCADE 默认删除主表，从表也会删除
+# on_delete=models.PROTECT 不让删除主表，能删除从表
+# on_delete=models.SET_NULL 删除主表，从表的关联字段设置为空（null）
+
+stu = models.OneToOneField(Student,
+                           on_delete=models.CASCADE,
+                           null=True,
+                           related_name=&apos;info&apos;)  # related_name=&apos;info&apos;给拓展表(studentinfo)取个别名
+</code></pre><p>class Course(models.Model):<br>    c_name = models.CharField(max_length=10, unique=True)</p>
+<pre><code># ManyToManyField字段定义在任何一个模型都可以
+stu = models.ManyToManyField(Student, related_name=&apos;cou&apos;)
+
+class Meta:
+    db_table = &apos;course&apos;
+</code></pre><p>urls.py文件<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>urlpatterns = [<br>    path(‘admin/‘, admin.site.urls),<br>    path(‘hello/‘, views.hello),</p>
+<pre><code># 插入学生信息
+# http://127.0.0.1:8000/saa_stu/
+path(&apos;add_stu/&apos;,views.add_stu),
+
+# 删除学生信息
+path(&apos;del_stu/&apos;,views.del_stu),
+
+# 更新学生信息
+path(&apos;up_stu/&apos;,views.up_stu),
+
+# 查询学生信息
+path(&apos;sel_stu/&apos;,views.sel_stu),
+# 添加学生的拓展信息
+path(&apos;add_stu_info/&apos;,views.add_stu_info),
+# 通过学生姓名查找紧急联系电话
+path(&apos;sel_phone_by_stu/&apos;,views.sel_phone_by_stu),
+path(&apos;sel_phone_by_stu2/&apos;,views.sel_phone_by_stu2),
+# 通过=拓展表查找学生信息
+path(&apos;sel_stu_by_info/&apos;,views.sel_stu_by_info),
+# on_delete演示
+path(&apos;on_delete_stu/&apos;,views.on_delete_stu),
+# 添加班级信息
+path(&apos;add_grade/&apos;,views.add_grade),
+# 分配班级
+path(&apos;stu_grade/&apos;,views.stu_grade),
+# 通过学生查询班级
+path(&apos;sel_grade_by_stu/&apos;,views.sel_grade_by_stu),
+# 通过班级查询学生
+path(&apos;sel_stu_by_grade/&apos;,views.sel_stu_by_grade),
+# 添加课程信息
+path(&apos;add_course/&apos;,views.add_course),
+# 添加中间表的信息
+path(&apos;add_s_c/&apos;,views.add_s_c),
+# 访问首页
+path(&apos;index/&apos;,views.index)
+</code></pre><p>]</p>
+<p>views.py文件<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<h1 id="一对一-OneToOneField-任何一方"><a href="#一对一-OneToOneField-任何一方" class="headerlink" title="一对一  (OneToOneField 任何一方)"></a>一对一  (OneToOneField 任何一方)</h1><p>def add_stu_info(request):</p>
+<pre><code># 添加小明的紧急联系人的信息，学号
+stu_info = StudentInfo()
+stu_info.s_no = &apos;123456&apos;
+stu_info.phone = &apos;13551366543&apos;
+stu_info.name = &apos;大明&apos;
+# stu_info.stu = Student.objects.get(id=1)
+stu_info.stu_id = 1
+stu_info.save()
+return HttpResponse(&apos;创建拓展信息成功&apos;)
+</code></pre><p>def sel_phone_by_stu(request):</p>
+<pre><code># 1. 查询学生对象
+stu = Student.objects.filter(s_name=&apos;小明&apos;).first()
+# 2. 通过学生对象查询拓展表信息
+# stu_info = StudentInfo.objects.filter(stu=stu).first()
+stu_info = StudentInfo.objects.filter(stu_id=stu.id).first()
+phone = stu_info.phone
+print(phone)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><p>def sel_phone_by_stu2(request):</p>
+<pre><code># 1. 查询学生对象
+stu = Student.objects.filter(s_name=&apos;小明&apos;).first()
+# 2. 反向查询。关联模型对象.关联另外一个模型的名称的小写
+# stu_info = stu.studentinfo
+stu_info = stu.info
+phone = stu_info.phone
+print(phone)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><p>def sel_stu_by_info(request):</p>
+<pre><code># 1. 查询拓展表信息
+stu_info = StudentInfo.objects.filter(s_no=&apos;123456&apos;).first()
+# 2. 查询学生对象
+stu = stu_info.stu
+print(stu.s_name)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><p>def on_delete_stu(request):</p>
+<pre><code># 删除小明的学生信息
+# 效果: 删除主表时，从表是否被删除
+Student.objects.filter(s_name=&apos;小花&apos;).delete()
+# StudentInfo.objects.filter(stu_id=4).delete()
+return HttpResponse(&apos;删除成功&apos;)
+</code></pre><h1 id="一对多-（ForeignKey-多的一方）"><a href="#一对多-（ForeignKey-多的一方）" class="headerlink" title="一对多 （ForeignKey 多的一方）"></a>一对多 （ForeignKey 多的一方）</h1><p>def add_grade(request):</p>
+<pre><code># 添加班级信息
+g_names = [&apos;Python1801&apos;, &apos;Python1802&apos;, &apos;Python1803&apos;,&apos;Python1804&apos;]
+for name in g_names:
+    Grade.objects.create(g_name=name)
+return HttpResponse(&apos;创建班级成功&apos;)
+</code></pre><p>def stu_grade(request):</p>
+<pre><code># 1. 查询id=4的学生对象
+stu = Student.objects.get(pk=4)
+# 2. 设置学生的班级字段
+# stu.g = Grade.objects.get(pk=1)
+stu.g_id = 1
+stu.save()
+return HttpResponse(&apos;分配学生班级成功&apos;)
+</code></pre><p>def sel_grade_by_stu(request):</p>
+<pre><code># 1. 查询姓名叫小明22的对象
+stu = Student.objects.filter(s_name=&apos;小明22&apos;).first()
+grade = stu.g
+print(grade.g_name)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><p>def sel_stu_by_grade(request):</p>
+<pre><code># 1. 查询班级python1801对象
+grade = Grade.objects.filter(g_name=&apos;python1801&apos;).first()
+# stus = grade.student_set.all()
+stus = grade.stu.all()
+print(stus)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><h1 id="多对多-（ManyToManyField-任何一方）"><a href="#多对多-（ManyToManyField-任何一方）" class="headerlink" title="多对多 （ManyToManyField 任何一方）"></a>多对多 （ManyToManyField 任何一方）</h1><p>def add_course(request):<br>    c_names = [‘大学英语’, ‘商务英语’, ‘线代’, ‘高数’]<br>    for name in c_names:<br>        c = Course()<br>        c.c_name = name<br>        c.save()<br>    return HttpResponse(‘创建课程成功’)</p>
+<p>def add_s_c(request):</p>
+<pre><code># 将大学英语分配给小明22这个学生
+# 1. 查询课程对象
+cou = Course.objects.filter(c_name=&apos;大学英语&apos;).first()
+# 2. 查询学生对象
+stu = Student.objects.filter(s_name=&apos;小明22&apos;).first()
+# 3. 加入关联关系
+# stu.course_set.add(cou)
+# stu.cou.add(cou)
+# cou.stu.add(stu)
+stu.cou.remove(cou)
+
+return HttpResponse(&apos;添加中间表信息成功&apos;)
+</code></pre><h1 id="渲染页面"><a href="#渲染页面" class="headerlink" title="渲染页面"></a>渲染页面</h1><p>def index(request):<br>    stus = Student.objects.all()<br>    return render(request, ‘index.html’, {‘a’: stus})</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/01/04/django数据库模型设计/">
+    <time datetime="2019-01-04T12:28:42.380Z" class="entry-date">
+        2019-01-04
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-数据库表的增删改查" class="post-数据库表的增删改查 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +265,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/03/数据库表的增删改查/" data-id="cjqgdtw1j000r14verg5makgg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/03/数据库表的增删改查/" data-id="cjqi0njvc0010jcveipqkzcxy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -239,7 +427,7 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django/" data-id="cjqgdtw0h000514vel5j15hio" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django/" data-id="cjqi0njsg0000jcvei73y5aos" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -360,7 +548,7 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django安装/" data-id="cjqgdtvzt000014veah6e72ui" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django安装/" data-id="cjqi0njsu0001jcveutp4jmf1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -504,7 +692,7 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/29/rides命令与pycharm的应用/" data-id="cjqgdtw1e000n14ve611a4z7t" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/29/rides命令与pycharm的应用/" data-id="cjqi0nju3000ijcvef3l31wsd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -601,7 +789,7 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjqgdtw1c000l14ve16mrk7qo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjqi0nju7000ljcve2wo5zweg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -726,7 +914,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjqgdtw13000g14vebpmesy4w" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjqi0njtm000bjcve90bmnkol" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -775,7 +963,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjqgdtw1h000p14veepucrlod" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjqi0njua000njcve5pma5cw6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -823,7 +1011,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjqgdtw0z000e14vef8kk4v1s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjqi0njtp000djcveuq08n5bz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -887,7 +1075,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjqgdtw0d000414vehh9p7w3h" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjqi0njt50003jcveokqk5n5n" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -977,72 +1165,6 @@ quit  -退出
 
 
   
-    <article id="post-Linux文档管理" class="post-Linux文档管理 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/12/26/Linux文档管理/">git常用指令</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjqgdtw05000214venlh41c16" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h3 id="git常用指令"><a href="#git常用指令" class="headerlink" title="git常用指令"></a>git常用指令</h3><h4 id="1-基本指令"><a href="#1-基本指令" class="headerlink" title="1.基本指令"></a>1.基本指令</h4><p>git init       ——  新建git仓库      </p>
-<p>git add 文件/文件夹       ——  将文件添加到缓存区中  </p>
-<p>git add -A       — 添加所有内容到缓存区中</p>
-<p>git stutas      ———    查看git状态  </p>
-<p>git commit -m  ‘提交信息’       ——  将缓存区中的内容全部提交到git本地仓库中  </p>
-<p>git log        ——-    查看提交日志  </p>
-<p>git reset  - - hard   HEAD       ——   让工作目录中的内容和仓库中的内容保持一致  </p>
-<p>git reset  –hard HEAD^        ——  回到上一个版本  </p>
-<p>git  reset  - - hard 版本号       ——  回到指定的版本  </p>
-<p>git checkout  - -  文件名        ——  从暂存区中恢复工作目录中的内容(让工作区中的指定文件，回到上次提交的时候的状态)  </p>
-<p>git clone <url> - 将服务器上的项目(仓库)克隆 (使用https地址需要输入密码，使用ssh地址需要添加公钥)  </url></p>
-<p>git remote add origin 地址           —– 关联远程仓库(只需要关联一次)</p>
-<p>git push [-u] origin master       —– 提交(-u在第一次提交分之的时候才用)  </p>
-<h4 id="2-分之管理"><a href="#2-分之管理" class="headerlink" title="2.分之管理"></a>2.分之管理</h4><p>创建仓库会默认给我们创建一个master分之,这个分之一般作为提交和发布分之;开发一般会自己创建一个develop分之，用来开发和测试;多人协作的时候还可能根据不同的人或者(不同的功能)创建不同的分之，用来独立开发  </p>
-<p>常见分之： master(主要是合并develop), develop(主要合并下面的其他分支), 功能/人员分之(开发)  </p>
-<p>git branch [-a]                - 查看分之   </p>
-<p>git branch 分之名             - 创建分之   </p>
-<p>git checkout   分支名             -   切换分之      </p>
-<p>git checkout -b 分之名                 - 切换并创建新的分之   </p>
-<p>git diff    分之1  分之2             - 查看两个分之之间的差异  </p>
-<p>git merge 分之名                 - 让当前分之和指定分之进行合并     </p>
-<h5 id="注意-切换分之、push、pull，这些操作前要保证工作区是clean"><a href="#注意-切换分之、push、pull，这些操作前要保证工作区是clean" class="headerlink" title="注意: 切换分之、push、pull，这些操作前要保证工作区是clean"></a>注意: 切换分之、push、pull，这些操作前要保证工作区是clean</h5><h5 id="怎么避免冲突：-不要发生多个分之对同一个文件在同一个版本下进行修改-和同伴确认和商量"><a href="#怎么避免冲突：-不要发生多个分之对同一个文件在同一个版本下进行修改-和同伴确认和商量" class="headerlink" title="怎么避免冲突：  不要发生多个分之对同一个文件在同一个版本下进行修改(和同伴确认和商量)"></a>怎么避免冲突：  不要发生多个分之对同一个文件在同一个版本下进行修改(和同伴确认和商量)</h5>
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/12/26/Linux文档管理/">
-    <time datetime="2018-12-26T00:42:22.000Z" class="entry-date">
-        2018-12-26
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux学习/">Linux学习</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -1072,6 +1194,10 @@ quit  -退出
       <ul>
         
           <li>
+            <a href="/2019/01/04/django数据库模型设计/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/03/数据库表的增删改查/">day-02 数据库表的增删改查</a>
           </li>
         
@@ -1085,10 +1211,6 @@ quit  -退出
         
           <li>
             <a href="/2018/12/29/rides命令与pycharm的应用/">day-05 Rides命令与Pycharm的应用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/27/redis数据库安装及应用/">day-04redis数据库安装及操作（和本地mysql安装）</a>
           </li>
         
       </ul>

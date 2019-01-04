@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="models.py文件***
+from django.db import models
+class Grade(models.Model):    g_name = models.CharField(max_length=10, unique=True)
+class Meta:
+    db_tab">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="models.py文件*** from django.db import models class Grade(models.Model):    g_name = models.CharField(max_length=10, unique=True) class Meta:     db_table = &amp;apos;grade&amp;apos; class Student(models.Model)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ren">
+<meta property="og:url" content="http://yoursite.com/2019/01/04/django数据库模型设计/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="models.py文件*** from django.db import models class Grade(models.Model):    g_name = models.CharField(max_length=10, unique=True) class Meta:     db_table = &amp;apos;grade&amp;apos; class Student(models.Model)">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-04T12:27:43.978Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ren">
+<meta name="twitter:description" content="models.py文件*** from django.db import models class Grade(models.Model):    g_name = models.CharField(max_length=10, unique=True) class Meta:     db_table = &amp;apos;grade&amp;apos; class Student(models.Model)">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-django数据库模型设计" class="post-django数据库模型设计 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/04/django数据库模型设计/" data-id="cjqi0njv9000yjcvek56ohskw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>models.py文件<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>from django.db import models</p>
+<p>class Grade(models.Model):<br>    g_name = models.CharField(max_length=10, unique=True)</p>
+<pre><code>class Meta:
+    db_table = &apos;grade&apos;
+</code></pre><p>class Student(models.Model):<br>    s_name = models.CharField(max_length=10, unique=True)<br>    s_age = models.IntegerField(default=20)<br>    s_gender = models.BooleanField(default=0)</p>
+<pre><code># auto_now_add=True 创建时，默认字段赋值为最新时间
+create_time = models.DateTimeField(auto_now_add=True)
+# auto_now=True 修改数据时，自动赋值为更新字段时 的时间
+undate_time = models.DateTimeField(auto_now=True)
+math = models.DecimalField(max_digits=3, decimal_places=1, null=True)
+wuli = models.DecimalField(max_digits=3, decimal_places=1, null=True)
+# 一对多的外键定义（定义在多的哪一方）
+g = models.ForeignKey(Grade, null=True, related_name=&apos;stu&apos;, on_delete=models.CASCADE)
+
+class Meta:
+    db_table = &apos;student&apos;
+</code></pre><p>class StudentInfo(models.Model):<br>    s_no = models.CharField(max_length=10, null=False)<br>    phone = models.CharField(max_length=11, null=True)<br>    name = models.CharField(max_length=10, null=True)</p>
+<pre><code># 定义一对一的关联关系
+# on_delete=models.CASCADE 默认删除主表，从表也会删除
+# on_delete=models.PROTECT 不让删除主表，能删除从表
+# on_delete=models.SET_NULL 删除主表，从表的关联字段设置为空（null）
+
+stu = models.OneToOneField(Student,
+                           on_delete=models.CASCADE,
+                           null=True,
+                           related_name=&apos;info&apos;)  # related_name=&apos;info&apos;给拓展表(studentinfo)取个别名
+</code></pre><p>class Course(models.Model):<br>    c_name = models.CharField(max_length=10, unique=True)</p>
+<pre><code># ManyToManyField字段定义在任何一个模型都可以
+stu = models.ManyToManyField(Student, related_name=&apos;cou&apos;)
+
+class Meta:
+    db_table = &apos;course&apos;
+</code></pre><p>urls.py文件<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>urlpatterns = [<br>    path(‘admin/‘, admin.site.urls),<br>    path(‘hello/‘, views.hello),</p>
+<pre><code># 插入学生信息
+# http://127.0.0.1:8000/saa_stu/
+path(&apos;add_stu/&apos;,views.add_stu),
+
+# 删除学生信息
+path(&apos;del_stu/&apos;,views.del_stu),
+
+# 更新学生信息
+path(&apos;up_stu/&apos;,views.up_stu),
+
+# 查询学生信息
+path(&apos;sel_stu/&apos;,views.sel_stu),
+# 添加学生的拓展信息
+path(&apos;add_stu_info/&apos;,views.add_stu_info),
+# 通过学生姓名查找紧急联系电话
+path(&apos;sel_phone_by_stu/&apos;,views.sel_phone_by_stu),
+path(&apos;sel_phone_by_stu2/&apos;,views.sel_phone_by_stu2),
+# 通过=拓展表查找学生信息
+path(&apos;sel_stu_by_info/&apos;,views.sel_stu_by_info),
+# on_delete演示
+path(&apos;on_delete_stu/&apos;,views.on_delete_stu),
+# 添加班级信息
+path(&apos;add_grade/&apos;,views.add_grade),
+# 分配班级
+path(&apos;stu_grade/&apos;,views.stu_grade),
+# 通过学生查询班级
+path(&apos;sel_grade_by_stu/&apos;,views.sel_grade_by_stu),
+# 通过班级查询学生
+path(&apos;sel_stu_by_grade/&apos;,views.sel_stu_by_grade),
+# 添加课程信息
+path(&apos;add_course/&apos;,views.add_course),
+# 添加中间表的信息
+path(&apos;add_s_c/&apos;,views.add_s_c),
+# 访问首页
+path(&apos;index/&apos;,views.index)
+</code></pre><p>]</p>
+<p>views.py文件<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<h1 id="一对一-OneToOneField-任何一方"><a href="#一对一-OneToOneField-任何一方" class="headerlink" title="一对一  (OneToOneField 任何一方)"></a>一对一  (OneToOneField 任何一方)</h1><p>def add_stu_info(request):</p>
+<pre><code># 添加小明的紧急联系人的信息，学号
+stu_info = StudentInfo()
+stu_info.s_no = &apos;123456&apos;
+stu_info.phone = &apos;13551366543&apos;
+stu_info.name = &apos;大明&apos;
+# stu_info.stu = Student.objects.get(id=1)
+stu_info.stu_id = 1
+stu_info.save()
+return HttpResponse(&apos;创建拓展信息成功&apos;)
+</code></pre><p>def sel_phone_by_stu(request):</p>
+<pre><code># 1. 查询学生对象
+stu = Student.objects.filter(s_name=&apos;小明&apos;).first()
+# 2. 通过学生对象查询拓展表信息
+# stu_info = StudentInfo.objects.filter(stu=stu).first()
+stu_info = StudentInfo.objects.filter(stu_id=stu.id).first()
+phone = stu_info.phone
+print(phone)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><p>def sel_phone_by_stu2(request):</p>
+<pre><code># 1. 查询学生对象
+stu = Student.objects.filter(s_name=&apos;小明&apos;).first()
+# 2. 反向查询。关联模型对象.关联另外一个模型的名称的小写
+# stu_info = stu.studentinfo
+stu_info = stu.info
+phone = stu_info.phone
+print(phone)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><p>def sel_stu_by_info(request):</p>
+<pre><code># 1. 查询拓展表信息
+stu_info = StudentInfo.objects.filter(s_no=&apos;123456&apos;).first()
+# 2. 查询学生对象
+stu = stu_info.stu
+print(stu.s_name)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><p>def on_delete_stu(request):</p>
+<pre><code># 删除小明的学生信息
+# 效果: 删除主表时，从表是否被删除
+Student.objects.filter(s_name=&apos;小花&apos;).delete()
+# StudentInfo.objects.filter(stu_id=4).delete()
+return HttpResponse(&apos;删除成功&apos;)
+</code></pre><h1 id="一对多-（ForeignKey-多的一方）"><a href="#一对多-（ForeignKey-多的一方）" class="headerlink" title="一对多 （ForeignKey 多的一方）"></a>一对多 （ForeignKey 多的一方）</h1><p>def add_grade(request):</p>
+<pre><code># 添加班级信息
+g_names = [&apos;Python1801&apos;, &apos;Python1802&apos;, &apos;Python1803&apos;,&apos;Python1804&apos;]
+for name in g_names:
+    Grade.objects.create(g_name=name)
+return HttpResponse(&apos;创建班级成功&apos;)
+</code></pre><p>def stu_grade(request):</p>
+<pre><code># 1. 查询id=4的学生对象
+stu = Student.objects.get(pk=4)
+# 2. 设置学生的班级字段
+# stu.g = Grade.objects.get(pk=1)
+stu.g_id = 1
+stu.save()
+return HttpResponse(&apos;分配学生班级成功&apos;)
+</code></pre><p>def sel_grade_by_stu(request):</p>
+<pre><code># 1. 查询姓名叫小明22的对象
+stu = Student.objects.filter(s_name=&apos;小明22&apos;).first()
+grade = stu.g
+print(grade.g_name)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><p>def sel_stu_by_grade(request):</p>
+<pre><code># 1. 查询班级python1801对象
+grade = Grade.objects.filter(g_name=&apos;python1801&apos;).first()
+# stus = grade.student_set.all()
+stus = grade.stu.all()
+print(stus)
+return HttpResponse(&apos;查询成功&apos;)
+</code></pre><h1 id="多对多-（ManyToManyField-任何一方）"><a href="#多对多-（ManyToManyField-任何一方）" class="headerlink" title="多对多 （ManyToManyField 任何一方）"></a>多对多 （ManyToManyField 任何一方）</h1><p>def add_course(request):<br>    c_names = [‘大学英语’, ‘商务英语’, ‘线代’, ‘高数’]<br>    for name in c_names:<br>        c = Course()<br>        c.c_name = name<br>        c.save()<br>    return HttpResponse(‘创建课程成功’)</p>
+<p>def add_s_c(request):</p>
+<pre><code># 将大学英语分配给小明22这个学生
+# 1. 查询课程对象
+cou = Course.objects.filter(c_name=&apos;大学英语&apos;).first()
+# 2. 查询学生对象
+stu = Student.objects.filter(s_name=&apos;小明22&apos;).first()
+# 3. 加入关联关系
+# stu.course_set.add(cou)
+# stu.cou.add(cou)
+# cou.stu.add(stu)
+stu.cou.remove(cou)
+
+return HttpResponse(&apos;添加中间表信息成功&apos;)
+</code></pre><h1 id="渲染页面"><a href="#渲染页面" class="headerlink" title="渲染页面"></a>渲染页面</h1><p>def index(request):<br>    stus = Student.objects.all()<br>    return render(request, ‘index.html’, {‘a’: stus})</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/01/04/django数据库模型设计/">
+    <time datetime="2019-01-04T12:28:42.380Z" class="entry-date">
+        2019-01-04
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2019/01/03/数据库表的增删改查/" rel="next">day-02 数据库表的增删改查 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/04/django数据库模型设计/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/03/数据库表的增删改查/">day-02 数据库表的增删改查</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/Django/">day-01 Django</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/Django安装/">day-o6 Django安装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/29/rides命令与pycharm的应用/">day-05 Rides命令与Pycharm的应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
