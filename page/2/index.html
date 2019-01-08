@@ -62,6 +62,111 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-Linux指令系统" class="post-Linux指令系统 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/12/26/Linux指令系统/">Linux指令系统</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjqnl491200021kveisbm49pb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="Linux指令系统："><a href="#Linux指令系统：" class="headerlink" title="Linux指令系统："></a>Linux指令系统：</h3><p>命令名称 [命名参数][命令对象]</p>
+<h4 id="一、日常操作"><a href="#一、日常操作" class="headerlink" title="一、日常操作"></a>一、日常操作</h4><h5 id="1-cd指令-进入指定文件夹"><a href="#1-cd指令-进入指定文件夹" class="headerlink" title="1.cd指令    - 进入指定文件夹"></a>1.cd指令    - 进入指定文件夹</h5><p>cd  目录  - 进入指定目录(也可以是文件夹对应的路径)<br>   ~相对路径 — 绝对路径</p>
+<p>cd  ..    - 返回上层目录<br>cd  ~ - 回到根目录</p>
+<ol start="2">
+<li><h5 id="ls指令-查看当前目录中的内容"><a href="#ls指令-查看当前目录中的内容" class="headerlink" title="ls指令 - 查看当前目录中的内容"></a>ls指令 - 查看当前目录中的内容</h5><p>ls<br>ls  -l/-lh<br>ls -a    - 隐藏文件也一起显示<br>ls -R - 递归显示所有内容<br>ls -S/-t - 按大小/时间排序</p>
+</li>
+</ol>
+<h5 id="3-pwd指令-显示当前完整目录"><a href="#3-pwd指令-显示当前完整目录" class="headerlink" title="3.pwd指令  - 显示当前完整目录"></a>3.pwd指令  - 显示当前完整目录</h5><p>pwd</p>
+<h5 id="4-文件操作指令"><a href="#4-文件操作指令" class="headerlink" title="4.文件操作指令"></a>4.文件操作指令</h5><p>touch  文件名 - 新建文件<br>cat 文件名    - 查看文件内容</p>
+<p>rm 文件名 - 删除文件<br>rm - r 目录 - 删除文件夹</p>
+<p>cp  文件名1  文件名2 - 将文件1中的内容拷贝到文件2中<br>cp -r  文件名/目录名   目录2 - 将文件/目录拷贝到目录2中</p>
+<p>mv 文件名1  文件名2 - 将文件1中的内容移动到文件2中 ,并且删除文件1（文件重命名）<br>mv 文件名1  文件目录 - 将文件1移动到指定目录中  </p>
+<p>(注意：cp/mv/rm 后面可以跟： -i询问  -f强制  -n不覆盖)</p>
+<p>mkdir  目录名 - 新建文件夹<br>mkdir -p a/b/c - 按层级创建a,b,c三个文件夹<br>mkdir -p a/{b,c}/{d,e,f} -同一层级常见多个</p>
+<p>rmdir  目录名 - 删除指定空目录</p>
+<h5 id="7-history-显示历史指令记录"><a href="#7-history-显示历史指令记录" class="headerlink" title="7.history - 显示历史指令记录"></a>7.history - 显示历史指令记录</h5><p>bashrc 配置显示时间：export  HISTTIMEFORMAT=”[%y‐%m‐%d_%T] “<br>修改bashrc 后使其生效:  source ~/.bashrc  或 .  .bashrc   </p>
+<h5 id="6-链接"><a href="#6-链接" class="headerlink" title="6.链接"></a>6.链接</h5><p>ln -s 源路径  目标路径 - 给源路径对应的文件在目标路径下创建一个软链接(可以看成是快捷键)(源路径是绝对路径)<br>ln 源路径  目标路径 - 给源路径对应的文件在目标路径下创建一个硬链接</p>
+<h5 id="8-快捷键"><a href="#8-快捷键" class="headerlink" title="8.快捷键"></a>8.快捷键</h5><p>ctr + f  - 前进一个字符<br>ctr + b - 后退一个字符<br>ctr + a - 回到行首<br>ctr + e  - 回到行尾<br>ctr + w - 向左删除一个单词<br>ctr + u - 向左删除全部<br>ctr + k - 向右删除全部<br>ctr + y - 粘贴上次删除的内容<br>ctr + l - 清屏  </p>
+<h4 id="二、进程相关指令"><a href="#二、进程相关指令" class="headerlink" title="二、进程相关指令"></a>二、进程相关指令</h4><h5 id="1-ps指令"><a href="#1-ps指令" class="headerlink" title="1.ps指令"></a>1.ps指令</h5><p>ps - 进程状态<br>ps -aux  或者  ps ex - 查看进程<br>ps -aux|grep 进程名 - 查看指定进程<br>psgrep  进程名</p>
+<h5 id="2-top指令"><a href="#2-top指令" class="headerlink" title="2.top指令"></a>2.top指令</h5><p>top  - 动态监控进程<br>top  -p PID1,PID2,…. - 动态监控指定进程</p>
+<h5 id="3-free指令"><a href="#3-free指令" class="headerlink" title="3.free指令"></a>3.free指令</h5><p>free -单位 - 以指定单位查看内存</p>
+<h5 id="4-kill指令"><a href="#4-kill指令" class="headerlink" title="4.kill指令"></a>4.kill指令</h5><p>kill 进程号 - 杀死指定的进程<br>kill -1/-9/-15 - -1(HUP)不间断重启，-9(KILL)强制杀死进程,-15(TERM)正常终止进程<br>pkill  进程名 - 按名字处理进程<br>killall 进程名 - 处理名字匹配的进程</p>
+<p>uptime - 查看系统状态</p>
+<h4 id="三、权限管理"><a href="#三、权限管理" class="headerlink" title="三、权限管理"></a>三、权限管理</h4><h5 id="1-user和group-一个系统可以有多个用户和多个分组；-一个分组中可以有多个用户，一个用户在不同的分组中-多对多"><a href="#1-user和group-一个系统可以有多个用户和多个分组；-一个分组中可以有多个用户，一个用户在不同的分组中-多对多" class="headerlink" title="1.user和group : 一个系统可以有多个用户和多个分组； 一个分组中可以有多个用户，一个用户在不同的分组中(多对多)"></a>1.user和group : 一个系统可以有多个用户和多个分组； 一个分组中可以有多个用户，一个用户在不同的分组中(多对多)</h5><p>users  - 查看当前用户<br>groups  - 查看当前分组</p>
+<p>groupadd  分组名 - 添加分组</p>
+<p>useradd ‐G 分组列表 ‐m ‐s /bin/bash 用户名 - 创建一个用户添加到指定的分组中(在home创建相应的文件夹)</p>
+<p>usermod -G 分组列表 用户名 - 修改分组</p>
+<p>passwd 用户名 - 修改密码</p>
+<p>su - 用户名 - 切换用户身份</p>
+<p>sudo - 以管理员执行其他程序</p>
+<h5 id="注意：-a-在ubuntu需要将用户添加到sudo分组中，才能使用sudo以管理员的身份执行程序"><a href="#注意：-a-在ubuntu需要将用户添加到sudo分组中，才能使用sudo以管理员的身份执行程序" class="headerlink" title="注意： a.在ubuntu需要将用户添加到sudo分组中，才能使用sudo以管理员的身份执行程序"></a>注意： a.在ubuntu需要将用户添加到sudo分组中，才能使用sudo以管理员的身份执行程序</h5><h5 id="b-在centOS中需要先执行visudo指令进入sudoers文件中在指定的位置添加内容"><a href="#b-在centOS中需要先执行visudo指令进入sudoers文件中在指定的位置添加内容" class="headerlink" title="b.在centOS中需要先执行visudo指令进入sudoers文件中在指定的位置添加内容"></a>b.在centOS中需要先执行visudo指令进入sudoers文件中在指定的位置添加内容</h5><p>Allow root to run any commands anywhere</p>
+<p>root    ALL=(ALL)       ALL<br>xiaoming ALL=(ALL)      ALL (自己添加的，xiaoming是用户名)</p>
+<h5 id="2-chmod"><a href="#2-chmod" class="headerlink" title="2.chmod"></a>2.chmod</h5><p>chmod    权限值   文件 - 修改指定文件的权限</p>
+<p>chmod    [a,u,g,o][+,-][r,w,x]  文件 - 为指定文件，给所有用户添加相应的权限<br>   (a:所有，u:自己，g:同组，o:其他；<br>+：添加， -: 取消；<br>r:读，w:写，x:执行)<br>chown  用户名  文件 - 改变文件所有者</p>
+<p>(权限制是三组二进制值)<br>self      group    other<br>rwx      rwx        rwx<br>111       101 001            - 自己读写可执行，同一分组的只读可执行，其他的只可执行<br>110      100        000</p>
+<h4 id="三、日志管理"><a href="#三、日志管理" class="headerlink" title="三、日志管理"></a>三、日志管理</h4><h5 id="1-cat指令"><a href="#1-cat指令" class="headerlink" title="1.cat指令"></a>1.cat指令</h5><p>cat    文件 - 查看文件内容</p>
+<h5 id="2-查看部分"><a href="#2-查看部分" class="headerlink" title="2.查看部分"></a>2.查看部分</h5><p>head -n  N  文件 - 查看前N行内容<br>tail  -n  N    文件  - 查看后N行内容</p>
+<h5 id="3-less-N-文件"><a href="#3-less-N-文件" class="headerlink" title="3.less [-N]  文件"></a>3.less [-N]  文件</h5><ul>
+<li>按 j 向下</li>
+<li>按 k 向上</li>
+<li>按 f 向下翻屏</li>
+<li>按 b 向上翻屏</li>
+<li>按 g 到全文开头</li>
+<li>按 G 到全文结尾</li>
+<li>按 Q 退出  </li>
+</ul>
+<p>more [-N]  文件     - 和less差不多，这个是尽可能多，less是尽可能少的加载</p>
+<h5 id="4-处理"><a href="#4-处理" class="headerlink" title="4.处理"></a>4.处理</h5><p>sort   - 排序  (cat 文件 |sort)<br>uniq - 去重  (cat 文件 |uniq) - 只会去重相邻的重复是数据，一般结合sort一起使用:  |sort|uniq<br>awk ‘{print $N}’ - 打印第N列的内容(netstat -natp|awk ‘{print $4}’)</p>
+<p>history |awk ‘{print $4}’ |sort |uniq ‐c | sort ‐rnk 1 | head ‐n 3    -获取历史指令中，使用最频繁的三个指令</p>
+<h5 id="5-统计"><a href="#5-统计" class="headerlink" title="5.统计"></a>5.统计</h5><p>wc -c(字符)/-w(单词)/-l(行)  文件</p>
+<h5 id="6-查找"><a href="#6-查找" class="headerlink" title="6.查找"></a>6.查找</h5><p>grep  查看对象 目录/文件  参数</p>
+<p>参数：<br>-i 忽略大小写<br>-n   显示行标号<br>-E   通过正则表达式匹配<br>-v   忽略字段<br>-rn  递归查找目录，并打印行号<br>—include=‘<em>.py’ 仅包含 py文件<br>—exclude=‘</em>.js’ 不包含 js 文件</p>
+<p>例如：<br>grep you bb.txt<br>grep you bb.txt -i<br>grep you bb.txt -i -n<br>grep -E ‘[0-9]+’ bb.txt </p>
+<p>find    DIR -name  ‘<em>.xxx’ 找到目录下所有名字匹配的文件<br>找出文件夹<br>例：find /tmp/xyz/ ‐perm 0642 ‐size +10k ‐size ‐100k ‐name ‘</em>.log’</p>
+<p>which  指令 - 精确查找当前可执行的指令<br>whereis  指令 - 查找所有匹配的命令</p>
+<h4 id="四、网络管理"><a href="#四、网络管理" class="headerlink" title="四、网络管理"></a>四、网络管理</h4><p>ifconfig     查看网卡状态</p>
+<p>netstat   -natp - 查看网络连接状态<br>netstat   -natp|grep  端口号 - 查看指定端口的网络连接状态 </p>
+<p>ping  地址<br>ping  -i   时间 地址<br>ping  -c  次数    地址</p>
+<p>telnet  ip地址 端口  - 查看远程主机网络连接状况</p>
+<p>dig 地址 - 查看DNS<br>wget  地址 - 下载</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/26/Linux指令系统/">
+    <time datetime="2018-12-26T00:54:12.000Z" class="entry-date">
+        2018-12-26
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux学习/">Linux学习</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-Linux文档管理" class="post-Linux文档管理 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +182,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjqi15bd70004jkvergxuec2d" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjqnl491900041kve69yneush" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -143,7 +248,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjqi15bh80010jkvekpp484ff" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjqnl494600111kve47mojrnx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -254,7 +359,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjqi15bda0005jkveh7vggu03" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjqnl491g00061kvept1tvslh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -342,7 +447,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjqi15bde0008jkve05lv35e4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjqnl491k00091kve3a8ssati" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -440,7 +545,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjqi15bdh0009jkvey4onzitq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjqnl491u000e1kveafir106f" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -498,7 +603,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjqi15be1000ijkve86v1idwa" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/21/hello-world/" data-id="cjqnl4936000o1kvelj2f5x73" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -563,6 +668,10 @@ location / {
       <ul>
         
           <li>
+            <a href="/2019/01/07/day-04页面渲染/">day-04页面渲染</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/04/django数据库模型设计-1/">day-03 django数据库模型设计</a>
           </li>
         
@@ -578,10 +687,6 @@ location / {
             <a href="/2019/01/02/Django安装/">day-o6 Django安装</a>
           </li>
         
-          <li>
-            <a href="/2018/12/29/rides命令与pycharm的应用/">day-05 Rides命令与Pycharm的应用</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -591,7 +696,7 @@ location / {
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </aside>
 
@@ -600,7 +705,7 @@ location / {
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a>
+      <a href="/tags/Linux学习/" style="font-size: 10px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a>
     </div>
   </aside>
 
