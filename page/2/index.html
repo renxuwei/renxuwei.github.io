@@ -62,6 +62,103 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-rides命令与pycharm的应用" class="post-rides命令与pycharm的应用 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/12/29/rides命令与pycharm的应用/">day-05 Rides命令与Pycharm的应用</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/29/rides命令与pycharm的应用/" data-id="cjr7l8ib2000w9kvecj3afjcd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="redis命令大全：redisdoc-com"><a href="#redis命令大全：redisdoc-com" class="headerlink" title="redis命令大全：redisdoc.com"></a>redis命令大全：redisdoc.com</h3><h4 id="一-、redis的list类型-经典的数据存储结构："><a href="#一-、redis的list类型-经典的数据存储结构：" class="headerlink" title="一 、redis的list类型 - 经典的数据存储结构："></a>一 、redis的list类型 - 经典的数据存储结构：</h4><h5 id="栈（stack）-FILO-先进后出-lpush-lpop-rpush-rpop"><a href="#栈（stack）-FILO-先进后出-lpush-lpop-rpush-rpop" class="headerlink" title="栈（stack）-FILO - 先进后出 -  lpush + lpop / rpush + rpop"></a>栈（stack）-FILO - 先进后出 -  lpush + lpop / rpush + rpop</h5><p>​    列如：def f(num):    - 递归函数，自己调用自己（列：5的阶乘）</p>
+<p>​                if num in (0,1):</p>
+<p>​                return 1</p>
+<p>​               return num * f(num-1)</p>
+<h5 id="队列（queue）-fFIFO-先进先出-lpush-rpop-rpush-lpop"><a href="#队列（queue）-fFIFO-先进先出-lpush-rpop-rpush-lpop" class="headerlink" title="队列（queue）- fFIFO - 先进先出 - lpush +rpop / rpush + lpop"></a>队列（queue）- fFIFO - 先进先出 - lpush +rpop / rpush + lpop</h5><h5 id="一、字符串：String"><a href="#一、字符串：String" class="headerlink" title="一、字符串：String"></a>一、字符串：String</h5><p>​    setnx   键 值   - 如果key不存在，才能放键值对</p>
+<p>​    mest   键1 值1 键2 值2 …   - 一次存放多个键值对</p>
+<p>​    mget   键1 键2   - 一次也可通过多个键 取出值</p>
+<p>​    getset  键1 值3    - 将键1的值修改值3</p>
+<p>​    append - 字符串后面追加</p>
+<p>​    setbit  foo 128   -第128位为1其他位0</p>
+<p>​    gitbit foo 127    - 取127位的bit值</p>
+<p>​    type 键   - 键对应别的值类型（字符串/集合/哈希……）</p>
+<p>​    object encodiung 键    - 底层的数据类型</p>
+<h5 id="二、哈希：Hash（字典里的值还是字典）"><a href="#二、哈希：Hash（字典里的值还是字典）" class="headerlink" title="二、哈希：Hash（字典里的值还是字典）"></a>二、哈希：Hash（字典里的值还是字典）</h5><p>​    hset stu1 stuid 1001   - 创建哈希列表</p>
+<p>​    hget stu1 stuid             - 取值</p>
+<p>​    hegetall                          - 取出所有的键值对</p>
+<p>​    hvals                               - 取出所有键值对的值 </p>
+<pre><code>hmset/hmget                - 存/取 多个键值对
+</code></pre><p>​    hdel                                 - 删除字段</p>
+<p>​    hkeys                               - </p>
+<h5 id="三、列表：List"><a href="#三、列表：List" class="headerlink" title="三、列表：List"></a>三、列表：List</h5><p>​    lpush/rpush  list1 100 200 300 400 500      - 从左/右边 存 放元素</p>
+<p>​    lrange list1 0 -1                    - 查看（（0 -1）索引范围）</p>
+<p>​    lpop/rpop                               - 从左/右边 取 元素</p>
+<p>​    lindex list1 下标                   - 指定下标取元素</p>
+<p>​    blpop/brpop    list1 time      - 按时间 阻塞 取出元素，没有了会按规定时间返回nil</p>
+<h5 id="四、集合：Set"><a href="#四、集合：Set" class="headerlink" title="四、集合：Set"></a>四、集合：Set</h5><p>​    sadd set1 100,200,200,300       - 创建集合元素</p>
+<p>​    smembers set1                           - 获取元素    </p>
+<p>​    sinter set1 set2                            - 交集    </p>
+<p>​    sunion set1 set2                         - 并集</p>
+<p>​    sdiff set1 set2                              - 差集    </p>
+<p>​    srem set1 100                              - 移除元素</p>
+<p>​    sismember set1 元素              - 查看元素是否在集合里</p>
+<p>​    scard set1                                     - 查看集合有多少个元素</p>
+<p>​    spop                                              - 取元素</p>
+<p>​    srandmember                             - 随机取元素    </p>
+<h5 id="五、有序结合：Zset"><a href="#五、有序结合：Zset" class="headerlink" title="五、有序结合：Zset"></a>五、有序结合：Zset</h5><p>​    zadd paihangbang 100 yuting 200 xiaownag 1000 luohao   - 添加元素</p>
+<p>​    zrange paihangbang 0 -1   - 从小到大排序</p>
+<p>​    zrevrange paihangbang 0 -1 - 从大到小拍讯</p>
+<p>​    zincrby paihangbang 20000 yuting    - 增加值</p>
+<p>​         </p>
+<h3 id="二、主从复制，读写分离"><a href="#二、主从复制，读写分离" class="headerlink" title="二、主从复制，读写分离"></a>二、主从复制，读写分离</h3><p>​    主人：redis-server –requirepass 123123 &gt; redis.log 2&gt; redis-error.log &amp;<br>​    奴隶：redis-server –slaveof 120.77.222.217 6379 –masterauth 123123 &gt; redis.log 2&gt; redis-error.log &amp;</p>
+<p>​        查看主从复制信息<br>​            127.0.0.1:6379&gt; info replication</p>
+<p>​        退出不再做奴隶</p>
+<p>​            127.0.0.1:6379&gt; slaveof no one</p>
+<h3 id="三、Redis数据库pycharm操作"><a href="#三、Redis数据库pycharm操作" class="headerlink" title="三、Redis数据库pycharm操作"></a>三、Redis数据库pycharm操作</h3><p>1、Python安装Redis：</p>
+<p>​    [global]<br>​    index-url=<a href="https://pypi.doubanio.com/simple/" target="_blank" rel="noopener">https://pypi.doubanio.com/simple/</a></p>
+<p>在终端安装</p>
+<p>​    pip install redis    (安装redis)</p>
+<p>​    pip install pillow django    (安装django)</p>
+<p>​    </p>
+<h3 id="四、Mysql和Redis结合应用"><a href="#四、Mysql和Redis结合应用" class="headerlink" title="四、Mysql和Redis结合应用"></a>四、Mysql和Redis结合应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">序列化 - 把对象转换成字符或字节序列 - 串行化/腌咸菜</span><br><span class="line">反序列化 - 把字符或者字节序列还原成对象 - 反串行化</span><br><span class="line">Python中要实现对象的序列化和反序列有3种方案：</span><br><span class="line">- json - load / loads / dump / dumps - 字符序列</span><br><span class="line">- pickle - load / loads / dump / dumps - 字节序列</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import pickle</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line">import redis</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class District(object):</span><br><span class="line">    &quot;&quot;&quot;行政区域&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self, distid, name):</span><br><span class="line">        self.distid = distid</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.name</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    begin = time.time()</span><br><span class="line">    cli = redis.StrictRedis(host=&apos;119.23.45.191&apos;,</span><br><span class="line">                            port=6379,</span><br><span class="line">                            password=&apos;123123&apos;)</span><br><span class="line">    # 优先从缓存中读取数据 如果缓存没有命中 才连接数据库进行查询</span><br><span class="line">    if cli.exists(&apos;provinces&apos;):</span><br><span class="line">        # 直接从缓存中通过键获取数据并反序列化成Python中的对象</span><br><span class="line">        provinces = pickle.loads(cli.get(&apos;provinces&apos;))</span><br><span class="line">    else:</span><br><span class="line">        provinces = []</span><br><span class="line">        con = pymysql.connect(host=&apos;119.23.45.191&apos;, port=3306,</span><br><span class="line">                              database=&apos;hrs&apos;, charset=&apos;utf8&apos;,</span><br><span class="line">                              user=&apos;root&apos;, password=&apos;123456&apos;)</span><br><span class="line">        try:</span><br><span class="line">            with con.cursor() as cursor:</span><br><span class="line">                # 查询省级行政区域</span><br><span class="line">                cursor.execute(</span><br><span class="line">                    &apos;select `distid`, `name` from `tb_district` where `pid` is null&apos;)</span><br><span class="line">                # 将查询结果放入列表容器</span><br><span class="line">                for dist_tuple in cursor.fetchall():</span><br><span class="line">                    dist = District(*dist_tuple)</span><br><span class="line">                    provinces.append(dist)</span><br><span class="line">                # 将列表序列化(pickle)然后放入Redis中缓存</span><br><span class="line">                cli.set(&apos;provinces&apos;, pickle.dumps(provinces))</span><br><span class="line">        finally:</span><br><span class="line">            con.close()</span><br><span class="line">    end = time.time()</span><br><span class="line">    print(f&apos;执行时间: &#123;end - begin&#125;秒&apos;)</span><br><span class="line">    print(provinces)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/12/29/rides命令与pycharm的应用/">
+    <time datetime="2018-12-29T01:47:50.000Z" class="entry-date">
+        2018-12-29
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-redis数据库安装及应用" class="post-redis数据库安装及应用 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +174,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjr7kr2ak000qlovecllimakg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/27/redis数据库安装及应用/" data-id="cjr7l8iay000t9kve8hkuwss7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -202,7 +299,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjr7kr2a9000iloveh7ltbg2z" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-03通过PyCharm操作MySQL/" data-id="cjr7l8ia3000f9kvee5bmr9z3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -251,7 +348,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjr7kr2b3000ulovetp4pw9lx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/数据库新建用户和权限的授权与招回/" data-id="cjr7l8ib6000y9kve8uzm467d" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -299,7 +396,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjr7kr2a3000glove82r1re4z" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/day-02练习/" data-id="cjr7l8iaf000j9kve190ofg7o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -363,7 +460,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjr7kr2900004love3ktnyr1o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux指令系统/" data-id="cjr7l8i9k00059kveb07gjb0i" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -468,7 +565,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjr7kr28w0003love29v2gkfz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/26/Linux文档管理/" data-id="cjr7l8i9n00069kvem0dfyxn9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -534,7 +631,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjr7kr2bq0016love03iqply4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/25/MySQL建表day-02/" data-id="cjr7l8ibo001a9kve2jdiibeq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -645,7 +742,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjr7kr2920005lovez82tpsp5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/24/MySQL安装/" data-id="cjr7l8i9s00099kvebmdfdquf" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -733,7 +830,7 @@ quit  -退出
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjr7kr2960008lovegarbvjb9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/Nginx安装/" data-id="cjr7l8i9v000a9kve2cvoqxa2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -816,64 +913,6 @@ location / {
 
 
   
-    <article id="post-blog" class="post-blog post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/12/22/blog/">vim编辑器基本操作</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/12/22/blog/" data-id="cjr7kr29c000blovetizaq34y" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h3 id="配置vimrc配置"><a href="#配置vimrc配置" class="headerlink" title="配置vimrc配置"></a>配置vimrc配置</h3><p>在shell中可以通过 <code>vim ~/.vimrc</code> 或者 <code>vim /etc/vimrc</code> 打开vimrc文件对vim进行配置。在这个文件中可以进行很多和vim相关的配置，常用的如下（如果对其他配置感兴趣的可以自己百度）：</p>
-<p><img src="/images/vim1.png" alt=""> </p>
-<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><h4 id="1-模式切换"><a href="#1-模式切换" class="headerlink" title="1.模式切换"></a>1.模式切换</h4><p>我们可以将vim分为命令模式、编辑模式和末行模式三种<br><strong>命令模式：</strong>进入vim的时候vim是处于命令模式状态下的，这个时候输入内容不会出现在编辑区  (最末什么都没有)</p>
-<p><strong>末行模式：</strong>在命令模式下输入冒号，让vim进入末行模式。在末行模式的冒号后面可以输入相关的一些指令进行相关操作  (最后有一个冒号)</p>
-<p><strong>编辑模式：</strong>在命令模式下按’i’进入编辑模式。在编辑模式下可以对文件内容进行编辑 (最后 –INSERT– 或者 –插入–)  </p>
-<h4 id="2-保存和退出"><a href="#2-保存和退出" class="headerlink" title="2.保存和退出"></a>2.保存和退出</h4><p>在末行模式下输入相应的指令可以对编辑区的内容进行保存和退出vim界面<br><strong>w</strong> – 只保存(类似快捷键ctr+s)<br><strong>q</strong> – 退出（在编辑区的内容全部都保存的情况下才有效）<br><strong>wq</strong> – 保存并退出<br><strong>q!</strong>  – 强制退出（不保存修改信息）    </p>
-<h4 id="3-光标操作"><a href="#3-光标操作" class="headerlink" title="3.光标操作"></a>3.光标操作</h4><p>以下光标操作都是在命令模式下输入的<br><strong>^(shift+6)</strong>  – 移动到行首<br><strong>$(shift+4)</strong>  – 移动到行尾<br><strong>G(shift+g)</strong>    – 移动到文件末尾<br><strong>行号G</strong>            – 移动到指定行,例如:30G, 让光标直接跳转到行号是30的那一行<br><strong>gg</strong>                – 移动到文件开头  </p>
-<h4 id="4-文本操作"><a href="#4-文本操作" class="headerlink" title="4.文本操作"></a>4.文本操作</h4><p>以下操作不带冒号的是在命令模式下输入，前面有冒号代码后面的内容是在末行模式下输入<br><strong>dd</strong>            – 删除光标所在的行<br><strong>数字dd</strong>        – 从光标所在行开始往后面开始删，删除指定数量行内容<br><strong>:%d</strong>        – 删除所有     </p>
-<p><strong>yy</strong>         – 复制光标所在的行<br><strong>数字yy</strong>        – 从光标所在行开始复制指定行数的内容<br><strong>p</strong>            – 将复制的内容粘贴到光标所在的位置<br><strong>u</strong>            – 撤销<br><strong>ctr+r</strong>    – 反撤销    </p>
-<p><strong>:%!sort</strong>  – 对内容排序  </p>
-<p><strong>:/查找对象[/gice]</strong>    – 搜索匹配正则表达式的内容，按回车回到命令模式后按n往前查找，按N往后查找  </p>
-<p>*<em>:1,$s/被替换对象/替换内容[/gice</em>]*    – 将正则表达式匹配到的内容替换成指定内容   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-	g: 全局匹配  </span><br><span class="line">- 	i: 忽略大小写 </span><br><span class="line">-   c: 替换时需要提示  </span><br><span class="line">-   e: 忽略错误</span><br></pre></td></tr></table></figure>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/12/22/blog/">
-    <time datetime="2018-12-22T06:45:12.000Z" class="entry-date">
-        2018-12-22
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux学习/">Linux学习</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -903,6 +942,10 @@ location / {
       <ul>
         
           <li>
+            <a href="/2019/01/22/Flask框架脑图day-02/">Flask框架脑图day_02</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/22/Django框架脑图/">Djangoæ框架脑图</a>
           </li>
         
@@ -918,10 +961,6 @@ location / {
             <a href="/2019/01/08/day-05注册登录/">day_06注册登录</a>
           </li>
         
-          <li>
-            <a href="/2019/01/07/day-04页面渲染/">day-04页面渲染</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -931,7 +970,7 @@ location / {
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">8</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">8</span></li></ul>
     </div>
   </aside>
 
@@ -940,7 +979,7 @@ location / {
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Linux学习/" style="font-size: 10px;">Linux学习</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
+      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 10px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
     </div>
   </aside>
 
