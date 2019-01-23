@@ -15,18 +15,20 @@
   
   <title>day03flask框架（增、删、改、查） | Ren</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="flask框架数据库安装：pip install flask-sqlalchemy创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&amp;#40;&amp;#41;模型定义：class User&amp;#40;db.Model, UserMixin&amp;#41;: # 定义自增的主键id id = db.Column&amp;amp;#40;d">
-<meta name="keywords" content="框架（flask）">
+  <meta name="description" content="flask框架数据库安装：pip install flask-sqlalchemy创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&amp;#40;&amp;#41;模型定义：class User&amp;#40;db.Model, UserMixin&amp;#41;: # 定义自增的主键id id = db.Column(db.Intege">
+<meta name="keywords" content="flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="day03flask框架（增、删、改、查）">
 <meta property="og:url" content="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/index.html">
 <meta property="og:site_name" content="Ren">
-<meta property="og:description" content="flask框架数据库安装：pip install flask-sqlalchemy创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&amp;#40;&amp;#41;模型定义：class User&amp;#40;db.Model, UserMixin&amp;#41;: # 定义自增的主键id id = db.Column&amp;amp;#40;d">
+<meta property="og:description" content="flask框架数据库安装：pip install flask-sqlalchemy创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&amp;#40;&amp;#41;模型定义：class User&amp;#40;db.Model, UserMixin&amp;#41;: # 定义自增的主键id id = db.Column(db.Intege">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-23T11:15:23.355Z">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190123144033.png">
+<meta property="og:updated_time" content="2019-01-23T11:25:24.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="day03flask框架（增、删、改、查）">
-<meta name="twitter:description" content="flask框架数据库安装：pip install flask-sqlalchemy创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&amp;#40;&amp;#41;模型定义：class User&amp;#40;db.Model, UserMixin&amp;#41;: # 定义自增的主键id id = db.Column&amp;amp;#40;d">
+<meta name="twitter:description" content="flask框架数据库安装：pip install flask-sqlalchemy创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&amp;#40;&amp;#41;模型定义：class User&amp;#40;db.Model, UserMixin&amp;#41;: # 定义自增的主键id id = db.Column(db.Intege">
+<meta name="twitter:image" content="http://yoursite.com/images/QQ截图20190123144033.png">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -82,7 +84,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjr936614001788vebndfzozw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjr93r4500018owve6vhd135j" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -90,18 +92,18 @@
       
         <h1 id="flask框架"><a href="#flask框架" class="headerlink" title="flask框架"></a>flask框架</h1><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="安装：pip-install-flask-sqlalchemy"><a href="#安装：pip-install-flask-sqlalchemy" class="headerlink" title="安装：pip install flask-sqlalchemy"></a>安装：pip install flask-sqlalchemy</h3><h3 id="创建对象：-from-flask-sqlalchemy-import-SQLALCheny-db-SQLCheny-40-41"><a href="#创建对象：-from-flask-sqlalchemy-import-SQLALCheny-db-SQLCheny-40-41" class="headerlink" title="创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&#40;&#41;"></a>创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&#40;&#41;</h3><h3 id="模型定义："><a href="#模型定义：" class="headerlink" title="模型定义："></a>模型定义：</h3><p>class User&#40;db.Model, UserMixin&#41;:</p>
 <pre><code># 定义自增的主键id
-id = db.Column&amp;#40;db.Integer, primary_key=True, autoincrement=True&amp;#41;
+id = db.Column(db.Integer, primary_key=True, autoincrement=True&amp;#41;
 # 定义长度为10的name字段，唯一 且 不能为空
-name = db.Column&amp;#40;db.String&amp;#40;10&amp;#41;, unique=True, nullable=False&amp;#41;
+name = db.Column(db.String(10&amp;#41;, unique=True, nullable=False&amp;#41;
 # 定义密码，不能为空
-password = db.Column&amp;#40;db.String&amp;#40;249&amp;#41;, nullable=False&amp;#41;
+password = db.Column(db.String(249&amp;#41;, nullable=False&amp;#41;
 # 定义数据库表名
 __tablename__ = &apos;flask_user&apos;
 </code></pre><h3 id="配置连接：-flask对象-config-‘SQLALCHEMY-DATABASE-URI’-’mysql-pymysql-root-123456-127-0-0-1-3306-flask8’"><a href="#配置连接：-flask对象-config-‘SQLALCHEMY-DATABASE-URI’-’mysql-pymysql-root-123456-127-0-0-1-3306-flask8’" class="headerlink" title="配置连接：   flask对象.config[‘SQLALCHEMY_DATABASE_URI’]=’mysql+pymysql://root:123456@127.0.0.1:3306/flask8’"></a>配置连接：   flask对象.config[‘SQLALCHEMY_DATABASE_URI’]=’mysql+pymysql://root:<a href="mailto:123456@127.0.0.1" target="_blank" rel="noopener">123456@127.0.0.1</a>:3306/flask8’</h3><h3 id="初始化：db-init-app-40-flask对象-41"><a href="#初始化：db-init-app-40-flask对象-41" class="headerlink" title="初始化：db.init_app&#40;flask对象&#41;"></a>初始化：db.init_app&#40;flask对象&#41;</h3><h3 id="模型的映射"><a href="#模型的映射" class="headerlink" title="模型的映射"></a>模型的映射</h3><ul>
 <li>创建：db.create_all&#40;&#41;</li>
 <li>删除:db.drop_all&#40;&#41;</li>
 </ul>
-<p>###模板数据库响应（相当于django的迁移）<br>![]&#40;/images/QQ截图20190123144033.png&#41;</p>
+<p>###模板数据库响应（相当于django的迁移）<br><img src="/images/QQ截图20190123144033.png" alt=""></p>
 <h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><ul>
 <li>add&#40;对象&#41;</li>
 <li>add_all&#40;[对象1，对象2，对象3 . . .]&#41;</li>
@@ -116,21 +118,21 @@ __tablename__ = &apos;flask_user&apos;
 <li>注意：add&#40;对象&#41;这个方法可不写</li>
 </ul>
 <h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><h1 id="查-1"><a href="#查-1" class="headerlink" title="查"></a>查</h1><p>@blue.route&#40;’/sel_stu/‘, methods=[‘GET’]&#41;<br>def sel_stu&#40;&#41;:<br>    if request.method == ‘GET’:</p>
-<pre><code># stu = Student.query.filter&amp;#40;Student.s_name==&apos;张三&apos;&amp;#41;
-stu = Student.query.filter_by&amp;#40;s_name=&apos;张三&apos;&amp;#41;
+<pre><code># stu = Student.query.filter(Student.s_name==&apos;张三&apos;&amp;#41;
+stu = Student.query.filter_by(s_name=&apos;张三&apos;&amp;#41;
 
 # 获取第一个对象
-# 在django中查询第一个Student.objects.all&amp;#40;&amp;#41;.first&amp;#40;&amp;#41;
-stu = Student.query.all&amp;#40;&amp;#41;[0]
-stu = Student.query.first&amp;#40;&amp;#41;
+# 在django中查询第一个Student.objects.all(&amp;#41;.first(&amp;#41;
+stu = Student.query.all(&amp;#41;[0]
+stu = Student.query.first(&amp;#41;
 
-# get&amp;#40;&amp;#41;方法
+# get(&amp;#41;方法
 # 获取主键所在行的对象信息
 # get方法，能获取到对象则返回，获取不到对象则为none
-stu = Student.query.get&amp;#40;3&amp;#41;            # 默认id=2
-stu = Student.query.filter_by&amp;#40;id=3&amp;#41;.first&amp;#40;&amp;#41; # 三个一样的效果
-stu = Student.query.filter&amp;#40;Student.id==3&amp;#41;.first&amp;#40;&amp;#41;
-print&amp;#40;stu&amp;#41;
+stu = Student.query.get(3&amp;#41;            # 默认id=2
+stu = Student.query.filter_by(id=3&amp;#41;.first(&amp;#41; # 三个一样的效果
+stu = Student.query.filter(Student.id==3&amp;#41;.first(&amp;#41;
+print(stu&amp;#41;
 
 return &apos;查询成功&apos;
 </code></pre><ul>
@@ -149,21 +151,21 @@ return &apos;查询成功&apos;
 <p>stu = Student.query.get&#40;3&#41;            # 默认id=2</p>
 </li>
 <li><p>order_by&#40;&#41;：排序</p>
-<ul>
-<li>order_by&#40;’-id’&#41;：表示按照id的降序排列</li>
-<li>order_by&#40;’id’&#41;：表示按照id的升序排列</li>
-</ul>
+</li>
+<li><p>order_by&#40;’-id’&#41;：表示按照id的降序排列</p>
+</li>
+<li><p>order_by&#40;’id’&#41;：表示按照id的升序排列</p>
 </li>
 <li><p>offset&#40;数值1&#41;.limit&#40;数值2&#41;：表示跳过几个参数（数值1），再截取几个参数（数值2）</p>
 <p>page = 1</p>
-<pre><code>stus = Student.query.offset&amp;#40;&amp;#40;page-1&amp;#41; * 3&amp;#41;.limit&amp;#40;3&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;
+<pre><code>stus = Student.query.offset((page-1&amp;#41; * 3&amp;#41;.limit(3&amp;#41;.all(&amp;#41;
+print(stus&amp;#41;
 </code></pre></li>
 <li><p>大小于</p>
 <p>gt大于, ge大约等于, lt小于, le小于等于;  同时&#40;&gt;, &gt;=, &lt;, &lt;= 也能识别&#41;</p>
-<pre><code>stus = Student.query.filter&amp;#40;Student.s_age.__gt__&amp;#40;30&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;  # 查询大于30的学生
-stus = Student.query.filter&amp;#40;Student.s_age &lt;= 30&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;
+<pre><code>stus = Student.query.filter(Student.s_age.__gt__(30&amp;#41;&amp;#41;.all(&amp;#41;  # 查询大于30的学生
+stus = Student.query.filter(Student.s_age &lt;= 30&amp;#41;.all(&amp;#41;
+print(stus&amp;#41;
 </code></pre><ul>
 <li>gt / &gt;：大于</li>
 <li>ge / &gt;+ ：大于等于</li>
@@ -173,30 +175,30 @@ print&amp;#40;stus&amp;#41;
 </li>
 <li><p>模糊</p>
 <p>模糊查询， like % _</p>
-<pre><code>stus = Student.query.filter&amp;#40;Student.s_name.contains&amp;#40;&apos;隔壁&apos;&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;   # contains&amp;#40;&apos;隔壁&apos;&amp;#41;  模糊查询
-stus = Student.query.filter&amp;#40;Student.s_name.startswith&amp;#40;&apos;张&apos;&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;   # startswith&amp;#40;&apos;张&apos;&amp;#41;  查询 &apos;张&apos; 开头的数据
-stus = Student.query.filter&amp;#40;Student.s_name.endswith&amp;#40;&apos;四&apos;&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;   # endswith&amp;#40;&apos;四&apos;&amp;#41;    查询 &apos;四&apos; 结尾的数据
-stus = Student.query.filter&amp;#40;Student.s_name.like&amp;#40;&apos;__老%&apos;&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查询第三位是 &apos;老&apos; 的数据
+<pre><code>stus = Student.query.filter(Student.s_name.contains(&apos;隔壁&apos;&amp;#41;&amp;#41;.all(&amp;#41;
+print(stus&amp;#41;   # contains(&apos;隔壁&apos;&amp;#41;  模糊查询
+stus = Student.query.filter(Student.s_name.startswith(&apos;张&apos;&amp;#41;&amp;#41;.all(&amp;#41;
+print(stus&amp;#41;   # startswith(&apos;张&apos;&amp;#41;  查询 &apos;张&apos; 开头的数据
+stus = Student.query.filter(Student.s_name.endswith(&apos;四&apos;&amp;#41;&amp;#41;.all(&amp;#41;
+print(stus&amp;#41;   # endswith(&apos;四&apos;&amp;#41;    查询 &apos;四&apos; 结尾的数据
+stus = Student.query.filter(Student.s_name.like(&apos;__老%&apos;&amp;#41;&amp;#41;.all(&amp;#41;
+print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 &apos;老&apos; 的数据
 </code></pre><ul>
 <li><p>contains：包含</p>
 <p>stus = Student.query.filter&#40;Student.s_name.contains&#40;’隔壁’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print&amp;#40;stus&amp;#41;   # contains&amp;#40;&apos;隔壁&apos;&amp;#41;  模糊查询
+<pre><code>print(stus&amp;#41;   # contains(&apos;隔壁&apos;&amp;#41;  模糊查询
 </code></pre></li>
 <li><p>startswith&#40;&#41;：以什么开头</p>
 <p>stus = Student.query.filter&#40;Student.s_name.startswith&#40;’张’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print&amp;#40;stus&amp;#41;   # startswith&amp;#40;&apos;张&apos;&amp;#41;  查询 &apos;张&apos; 开头的数据
+<pre><code>print(stus&amp;#41;   # startswith(&apos;张&apos;&amp;#41;  查询 &apos;张&apos; 开头的数据
 </code></pre></li>
 <li><p>endswith：以什么结束</p>
 <p>stus = Student.query.filter&#40;Student.s_name.endswith&#40;’四’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print&amp;#40;stus&amp;#41;   # endswith&amp;#40;&apos;四&apos;&amp;#41;    查询 &apos;四&apos; 结尾的数据
+<pre><code>print(stus&amp;#41;   # endswith(&apos;四&apos;&amp;#41;    查询 &apos;四&apos; 结尾的数据
 </code></pre></li>
 <li><p>like&#40;&#41;：模糊查询</p>
 <p>stus = Student.query.filter&#40;Student.s_name.like&#40;’__老%’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查询第三位是 &apos;老&apos; 的数据
+<pre><code>print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 &apos;老&apos; 的数据
 </code></pre><ul>
 <li>% ：表示匹配任何长度的字符</li>
 <li>_ ：表示匹配一个占位</li>
@@ -220,11 +222,10 @@ print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查
 <li>安装：pip install flask-session</li>
 <li>配置存储的数据库：   flask对象config[‘SESSION_TYPE’] = ‘redis’         flask对象.config[‘SESSION_REDIS’] = redis.Redis&#40;host, port, password&#41;</li>
 <li><p>初始化：from flask_session import Session</p>
-<ul>
-<li>第一种：Session&#40;flask对象&#41;</li>
-<li>第二种：se = Session&#40;&#41;       se.init_app&#40;flask对象&#41;</li>
-</ul>
 </li>
+<li><p>第一种：Session&#40;flask对象&#41;</p>
+</li>
+<li>第二种：se = Session&#40;&#41;       se.init_app&#40;flask对象&#41;</li>
 </ul>
 <h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>父模板：父模板负责挖坑&#123;% block %&#125;&#123;% endblock %&#125;,挖的坑可以被子模板动态的填充内容</p>
 <p>子模板：继承于父模板，并动态填充坑的内容</p>
@@ -233,45 +234,44 @@ print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查
 <li>包含：&#123;% inclde ‘摸个文件模板’ %&#125;</li>
 <li>获取坑之前填充的内容：&#123;&#123; super&#40;&#41; &#125;&#125;</li>
 <li><p>静态文件</p>
-<ul>
-<li>硬编码：指定定义静态文件路径</li>
-<li>使用url_for进行解析：href=”&#123;&#123; url_for&#40;’static’, filename=’css/index.css’&#41; &#125;&#125;”</li>
-</ul>
+</li>
+<li><p>硬编码：指定定义静态文件路径</p>
+</li>
+<li><p>使用url_for进行解析：href=”&#123;&#123; url_for&#40;’static’, filename=’css/index.css’&#41; &#125;&#125;”</p>
 </li>
 <li><p>注解</p>
-<ul>
-<li><!--注解内容-->：注意注解中的内容标签必须定义正确</li>
+</li>
+<li><p><!--注解内容-->：注意注解中的内容标签必须定义正确</p>
+</li>
 <li>&#123;# 单行和多行注解 #&#125;</li>
-<li>注意：和django的区别，没有comment多行注解标签</li>
-</ul>
+<li><p>注意：和django的区别，没有comment多行注解标签</p>
 </li>
 <li><p>标签</p>
-<ul>
-<li>if标签：&#123;% if 条件 == 值 %&#125;&#123;% endif %&#125;</li>
+</li>
+<li><p>if标签：&#123;% if 条件 == 值 %&#125;&#123;% endif %&#125;</p>
+</li>
 <li>for标签：&#123;% for i in 迭代对象 %&#125;&#123;% else %&#125;&#123;% endfor %&#125;</li>
 <li><p>loop</p>
-</li>
-<li><p>获取从1开始增加的编号：&#123;&#123; loop.index &#125;&#125;</p>
-</li>
+<ul>
+<li>获取从1开始增加的编号：&#123;&#123; loop.index &#125;&#125;</li>
 <li>获取从0开始增加的编号：&#123;&#123; loop.index0 &#125;&#125;</li>
 <li>倒叙到1结束：&#123;&#123; loop.revindex &#125;&#125;`</li>
 <li>倒叙到0结束：&#123;&#123; loop.revindex0 &#125;&#125;</li>
 <li>判断循环第一次：&#123;&#123; loop.first &#125;&#125;</li>
-<li><p>判断循环最后一次：&#123;&#123; loop.last &#125;&#125;</p>
+<li>判断循环最后一次：&#123;&#123; loop.last &#125;&#125;</li>
+</ul>
 </li>
 <li><p>重点：jinja2模板引擎中没有ifequal标签</p>
 </li>
 <li><p>macro宏定义</p>
-</li>
-<li><p>无参情况</p>
 <ul>
-<li>&#123;% macro say&#40;&#41; %&#125;<br><h5>今天班上女生好漂亮</h5><br>&#123;% endmacro %&#125;</li>
-</ul>
+<li><p>无参情况</p>
+</li>
+<li><p>&#123;% macro say&#40;&#41; %&#125;<br> </p><h5>今天班上女生好漂亮</h5><br> &#123;% endmacro %&#125;<p></p>
 </li>
 <li><p>有参情况</p>
-<ul>
-<li>&#123;% macro create&#40;name, age&#41; %&#125;<br><h5>登陆系统的用户名为：&#123;&#123; name &#125;&#125;, 年龄：&#123;&#123; age &#125;&#125;</h5><br>&#123;% endmacro %&#125;</li>
-</ul>
+</li>
+<li><p>&#123;% macro create&#40;name, age&#41; %&#125;<br> </p><h5>登陆系统的用户名为：&#123;&#123; name &#125;&#125;, 年龄：&#123;&#123; age &#125;&#125;</h5><br> &#123;% endmacro %&#125;<p></p>
 </li>
 <li><p>使用：&#123;&#123; say&#40;&#41; &#125;&#125;</p>
 </li>
@@ -281,202 +281,6 @@ print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查
 </ul>
 <p>###flask过滤器 管道符 ‘|’<br>1、add ：将value的值增加2。使用形式为：&#123;&#123; value | add: “2”&#125;&#125;。<br>2、addslashes：在value中的引号前增加反斜线。使用形式为：&#123;&#123; value | addslashes &#125;&#125;。<br>3、capfirst：value的第一个字符转化成大写形式。使用形式为：&#123;&#123; value | capfirst &#125;&#125;。<br>4、cut：从给定value中删除所有arg的值。使用形式为：&#123;&#123; value | cut:arg&#125;&#125;。<br>5、date: 格式化时间格式。使用形式为：&#123;&#123; value | date:”Y-m-d H:i:s” &#125;&#125;<br>6、default：如果value是False，那么输出使用缺省值。使用形式：&#123;&#123; value | default: “nothing” &#125;&#125;。例如，如果value是“”，那么输出将是nothing<br>7、default_if_none：如果value是None，那么输出将使用缺省值。使用形式：&#123;&#123; value | default_if_none:”nothing” &#125;&#125;，例如，如果value是None，那么输出将是nothing<br>8、dictsort：如果value的值是一个字典，那么返回值是按照关键字排序的结果<br>使用形式：&#123;&#123; value | dictsort:”name”&#125;&#125;，例如，<br>如果value是：<br>[&#123;’name’: ‘python’&#125;,&#123;’name’: ‘java’&#125;,&#123;’name’: ‘c++’&#125;,]<br>那么，输出是：<br>[&#123;’name’: ‘c++’&#125;,&#123;’name’: ‘java’&#125;,&#123;’name’: ‘python’&#125;, ]<br>9、dictsortreversed：如果value的值是一个字典，那么返回值是按照关键字排序的结果的反序。使用形式：与dictsort过滤器相同。<br>10、divisibleby：如果value能够被arg整除，那么返回值将是True。使用形式：&#123;&#123; value | divisibleby:arg&#125;&#125;，如果value是9，arg是3，那么输出将是True<br>11、escape：替换value中的某些字符，以适应HTML格式。使用形式：&#123;&#123; value | escape&#125;&#125;。例如，&lt; 转化为 &lt;&gt; 转化为 &gt;’ 转化为  &#39;” 转化为  &quot;<br>13、filesizeformat：格式化value，使其成为易读的文件大小。使用形式：&#123;&#123; value | filesizeformat &#125;&#125;。例如：13KB，4.1MB等。<br>14、first：返回列表/字符串中的第一个元素。使用形式：&#123;&#123; value | first &#125;&#125;<br>16、iriencode：如果value中有非ASCII字符，那么将其进行转化成URL中适合的编码，如果value已经进行过URLENCODE，改操作就不会再起作用。使用形式：&#123;&#123;value | iriencode&#125;&#125;<br>17、join：使用指定的字符串连接一个list，作用如同python的str.join&#40;list&#41;。使用形式：&#123;&#123; value | join:”arg”&#125;&#125;，如果value是[‘a’,’b’,’c’]，arg是’//‘那么输出是a//b//c<br>18、last：返回列表/字符串中的最后一个元素。使用形式：&#123;&#123; value | last &#125;&#125;<br>19、length：返回value的长度。使用形式：&#123;&#123; value | length &#125;&#125;<br>20、length_is：如果value的长度等于arg的时候返回True。使用形式：&#123;&#123; value | length_is:”arg”&#125;&#125;。例如：如果value是[‘a’,’b’,’c’]，arg是3，那么返回True<br>21、linebreaks：value中的”\n”将被<br>替代，并且整个value使用</p>包围起来。使用形式：&#123;&#123;value|linebreaks&#125;&#125;<br>22、linebreaksbr：value中的”\n”将被<br>替代。使用形式：&#123;&#123;value |linebreaksbr&#125;&#125;<br>23、linenumbers：显示的文本，带有行数。使用形式：&#123;&#123;value | linenumbers&#125;&#125;<br>24、ljust：在一个给定宽度的字段中，左对齐显示value。使用形式：&#123;&#123;value | ljust&#125;&#125;<br>25、center：在一个给定宽度的字段中，中心对齐显示value。使用形式：&#123;&#123;value | center&#125;&#125;<br>26、rjust：：在一个给定宽度的字段中，右对齐显示value。使用形式：&#123;&#123;value | rjust&#125;&#125;<br>27、lower：将一个字符串转换成小写形式。使用形式：&#123;&#123;value | lower&#125;&#125;<br>30、random：从给定的list中返回一个任意的Item。使用形式：&#123;&#123;value | random&#125;&#125;<br>31、removetags：删除value中tag1,tag2….的标签。使用形式：&#123;&#123;value | removetags:”tag1 tag2 tag3…”&#125;&#125;<br>32、safe：当系统设置autoescaping打开的时候，该过滤器使得输出不进行escape转换。使用形式：&#123;&#123;value | safe&#125;&#125;<br>33、safeseq：与safe基本相同，但有一点不同的就是：safe是针对字符串，而safeseq是针对多个字符串组成的sequence<br>34、slice：与python语法中的slice相同。使用形式：&#123;&#123;some_list | slice:”2”&#125;&#125;<br>37、striptags：删除value中的所有HTML标签.使用形式：&#123;&#123;value | striptags&#125;&#125;<br>38、time：格式化时间输出。使用形式：&#123;&#123;value | time:”H:i”&#125;&#125;或者&#123;&#123;value | time&#125;&#125;<br>39、title：转换一个字符串成为title格式。<br>40、truncatewords：将value切成truncatewords指定的单词数目。使用形式：&#123;&#123;value | truncatewords:2&#125;&#125;。例如，如果value是Joel is a slug 那么输出将是：Joel is …<br>42、upper：转换一个字符串为大写形式<br>43、urlencode：将一个字符串进行URLEncode<br>44、wordcount：返回字符串中单词的数目<p></p>
 <p><em>XMind: ZEN - Trial Version</em># flask框架</p>
-<h2 id="数据库-1"><a href="#数据库-1" class="headerlink" title="数据库"></a>数据库</h2><h3 id="安装：pip-install-flask-sqlalchemy-1"><a href="#安装：pip-install-flask-sqlalchemy-1" class="headerlink" title="安装：pip install flask-sqlalchemy"></a>安装：pip install flask-sqlalchemy</h3><p>创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&#40;&#41;</p>
-<h3 id="模型定义：-1"><a href="#模型定义：-1" class="headerlink" title="模型定义："></a>模型定义：</h3><p>class User&#40;db.Model, UserMixin&#41;:</p>
-<pre><code># 定义自增的主键id
-id = db.Column&amp;#40;db.Integer, primary_key=True, autoincrement=True&amp;#41;
-# 定义长度为10的name字段，唯一 且 不能为空
-name = db.Column&amp;#40;db.String&amp;#40;10&amp;#41;, unique=True, nullable=False&amp;#41;
-# 定义密码，不能为空
-password = db.Column&amp;#40;db.String&amp;#40;249&amp;#41;, nullable=False&amp;#41;
-# 定义数据库表名
-__tablename__ = &apos;flask_user&apos;
-</code></pre><p>配置连接：   flask对象.config[‘SQLALCHEMY_DATABASE_URI’]=’mysql+pymysql://root:<a href="mailto:123456@127.0.0.1" target="_blank" rel="noopener">123456@127.0.0.1</a>:3306/flask8’</p>
-<p>初始化：db.init_app&#40;flask对象&#41;</p>
-<p>模型的映射</p>
-<ul>
-<li>创建：db.create_all&#40;&#41;</li>
-<li>删除:db.drop_all&#40;&#41;</li>
-</ul>
-<p>###模板数据库响应（相当于django的迁移）<br>![]&#40;/images/QQ截图20190123144033.png&#41;</p>
-<h3 id="增-1"><a href="#增-1" class="headerlink" title="增"></a>增</h3><ul>
-<li>add&#40;对象&#41;</li>
-<li>add_all&#40;[对象1，对象2，对象3 . . .]&#41;</li>
-<li>使用：db.session.add&#40;对象&#41;<br> db.session.add_all&#40;[对象1，对象2，对象3 . . .]&#41;</li>
-</ul>
-<h3 id="删-1"><a href="#删-1" class="headerlink" title="删"></a>删</h3><ul>
-<li>delete&#40;对象&#41;</li>
-<li>使用：db.session.delete&#40;stu&#41;   db.session.commit&#40;&#41;</li>
-</ul>
-<h3 id="改-1"><a href="#改-1" class="headerlink" title="改"></a>改</h3><ul>
-<li>使用：db.session.add&#40;对象&#41;    db.session.commit&#40;&#41;</li>
-<li>注意：add&#40;对象&#41;这个方法可不写</li>
-</ul>
-<h3 id="查-2"><a href="#查-2" class="headerlink" title="查"></a>查</h3><h1 id="查-3"><a href="#查-3" class="headerlink" title="查"></a>查</h1><p>@blue.route&#40;’/sel_stu/‘, methods=[‘GET’]&#41;<br>def sel_stu&#40;&#41;:<br>    if request.method == ‘GET’:</p>
-<pre><code># stu = Student.query.filter&amp;#40;Student.s_name==&apos;张三&apos;&amp;#41;
-stu = Student.query.filter_by&amp;#40;s_name=&apos;张三&apos;&amp;#41;
-
-# 获取第一个对象
-# 在django中查询第一个Student.objects.all&amp;#40;&amp;#41;.first&amp;#40;&amp;#41;
-stu = Student.query.all&amp;#40;&amp;#41;[0]
-stu = Student.query.first&amp;#40;&amp;#41;
-
-# get&amp;#40;&amp;#41;方法
-# 获取主键所在行的对象信息
-# get方法，能获取到对象则返回，获取不到对象则为none
-stu = Student.query.get&amp;#40;3&amp;#41;            # 默认id=2
-stu = Student.query.filter_by&amp;#40;id=3&amp;#41;.first&amp;#40;&amp;#41; # 三个一样的效果
-stu = Student.query.filter&amp;#40;Student.id==3&amp;#41;.first&amp;#40;&amp;#41;
-print&amp;#40;stu&amp;#41;
-
-return &apos;查询成功&apos;
-</code></pre><ul>
-<li><p>filter（模型名.字段 == 值）</p>
-<p>stu = Student.query.filter&#40;Student.id==3&#41;.first&#40;&#41;</p>
-</li>
-<li><p>filter_by（字段 = 值）</p>
-<p>stu = Student.query.filter_by&#40;id=3&#41;.first&#40;&#41;</p>
-</li>
-<li><p>all&#40;&#41;:查询所有的数据，结果为列表</p>
-<p>stu = Student.query.all&#40;&#41;[0]</p>
-</li>
-<li><p>first&#40;&#41;：查询filter或者filter_by结果中的第一个元素</p>
-</li>
-<li><p>get&#40;id值&#41;：获取主键所在行的对象，获取不到也不会报错，返回none</p>
-<p>stu = Student.query.get&#40;3&#41;            # 默认id=2</p>
-</li>
-<li><p>order_by&#40;&#41;：排序</p>
-<ul>
-<li>order_by&#40;’-id’&#41;：表示按照id的降序排列</li>
-<li>order_by&#40;’id’&#41;：表示按照id的升序排列</li>
-</ul>
-</li>
-<li><p>offset&#40;数值1&#41;.limit&#40;数值2&#41;：表示跳过几个参数（数值1），再截取几个参数（数值2）</p>
-<p>page = 1</p>
-<pre><code>stus = Student.query.offset&amp;#40;&amp;#40;page-1&amp;#41; * 3&amp;#41;.limit&amp;#40;3&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;
-</code></pre></li>
-<li><p>大小于</p>
-<p>gt大于, ge大约等于, lt小于, le小于等于;  同时&#40;&gt;, &gt;=, &lt;, &lt;= 也能识别&#41;</p>
-<pre><code>stus = Student.query.filter&amp;#40;Student.s_age.__gt__&amp;#40;30&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;  # 查询大于30的学生
-stus = Student.query.filter&amp;#40;Student.s_age &lt;= 30&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;
-</code></pre><ul>
-<li>gt / &gt;：大于</li>
-<li>ge / &gt;+ ：大于等于</li>
-<li>lt / &lt; ：小于 </li>
-<li>le / &lt;= ：小于等于</li>
-</ul>
-</li>
-<li><p>模糊</p>
-<h1 id="模糊查询，-like"><a href="#模糊查询，-like" class="headerlink" title="模糊查询， like % _"></a>模糊查询， like % _</h1><pre><code>stus = Student.query.filter&amp;#40;Student.s_name.contains&amp;#40;&apos;隔壁&apos;&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;   # contains&amp;#40;&apos;隔壁&apos;&amp;#41;  模糊查询
-stus = Student.query.filter&amp;#40;Student.s_name.startswith&amp;#40;&apos;张&apos;&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;   # startswith&amp;#40;&apos;张&apos;&amp;#41;  查询 &apos;张&apos; 开头的数据
-stus = Student.query.filter&amp;#40;Student.s_name.endswith&amp;#40;&apos;四&apos;&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;   # endswith&amp;#40;&apos;四&apos;&amp;#41;    查询 &apos;四&apos; 结尾的数据
-stus = Student.query.filter&amp;#40;Student.s_name.like&amp;#40;&apos;__老%&apos;&amp;#41;&amp;#41;.all&amp;#40;&amp;#41;
-print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查询第三位是 &apos;老&apos; 的数据
-</code></pre><ul>
-<li><p>contains：包含</p>
-<p>stus = Student.query.filter&#40;Student.s_name.contains&#40;’隔壁’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print&amp;#40;stus&amp;#41;   # contains&amp;#40;&apos;隔壁&apos;&amp;#41;  模糊查询
-</code></pre></li>
-<li><p>startswith&#40;&#41;：以什么开头</p>
-<p>stus = Student.query.filter&#40;Student.s_name.startswith&#40;’张’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print&amp;#40;stus&amp;#41;   # startswith&amp;#40;&apos;张&apos;&amp;#41;  查询 &apos;张&apos; 开头的数据
-</code></pre></li>
-<li><p>endswith：以什么结束</p>
-<p>stus = Student.query.filter&#40;Student.s_name.endswith&#40;’四’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print&amp;#40;stus&amp;#41;   # endswith&amp;#40;&apos;四&apos;&amp;#41;    查询 &apos;四&apos; 结尾的数据
-</code></pre></li>
-<li><p>like&#40;&#41;：模糊查询</p>
-<p>stus = Student.query.filter&#40;Student.s_name.like&#40;’__老%’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查询第三位是 &apos;老&apos; 的数据
-</code></pre><ul>
-<li>% ：表示匹配任何长度的字符</li>
-<li>_ ：表示匹配一个占位</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="session-1"><a href="#session-1" class="headerlink" title="session"></a>session</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>第一访问任何一个路由地址时，在客户端，将在cookie中存储一个键值对，键为session，值为唯一的uuid类型的参数</li>
-<li>第一次方式的同时，在服务端指定的redis中，也将存储cookie中的uuid参数中保存信息</li>
-<li>如果用户登录成功，则可以像redis中存储的uuid参数保存信息</li>
-</ul>
-<h3 id="flask自带形式-1"><a href="#flask自带形式-1" class="headerlink" title="flask自带形式"></a>flask自带形式</h3><ul>
-<li>存储数据：将session中存储的键值对内容存放在cookie中</li>
-<li>存储方式：设置secret_key参数，越复杂越好</li>
-<li>使用方式：   from flask import session  <pre><code>session[&apos;key&apos;] = value
-</code></pre></li>
-</ul>
-<h3 id="使用flask-session第三方库-1"><a href="#使用flask-session第三方库-1" class="headerlink" title="使用flask-session第三方库"></a>使用flask-session第三方库</h3><ul>
-<li>安装：pip install flask-session</li>
-<li>配置存储的数据库：   flask对象config[‘SESSION_TYPE’] = ‘redis’         flask对象.config[‘SESSION_REDIS’] = redis.Redis&#40;host, port, password&#41;</li>
-<li><p>初始化：from flask_session import Session</p>
-<ul>
-<li>第一种：Session&#40;flask对象&#41;</li>
-<li>第二种：se = Session&#40;&#41;       se.init_app&#40;flask对象&#41;</li>
-</ul>
-</li>
-</ul>
-<h2 id="模板-1"><a href="#模板-1" class="headerlink" title="模板"></a>模板</h2><p>父模板：父模板负责挖坑&#123;% block %&#125;&#123;% endblock %&#125;,挖的坑可以被子模板动态的填充内容</p>
-<p>子模板：继承于父模板，并动态填充坑的内容</p>
-<ul>
-<li>继承&#123;% extnds ‘父模板’ %&#125;</li>
-<li>包含：&#123;% inclde ‘摸个文件模板’ %&#125;</li>
-<li>获取坑之前填充的内容：&#123;&#123; super&#40;&#41; &#125;&#125;</li>
-<li><p>静态文件</p>
-<ul>
-<li>硬编码：指定定义静态文件路径</li>
-<li>使用url_for进行解析：href=”&#123;&#123; url_for&#40;’static’, filename=’css/index.css’&#41; &#125;&#125;”</li>
-</ul>
-</li>
-<li><p>注解</p>
-<ul>
-<li><!--注解内容-->：注意注解中的内容标签必须定义正确</li>
-<li>&#123;# 单行和多行注解 #&#125;</li>
-<li>注意：和django的区别，没有comment多行注解标签</li>
-</ul>
-</li>
-<li><p>标签</p>
-<ul>
-<li>if标签：&#123;% if 条件 == 值 %&#125;&#123;% endif %&#125;</li>
-<li>for标签：&#123;% for i in 迭代对象 %&#125;&#123;% else %&#125;&#123;% endfor %&#125;</li>
-<li><p>loop</p>
-</li>
-<li><p>获取从1开始增加的编号：&#123;&#123; loop.index &#125;&#125;</p>
-</li>
-<li>获取从0开始增加的编号：&#123;&#123; loop.index0 &#125;&#125;</li>
-<li>倒叙到1结束：&#123;&#123; loop.revindex &#125;&#125;`</li>
-<li>倒叙到0结束：&#123;&#123; loop.revindex0 &#125;&#125;</li>
-<li>判断循环第一次：&#123;&#123; loop.first &#125;&#125;</li>
-<li><p>判断循环最后一次：&#123;&#123; loop.last &#125;&#125;</p>
-</li>
-<li><p>重点：jinja2模板引擎中没有ifequal标签</p>
-</li>
-<li><p>macro宏定义</p>
-</li>
-<li><p>无参情况</p>
-<ul>
-<li>&#123;% macro say&#40;&#41; %&#125;<br><h5>今天班上女生好漂亮</h5><br>&#123;% endmacro %&#125;</li>
-</ul>
-</li>
-<li><p>有参情况</p>
-<ul>
-<li>&#123;% macro create&#40;name, age&#41; %&#125;<br><h5>登陆系统的用户名为：&#123;&#123; name &#125;&#125;, 年龄：&#123;&#123; age &#125;&#125;</h5><br>&#123;% endmacro %&#125;</li>
-</ul>
-</li>
-<li><p>使用：&#123;&#123; say&#40;&#41; &#125;&#125;</p>
-</li>
-<li>引入：&#123;% from ‘functions.html’ import say, create %&#125;</li>
-</ul>
-</li>
-</ul>
-<p>###flask过滤器 管道符 ‘|’<br>1、add ：将value的值增加2。使用形式为：&#123;&#123; value | add: “2”&#125;&#125;。<br>2、addslashes：在value中的引号前增加反斜线。使用形式为：&#123;&#123; value | addslashes &#125;&#125;。<br>3、capfirst：value的第一个字符转化成大写形式。使用形式为：&#123;&#123; value | capfirst &#125;&#125;。<br>4、cut：从给定value中删除所有arg的值。使用形式为：&#123;&#123; value | cut:arg&#125;&#125;。<br>5、date: 格式化时间格式。使用形式为：&#123;&#123; value | date:”Y-m-d H:i:s” &#125;&#125;<br>6、default：如果value是False，那么输出使用缺省值。使用形式：&#123;&#123; value | default: “nothing” &#125;&#125;。例如，如果value是“”，那么输出将是nothing<br>7、default_if_none：如果value是None，那么输出将使用缺省值。使用形式：&#123;&#123; value | default_if_none:”nothing” &#125;&#125;，例如，如果value是None，那么输出将是nothing<br>8、dictsort：如果value的值是一个字典，那么返回值是按照关键字排序的结果<br>使用形式：&#123;&#123; value | dictsort:”name”&#125;&#125;，例如，<br>如果value是：<br>[&#123;’name’: ‘python’&#125;,&#123;’name’: ‘java’&#125;,&#123;’name’: ‘c++’&#125;,]<br>那么，输出是：<br>[&#123;’name’: ‘c++’&#125;,&#123;’name’: ‘java’&#125;,&#123;’name’: ‘python’&#125;, ]<br>9、dictsortreversed：如果value的值是一个字典，那么返回值是按照关键字排序的结果的反序。使用形式：与dictsort过滤器相同。<br>10、divisibleby：如果value能够被arg整除，那么返回值将是True。使用形式：&#123;&#123; value | divisibleby:arg&#125;&#125;，如果value是9，arg是3，那么输出将是True<br>11、escape：替换value中的某些字符，以适应HTML格式。使用形式：&#123;&#123; value | escape&#125;&#125;。例如，&lt; 转化为 &lt;&gt; 转化为 &gt;’ 转化为  &#39;” 转化为  &quot;<br>13、filesizeformat：格式化value，使其成为易读的文件大小。使用形式：&#123;&#123; value | filesizeformat &#125;&#125;。例如：13KB，4.1MB等。<br>14、first：返回列表/字符串中的第一个元素。使用形式：&#123;&#123; value | first &#125;&#125;<br>16、iriencode：如果value中有非ASCII字符，那么将其进行转化成URL中适合的编码，如果value已经进行过URLENCODE，改操作就不会再起作用。使用形式：&#123;&#123;value | iriencode&#125;&#125;<br>17、join：使用指定的字符串连接一个list，作用如同python的str.join&#40;list&#41;。使用形式：&#123;&#123; value | join:”arg”&#125;&#125;，如果value是[‘a’,’b’,’c’]，arg是’//‘那么输出是a//b//c<br>18、last：返回列表/字符串中的最后一个元素。使用形式：&#123;&#123; value | last &#125;&#125;<br>19、length：返回value的长度。使用形式：&#123;&#123; value | length &#125;&#125;<br>20、length_is：如果value的长度等于arg的时候返回True。使用形式：&#123;&#123; value | length_is:”arg”&#125;&#125;。例如：如果value是[‘a’,’b’,’c’]，arg是3，那么返回True<br>21、linebreaks：value中的”\n”将被<br>替代，并且整个value使用</p>包围起来。使用形式：&#123;&#123;value|linebreaks&#125;&#125;<br>22、linebreaksbr：value中的”\n”将被<br>替代。使用形式：&#123;&#123;value |linebreaksbr&#125;&#125;<br>23、linenumbers：显示的文本，带有行数。使用形式：&#123;&#123;value | linenumbers&#125;&#125;<br>24、ljust：在一个给定宽度的字段中，左对齐显示value。使用形式：&#123;&#123;value | ljust&#125;&#125;<br>25、center：在一个给定宽度的字段中，中心对齐显示value。使用形式：&#123;&#123;value | center&#125;&#125;<br>26、rjust：：在一个给定宽度的字段中，右对齐显示value。使用形式：&#123;&#123;value | rjust&#125;&#125;<br>27、lower：将一个字符串转换成小写形式。使用形式：&#123;&#123;value | lower&#125;&#125;<br>30、random：从给定的list中返回一个任意的Item。使用形式：&#123;&#123;value | random&#125;&#125;<br>31、removetags：删除value中tag1,tag2….的标签。使用形式：&#123;&#123;value | removetags:”tag1 tag2 tag3…”&#125;&#125;<br>32、safe：当系统设置autoescaping打开的时候，该过滤器使得输出不进行escape转换。使用形式：&#123;&#123;value | safe&#125;&#125;<br>33、safeseq：与safe基本相同，但有一点不同的就是：safe是针对字符串，而safeseq是针对多个字符串组成的sequence<br>34、slice：与python语法中的slice相同。使用形式：&#123;&#123;some_list | slice:”2”&#125;&#125;<br>37、striptags：删除value中的所有HTML标签.使用形式：&#123;&#123;value | striptags&#125;&#125;<br>38、time：格式化时间输出。使用形式：&#123;&#123;value | time:”H:i”&#125;&#125;或者&#123;&#123;value | time&#125;&#125;<br>39、title：转换一个字符串成为title格式。<br>40、truncatewords：将value切成truncatewords指定的单词数目。使用形式：&#123;&#123;value | truncatewords:2&#125;&#125;。例如，如果value是Joel is a slug 那么输出将是：Joel is …<br>42、upper：转换一个字符串为大写形式<br>43、urlencode：将一个字符串进行URLEncode<br>44、wordcount：返回字符串中单词的数目<p></p>
-<p><em>XMind: ZEN - Trial Version</em></p>
 
       
     </div><!-- .entry-content -->
@@ -490,7 +294,7 @@ print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架（flask）/">框架（flask）</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li></ul>
 
     </footer>
 </article>
@@ -560,7 +364,7 @@ print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架（flask）/">框架（flask）</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">8</span></li></ul>
     </div>
   </aside>
 
@@ -569,7 +373,7 @@ print&amp;#40;stus&amp;#41;   # like&amp;#40;&apos;__老%&apos;&amp;#41;     查
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 10px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/框架（flask）/" style="font-size: 10px;">框架（flask）</a>
+      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/flask框架/" style="font-size: 10px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
     </div>
   </aside>
 
