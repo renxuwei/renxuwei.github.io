@@ -29,7 +29,7 @@ Flask最小应">
 <meta property="og:description" content="Flaskhexo发布文章符号报错 处理方法  虚拟环境创建: virtualenv–no-site-packages -p xxxx freshenv8 安装flask: pip install flask 安装文件: pip install -r requirement.txt Flask最小应用最小7行代码 生成flask对象，传入name参数，表示模块名或包名 app = Flask&amp;#4">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/QQ图片20190122175458.png">
-<meta property="og:updated_time" content="2019-01-22T10:06:30.870Z">
+<meta property="og:updated_time" content="2019-01-23T11:27:13.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flask框架脑图day_02">
 <meta name="twitter:description" content="Flaskhexo发布文章符号报错 处理方法  虚拟环境创建: virtualenv–no-site-packages -p xxxx freshenv8 安装flask: pip install flask 安装文件: pip install -r requirement.txt Flask最小应用最小7行代码 生成flask对象，传入name参数，表示模块名或包名 app = Flask&amp;#4">
@@ -89,7 +89,7 @@ Flask最小应">
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Flask框架脑图day-02/" data-id="cjr93r41z0004owvei4nho1sl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Flask框架脑图day-02/" data-id="cjr93tfp1000434veo2pymfba" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -186,7 +186,7 @@ Flask最小应">
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h5 id="安装-pip-install-flask-sqlalchemy"><a href="#安装-pip-install-flask-sqlalchemy" class="headerlink" title="安装: pip install flask-sqlalchemy"></a>安装: pip install flask-sqlalchemy</h5><p>创建对象:</p>
 <p>from flask_sqlalchemy import SQLALChemy<br>db = SQLALChemy&#40;&#41;</p>
 <h3 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义:"></a>模型定义:</h3><p>class User&#40;db.Model&#41;:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 定义自增的主键id</span><br><span class="line">id = db.Column&amp;#40;db.Integer, primary_key=True, autoincrement=True&amp;#41;</span><br><span class="line"># 定义长度为10的name字段，类型为字符串，唯一且不能为空</span><br><span class="line">name = db.Column&amp;#40;db.String&amp;#40;10&amp;#41;, unique=True, nullable=False&amp;#41;</span><br><span class="line"># 定义密码password字段</span><br><span class="line">password = db.Column&amp;#40;db.String&amp;#40;249&amp;#41;, nullable=False&amp;#41;</span><br><span class="line"></span><br><span class="line">__tablename__ = &apos;flask_user&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 定义自增的主键id</span><br><span class="line">id = db.Column(db.Integer, primary_key=True, autoincrement=True)</span><br><span class="line"># 定义长度为10的name字段，类型为字符串，唯一且不能为空</span><br><span class="line">name = db.Column(db.String(10), unique=True, nullable=False)</span><br><span class="line"># 定义密码password字段</span><br><span class="line">password = db.Column(db.String(249), nullable=False)</span><br><span class="line"></span><br><span class="line">__tablename__ = &apos;flask_user&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="配置链接"><a href="#配置链接" class="headerlink" title="配置链接:"></a>配置链接:</h3><p>flask对象.config[‘SQLALCHEMY_DATABASE_URI’]=’mysql+pymysql://root:<a href="mailto:123456@127.0.0.1" target="_blank" rel="noopener">123456@127.0.0.1</a>:2206/flask8’</p>
 <p>初始化: db.init_app&#40;flask对象&#41;</p>
 <h3 id="模型的映射"><a href="#模型的映射" class="headerlink" title="模型的映射"></a>模型的映射</h3><ul>

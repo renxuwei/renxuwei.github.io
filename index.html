@@ -77,7 +77,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjr93r4500018owve6vhd135j" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjr93tfrc001f34ve8rxb73me" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -85,11 +85,11 @@
       
         <h1 id="flask框架"><a href="#flask框架" class="headerlink" title="flask框架"></a>flask框架</h1><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="安装：pip-install-flask-sqlalchemy"><a href="#安装：pip-install-flask-sqlalchemy" class="headerlink" title="安装：pip install flask-sqlalchemy"></a>安装：pip install flask-sqlalchemy</h3><h3 id="创建对象：-from-flask-sqlalchemy-import-SQLALCheny-db-SQLCheny-40-41"><a href="#创建对象：-from-flask-sqlalchemy-import-SQLALCheny-db-SQLCheny-40-41" class="headerlink" title="创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&#40;&#41;"></a>创建对象：  from flask_sqlalchemy import SQLALCheny        db = SQLCheny&#40;&#41;</h3><h3 id="模型定义："><a href="#模型定义：" class="headerlink" title="模型定义："></a>模型定义：</h3><p>class User&#40;db.Model, UserMixin&#41;:</p>
 <pre><code># 定义自增的主键id
-id = db.Column(db.Integer, primary_key=True, autoincrement=True&amp;#41;
+id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 # 定义长度为10的name字段，唯一 且 不能为空
-name = db.Column(db.String(10&amp;#41;, unique=True, nullable=False&amp;#41;
+name = db.Column(db.String(10), unique=True, nullable=False)
 # 定义密码，不能为空
-password = db.Column(db.String(249&amp;#41;, nullable=False&amp;#41;
+password = db.Column(db.String(249), nullable=False)
 # 定义数据库表名
 __tablename__ = &apos;flask_user&apos;
 </code></pre><h3 id="配置连接：-flask对象-config-‘SQLALCHEMY-DATABASE-URI’-’mysql-pymysql-root-123456-127-0-0-1-3306-flask8’"><a href="#配置连接：-flask对象-config-‘SQLALCHEMY-DATABASE-URI’-’mysql-pymysql-root-123456-127-0-0-1-3306-flask8’" class="headerlink" title="配置连接：   flask对象.config[‘SQLALCHEMY_DATABASE_URI’]=’mysql+pymysql://root:123456@127.0.0.1:3306/flask8’"></a>配置连接：   flask对象.config[‘SQLALCHEMY_DATABASE_URI’]=’mysql+pymysql://root:<a href="mailto:123456@127.0.0.1" target="_blank" rel="noopener">123456@127.0.0.1</a>:3306/flask8’</h3><h3 id="初始化：db-init-app-40-flask对象-41"><a href="#初始化：db-init-app-40-flask对象-41" class="headerlink" title="初始化：db.init_app&#40;flask对象&#41;"></a>初始化：db.init_app&#40;flask对象&#41;</h3><h3 id="模型的映射"><a href="#模型的映射" class="headerlink" title="模型的映射"></a>模型的映射</h3><ul>
@@ -111,21 +111,21 @@ __tablename__ = &apos;flask_user&apos;
 <li>注意：add&#40;对象&#41;这个方法可不写</li>
 </ul>
 <h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><h1 id="查-1"><a href="#查-1" class="headerlink" title="查"></a>查</h1><p>@blue.route&#40;’/sel_stu/‘, methods=[‘GET’]&#41;<br>def sel_stu&#40;&#41;:<br>    if request.method == ‘GET’:</p>
-<pre><code># stu = Student.query.filter(Student.s_name==&apos;张三&apos;&amp;#41;
-stu = Student.query.filter_by(s_name=&apos;张三&apos;&amp;#41;
+<pre><code># stu = Student.query.filter(Student.s_name==&apos;张三&apos;)
+stu = Student.query.filter_by(s_name=&apos;张三&apos;)
 
 # 获取第一个对象
-# 在django中查询第一个Student.objects.all(&amp;#41;.first(&amp;#41;
-stu = Student.query.all(&amp;#41;[0]
-stu = Student.query.first(&amp;#41;
+# 在django中查询第一个Student.objects.all().first()
+stu = Student.query.all()[0]
+stu = Student.query.first()
 
-# get(&amp;#41;方法
+# get()方法
 # 获取主键所在行的对象信息
 # get方法，能获取到对象则返回，获取不到对象则为none
-stu = Student.query.get(3&amp;#41;            # 默认id=2
-stu = Student.query.filter_by(id=3&amp;#41;.first(&amp;#41; # 三个一样的效果
-stu = Student.query.filter(Student.id==3&amp;#41;.first(&amp;#41;
-print(stu&amp;#41;
+stu = Student.query.get(3)            # 默认id=2
+stu = Student.query.filter_by(id=3).first() # 三个一样的效果
+stu = Student.query.filter(Student.id==3).first()
+print(stu)
 
 return &apos;查询成功&apos;
 </code></pre><ul>
@@ -151,14 +151,14 @@ return &apos;查询成功&apos;
 </li>
 <li><p>offset&#40;数值1&#41;.limit&#40;数值2&#41;：表示跳过几个参数（数值1），再截取几个参数（数值2）</p>
 <p>page = 1</p>
-<pre><code>stus = Student.query.offset((page-1&amp;#41; * 3&amp;#41;.limit(3&amp;#41;.all(&amp;#41;
-print(stus&amp;#41;
+<pre><code>stus = Student.query.offset((page-1) * 3).limit(3).all()
+print(stus)
 </code></pre></li>
 <li><p>大小于</p>
 <p>gt大于, ge大约等于, lt小于, le小于等于;  同时&#40;&gt;, &gt;=, &lt;, &lt;= 也能识别&#41;</p>
-<pre><code>stus = Student.query.filter(Student.s_age.__gt__(30&amp;#41;&amp;#41;.all(&amp;#41;  # 查询大于30的学生
-stus = Student.query.filter(Student.s_age &lt;= 30&amp;#41;.all(&amp;#41;
-print(stus&amp;#41;
+<pre><code>stus = Student.query.filter(Student.s_age.__gt__(30)).all()  # 查询大于30的学生
+stus = Student.query.filter(Student.s_age &lt;= 30).all()
+print(stus)
 </code></pre><ul>
 <li>gt / &gt;：大于</li>
 <li>ge / &gt;+ ：大于等于</li>
@@ -168,30 +168,30 @@ print(stus&amp;#41;
 </li>
 <li><p>模糊</p>
 <p>模糊查询， like % _</p>
-<pre><code>stus = Student.query.filter(Student.s_name.contains(&apos;隔壁&apos;&amp;#41;&amp;#41;.all(&amp;#41;
-print(stus&amp;#41;   # contains(&apos;隔壁&apos;&amp;#41;  模糊查询
-stus = Student.query.filter(Student.s_name.startswith(&apos;张&apos;&amp;#41;&amp;#41;.all(&amp;#41;
-print(stus&amp;#41;   # startswith(&apos;张&apos;&amp;#41;  查询 &apos;张&apos; 开头的数据
-stus = Student.query.filter(Student.s_name.endswith(&apos;四&apos;&amp;#41;&amp;#41;.all(&amp;#41;
-print(stus&amp;#41;   # endswith(&apos;四&apos;&amp;#41;    查询 &apos;四&apos; 结尾的数据
-stus = Student.query.filter(Student.s_name.like(&apos;__老%&apos;&amp;#41;&amp;#41;.all(&amp;#41;
-print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 &apos;老&apos; 的数据
+<pre><code>stus = Student.query.filter(Student.s_name.contains(&apos;隔壁&apos;)).all()
+print(stus)   # contains(&apos;隔壁&apos;)  模糊查询
+stus = Student.query.filter(Student.s_name.startswith(&apos;张&apos;)).all()
+print(stus)   # startswith(&apos;张&apos;)  查询 &apos;张&apos; 开头的数据
+stus = Student.query.filter(Student.s_name.endswith(&apos;四&apos;)).all()
+print(stus)   # endswith(&apos;四&apos;)    查询 &apos;四&apos; 结尾的数据
+stus = Student.query.filter(Student.s_name.like(&apos;__老%&apos;)).all()
+print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 的数据
 </code></pre><ul>
 <li><p>contains：包含</p>
 <p>stus = Student.query.filter&#40;Student.s_name.contains&#40;’隔壁’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print(stus&amp;#41;   # contains(&apos;隔壁&apos;&amp;#41;  模糊查询
+<pre><code>print(stus)   # contains(&apos;隔壁&apos;)  模糊查询
 </code></pre></li>
 <li><p>startswith&#40;&#41;：以什么开头</p>
 <p>stus = Student.query.filter&#40;Student.s_name.startswith&#40;’张’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print(stus&amp;#41;   # startswith(&apos;张&apos;&amp;#41;  查询 &apos;张&apos; 开头的数据
+<pre><code>print(stus)   # startswith(&apos;张&apos;)  查询 &apos;张&apos; 开头的数据
 </code></pre></li>
 <li><p>endswith：以什么结束</p>
 <p>stus = Student.query.filter&#40;Student.s_name.endswith&#40;’四’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print(stus&amp;#41;   # endswith(&apos;四&apos;&amp;#41;    查询 &apos;四&apos; 结尾的数据
+<pre><code>print(stus)   # endswith(&apos;四&apos;)    查询 &apos;四&apos; 结尾的数据
 </code></pre></li>
 <li><p>like&#40;&#41;：模糊查询</p>
 <p>stus = Student.query.filter&#40;Student.s_name.like&#40;’__老%’&#41;&#41;.all&#40;&#41;</p>
-<pre><code>print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 &apos;老&apos; 的数据
+<pre><code>print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 的数据
 </code></pre><ul>
 <li>% ：表示匹配任何长度的字符</li>
 <li>_ ：表示匹配一个占位</li>
@@ -313,7 +313,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Flask框架脑图day-02/" data-id="cjr93r41z0004owvei4nho1sl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Flask框架脑图day-02/" data-id="cjr93tfp1000434veo2pymfba" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -410,7 +410,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h5 id="安装-pip-install-flask-sqlalchemy"><a href="#安装-pip-install-flask-sqlalchemy" class="headerlink" title="安装: pip install flask-sqlalchemy"></a>安装: pip install flask-sqlalchemy</h5><p>创建对象:</p>
 <p>from flask_sqlalchemy import SQLALChemy<br>db = SQLALChemy&#40;&#41;</p>
 <h3 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义:"></a>模型定义:</h3><p>class User&#40;db.Model&#41;:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 定义自增的主键id</span><br><span class="line">id = db.Column&amp;#40;db.Integer, primary_key=True, autoincrement=True&amp;#41;</span><br><span class="line"># 定义长度为10的name字段，类型为字符串，唯一且不能为空</span><br><span class="line">name = db.Column&amp;#40;db.String&amp;#40;10&amp;#41;, unique=True, nullable=False&amp;#41;</span><br><span class="line"># 定义密码password字段</span><br><span class="line">password = db.Column&amp;#40;db.String&amp;#40;249&amp;#41;, nullable=False&amp;#41;</span><br><span class="line"></span><br><span class="line">__tablename__ = &apos;flask_user&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 定义自增的主键id</span><br><span class="line">id = db.Column(db.Integer, primary_key=True, autoincrement=True)</span><br><span class="line"># 定义长度为10的name字段，类型为字符串，唯一且不能为空</span><br><span class="line">name = db.Column(db.String(10), unique=True, nullable=False)</span><br><span class="line"># 定义密码password字段</span><br><span class="line">password = db.Column(db.String(249), nullable=False)</span><br><span class="line"></span><br><span class="line">__tablename__ = &apos;flask_user&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="配置链接"><a href="#配置链接" class="headerlink" title="配置链接:"></a>配置链接:</h3><p>flask对象.config[‘SQLALCHEMY_DATABASE_URI’]=’mysql+pymysql://root:<a href="mailto:123456@127.0.0.1" target="_blank" rel="noopener">123456@127.0.0.1</a>:2206/flask8’</p>
 <p>初始化: db.init_app&#40;flask对象&#41;</p>
 <h3 id="模型的映射"><a href="#模型的映射" class="headerlink" title="模型的映射"></a>模型的映射</h3><ul>
@@ -471,7 +471,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Django框架脑图/" data-id="cjr93r45k001eowve4t45zphn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Django框架脑图/" data-id="cjr93tfr3001a34ve1vhm3e3o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -859,7 +859,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/14/文章编辑器模板/" data-id="cjr93r44n0011owvelb8qq9vq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/14/文章编辑器模板/" data-id="cjr93tfqi001234veykyjt42v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -948,7 +948,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/09/day-07上传图片和分页/" data-id="cjr93r43x000nowve23whv14w" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/09/day-07上传图片和分页/" data-id="cjr93tfpv000l34ve78g9sp7y" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -995,7 +995,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/08/day-05注册登录/" data-id="cjr93r452001aowvew2ejfmmw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/08/day-05注册登录/" data-id="cjr93tfr9001d34ver12i38a4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1056,7 +1056,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/07/day-04页面渲染/" data-id="cjr93r43u000kowverwx9pmt8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/07/day-04页面渲染/" data-id="cjr93tfps000i34vezu96s4kx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1114,7 +1114,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/04/django数据库模型设计-1/" data-id="cjr93r443000powve9fh7kpfx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/04/django数据库模型设计-1/" data-id="cjr93tfq0000n34verd3wt9um" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1162,7 +1162,7 @@ print(stus&amp;#41;   # like(&apos;__老%&apos;&amp;#41;     查询第三位是 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/03/数据库表的增删改查/" data-id="cjr93r44h000xowvei4qdz1np" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/03/数据库表的增删改查/" data-id="cjr93tfqg001034velrmpwvlt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1324,7 +1324,7 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django/" data-id="cjr93r4250005owveld5oposr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django/" data-id="cjr93tfny000034vemtd46sqr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
