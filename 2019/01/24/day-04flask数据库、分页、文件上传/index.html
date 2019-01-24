@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="day_04 ===================================================
+# 且 and_ : 默认就是且的操作，可不写
+stus = Student.query.filter(and_(Student.s_name.contains(&amp;apos;哥&amp;ap">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>day_04flask数据库、分页、文件上传 | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="day_04 =================================================== # 且 and_ : 默认就是且的操作，可不写 stus = Student.query.filter(and_(Student.s_name.contains(&amp;apos;哥&amp;apos;),                             Student.s_age &amp;g">
+<meta name="keywords" content="flask框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day_04flask数据库、分页、文件上传">
+<meta property="og:url" content="http://yoursite.com/2019/01/24/day-04flask数据库、分页、文件上传/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="day_04 =================================================== # 且 and_ : 默认就是且的操作，可不写 stus = Student.query.filter(and_(Student.s_name.contains(&amp;apos;哥&amp;apos;),                             Student.s_age &amp;g">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190124172218.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190124172246.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190124172159.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190124172058.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190124172135.png">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20190124171017.png">
+<meta property="og:updated_time" content="2019-01-24T09:30:58.389Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day_04flask数据库、分页、文件上传">
+<meta name="twitter:description" content="day_04 =================================================== # 且 and_ : 默认就是且的操作，可不写 stus = Student.query.filter(and_(Student.s_name.contains(&amp;apos;哥&amp;apos;),                             Student.s_age &amp;g">
+<meta name="twitter:image" content="http://yoursite.com/images/QQ截图20190124172218.png">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-day-04flask数据库、分页、文件上传" class="post-day-04flask数据库、分页、文件上传 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      day_04flask数据库、分页、文件上传
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/24/day-04flask数据库、分页、文件上传/" data-id="cjraf225m000ftgveal5nqv08" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="day-04"><a href="#day-04" class="headerlink" title="day_04 ==================================================="></a>day_04 ===================================================</h3><p><img src="/images/QQ截图20190124172218.png" alt=""><br><img src="/images/QQ截图20190124172246.png" alt=""></p>
+<pre><code># 且 and_ : 默认就是且的操作，可不写
+stus = Student.query.filter(and_(Student.s_name.contains(&apos;哥&apos;),
+                            Student.s_age &gt; 22)).all()
+# 或 or_
+stus = Student.query.filter(or_(Student.s_name.contains(&apos;哥&apos;),
+                            Student.s_age &gt; 22)).all()
+# 非 not_
+stus = Student.query.filter(not_(Student.s_name.contains(&apos;哥&apos;)), Student.s_age &gt; 22).all()
+print(stus)
+
+return &apos;查询成功&apos;
+</code></pre><h3 id="分页操作———————"><a href="#分页操作———————" class="headerlink" title="分页操作———————"></a>分页操作———————</h3><p><img src="/images/QQ截图20190124172159.png" alt=""><br>@blue.route(‘/all_stu/‘, methods=[‘GET’])<br>def all_stu():<br>    if request.method == ‘GET’:<br>        page = int(request.args.get(‘page’, 1)) # (‘page’, 1) page获取页码，如果没写，默认为第1页<br>        pg = Student.query.paginate(page, 5) # paginate(n, m)第n页 每页m条数据</p>
+<pre><code># 获取当页的数据
+stus = pg.items
+return render_template(&apos;stus.html&apos;, stus=stus, pg=pg)
+</code></pre><h3 id="一对多———————"><a href="#一对多———————" class="headerlink" title="一对多———————-"></a>一对多———————-</h3><p>@blue.route(‘/add_grade/‘, methods=[‘GET’])<br>def add_grade():<br>    if request.method == ‘GET’:<br>        gnames = [‘Python’, ‘Java’, ‘Php’, ‘C++’, ‘C’]<br>        for name in gnames:<br>            g = Grade()<br>            g.g_name = name<br>            db.session.add(g)<br>        db.session.commit()</p>
+<pre><code>return &apos;创建班级信息成功&apos;
+</code></pre><p>@blue.route(‘/create_stu_grade/‘, methods=[‘GET’])<br>def create_stu_grade():<br>    if request.method == ‘GET’:</p>
+<pre><code># 获取id为1和2的学生
+stu1 = Student.query.get(1)
+stu2 = Student.query.get(3)
+# 分配给python班级
+g = Grade.query.filter(Grade.g_name==&apos;Python&apos;).first()
+stu1.g_id = g.id
+stu1.save()
+
+stu2.g_id = g.id
+stu2.save()
+
+return &apos;分配学生成功&apos;
+</code></pre><p>@blue.route(‘/sel_stu_by_grade/‘, methods=[‘GET’])<br>def sel_stu_by_grade():<br>    if request.method == ‘GET’:<br>        grade = Grade.query.filter_by(g_name=’Python’).first()</p>
+<pre><code># 通过班级查学生
+stus = grade.s_g
+stus_name = [stu.s_name for stu in stus]
+return &apos;改班级下的学生姓名为：%s&apos; %stus_name
+</code></pre><p>@blue.route(‘/stu_grade_by_stu/‘, methods=[‘GET’])<br>def stu_grade_by_stu():<br>    if request.method == ‘GET’:<br>        stu = Student.query.filter(Student.s_name==’张三’).first()</p>
+<pre><code># 通过学生查班级
+grade = stu.g
+return &apos;张三属于%s班级&apos; % grade.g_name
+</code></pre><h3 id="多对多—————————–"><a href="#多对多—————————–" class="headerlink" title="多对多—————————–"></a>多对多—————————–</h3><h3 id="添加课程"><a href="#添加课程" class="headerlink" title="添加课程"></a>添加课程</h3><p>@blue.route(‘/add_cou/‘, methods=[‘GET’])<br>def add_cou():<br>    if request.method == ‘GET’:<br>        cou_names = [‘语文’, ‘数学’, ‘英语’, ‘物理’, ‘生物’, ‘地理’, ‘政治’, ‘化学’]<br>        c = []<br>        for name in cou_names:<br>            cou = Course()<br>            cou.c_name = name<br>            c.append(cou)<br>        db.session.add_all(c)<br>        db.session.commit()<br>        return ‘添加成功’</p>
+<h3 id="中间表添加数据"><a href="#中间表添加数据" class="headerlink" title="中间表添加数据"></a>中间表添加数据</h3><p>@blue.route(‘/stu_cou/‘, methods=[‘GET’])<br>def stu_cou():<br>    if request.method == ‘GET’:</p>
+<pre><code># 给小明添加英语和物理
+stu = Student.query.filter(Student.s_name==&apos;张三&apos;).first()
+stu1 = Student.query.filter(Student.s_name==&apos;李四&apos;).first()
+cou1 = Course.query.filter(Course.c_name==&apos;英语&apos;).first()
+cou2 = Course.query.filter(Course.c_name==&apos;物理&apos;).first()
+# 添加      stu.cou 是一个[]
+# stu.cou.append(cou1)
+# stu.cou.append(cou2)   # django里面: cou.stu.add(stu)
+# cou1.stu.append(stu1)
+# 删除
+stu.cou.remove(cou1)
+db.session.commit()
+
+return &apos;添加学生课程成功&apos;
+</code></pre><h3 id="圖片上傳"><a href="#圖片上傳" class="headerlink" title="圖片上傳"></a>圖片上傳</h3><p><img src="/images/QQ截图20190124172058.png" alt=""><br><img src="/images/QQ截图20190124172135.png" alt=""><br>@blue.route(‘/edit_stu/<a href="int:id" target="_blank" rel="noopener">int:id</a>/‘, methods=[‘GET’, ‘POST’])<br>def edit_stu(id):<br>    if request.method == ‘GET’:<br>        stu = Student.query.get(id)<br>        return render_template(‘edit.html’, stu=stu)<br>    if request.method == ‘POST’:</p>
+<pre><code># 接收图片并保存图片
+icon = request.files.get(&apos;image&apos;)
+# 获取项目根路径
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 获取媒体文件的路径
+STSTIC_DIR = os.path.join(BASE_DIR, &apos;static&apos;)
+MEDIA_DIR = os.path.join(STSTIC_DIR, &apos;media&apos;)
+# 随机生成图片名称
+filename = str(uuid.uuid4())
+a = icon.mimetype.split(&apos;/&apos;)[-1:][0]
+name = filename + &apos;.&apos; + a
+# 拼接图片地址
+path = os.path.join(MEDIA_DIR, name)
+icon.save(path)
+# print(icon)
+# 修改用户头像icon字段
+stu = Student.query.get(id)
+stu.icon = name
+stu.save()
+# 重定向到列表页面
+
+return redirect(url_for(&apos;app.all_stu&apos;))
+</code></pre><p>####go语言资料<br><img src="/images/QQ截图20190124171017.png" alt=""></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/01/24/day-04flask数据库、分页、文件上传/">
+    <time datetime="2019-01-24T09:13:30.000Z" class="entry-date">
+        2019-01-24
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask框架/">flask框架</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2019/01/23/day03flask框架（增、删、改、查）/" rel="next">day03flask框架（增、删、改、查） <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/24/day-04flask数据库、分页、文件上传/">day_04flask数据库、分页、文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/23/day03flask框架（增、删、改、查）/">day03flask框架（增、删、改、查）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/Flask框架脑图day-02/">Flask框架脑图day_02</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/Django框架脑图/">Djangoæ框架脑图</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/14/文章编辑器模板/">文章编辑器模板</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">8</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 10px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

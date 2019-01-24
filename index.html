@@ -62,6 +62,131 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-day-04flask数据库、分页、文件上传" class="post-day-04flask数据库、分页、文件上传 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/01/24/day-04flask数据库、分页、文件上传/">day_04flask数据库、分页、文件上传</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/24/day-04flask数据库、分页、文件上传/" data-id="cjraf225m000ftgveal5nqv08" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="day-04"><a href="#day-04" class="headerlink" title="day_04 ==================================================="></a>day_04 ===================================================</h3><p><img src="/images/QQ截图20190124172218.png" alt=""><br><img src="/images/QQ截图20190124172246.png" alt=""></p>
+<pre><code># 且 and_ : 默认就是且的操作，可不写
+stus = Student.query.filter(and_(Student.s_name.contains(&apos;哥&apos;),
+                            Student.s_age &gt; 22)).all()
+# 或 or_
+stus = Student.query.filter(or_(Student.s_name.contains(&apos;哥&apos;),
+                            Student.s_age &gt; 22)).all()
+# 非 not_
+stus = Student.query.filter(not_(Student.s_name.contains(&apos;哥&apos;)), Student.s_age &gt; 22).all()
+print(stus)
+
+return &apos;查询成功&apos;
+</code></pre><h3 id="分页操作———————"><a href="#分页操作———————" class="headerlink" title="分页操作———————"></a>分页操作———————</h3><p><img src="/images/QQ截图20190124172159.png" alt=""><br>@blue.route(‘/all_stu/‘, methods=[‘GET’])<br>def all_stu():<br>    if request.method == ‘GET’:<br>        page = int(request.args.get(‘page’, 1)) # (‘page’, 1) page获取页码，如果没写，默认为第1页<br>        pg = Student.query.paginate(page, 5) # paginate(n, m)第n页 每页m条数据</p>
+<pre><code># 获取当页的数据
+stus = pg.items
+return render_template(&apos;stus.html&apos;, stus=stus, pg=pg)
+</code></pre><h3 id="一对多———————"><a href="#一对多———————" class="headerlink" title="一对多———————-"></a>一对多———————-</h3><p>@blue.route(‘/add_grade/‘, methods=[‘GET’])<br>def add_grade():<br>    if request.method == ‘GET’:<br>        gnames = [‘Python’, ‘Java’, ‘Php’, ‘C++’, ‘C’]<br>        for name in gnames:<br>            g = Grade()<br>            g.g_name = name<br>            db.session.add(g)<br>        db.session.commit()</p>
+<pre><code>return &apos;创建班级信息成功&apos;
+</code></pre><p>@blue.route(‘/create_stu_grade/‘, methods=[‘GET’])<br>def create_stu_grade():<br>    if request.method == ‘GET’:</p>
+<pre><code># 获取id为1和2的学生
+stu1 = Student.query.get(1)
+stu2 = Student.query.get(3)
+# 分配给python班级
+g = Grade.query.filter(Grade.g_name==&apos;Python&apos;).first()
+stu1.g_id = g.id
+stu1.save()
+
+stu2.g_id = g.id
+stu2.save()
+
+return &apos;分配学生成功&apos;
+</code></pre><p>@blue.route(‘/sel_stu_by_grade/‘, methods=[‘GET’])<br>def sel_stu_by_grade():<br>    if request.method == ‘GET’:<br>        grade = Grade.query.filter_by(g_name=’Python’).first()</p>
+<pre><code># 通过班级查学生
+stus = grade.s_g
+stus_name = [stu.s_name for stu in stus]
+return &apos;改班级下的学生姓名为：%s&apos; %stus_name
+</code></pre><p>@blue.route(‘/stu_grade_by_stu/‘, methods=[‘GET’])<br>def stu_grade_by_stu():<br>    if request.method == ‘GET’:<br>        stu = Student.query.filter(Student.s_name==’张三’).first()</p>
+<pre><code># 通过学生查班级
+grade = stu.g
+return &apos;张三属于%s班级&apos; % grade.g_name
+</code></pre><h3 id="多对多—————————–"><a href="#多对多—————————–" class="headerlink" title="多对多—————————–"></a>多对多—————————–</h3><h3 id="添加课程"><a href="#添加课程" class="headerlink" title="添加课程"></a>添加课程</h3><p>@blue.route(‘/add_cou/‘, methods=[‘GET’])<br>def add_cou():<br>    if request.method == ‘GET’:<br>        cou_names = [‘语文’, ‘数学’, ‘英语’, ‘物理’, ‘生物’, ‘地理’, ‘政治’, ‘化学’]<br>        c = []<br>        for name in cou_names:<br>            cou = Course()<br>            cou.c_name = name<br>            c.append(cou)<br>        db.session.add_all(c)<br>        db.session.commit()<br>        return ‘添加成功’</p>
+<h3 id="中间表添加数据"><a href="#中间表添加数据" class="headerlink" title="中间表添加数据"></a>中间表添加数据</h3><p>@blue.route(‘/stu_cou/‘, methods=[‘GET’])<br>def stu_cou():<br>    if request.method == ‘GET’:</p>
+<pre><code># 给小明添加英语和物理
+stu = Student.query.filter(Student.s_name==&apos;张三&apos;).first()
+stu1 = Student.query.filter(Student.s_name==&apos;李四&apos;).first()
+cou1 = Course.query.filter(Course.c_name==&apos;英语&apos;).first()
+cou2 = Course.query.filter(Course.c_name==&apos;物理&apos;).first()
+# 添加      stu.cou 是一个[]
+# stu.cou.append(cou1)
+# stu.cou.append(cou2)   # django里面: cou.stu.add(stu)
+# cou1.stu.append(stu1)
+# 删除
+stu.cou.remove(cou1)
+db.session.commit()
+
+return &apos;添加学生课程成功&apos;
+</code></pre><h3 id="圖片上傳"><a href="#圖片上傳" class="headerlink" title="圖片上傳"></a>圖片上傳</h3><p><img src="/images/QQ截图20190124172058.png" alt=""><br><img src="/images/QQ截图20190124172135.png" alt=""><br>@blue.route(‘/edit_stu/<a href="int:id" target="_blank" rel="noopener">int:id</a>/‘, methods=[‘GET’, ‘POST’])<br>def edit_stu(id):<br>    if request.method == ‘GET’:<br>        stu = Student.query.get(id)<br>        return render_template(‘edit.html’, stu=stu)<br>    if request.method == ‘POST’:</p>
+<pre><code># 接收图片并保存图片
+icon = request.files.get(&apos;image&apos;)
+# 获取项目根路径
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 获取媒体文件的路径
+STSTIC_DIR = os.path.join(BASE_DIR, &apos;static&apos;)
+MEDIA_DIR = os.path.join(STSTIC_DIR, &apos;media&apos;)
+# 随机生成图片名称
+filename = str(uuid.uuid4())
+a = icon.mimetype.split(&apos;/&apos;)[-1:][0]
+name = filename + &apos;.&apos; + a
+# 拼接图片地址
+path = os.path.join(MEDIA_DIR, name)
+icon.save(path)
+# print(icon)
+# 修改用户头像icon字段
+stu = Student.query.get(id)
+stu.icon = name
+stu.save()
+# 重定向到列表页面
+
+return redirect(url_for(&apos;app.all_stu&apos;))
+</code></pre><p>####go语言资料<br><img src="/images/QQ截图20190124171017.png" alt=""></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/01/24/day-04flask数据库、分页、文件上传/">
+    <time datetime="2019-01-24T09:13:30.000Z" class="entry-date">
+        2019-01-24
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask框架/">flask框架</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-day03flask框架（增、删、改、查）" class="post-day03flask框架（增、删、改、查） post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +202,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjr93tfrc001f34ve8rxb73me" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjraf22a7001dtgvehhejjpm2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -287,7 +412,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask框架/">flask框架</a></li></ul>
 
     </footer>
 </article>
@@ -313,7 +438,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Flask框架脑图day-02/" data-id="cjr93tfp1000434veo2pymfba" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Flask框架脑图day-02/" data-id="cjraf227v000ntgve2vmxwqz0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -471,7 +596,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Django框架脑图/" data-id="cjr93tfr3001a34ve1vhm3e3o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Django框架脑图/" data-id="cjraf225b000atgve6wpwf1rm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -859,7 +984,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/14/文章编辑器模板/" data-id="cjr93tfqi001234veykyjt42v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/14/文章编辑器模板/" data-id="cjraf229t0013tgvep17eii5o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -948,7 +1073,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/09/day-07上传图片和分页/" data-id="cjr93tfpv000l34ve78g9sp7y" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/09/day-07上传图片和分页/" data-id="cjraf227p000ktgvesesuw5uo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -995,7 +1120,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/08/day-05注册登录/" data-id="cjr93tfr9001d34ver12i38a4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/08/day-05注册登录/" data-id="cjraf22ag001gtgven60y304z" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1056,7 +1181,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/07/day-04页面渲染/" data-id="cjr93tfps000i34vezu96s4kx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/07/day-04页面渲染/" data-id="cjraf226z000itgvez1xrq7ri" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1114,7 +1239,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/04/django数据库模型设计-1/" data-id="cjr93tfq0000n34verd3wt9um" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/04/django数据库模型设计-1/" data-id="cjraf229w0015tgvex1h03m2o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1162,7 +1287,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/03/数据库表的增删改查/" data-id="cjr93tfqg001034velrmpwvlt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/03/数据库表的增删改查/" data-id="cjraf229z0017tgve6mihterl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1309,127 +1434,6 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
 
 
   
-    <article id="day-01-Django" class="day-01-Django post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/01/02/Django/">day-01 Django</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/02/Django/" data-id="cjr93tfny000034vemtd46sqr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h1><h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><h3 id="安装-pip-install-virtualenv"><a href="#安装-pip-install-virtualenv" class="headerlink" title="安装: pip install virtualenv"></a>安装: pip install virtualenv</h3><h3 id="使用-virtualenv-–no-site-packages-p-D-python3-python-exe-name"><a href="#使用-virtualenv-–no-site-packages-p-D-python3-python-exe-name" class="headerlink" title="使用: virtualenv –no-site-packages -p D:\python3\python.exe name"></a>使用: virtualenv –no-site-packages -p D:\python3\python.exe name</h3><ul>
-<li>–no-site-packages: 表示创建的虚拟环境为纯净的环境，不安装有其他的库</li>
-<li>-p: 表示虚拟环境中的python版本</li>
-</ul>
-<h3 id="pip使用"><a href="#pip使用" class="headerlink" title="pip使用"></a>pip使用</h3><ul>
-<li>pip list: 插看安装的库</li>
-<li>pip install xxx: 安装</li>
-</ul>
-<h3 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h3><ul>
-<li>Windows: 直接执行activate命令</li>
-<li>Mac/Linux/Ubuntu: 直接执行source activate命令</li>
-</ul>
-<h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><ul>
-<li>Windows/Mac/Linux/Ubuntu: 直接执行deactivate</li>
-</ul>
-<h2 id="Django项目"><a href="#Django项目" class="headerlink" title="Django项目"></a>Django项目</h2><h3 id="创建-django-amdin-startproject-项目名称"><a href="#创建-django-amdin-startproject-项目名称" class="headerlink" title="创建: django-amdin startproject 项目名称"></a>创建: django-amdin startproject 项目名称</h3><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><ul>
-<li><p>启动命令: python manage.py runserver。默认IP为127.0.0.1  默认端口为8000</p>
-</li>
-<li><p>修改启动端口: python manage.py runserver 端口</p>
-</li>
-<li><p>修改IP和端口: python manage.py runserver IP:端口</p>
-</li>
-<li><p>IP参数: 如果为0.0.0.0表示任何人都可以通过公网IP访问django项目</p>
-</li>
-<li><p>端口PORT参数: 如果端口设置为80，表示该端口可以不用写</p>
-<p><img src="/images/QQ截图20190102192808.png" alt=""></p>
-</li>
-</ul>
-<h2 id="Django模式"><a href="#Django模式" class="headerlink" title="Django模式"></a>Django模式</h2><h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><ul>
-<li>模型层: 定义模型和数据库中的表之间的关联关系</li>
-</ul>
-<h3 id="V"><a href="#V" class="headerlink" title="V"></a>V</h3><ul>
-<li>视图层: 定义业务逻辑</li>
-</ul>
-<h3 id="T"><a href="#T" class="headerlink" title="T"></a>T</h3><ul>
-<li>模板: HTML页面</li>
-</ul>
-<h2 id="数据库准备工作"><a href="#数据库准备工作" class="headerlink" title="数据库准备工作"></a>数据库准备工作</h2><h3 id="settings-py中配置"><a href="#settings-py中配置" class="headerlink" title="settings.py中配置"></a>settings.py中配置</h3><ul>
-<li><p>USER参数: 访问用户</p>
-</li>
-<li><p>PASSWORD参数: 密码</p>
-</li>
-<li><p>HOST参数: 访问数据库的地址</p>
-</li>
-<li><p>PORT参数: 访问数据库的端口</p>
-</li>
-<li><p>NAME参数: 数据库名</p>
-</li>
-<li><p>‘OPTIONS’:{‘isolation_level’:None}</p>
-<p>​</p>
-<p><img src="/images/QQ截图20190102192637.png" alt=""></p>
-<p><img src="/images/QQ截图20190102192718.png" alt=""></p>
-</li>
-</ul>
-<p><img src="/images/QQ截图20190102192747.png" alt=""></p>
-<p><img src="/images/QQ截图20190102192848.png" alt=""></p>
-<h3 id="安装pymysql"><a href="#安装pymysql" class="headerlink" title="安装pymysql"></a>安装pymysql</h3><ul>
-<li>使用pymysql连接数据库: 因为python3没有MySQLdb驱动，无法直接连接MySQL</li>
-<li>在工程目录的<strong>init</strong>.py文件中定义  pymysql.install_as_MySQLdb()</li>
-</ul>
-<h3 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h3><ul>
-<li><p>第一次迁移: python manege.py migrate</p>
-</li>
-<li><p>除开第一次迁移</p>
-<p><img src="/images/QQ截图20190102192907.png" alt=""></p>
-<ul>
-<li>生成迁移文件: python manage.py makemigrations</li>
-<li>执行迁移文件: python manage.py migrate</li>
-</ul>
-</li>
-</ul>
-<h3 id="插入管理员账号"><a href="#插入管理员账号" class="headerlink" title="插入管理员账号"></a>插入管理员账号</h3><ul>
-<li>python manage.py createsuperuser</li>
-</ul>
-<p><em>XMind: ZEN - Trial Version</em></p>
-<p><img src="/images/Django.png" alt=""></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/01/02/Django/">
-    <time datetime="2019-01-02T08:45:00.000Z" class="entry-date">
-        2019-01-02
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -1459,6 +1463,10 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
       <ul>
         
           <li>
+            <a href="/2019/01/24/day-04flask数据库、分页、文件上传/">day_04flask数据库、分页、文件上传</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/23/day03flask框架（增、删、改、查）/">day03flask框架（增、删、改、查）</a>
           </li>
         
@@ -1474,10 +1482,6 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
             <a href="/2019/01/14/文章编辑器模板/">文章编辑器模板</a>
           </li>
         
-          <li>
-            <a href="/2019/01/09/day-07上传图片和分页/">day_07上传图片和分页</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -1487,7 +1491,7 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">8</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">8</span></li></ul>
     </div>
   </aside>
 
@@ -1496,7 +1500,7 @@ return HttpResponse(&apos;查询所有的学生信息&apos;)
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/flask框架/" style="font-size: 10px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
+      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 10px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
     </div>
   </aside>
 
