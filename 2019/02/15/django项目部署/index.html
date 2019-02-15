@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="项目部署项目流程项目从0到1的过程需要产品、测试、前端、后端、运维共同维护，如下展示项目的设计流程:
+
+
+安装mysql前面有文章，不再赘述
+1.在云服务器中设置安全组开启3306端口
+
+2.在数据库中将本地数据库的数据传输到阿里云数据库中
+
+
+再通过Xftp软件将代码传到云服务器上
+
+将左边代码文">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>django项目部署 | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="项目部署项目流程项目从0到1的过程需要产品、测试、前端、后端、运维共同维护，如下展示项目的设计流程:   安装mysql前面有文章，不再赘述 1.在云服务器中设置安全组开启3306端口  2.在数据库中将本地数据库的数据传输到阿里云数据库中   再通过Xftp软件将代码传到云服务器上  将左边代码文件夹拖到右边/home/src目录下即可 安装python3.6在centos中，系统默认只提供py">
+<meta name="keywords" content="框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django项目部署">
+<meta property="og:url" content="http://yoursite.com/2019/02/15/django项目部署/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="项目部署项目流程项目从0到1的过程需要产品、测试、前端、后端、运维共同维护，如下展示项目的设计流程:   安装mysql前面有文章，不再赘述 1.在云服务器中设置安全组开启3306端口  2.在数据库中将本地数据库的数据传输到阿里云数据库中   再通过Xftp软件将代码传到云服务器上  将左边代码文件夹拖到右边/home/src目录下即可 安装python3.6在centos中，系统默认只提供py">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaxjqllhxj30u0143abn.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaxizzr70j30kg0h2n1i.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hly1fzaugaz1jij30gi0glglx.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fzav0gotdxj30r40iu0ui.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hly1fzav2387zvj30pg0iuq3z.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fzav4q6229j30pl0k2ag3.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hly1fzavjcbzgsj30md03zglh.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hly1fzavlqwk1xj30p60dvjri.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hly1fzavmigoo0j30oz0dgdg6.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaw7wpc6mj30h80353yi.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hly1fzawhp0rncj30hc0awmxq.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hly1fzawkx4grcj30hh0augmf.jpg">
+<meta property="og:updated_time" content="2019-02-15T07:04:04.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="django项目部署">
+<meta name="twitter:description" content="项目部署项目流程项目从0到1的过程需要产品、测试、前端、后端、运维共同维护，如下展示项目的设计流程:   安装mysql前面有文章，不再赘述 1.在云服务器中设置安全组开启3306端口  2.在数据库中将本地数据库的数据传输到阿里云数据库中   再通过Xftp软件将代码传到云服务器上  将左边代码文件夹拖到右边/home/src目录下即可 安装python3.6在centos中，系统默认只提供py">
+<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaxjqllhxj30u0143abn.jpg">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-django项目部署" class="post-django项目部署 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      django项目部署
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/15/django项目部署/" data-id="cjs5pq78j000v68ve7eylcxif" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h2><h3 id="项目流程"><a href="#项目流程" class="headerlink" title="项目流程"></a>项目流程</h3><p>项目从0到1的过程需要产品、测试、前端、后端、运维共同维护，如下展示项目的设计流程:</p>
+<p><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaxjqllhxj30u0143abn.jpg" alt=""></p>
+<p><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaxizzr70j30kg0h2n1i.jpg" alt=""></p>
+<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><p>前面有文章，不再赘述</p>
+<p>1.在云服务器中设置安全组开启3306端口</p>
+<p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzaugaz1jij30gi0glglx.jpg" alt="安全组"></p>
+<p>2.在数据库中将本地数据库的数据传输到阿里云数据库中</p>
+<p><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzav0gotdxj30r40iu0ui.jpg" alt=""></p>
+<p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzav2387zvj30pg0iuq3z.jpg" alt=""></p>
+<p>再通过Xftp软件将代码传到云服务器上</p>
+<p><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzav4q6229j30pl0k2ag3.jpg" alt=""></p>
+<p>将左边代码文件夹拖到右边/home/src目录下即可</p>
+<h3 id="安装python3-6"><a href="#安装python3-6" class="headerlink" title="安装python3.6"></a>安装python3.6</h3><p>在centos中，系统默认只提供python2.7的版本，但是项目我们使用的python3.6的版本。所有我们自己安装python3</p>
+<h4 id="安装Python3的方法"><a href="#安装Python3的方法" class="headerlink" title="安装Python3的方法"></a>安装Python3的方法</h4><p>首先安装依赖包</p>
+<p>安装Python3.6所需要的依赖包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y groupinstall &quot;Development tools&quot;</span><br><span class="line"></span><br><span class="line">yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</span><br></pre></td></tr></table></figure>
+<p>安装Python3.7还需额外安装依赖包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install libffi-devel -y</span><br></pre></td></tr></table></figure>
+<p>然后根据自己需求下载不同版本的Python3，我下载的是Python3.6.2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz</span><br><span class="line"></span><br><span class="line">然后解压压缩包，进入该目录，安装Python3</span><br><span class="line"></span><br><span class="line">tar -xvJf  Python-3.6.2.tar.xz</span><br><span class="line"></span><br><span class="line">cd Python-3.6.2</span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/python3</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>最后创建软链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/python3/bin/python3 /usr/bin/python3</span><br><span class="line"></span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3</span><br></pre></td></tr></table></figure>
+<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><h4 id="1-安装virtualenv"><a href="#1-安装virtualenv" class="headerlink" title="1. 安装virtualenv"></a>1. 安装virtualenv</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install python-virtualenv</span><br></pre></td></tr></table></figure>
+<h4 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2. 创建虚拟环境"></a>2. 创建虚拟环境</h4><p>在根目录下的home中创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /home</span><br><span class="line"># 创建四个文件目录（env中为环境目录，src为代码目录）</span><br><span class="line">mkdir conf env src log</span><br><span class="line">cd env</span><br><span class="line"># 在env中创建环境freshenv</span><br><span class="line">virtualenv --no-site-packages -p /usr/local/python3/bin/python3 freshenv</span><br><span class="line"># 安装项目所需要的库</span><br><span class="line">/home/env/freshenv/bin/pip3 install -r /home/src/fresh_shop/requirement.txt</span><br></pre></td></tr></table></figure>
+<h3 id="1-在测试环境中部署方式"><a href="#1-在测试环境中部署方式" class="headerlink" title="1. 在测试环境中部署方式"></a>1. 在测试环境中部署方式</h3><h4 id="1-1-home-src-fresh-shop-settings-py中修改"><a href="#1-1-home-src-fresh-shop-settings-py中修改" class="headerlink" title="1.1 /home/src/fresh_shop/settings.py中修改"></a>1.1 /home/src/fresh_shop/settings.py中修改</h4><p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzavjcbzgsj30md03zglh.jpg" alt=""></p>
+<h4 id="1-2-home-src-fresh-shop-urls-py"><a href="#1-2-home-src-fresh-shop-urls-py" class="headerlink" title="1.2 /home/src/fresh_shop/urls.py"></a>1.2 /home/src/fresh_shop/urls.py</h4><p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzavlqwk1xj30p60dvjri.jpg" alt=""></p>
+<h4 id="1-3-home-src-resh-shop-utils-middleware-py"><a href="#1-3-home-src-resh-shop-utils-middleware-py" class="headerlink" title="1.3 /home/src/resh_shop/utils/middleware.py"></a>1.3 /home/src/resh_shop/utils/middleware.py</h4><p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzavmigoo0j30oz0dgdg6.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 在/home/src/中创建freshshop.sh</span><br><span class="line">touch freshshop.sh</span><br><span class="line"># 在freshop.sh中写入启动命令（/home/env/freshenv/bin/python3 /home/src/fresh_shop/manage.py runserver 0.0.0.0:80</span><br><span class="line">）</span><br><span class="line">vim freshop.sh</span><br><span class="line"># 修改freshshop.sh的权限</span><br><span class="line">chmod -R 777 freshshop.sh</span><br><span class="line"># 启动服务器</span><br><span class="line">nohup ./freshshop.sh &amp;</span><br><span class="line"># src下面会自动生成nohup.out,请求都会写在里面</span><br></pre></td></tr></table></figure>
+<h3 id="2-正式环境中部署方式"><a href="#2-正式环境中部署方式" class="headerlink" title="2. 正式环境中部署方式"></a>2. 正式环境中部署方式</h3><p>正式环境中部署为nginx+uwsgi来部署django项目</p>
+<h4 id="2-1-安装nginx"><a href="#2-1-安装nginx" class="headerlink" title="2.1 安装nginx"></a>2.1 安装nginx</h4><p>a）添加nginx存储库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+<p>b) 安装nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+<p>c) 运行nginx</p>
+<p>Nginx不会自行启动。要运行Nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure>
+<p>nginx的运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx 查看nginx的状态</span><br><span class="line">systemctl start/stop/enable/disable nginx 启动/关闭/设置开机启动/禁止开机启动</span><br></pre></td></tr></table></figure>
+<p>d）系统启动时启用Nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable nginx</span><br></pre></td></tr></table></figure>
+<p>e）如果您正在运行防火墙，请运行以下命令以允许HTTP和HTTPS通信：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=http </span><br><span class="line"></span><br><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line"></span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h4 id="3-配置uwsgi"><a href="#3-配置uwsgi" class="headerlink" title="3.配置uwsgi"></a>3.配置uwsgi</h4><h5 id="3-1-安装uwsgi"><a href="#3-1-安装uwsgi" class="headerlink" title="3.1 安装uwsgi"></a>3.1 安装uwsgi</h5><p>在虚拟环境中安装uwsgi，假设虚拟环境安装在/home/env/freshenv中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/env/freshenv/bin/pip install uwsgi</span><br></pre></td></tr></table></figure>
+<h4 id="4-配置项目代码，配置项目nginx，配置uwsgi-ini等"><a href="#4-配置项目代码，配置项目nginx，配置uwsgi-ini等" class="headerlink" title="4. 配置项目代码，配置项目nginx，配置uwsgi.ini等"></a>4. 配置项目代码，配置项目nginx，配置uwsgi.ini等</h4><p>本案例的配置文件，都习惯将每一个项目的配置文件，日志文件，虚拟环境放在一起，这样开发方便，运维也方便维护</p>
+<p>项目的目录结构如下：</p>
+<p>[<img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaw7wpc6mj30h80353yi.jpg" alt="图"></p>
+<p>其中：</p>
+<p>conf是配置文件，用于存放项目的nginx.conf文件，uwsgi.ini文件</p>
+<p>logs是日志文件，用于存放nginx的启动成功和失败文件，以及uwsgi的运行日志文件</p>
+<p>env是用于存放虚拟环境</p>
+<p>src是项目文件，该目录下上传的是目录代码</p>
+<p>在conf中创建两个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch freshnginx.conf</span><br><span class="line">touch freshuwsgi.ini</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-配置nginx-conf文件"><a href="#4-1-配置nginx-conf文件" class="headerlink" title="4.1 配置nginx.conf文件"></a>4.1 配置nginx.conf文件</h4><p><strong>首先</strong>：编写自己项目的nginx.conf文件如下：</p>
+<p>每一个项目对应有一个自己定义的nginx的配置文件，我定义为freshnginx.conf文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 1 server&#123;</span><br><span class="line"> 2     listen  80;</span><br><span class="line"> 3     server_name 39.108.58.209;</span><br><span class="line"> 4     access_log /home/logs/freshaccess.log;</span><br><span class="line"> 5     error_log /home/logs/fresherror.log;</span><br><span class="line"> 6 </span><br><span class="line"> 7     location / &#123;</span><br><span class="line"> 8         include uwsgi_params;</span><br><span class="line"> 9         uwsgi_pass 127.0.0.1:8890;</span><br><span class="line">10 &#125;</span><br><span class="line">11 </span><br><span class="line">12     location /static/ &#123;</span><br><span class="line">13         alias /home/src/fresh_shop/static/;</span><br><span class="line">14 &#125;</span><br><span class="line">15 </span><br><span class="line">16     location /media/ &#123;</span><br><span class="line">17         alias /home/src/fresh_shop/media/;</span><br><span class="line">18     &#125;</span><br><span class="line">19 &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>其次</strong>：修改总的nginx的配置文件，让总的nginx文件包含我们自定义的项目的freshnginx.conf文件</p>
+<p>总的nginx配置文件在：/etc/nginx/nginx.conf中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzawhp0rncj30hc0awmxq.jpg" alt=""></p>
+<p>以上步骤操作完成以后，需要重启nginx：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<p>如果自定义的axfnginx.conf文件没有错误的话，查看nginx的运行状态会有如下的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure>
+<p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzawkx4grcj30hh0augmf.jpg" alt=""></p>
+<h4 id="4-2-配置uwsgi文件"><a href="#4-2-配置uwsgi文件" class="headerlink" title="4.2 配置uwsgi文件"></a>4.2 配置uwsgi文件</h4><p>在conf文件夹下除了包含自定义的freshnginx.conf文件，还有我们定义的freshuwsgi.ini文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1 [uwsgi]</span><br><span class="line"># 守护进程</span><br><span class="line">2 master = true</span><br><span class="line"># 进程个数</span><br><span class="line">3 processes = 4</span><br><span class="line"># 项目地址</span><br><span class="line">4 chdir = /home/src/fresh_shop</span><br><span class="line"># 指定python版本</span><br><span class="line">5 pythonpath = /home/env/freshenv/bin/python3</span><br><span class="line"># 指定uwsgi文件</span><br><span class="line">6 module = fresh_shop.wsgi</span><br><span class="line"># 和nginx通信地址:端口</span><br><span class="line">7 socket = 127.0.0.1:8890</span><br><span class="line"># 日志文件地址</span><br><span class="line">8 logto = /home/logs/freshuwsgi.log</span><br></pre></td></tr></table></figure>
+<p>运行项目:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br><span class="line">/home/env/freshenv/bin/uwsgi --ini /home/conf/freshuwsgi.ini</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Linux文件颜色代表含义：</span><br><span class="line">蓝色表示目录</span><br><span class="line">绿色表示可执行文件</span><br><span class="line">红色表示压缩文件</span><br><span class="line">浅蓝色表示链接文件</span><br><span class="line">白色表示其他文件</span><br><span class="line">黄色是设备文件，包括block, char, fifo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 更改权限</span><br><span class="line">chmod -R 777 freshshop.sh</span><br><span class="line">查看nginx状态</span><br><span class="line">systemctl status nginx</span><br><span class="line"># 删除文件</span><br><span class="line">rm -rf filename</span><br><span class="line"># 查看端口</span><br><span class="line">netstat -lntp</span><br><span class="line"># 强制关闭端口号</span><br><span class="line">kill -9 端口号 </span><br><span class="line"># 查看文件（直接到结尾，会实时更新，cat不会）</span><br><span class="line">tail -f freshuwsgi.log</span><br></pre></td></tr></table></figure>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/02/15/django项目部署/">
+    <time datetime="2019-02-15T07:02:09.000Z" class="entry-date">
+        2019-02-15
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2019/01/24/day-04flask数据库、分页、文件上传/" rel="next">day_04flask数据库、分页、文件上传 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/15/django项目部署/">django项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/day-04flask数据库、分页、文件上传/">day_04flask数据库、分页、文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/23/day03flask框架（增、删、改、查）/">day03flask框架（增、删、改、查）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/Flask框架脑图day-02/">Flask框架脑图day_02</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/Django框架脑图/">Djangoæ框架脑图</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 13.33px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 10px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 16.67px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
