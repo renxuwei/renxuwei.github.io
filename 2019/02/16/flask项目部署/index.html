@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="通过nohup挂载上去：
+1.安装项目文件：先在home下面的src文件夹下面，通过xftp6把本地项目文件放在服务器的src文件下面或者在代码托管平台下载代码 git pull 地址
+2.安装虚拟环境：先进入home文件夹下面，然后进入文件env文件夹virtualenv –no-site-pac">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>flask项目部署 | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="通过nohup挂载上去： 1.安装项目文件：先在home下面的src文件夹下面，通过xftp6把本地项目文件放在服务器的src文件下面或者在代码托管平台下载代码 git pull 地址 2.安装虚拟环境：先进入home文件夹下面，然后进入文件env文件夹virtualenv –no-site-packages -p /usr/local/python3/bin/python3 ajenv3.下载环">
+<meta name="keywords" content="flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flask项目部署">
+<meta property="og:url" content="http://yoursite.com/2019/02/16/flask项目部署/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="通过nohup挂载上去： 1.安装项目文件：先在home下面的src文件夹下面，通过xftp6把本地项目文件放在服务器的src文件下面或者在代码托管平台下载代码 git pull 地址 2.安装虚拟环境：先进入home文件夹下面，然后进入文件env文件夹virtualenv –no-site-packages -p /usr/local/python3/bin/python3 ajenv3.下载环">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-16T01:21:39.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flask项目部署">
+<meta name="twitter:description" content="通过nohup挂载上去： 1.安装项目文件：先在home下面的src文件夹下面，通过xftp6把本地项目文件放在服务器的src文件下面或者在代码托管平台下载代码 git pull 地址 2.安装虚拟环境：先进入home文件夹下面，然后进入文件env文件夹virtualenv –no-site-packages -p /usr/local/python3/bin/python3 ajenv3.下载环">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-flask项目部署" class="post-flask项目部署 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      flask项目部署
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/16/flask项目部署/" data-id="cjs6sr37m000r90versuja9gi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>通过nohup挂载上去：</p>
+<p>1.安装项目文件：先在home下面的src文件夹下面，通过xftp6把本地项目文件放在服务器的src文件下面<br>或者在代码托管平台下载代码 git pull 地址</p>
+<p>2.安装虚拟环境：先进入home文件夹下面，然后进入文件env文件夹<br>virtualenv –no-site-packages -p /usr/local/python3/bin/python3 ajenv<br>3.下载环境需要的安装包<br>/home/env/ajenv/bin/pip3 install -r /home/src/aj/requirement.txt<br>4.在虚拟环境下运行manage.py<br>/home/env/ajenv/bin/python3 /home/src/aj/manage.py runserver -p 8080 -h 0.0.0.0<br>5.可以在浏览器中进入项目<br>netstat -lntp 查看端口的状态<br>创建一个文件：touch aj_start.sh<br>修改文件的内容为：/home/env/ajenv/bin/python3 /home/src/aj/manage.py runserver -p 8080 -h 0.0.0.0<br>6.杀掉相应的端口<br>给文件权限<br>method -R 777 aj_start.sh<br>7.挂载项目到后台：<br>nohup ./aj_start.sh &amp;<br>8.在浏览器中访问 39.96.18.59:8080/user/login/(但是现在没有传数据库，暂时不能从数据库中获取信息)<br>也可以在后台挂载</p>
+<p>通过nginx+uwsgi挂载aj项目<br>9.看一下是否配置好了文件<br>vim /etc/nginx/nginx.conf<br>在命令行输入set number 看上你第37行是否配置了.conf结尾的文件</p>
+<p>10.进入conf文件夹下面<br>cd /home/conf/<br>创建文件夹<br>touch ajnginx.conf</p>
+<p>11.编辑文件：<br>配置nginx中的文件</p>
+<p>vim ajnginx.conf</p>
+<p>在文件里面修改文件</p>
+<p>server {<br>    listen 8080;<br>    server_name 39.96.18.59;</p>
+<pre><code>access_log /home/logs/ajaccess.log;
+error_log /home/logs/ajerror.log;
+
+location / {
+    include uwsgi_params;
+    uwsgi_pass 127.0.0.1:8099;
+
+    uwsgi_param UWSGI_CHDIR /home/src/aj;
+    uwsgi_param UWSGI_SCRIPT manage:app;
+
+
+
+}
+</code></pre><p>}</p>
+<p>12.配置uwsgi文件：<br>创建文件夹<br>touch ajuwsgi.ini<br>编辑文件：<br>vim ajuwsgi.ini</p>
+<p>[uwsgi]<br>master = true<br>socket = 127.0.0.1:8099<br>chdir = /home/src/aj<br>pythonpath = /home/env/ajenv/bin/python3<br>callable = app<br>logto = /home/logs/ajuwsgi.log</p>
+<p>13.启动nginx<br>systemctl restart nginx<br>(如果出现错误，就需要systemctl status nginx查看状态，里面有出错的原因和位置)</p>
+<p>14.安装uwsgi<br>/home/env/ajenv/bin/pip3 install uwsgi</p>
+<p>15.启动命令：<br>/home/env/ajenv/bin/uwsgi –ini /home/conf/ajuwsgi.ini &amp;</p>
+<p>16.可以访问地址了</p>
+<p>17.如果启动出现问题，可以看文件：<br>cd /home/logs/<br>tail -f ajuwsgi.log</p>
+<p>可看到日志文件的最新内容</p>
+<p>18.数据库的配置和传输：<br>在数据库中本地数据库 结构同步到 服务器上相应的数据库<br>如果不行，可以数据传输</p>
+<p>19.解析路由：<br>cd /home/src/<br>cd aj<br>vim app/house_views.py<br>退出</p>
+<p>vim manage.py<br>添加路由：<br>from flask import render_template<br>@app.route(‘/‘)<br>def index():<br>    return render_template(‘index.html’)</p>
+<p>20.再通过ngnix启动uwsgi<br>/home/env/ajenv/bin/uwsgi –ini /home/conf/ajuwsgi.ini &amp;</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/02/16/flask项目部署/">
+    <time datetime="2019-02-16T01:20:25.000Z" class="entry-date">
+        2019-02-16
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2019/02/15/django项目部署/" rel="next">django项目部署 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/16/flask项目部署/">flask项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/15/django项目部署/">django项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/day-04flask数据库、分页、文件上传/">day_04flask数据库、分页、文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/23/day03flask框架（增、删、改、查）/">day03flask框架（增、删、改、查）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/Flask框架脑图day-02/">Flask框架脑图day_02</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 15px;">Linux学习</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/flask框架/" style="font-size: 12.5px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 17.5px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
