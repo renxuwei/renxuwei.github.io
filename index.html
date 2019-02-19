@@ -62,6 +62,121 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="linux-操作命令" class="linux-操作命令 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/02/19/操作命令/">操作命令</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/操作命令/" data-id="cjsbiv4wk001j8gve5ua6lklo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>转自：<a href="http://www.cnblogs.com/xiaochaohuashengmi/archive/2011/10/18/2216279.html" target="_blank" rel="noopener">http://www.cnblogs.com/xiaochaohuashengmi/archive/2011/10/18/2216279.html</a></p>
+<p>1.linux下启动mysql的命令：<br>mysqladmin start<br>/ect/init.d/mysql start (前面为mysql的安装路径)</p>
+<p>2.linux下重启mysql的命令：<br>mysqladmin restart<br>/ect/init.d/mysql restart (前面为mysql的安装路径)</p>
+<p>3.linux下关闭mysql的命令：<br>mysqladmin shutdown<br>/ect/init.d/mysql shutdown (前面为mysql的安装路径)</p>
+<p>4.连接本机上的mysql：<br>进入目录mysql\bin，再键入命令mysql -uroot -p， 回车后提示输入密码。<br>退出mysql命令：exit（回车）</p>
+<p>5.修改mysql密码：<br>mysqladmin -u用户名 -p旧密码 password 新密码<br>或进入mysql命令行SET PASSWORD FOR root=PASSWORD(“root”);</p>
+<p>6.增加新用户。（注意：mysql环境中的命令后面都带一个分号作为命令结束符）<br>grant select on 数据库.<em> to 用户名@登录主机 identified by “密码”<br>如增加一个用户test密码为123，让他可以在任何主机上登录， 并对所有数据库有查询、插入、修改、删除的权限。首先用以root用户连入mysql，然后键入以下命令：<br>grant select,insert,update,delete on </em>.* to “ Identified by “123”;</p>
+<p>二、有关mysql数据库方面的操作<br>必须首先登录到mysql中，有关操作都是在mysql的提示符下进行，而且每个命令以分号结束</p>
+<p>1、显示数据库列表。<br>show databases;<br>2、显示库中的数据表：<br>use mysql； ／／打开库<br>show tables;<br>3、显示数据表的结构：<br>describe 表名;<br>4、建库：<br>create database 库名;</p>
+<p>GBK: create database test2 DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;<br>UTF8: CREATE DATABASE <code>test2</code> DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;<br>5、建表：<br>use 库名；<br>create table 表名(字段设定列表)；<br>6、删库和删表:<br>drop database 库名;<br>drop table 表名；<br>7、将表中记录清空：<br>delete from 表名;</p>
+<p>truncate table  表名;<br>8、显示表中的记录：<br>select * from 表名;</p>
+<p>9、编码的修改<br>如果要改变整个mysql的编码格式：<br>启动mysql的时候，mysqld_safe命令行加入<br>–default-character-set=gbk </p>
+<p>如果要改变某个库的编码格式：在mysql提示符后输入命令<br>alter database db_name default character set gbk;</p>
+<p>10.重命名表</p>
+<p>alter table t1 rename t2;</p>
+<p>11.查看sql语句的效率</p>
+<p> explain &lt; table_name &gt;</p>
+<p>例如：explain select * from t3 where id=3952602;</p>
+<p>12.用文本方式将数据装入数据库表中(例如D:/mysql.txt)</p>
+<p>mysql&gt; LOAD DATA LOCAL INFILE “D:/mysql.txt” INTO TABLE MYTABLE;</p>
+<p>三、数据的导入导出</p>
+<p>1、文本数据转到数据库中<br>文本数据应符合的格式：字段数据之间用tab键隔开，null值用来代替。例：<br>1 name duty 2006-11-23<br>数据传入命令 load data local infile “文件名” into table 表名;</p>
+<p>2、导出数据库和表<br>mysqldump –opt news &gt; news.sql（将数据库news中的所有表备份到news.sql文件，news.sql是一个文本文件，文件名任取。）<br>mysqldump –opt news author article &gt; author.article.sql（将数据库news中的author表和article表备份到author.article.sql文件， author.article.sql是一个文本文件，文件名任取。）<br>mysqldump –databases db1 db2 &gt; news.sql（将数据库dbl和db2备份到news.sql文件，news.sql是一个文本文件，文件名任取。）<br>mysqldump -h host -u user -p pass –databases dbname &gt; file.dump<br>就是把host上的以名字user，口令pass的数据库dbname导入到文件file.dump中<br>mysqldump –all-databases &gt; all-databases.sql（将所有数据库备份到all-databases.sql文件，all-databases.sql是一个文本文件，文件名任取。）</p>
+<p>3、导入数据<br>mysql &lt; all-databases.sql（导入数据库）<br>mysql&gt;source news.sql;（在mysql命令下执行，可导入表）</p>
+<p>一、连接MySQL<br>格式： mysql -h主机地址 -u用户名 －p用户密码</p>
+<p>1、例1：连接到本机上的MYSQL。</p>
+<p>首先在打开DOS窗口，然后进入目录 mysqlbin，再键入命令mysql -uroot -p，回车后提示你输密码，如果刚安装好MYSQL，超级用户root是没有密码的，故直接回车即可进入到MYSQL中了，MYSQL的提示符是： mysql&gt;。</p>
+<p>2、例2：连接到远程主机上的MYSQL。假设远程主机的IP为：110.110.110.110，用户名为root,密码为abcd123。则键入以下命令：</p>
+<p>mysql -h110.110.110.110 -uroot -pabcd123</p>
+<p>（注:u与root可以不用加空格，其它也一样）</p>
+<p>3、退出MYSQL命令： exit （回车）。</p>
+<p>二、修改密码</p>
+<p>格式：mysqladmin -u用户名 -p旧密码 password 新密码</p>
+<p>1、例1：给root加个密码ab12。首先在DOS下进入目录mysqlbin，然后键入以下命令：</p>
+<p>mysqladmin -uroot -password ab12</p>
+<p>注：因为开始时root没有密码，所以-p旧密码一项就可以省略了。</p>
+<p>2、例2：再将root的密码改为djg345。</p>
+<p>mysqladmin -uroot -pab12 password djg345</p>
+<p>三、增加新用户。（注意：和上面不同，下面的因为是MySQL环境中的命令，所以后面都带一个分号作为命令结束符）</p>
+<p>格式：grant select on 数据库.* to 用户名@登录主机 identified by \”密码\”</p>
+<p>例1、增加一个用户test1密码为abc，让他可以在任何主机上登录，并对所有数据库有查询、插入、修改、删除的权限。首先用以root用户连入MySQL，然后键入以下命令：</p>
+<p>grant select,insert,update,<br>delete on <em>.</em> to test1@\”%\” Identified by \”abc\”;</p>
+<p>但例1增加的用户是十分危险的，你想如某个人知道test1的密码，那么他就可以在internet上的任何一台电脑上登录你的MySQL数据库并对你的数据可以为所欲为了，解决办法见例2。</p>
+<p>例2、增加一个用户test2密码为abc,让他只可以在localhost上登录，并可以对数据库mydb进行查询、插入、修改、删除的操作 （localhost指本地主机，即MySQL数据库所在的那台主机），这样用户即使用知道test2的密码，他也无法从internet上直接访问数据 库，只能通过MySQL主机上的web页来访问。</p>
+<p>grant select,insert,update,<br>delete on mydb.* to test2@localhost identified by \”abc\”;</p>
+<p>如果你不想test2有密码，可以再打一个命令将密码消掉。</p>
+<p>grant select,insert,update,delete on mydb<br>.* to test2@localhost identified by \”\”;</p>
+<p>启动：net start mySql;<br>进入：mysql -u root -p/mysql -h localhost -u root -p databaseName;<br>列出数据库：show databases;<br>选择数据库：use databaseName;<br>列出表格：show tables；<br>显示表格列的属性：show columns from tableName；<br>建立数据库：source fileName.txt;<br>匹配字符：可以用通配符_代表任何一个字符，％代表任何字符串;<br>增加一个字段：alter table tabelName add column fieldName dateType;<br>增加多个字段：alter table tabelName add column fieldName1 dateType,add columns fieldName2 dateType;<br>多行命令输入:注意不能将单词断开;当插入或更改数据时，不能将字段的字符串展开到多行里，否则硬回车将被储存到数据中;<br>增加一个管理员帐户：grant all on <em>.</em> to user@localhost identified by “password”;<br>每条语句输入完毕后要在末尾填加分号’;’，或者填加’\g’也可以；<br>查询时间：select now();<br>查询当前用户：select user();<br>查询数据库版本：select version();<br>查询当前使用的数据库：select database();</p>
+<p>1、删除student_course数据库中的students数据表：<br>rm -f student_course/students.*</p>
+<p>2、备份数据库：(将数据库test备份)<br>mysqldump -u root -p test&gt;c:\test.txt<br>备份表格：(备份test数据库下的mytable表格)<br>mysqldump -u root -p test mytable&gt;c:\test.txt<br>将备份数据导入到数据库：(导回test数据库)<br>mysql -u root -p test</p>
+<p>3、创建临时表：(建立临时表zengchao)<br>create temporary table zengchao(name varchar(10));</p>
+<p>4、创建表是先判断表是否存在<br>create table if not exists students(……);</p>
+<p>5、从已经有的表中复制表的结构<br>create table table2 select * from table1 where 1&lt;&gt;1;</p>
+<p>6、复制表<br>create table table2 select * from table1;</p>
+<p>7、对表重新命名<br>alter table table1 rename as table2;</p>
+<p>8、修改列的类型<br>alter table table1 modify id int unsigned;//修改列id的类型为int unsigned<br>alter table table1 change id sid int unsigned;//修改列id的名字为sid，而且把属性修改为int unsigned</p>
+<p>9、创建索引<br>alter table table1 add index ind_id (id);<br>create index ind_id on table1 (id);<br>create unique index ind_id on table1 (id);//建立唯一性索引</p>
+<p>10、删除索引<br>drop index idx_id on table1;<br>alter table table1 drop index ind_id;</p>
+<p>11、联合字符或者多个列(将列id与”:”和列name和”=”连接)<br>select concat(id,’:’,name,’=’) from students;</p>
+<p>12、limit(选出10到20条)&lt;第一个记录集的编号是0&gt;<br>select * from students order by id limit 9,10;</p>
+<p>13、MySQL不支持的功能<br>事务，视图，外键和引用完整性，存储过程和触发器</p>
+<p>14、MySQL会使用索引的操作符号<br>&lt;,&lt;=,&gt;=,&gt;,=,between,in,不带%或者_开头的like</p>
+<p>15、使用索引的缺点<br>1)减慢增删改数据的速度；<br>2）占用磁盘空间；<br>3）增加查询优化器的负担；<br>当查询优化器生成执行计划时，会考虑索引，太多的索引会给查询优化器增加工作量，导致无法选择最优的查询方案；</p>
+<p>16、分析索引效率<br>方法：在一般的SQL语句前加上explain；<br>分析结果的含义：<br>1）table：表名；<br>2）type：连接的类型，(ALL/Range/Ref)。其中ref是最理想的；<br>3）possible_keys：查询可以利用的索引名；<br>4）key：实际使用的索引；<br>5）key_len：索引中被使用部分的长度（字节）；<br>6）ref：显示列名字或者”const”（不明白什么意思）；<br>7）rows：显示MySQL认为在找到正确结果之前必须扫描的行数；<br>8）extra：MySQL的建议；</p>
+<p>17、使用较短的定长列<br>1）尽可能使用较短的数据类型；<br>2）尽可能使用定长数据类型；<br>a）用char代替varchar，固定长度的数据处理比变长的快些；<br>b）对于频繁修改的表，磁盘容易形成碎片，从而影响数据库的整体性能；<br>c）万一出现数据表崩溃，使用固定长度数据行的表更容易重新构造。使用固定长度的数据行，每个记录的开始位置都是固定记录长度的倍数，可以很容易被检测到，但是使用可变长度的数据行就不一定了；<br>d）对于MyISAM类型的数据表，虽然转换成固定长度的数据列可以提高性能，但是占据的空间也大；</p>
+<p>18、使用not null和enum<br>尽量将列定义为not null，这样可使数据的出来更快，所需的空间更少，而且在查询时，MySQL不需要检查是否存在特例，即null值，从而优化查询；<br>如果一列只含有有限数目的特定值，如性别，是否有效或者入学年份等，在这种情况下应该考虑将其转换为enum列的值，MySQL处理的更快，因为所有的enum值在系统内都是以标识数值来表示的；</p>
+<p>19、使用optimize table<br>对于经常修改的表，容易产生碎片，使在查询数据库时必须读取更多的磁盘块，降低查询性能。具有可变长的表都存在磁盘碎片问题，这个问题对blob数据类型更为突出，因为其尺寸变化非常大。可以通过使用optimize table来整理碎片，保证数据库性能不下降，优化那些受碎片影响的数据表。 optimize table可以用于MyISAM和BDB类型的数据表。实际上任何碎片整理方法都是用mysqldump来转存数据表，然后使用转存后的文件并重新建数据表；</p>
+<p>20、使用procedure analyse()<br>可以使用procedure analyse()显示最佳类型的建议，使用很简单，在select语句后面加上procedure analyse()就可以了；例如：<br>select <em> from students procedure analyse();<br>select </em> from students procedure analyse(16,256);<br>第二条语句要求procedure analyse()不要建议含有多于16个值，或者含有多于256字节的enum类型，如果没有限制，输出可能会很长；</p>
+<p>21、使用查询缓存<br>1）查询缓存的工作方式：<br>第一次执行某条select语句时，服务器记住该查询的文本内容和查询结果，存储在缓存中，下次碰到这个语句时，直接从缓存中返回结果；当更新数据表后，该数据表的任何缓存查询都变成无效的，并且会被丢弃。<br>2）配置缓存参数：<br>变量：query_cache _type，查询缓存的操作模式。有3中模式，0：不缓存；1：缓存查询，除非与 select sql_no_cache开头；2：根据需要只缓存那些以select sql_cache开头的查询； query_cache_size：设置查询缓存的最大结果集的大小，比这个值大的不会被缓存。</p>
+<p>22、调整硬件<br>1）在机器上装更多的内存；<br>2）增加更快的硬盘以减少I/O等待时间；<br>寻道时间是决定性能的主要因素，逐字地移动磁头是最慢的，一旦磁头定位，从磁道读则很快；<br>3）在不同的物理硬盘设备上重新分配磁盘活动；<br>如果可能，应将最繁忙的数据库存放在不同的物理设备上，这跟使用同一物理设备的不同分区是不同的，因为它们将争用相同的物理资源（磁头）。</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/02/19/操作命令/">
+    <time datetime="2019-02-19T08:37:32.000Z" class="entry-date">
+        2019-02-19
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-flask项目部署" class="post-flask项目部署 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +192,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/16/flask项目部署/" data-id="cjs6syp9u000v04vexz3r1s4g" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/16/flask项目部署/" data-id="cjsbiv4v7000z8gveiicazwuj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -157,7 +272,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/15/django项目部署/" data-id="cjs6syp9u000s04veour7ya7o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/15/django项目部署/" data-id="cjsbiv4u1000v8gve2da6yhxj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -275,7 +390,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/24/day-04flask数据库、分页、文件上传/" data-id="cjs6syp9e000i04ve5rcwm7y1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/24/day-04flask数据库、分页、文件上传/" data-id="cjsbiv4u4000x8gvewdlg2fg9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -400,7 +515,7 @@ return redirect(url_for(&apos;app.all_stu&apos;))
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjs6sypb5001k04vez3q9rgar" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjsbiv4wm001k8gvegygekb0f" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -636,7 +751,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Flask框架脑图day-02/" data-id="cjs6syp8j000304vewpgnbhai" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Flask框架脑图day-02/" data-id="cjsbiv4pw00038gveccwu1scj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -794,7 +909,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Django框架脑图/" data-id="cjs6sypap001e04velljyr2ri" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/22/Django框架脑图/" data-id="cjsbiv4w0001c8gvehknlyf2v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1182,7 +1297,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/14/文章编辑器模板/" data-id="cjs6sypaa001704ver7o5yfgh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/14/文章编辑器模板/" data-id="cjsbiv4vu00188gvehlv85493" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1271,7 +1386,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/09/day-07上传图片和分页/" data-id="cjs6syp9u000n04veqzl44r0m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/09/day-07上传图片和分页/" data-id="cjsbiv4s3000k8gvefj8olm79" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1318,7 +1433,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/08/day-05注册登录/" data-id="cjs6sypb5001i04velfqahmql" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/08/day-05注册登录/" data-id="cjsbiv4w6001g8gvehxg047mk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1364,64 +1479,6 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
 
 
   
-    <article id="post-day-04页面渲染" class="post-day-04页面渲染 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/01/07/day-04页面渲染/">day-04页面渲染</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/07/day-04页面渲染/" data-id="cjs6syp9e000l04vezf90iqxg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>1、控制台创建工程目录并且新建相应的文件</p>
-<p><img src="/images/QQ截图20190107195449.png" alt=""></p>
-<p><img src="/images/13.png" alt=""></p>
-<p>2、修改Setting.py文件</p>
-<p><img src="/images/QQ截图20190107202002.png" alt=""></p>
-<p><img src="/images/QQ截图20190107202024.png" alt=""></p>
-<p><img src="/images/QQ截图20190107202042.png" alt=""></p>
-<p><img src="/images/QQ截图20190107202058.png" alt=""></p>
-<p>3、</p>
-<p><img src="/images/" alt=""></p>
-<p><img src="/images/" alt=""></p>
-<p><img src="/images/" alt=""></p>
-<p><img src="/images/" alt=""></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/01/07/day-04页面渲染/">
-    <time datetime="2019-01-07T12:13:39.000Z" class="entry-date">
-        2019-01-07
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -1451,6 +1508,10 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
       <ul>
         
           <li>
+            <a href="/2019/02/19/操作命令/">操作命令</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/16/flask项目部署/">flask项目部署</a>
           </li>
         
@@ -1466,10 +1527,6 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
             <a href="/2019/01/23/day03flask框架（增、删、改、查）/">day03flask框架（增、删、改、查）</a>
           </li>
         
-          <li>
-            <a href="/2019/01/22/Flask框架脑图day-02/">Flask框架脑图day_02</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -1479,7 +1536,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -1488,7 +1545,7 @@ print(stus)   # like(&apos;__老%&apos;)     查询第三位是 &apos;老&apos; 
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Linux学习/" style="font-size: 10px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 10px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 15px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a>
+      <a href="/tags/Linux学习/" style="font-size: 13.33px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 13.33px;">flask框架</a> <a href="/tags/数据库/" style="font-size: 16.67px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a>
     </div>
   </aside>
 
