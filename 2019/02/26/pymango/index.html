@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="###pymango
+pycharm控制台安装pymango: pip install pymango
+导包： from pymango import MongoClient
+####pymongo操作
+要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:  ">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>pymango | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作 要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客">
+<meta name="keywords" content="爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pymango">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/pymango/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作 要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-26T11:46:53.612Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pymango">
+<meta name="twitter:description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作 要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-pymango" class="post-pymango post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      pymango
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/pymango/" data-id="cjslphnq90012qsvech1opumn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <pre><code>###pymango
+</code></pre><p>pycharm控制台安装pymango: pip install pymango</p>
+<p>导包： from pymango import MongoClient</p>
+<pre><code>####pymongo操作
+</code></pre><p>要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。<br>导⼊ pymongo:<br>    from pymongo import MongoClient<br>创建⼀个连接到 mongod 到客户端：<br>    client = MongoClient()<br>    或者：<br>    client = MongoClient(“mongodb://127.0.0.1:27019”)<br>连接数据库:<br>假设要连接的数据库名为 primer<br>    db = client.primer<br>    或者：<br>    db = client[‘primer’]<br>连接到对应的数据集：<br>    coll = db.dataset<br>    coll = db[‘dataset’]<br>⾄此，已经完整对连接了数据库和数据集，完成了初识化的操作。</p>
+<ol start="2">
+<li>插⼊数据<br> insert_one(document)<br> insert_many(documents, ordered=True)<br> insert_one(document)<br> from datetime import datetime<br> result = db.restaurants.insert_one(<br>  {<br>  “address”: {<br>  “street”: “2 Avenue”,<br>  “zipcode”: “10075”,<br>  “building”: “1480”,<br>  “coord”: [-73.9557413, 40.7720266]<br>  },<br>  “borough”: “Manhattan”,<br>  “cuisine”: “Italian”,<br>  “grades”: [<br>  {<br>  “date”: datetime.strptime(“2014-10-01”, “%Y-%m-%d”),<br>  “grade”: “A”,<br>  “score”: 11<br>  },<br>  {<br>  “date”: datetime.strptime(“2014-01-16”, “%Y-%m-%d”),<br>  “grade”: “B”,<br>  “score”: 17<br>  }<br>  ],<br>  “name”: “Vella”,<br>  “restaurant_id”: “41704620”<br>  }<br> )<br>其中inserted_id### 是插⼊的元素多_id### 值。<br> insert_many(documents, ordered=True)<br> result = db.test.insert_many([{‘x’: i} for i in range(2)])<br>查询数据<br> find(filter=None, projection=None, skip=0, limit=0,<br> no_cursor_timeout=False, cursor_type=CursorType.NON_TAILABLE,<br> sort=None, allow_partial_results=False, oplog_replay=False,<br> modifiers=None, manipulate=True)<br> find_one(filter_or_id=None, *args, **kwargs)<br> find<h3 id="find-查询出来的是⼀个列表集合。"><a href="#find-查询出来的是⼀个列表集合。" class="headerlink" title="find 查询出来的是⼀个列表集合。"></a>find 查询出来的是⼀个列表集合。</h3> cursor = db.restaurants.find()<br> for document in cursor:<pre><code>print(document)
+</code></pre>查询字段是最上层的<br> cursor = db.restaurants.find({“borough”: “Manhattan”})<br>查询字段在内层嵌套中<br> cursor = db.restaurants.find({“address.zipcode”: “10075”})<h3 id="操作符查询"><a href="#操作符查询" class="headerlink" title="操作符查询"></a>操作符查询</h3> cursor = db.restaurants.find({“grades.score”: {“$gt”: 30}})<br> cursor = db.restaurants.find({“grades.score”: {“$lt”: 10}})<br> AND<br> cursor = db.restaurants.find({“cuisine”: “Italian”, “address.zipcode”: “10075”})<br> cursor = db.restaurants.find(<br>  {“$or”: [{“cuisine”: “Italian”}, {“address.zipcode”: “10075”}]})<br> find_one<br>返回的是⼀个JSON式⽂档，所以可以直接使⽤！<br> sort<h3 id="排序时要特别注意，使⽤的并不是和mongo-shell的⼀样，⽽是使⽤了列表，"><a href="#排序时要特别注意，使⽤的并不是和mongo-shell的⼀样，⽽是使⽤了列表，" class="headerlink" title="排序时要特别注意，使⽤的并不是和mongo shell的⼀样，⽽是使⽤了列表，"></a>排序时要特别注意，使⽤的并不是和mongo shell的⼀样，⽽是使⽤了列表，</h3><h3 id="当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中："><a href="#当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中：" class="headerlink" title="当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中："></a>当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中：</h3> pymongo.ASCENDING = 1<br> pymongo.DESCENDING = -1<br> cursor = db.restaurants.find().sort(“borough”)<br> cursor = db.restaurants.find().sort([<br>  (“borough”, pymongo.ASCENDING),<br>  (“address.zipcode”, pymongo.DESCENDING)<br> ])<br>更新⽂档<br>更新⽂档的函数有三个(不能更新_id字段)<br> update_one(filter, update, upsert=False)<br> update_many(filter, update, upsert=False)<br> replace_one(filter, replacement, upsert=False)<br> find_one_and_update(filter, update, projection=None, sort=None,<br> return_document=ReturnDocument.BEFORE, **kwargs)<br> update_one<br>返回结果是⼀个：UpdateResult ，如果查找到多个匹配，则只更新第⼀个！<br> result = db.restaurants.update_one(<br>  {“name”: “Juni”},<br>  {<br>  “$set”: {<br>  “cuisine”: “American (New)”<br>  },<br>  “$currentDate”: {“lastModified”: True}<br>  }<br> )<br> update_many<br>查找到多少匹配，就更新多少。<br> result = db.restaurants.update_many(<br>  {“address.zipcode”: “10016”, “cuisine”: “Other”},<br>  {<br>  “$set”: {“cuisine”: “Category To Be Determined”},<br>  “$currentDate”: {“lastModified”: True}<br>  }<br> )<br>删除⽂档<br>删除⼀个<br> result = db.test.delete_one({‘x’: 1})<br>删除多个<br> result = db.restaurants.delete_many({“borough”: “Manhattan”})<br>删除全部<br> result = db.restaurants.delete_many({})<br>删除整个集合，是drop_collection()的别名<br> db.restaurants.drop()</li>
+</ol>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/02/26/pymango/">
+    <time datetime="2019-02-26T11:41:07.000Z" class="entry-date">
+        2019-02-26
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2019/02/26/mangoDB/" rel="next">mangoDB <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/26/pymango/">pymango</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/26/mangoDB/">mangoDB</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/注意重点/">注意重点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/21/linux系统MySql操作/">linux系统MySql操作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/19/linux中msql操作/">linux中msql操作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 12.5px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 12.5px;">flask框架</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据库/" style="font-size: 17.5px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
