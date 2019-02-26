@@ -7,8 +7,7 @@
   <meta name="description" content="###pymango
 pycharm控制台安装pymango: pip install pymango
 导包： from pymango import MongoClient
-####pymongo操作
-要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:  ">
+####pymongo操作要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:   ">
   
 
   
@@ -19,18 +18,18 @@ pycharm控制台安装pymango: pip install pymango
   
   <title>pymango | Ren</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作 要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客">
+  <meta name="description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客户">
 <meta name="keywords" content="爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pymango">
 <meta property="og:url" content="http://yoursite.com/2019/02/26/pymango/index.html">
 <meta property="og:site_name" content="Ren">
-<meta property="og:description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作 要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客">
+<meta property="og:description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客户">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-26T11:46:53.612Z">
+<meta property="og:updated_time" content="2019-02-26T11:53:26.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pymango">
-<meta name="twitter:description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作 要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客">
+<meta name="twitter:description" content="###pymango pycharm控制台安装pymango: pip install pymango 导包： from pymango import MongoClient ####pymongo操作要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。导⼊ pymongo:    from pymongo import MongoClient创建⼀个连接到 mongod 到客户">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -86,17 +85,16 @@ pycharm控制台安装pymango: pip install pymango
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/pymango/" data-id="cjslphnq90012qsvech1opumn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/pymango/" data-id="cjslpqkz90017zkvebb4r41w3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <pre><code>###pymango
-</code></pre><p>pycharm控制台安装pymango: pip install pymango</p>
+        <p>###pymango</p>
+<p>pycharm控制台安装pymango: pip install pymango</p>
 <p>导包： from pymango import MongoClient</p>
-<pre><code>####pymongo操作
-</code></pre><p>要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。<br>导⼊ pymongo:<br>    from pymongo import MongoClient<br>创建⼀个连接到 mongod 到客户端：<br>    client = MongoClient()<br>    或者：<br>    client = MongoClient(“mongodb://127.0.0.1:27019”)<br>连接数据库:<br>假设要连接的数据库名为 primer<br>    db = client.primer<br>    或者：<br>    db = client[‘primer’]<br>连接到对应的数据集：<br>    coll = db.dataset<br>    coll = db[‘dataset’]<br>⾄此，已经完整对连接了数据库和数据集，完成了初识化的操作。</p>
+<p>####pymongo操作<br>要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。<br>导⼊ pymongo:<br>    from pymongo import MongoClient<br>创建⼀个连接到 mongod 到客户端：<br>    client = MongoClient()<br>    或者：<br>    client = MongoClient(“mongodb://127.0.0.1:27019”)<br>连接数据库:<br>假设要连接的数据库名为 primer<br>    db = client.primer<br>    或者：<br>    db = client[‘primer’]<br>连接到对应的数据集：<br>    coll = db.dataset<br>    coll = db[‘dataset’]<br>⾄此，已经完整对连接了数据库和数据集，完成了初识化的操作。</p>
 <ol start="2">
 <li>插⼊数据<br> insert_one(document)<br> insert_many(documents, ordered=True)<br> insert_one(document)<br> from datetime import datetime<br> result = db.restaurants.insert_one(<br>  {<br>  “address”: {<br>  “street”: “2 Avenue”,<br>  “zipcode”: “10075”,<br>  “building”: “1480”,<br>  “coord”: [-73.9557413, 40.7720266]<br>  },<br>  “borough”: “Manhattan”,<br>  “cuisine”: “Italian”,<br>  “grades”: [<br>  {<br>  “date”: datetime.strptime(“2014-10-01”, “%Y-%m-%d”),<br>  “grade”: “A”,<br>  “score”: 11<br>  },<br>  {<br>  “date”: datetime.strptime(“2014-01-16”, “%Y-%m-%d”),<br>  “grade”: “B”,<br>  “score”: 17<br>  }<br>  ],<br>  “name”: “Vella”,<br>  “restaurant_id”: “41704620”<br>  }<br> )<br>其中inserted_id### 是插⼊的元素多_id### 值。<br> insert_many(documents, ordered=True)<br> result = db.test.insert_many([{‘x’: i} for i in range(2)])<br>查询数据<br> find(filter=None, projection=None, skip=0, limit=0,<br> no_cursor_timeout=False, cursor_type=CursorType.NON_TAILABLE,<br> sort=None, allow_partial_results=False, oplog_replay=False,<br> modifiers=None, manipulate=True)<br> find_one(filter_or_id=None, *args, **kwargs)<br> find<h3 id="find-查询出来的是⼀个列表集合。"><a href="#find-查询出来的是⼀个列表集合。" class="headerlink" title="find 查询出来的是⼀个列表集合。"></a>find 查询出来的是⼀个列表集合。</h3> cursor = db.restaurants.find()<br> for document in cursor:<pre><code>print(document)
 </code></pre>查询字段是最上层的<br> cursor = db.restaurants.find({“borough”: “Manhattan”})<br>查询字段在内层嵌套中<br> cursor = db.restaurants.find({“address.zipcode”: “10075”})<h3 id="操作符查询"><a href="#操作符查询" class="headerlink" title="操作符查询"></a>操作符查询</h3> cursor = db.restaurants.find({“grades.score”: {“$gt”: 30}})<br> cursor = db.restaurants.find({“grades.score”: {“$lt”: 10}})<br> AND<br> cursor = db.restaurants.find({“cuisine”: “Italian”, “address.zipcode”: “10075”})<br> cursor = db.restaurants.find(<br>  {“$or”: [{“cuisine”: “Italian”}, {“address.zipcode”: “10075”}]})<br> find_one<br>返回的是⼀个JSON式⽂档，所以可以直接使⽤！<br> sort<h3 id="排序时要特别注意，使⽤的并不是和mongo-shell的⼀样，⽽是使⽤了列表，"><a href="#排序时要特别注意，使⽤的并不是和mongo-shell的⼀样，⽽是使⽤了列表，" class="headerlink" title="排序时要特别注意，使⽤的并不是和mongo shell的⼀样，⽽是使⽤了列表，"></a>排序时要特别注意，使⽤的并不是和mongo shell的⼀样，⽽是使⽤了列表，</h3><h3 id="当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中："><a href="#当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中：" class="headerlink" title="当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中："></a>当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中：</h3> pymongo.ASCENDING = 1<br> pymongo.DESCENDING = -1<br> cursor = db.restaurants.find().sort(“borough”)<br> cursor = db.restaurants.find().sort([<br>  (“borough”, pymongo.ASCENDING),<br>  (“address.zipcode”, pymongo.DESCENDING)<br> ])<br>更新⽂档<br>更新⽂档的函数有三个(不能更新_id字段)<br> update_one(filter, update, upsert=False)<br> update_many(filter, update, upsert=False)<br> replace_one(filter, replacement, upsert=False)<br> find_one_and_update(filter, update, projection=None, sort=None,<br> return_document=ReturnDocument.BEFORE, **kwargs)<br> update_one<br>返回结果是⼀个：UpdateResult ，如果查找到多个匹配，则只更新第⼀个！<br> result = db.restaurants.update_one(<br>  {“name”: “Juni”},<br>  {<br>  “$set”: {<br>  “cuisine”: “American (New)”<br>  },<br>  “$currentDate”: {“lastModified”: True}<br>  }<br> )<br> update_many<br>查找到多少匹配，就更新多少。<br> result = db.restaurants.update_many(<br>  {“address.zipcode”: “10016”, “cuisine”: “Other”},<br>  {<br>  “$set”: {“cuisine”: “Category To Be Determined”},<br>  “$currentDate”: {“lastModified”: True}<br>  }<br> )<br>删除⽂档<br>删除⼀个<br> result = db.test.delete_one({‘x’: 1})<br>删除多个<br> result = db.restaurants.delete_many({“borough”: “Manhattan”})<br>删除全部<br> result = db.restaurants.delete_many({})<br>删除整个集合，是drop_collection()的别名<br> db.restaurants.drop()</li>

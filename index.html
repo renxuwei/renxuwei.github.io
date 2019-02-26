@@ -77,17 +77,16 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/pymango/" data-id="cjslphnq90012qsvech1opumn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/pymango/" data-id="cjslpqkz90017zkvebb4r41w3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <pre><code>###pymango
-</code></pre><p>pycharm控制台安装pymango: pip install pymango</p>
+        <p>###pymango</p>
+<p>pycharm控制台安装pymango: pip install pymango</p>
 <p>导包： from pymango import MongoClient</p>
-<pre><code>####pymongo操作
-</code></pre><p>要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。<br>导⼊ pymongo:<br>    from pymongo import MongoClient<br>创建⼀个连接到 mongod 到客户端：<br>    client = MongoClient()<br>    或者：<br>    client = MongoClient(“mongodb://127.0.0.1:27019”)<br>连接数据库:<br>假设要连接的数据库名为 primer<br>    db = client.primer<br>    或者：<br>    db = client[‘primer’]<br>连接到对应的数据集：<br>    coll = db.dataset<br>    coll = db[‘dataset’]<br>⾄此，已经完整对连接了数据库和数据集，完成了初识化的操作。</p>
+<p>####pymongo操作<br>要使⽤pymongo最先应该做的事就是先连上运⾏中的 mongod 。<br>导⼊ pymongo:<br>    from pymongo import MongoClient<br>创建⼀个连接到 mongod 到客户端：<br>    client = MongoClient()<br>    或者：<br>    client = MongoClient(“mongodb://127.0.0.1:27019”)<br>连接数据库:<br>假设要连接的数据库名为 primer<br>    db = client.primer<br>    或者：<br>    db = client[‘primer’]<br>连接到对应的数据集：<br>    coll = db.dataset<br>    coll = db[‘dataset’]<br>⾄此，已经完整对连接了数据库和数据集，完成了初识化的操作。</p>
 <ol start="2">
 <li>插⼊数据<br> insert_one(document)<br> insert_many(documents, ordered=True)<br> insert_one(document)<br> from datetime import datetime<br> result = db.restaurants.insert_one(<br>  {<br>  “address”: {<br>  “street”: “2 Avenue”,<br>  “zipcode”: “10075”,<br>  “building”: “1480”,<br>  “coord”: [-73.9557413, 40.7720266]<br>  },<br>  “borough”: “Manhattan”,<br>  “cuisine”: “Italian”,<br>  “grades”: [<br>  {<br>  “date”: datetime.strptime(“2014-10-01”, “%Y-%m-%d”),<br>  “grade”: “A”,<br>  “score”: 11<br>  },<br>  {<br>  “date”: datetime.strptime(“2014-01-16”, “%Y-%m-%d”),<br>  “grade”: “B”,<br>  “score”: 17<br>  }<br>  ],<br>  “name”: “Vella”,<br>  “restaurant_id”: “41704620”<br>  }<br> )<br>其中inserted_id### 是插⼊的元素多_id### 值。<br> insert_many(documents, ordered=True)<br> result = db.test.insert_many([{‘x’: i} for i in range(2)])<br>查询数据<br> find(filter=None, projection=None, skip=0, limit=0,<br> no_cursor_timeout=False, cursor_type=CursorType.NON_TAILABLE,<br> sort=None, allow_partial_results=False, oplog_replay=False,<br> modifiers=None, manipulate=True)<br> find_one(filter_or_id=None, *args, **kwargs)<br> find<h3 id="find-查询出来的是⼀个列表集合。"><a href="#find-查询出来的是⼀个列表集合。" class="headerlink" title="find 查询出来的是⼀个列表集合。"></a>find 查询出来的是⼀个列表集合。</h3> cursor = db.restaurants.find()<br> for document in cursor:<pre><code>print(document)
 </code></pre>查询字段是最上层的<br> cursor = db.restaurants.find({“borough”: “Manhattan”})<br>查询字段在内层嵌套中<br> cursor = db.restaurants.find({“address.zipcode”: “10075”})<h3 id="操作符查询"><a href="#操作符查询" class="headerlink" title="操作符查询"></a>操作符查询</h3> cursor = db.restaurants.find({“grades.score”: {“$gt”: 30}})<br> cursor = db.restaurants.find({“grades.score”: {“$lt”: 10}})<br> AND<br> cursor = db.restaurants.find({“cuisine”: “Italian”, “address.zipcode”: “10075”})<br> cursor = db.restaurants.find(<br>  {“$or”: [{“cuisine”: “Italian”}, {“address.zipcode”: “10075”}]})<br> find_one<br>返回的是⼀个JSON式⽂档，所以可以直接使⽤！<br> sort<h3 id="排序时要特别注意，使⽤的并不是和mongo-shell的⼀样，⽽是使⽤了列表，"><a href="#排序时要特别注意，使⽤的并不是和mongo-shell的⼀样，⽽是使⽤了列表，" class="headerlink" title="排序时要特别注意，使⽤的并不是和mongo shell的⼀样，⽽是使⽤了列表，"></a>排序时要特别注意，使⽤的并不是和mongo shell的⼀样，⽽是使⽤了列表，</h3><h3 id="当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中："><a href="#当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中：" class="headerlink" title="当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中："></a>当排序的标准只有⼀个，且是递增时，可以直接写在函数参数中：</h3> pymongo.ASCENDING = 1<br> pymongo.DESCENDING = -1<br> cursor = db.restaurants.find().sort(“borough”)<br> cursor = db.restaurants.find().sort([<br>  (“borough”, pymongo.ASCENDING),<br>  (“address.zipcode”, pymongo.DESCENDING)<br> ])<br>更新⽂档<br>更新⽂档的函数有三个(不能更新_id字段)<br> update_one(filter, update, upsert=False)<br> update_many(filter, update, upsert=False)<br> replace_one(filter, replacement, upsert=False)<br> find_one_and_update(filter, update, projection=None, sort=None,<br> return_document=ReturnDocument.BEFORE, **kwargs)<br> update_one<br>返回结果是⼀个：UpdateResult ，如果查找到多个匹配，则只更新第⼀个！<br> result = db.restaurants.update_one(<br>  {“name”: “Juni”},<br>  {<br>  “$set”: {<br>  “cuisine”: “American (New)”<br>  },<br>  “$currentDate”: {“lastModified”: True}<br>  }<br> )<br> update_many<br>查找到多少匹配，就更新多少。<br> result = db.restaurants.update_many(<br>  {“address.zipcode”: “10016”, “cuisine”: “Other”},<br>  {<br>  “$set”: {“cuisine”: “Category To Be Determined”},<br>  “$currentDate”: {“lastModified”: True}<br>  }<br> )<br>删除⽂档<br>删除⼀个<br> result = db.test.delete_one({‘x’: 1})<br>删除多个<br> result = db.restaurants.delete_many({“borough”: “Manhattan”})<br>删除全部<br> result = db.restaurants.delete_many({})<br>删除整个集合，是drop_collection()的别名<br> db.restaurants.drop()</li>
@@ -131,19 +130,18 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/mangoDB/" data-id="cjslphnq60010qsve3p62isgo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/mangoDB/" data-id="cjslpqkz30012zkve608ifb6a" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <pre><code>###mangoDB
-</code></pre><p>下载路径：<a href="https://www.mongodb.com/" target="_blank" rel="noopener"></a></p>
+        <p>###mangoDB<br>下载路径：<a href="https://www.mongodb.com/" target="_blank" rel="noopener"></a></p>
 <p>安装： 如果是压缩包<br>      不能正常运行时，将解压的文件放在/data/db 路径下</p>
 <p>启动： 在CMD中：D:\data\db\mongodb-win32-x86_64-2008plus-ssl-4.0.6\bin&gt; mangod.exe</p>
 <p>运行： 新开且CMD：D:\data\db\mongodb-win32-x86_64-2008plus-ssl-4.0.6\bin&gt; mango.exe</p>
-<p>   ####MongoDB 应用：<br>NoSQL,全称是”Not Only Sql”,指的是⾮关系型的数据库。<br>⾮关系型数据库主要有这些特点:⾮关系型的、分布式的、开源的、⽔平可扩展的。<br>NoSQL 的拥护者们提倡运⽤⾮关系型的数据存储,通常的应⽤如:模式⾃由、⽀持简易复制、简<br>单的 API、⼤容量数据等。<br>MongoDB 是⼀个介于关系数据库和⾮关系数据库之间的产品,是⾮关系数据库当中功能最丰<br>富,最像关系数据库的。<br>MongoDB最⼤的特点：它⽀持的查询语⾔⾮常强⼤,其语法有点类似于⾯向对象的查询语⾔,<br>⼏乎可以实现类似关系数据库单表查询的绝⼤部分功能。它是⼀个⾯向集合的,模式⾃由的⽂<br>档型数据库。<br>1、 ⾯向集合(Collection-Orented)<br>意思是数据被分组存储在数据集中, 被称为⼀个集合(Collenction)。每个集合在数据库中 都有<br>⼀个唯⼀的标识名,并且可以包含⽆限数⽬的⽂档。集合的概念类似关系型数据库(RDBMS)⾥<br>的表(table),不同的是它不需要定义任何模式(schema)。<br>2、 模式⾃由(schema-free)<br>存储在 MongoDB 数据库中的⽂件,我们不需要知道它的任何结构定义。提了这 么多次”⽆模<br>式”或”模式⾃由”,它到是个什么概念呢?例如,下⾯两个记录可以存在于同⼀个集合⾥⾯:<br>    {“welcome” : “Beijing”}<br>    {“age” : 28}<br>3、 ⽂档型 意思是我们存储的数据是键-值对的集合,键是字符串,值可以是数据类型集合⾥的任<br>意类型, 包括数组和⽂档. ⽂件存储格式为 BSON(⼀种 JSON 的扩展)<br>适⽤场景<br>1 ⽹站数据:MongoDB ⾮常适合实时的插⼊,更新与查询,并具备⽹站实时数据存储所需的复制<br>及⾼度伸缩性<br>2 缓存:由于性能很⾼,MongoDB 也适合作为信息基础设施的缓存层。在系统重启之后, 由<br>MongoDB 搭建的持久化缓存层可以避免下层的数据源过载<br>3 ⼤尺⼨,低价值的数据:使⽤传统的关系型数据库存储⼀些数据时可能会⽐较昂贵,在此之前,很<br>多时候程序员往往会选择传统的⽂件进⾏存储<br>4 ⾼伸缩性的场景:MongoDB ⾮常适合由数⼗或数百台服务器组成的数据库。MongoDB的路<br>线图中已经包 对 MapReduce 引擎的内置⽀持<br>5 ⽤于对象及 JSON 数据的存储:MongoDB 的 BSON 数据格式⾮常适合⽂档化格式的存储及<br>查询<br>mongodb配置⽂件<br>    mongod.conf<br>    dbpath=/Users/carmack/data/mongo<br>启动mongod<br>    ./mongod -f mongod.cnf</p>
-<p>   #####mongo客户端<br>进⼊客户端<br>    ./mongo<br>查看数据库命令<br>    show dbs<br>打开数据库<br>    use taobao<br>查看集合（对应mysql table)<br>    show collections<br>⽂档：⽂档(Document)是MongodDB中的核⼼概念，他是MongoDB逻辑存储的最⼩基本单<br>元， 对应mysql记录<br>集合：多个⽂档组成的集合 对应mysql table<br>数据库：多个集合组成的数据库 对应mysql database<br>MongodDB的数据类型是：BSON的数据类型<br>BSON：是Binary JSON是⼆进制的格式<br>创建数据库<br>    use newdb1<br>    show dbs<br>数据库并没有添加，当我们在给数据库中的集合插⼊⼀条⽂档的时候就会⾃动创建⼀条⽂档、⼀个集合、⼀<br>个数据库。<br>    db.users.insert({“name”: ‘carmack’})<br>    show colletions;<br>插⼊⼀条数据<br>    db.users.insert({“uid”:2,”uname”:”carmack”,”isvip”:true,”sex”:null,”favorite”:<br>    [“apple”,”banana”,1,2,3,4,5],”regtime”:new Date()})<br>查询数据<br>    db.users.find()<br>    db.users.findOne({“uid”:2})<br>删除数据<br>    db.users.remove({“uid”:2})<br>清空集合<br>    db.users.remove({})<br>删除集合<br>    db.users.drop()<br>更新⽂档<br>第⼀个⽂档为查询的⽂档，第⼆个⽂档为修改为什么⽂档, 后⾯的⽂档会覆盖我们要修改⽂档的整个内容<br>    db.users.update({“uid”:2},{“uname”:”jon”})<br>使⽤修改器$inc更新<br>对uid为2的⽤户增加100块钱⼯资<br>    db.users.update({“uid”:2},{“$inc”:{“salary”:100}})<br>减100<br>    db.users.update({“uid”:2},{“$inc”:{“salary”:-100}})<br>添加⼀个字段$set修改器<br>    db.users.update({“uid”:2},{“$set”:{“age”:18}})<br>删除⼀个字段$unset修改器<br>    db.users.update({“uid”:2},{“$unset”:{“age”:true}})<br>数组的更新<br>    db.users.update({“uid”:2},{“$push”:{“email”:”a”}})<br>$pushAll在元组中增加多个元素,但是他不检查元素是否存在<br>    db.users.update({“uid”:2},{“$pushAll”:{“email”:[“a”, “b”,”c”,”d”]}})<br>$addToSet 往数组中添加⼀个不重复的元素<br>    db.users.update({“uid”:2},{“$addToSet”:{“email”:”d”}})<br>添加多个不重复的元素，这时候就得需要⽤到<em>$eache</em>操作符了<br>    db.users.update({“uid”:2},{“$addToSet”:{“email”:{“$each”:[“e”,”g”,”f”,”d”]}}})<br><em>删除数组元素</em><br>    db.users.update({“uid”:2},{“$pop”:{“email”:-1}}) #从左侧删除⼀个元素<br>    db.users.update({“uid”:2},{“$pop”:{“email”:1}})#从右侧删除⼀个元素<br>    db.users.update({“uid”:2},{“$pull”:{“email”:”b”}}) #删除数组内的指定⼀个元素<br>    db.users.update({“uid”:2},{“$pullAll”:{“email”:[“b”,”c”]}}) #删除数组内指定的多个元素<br>数组元素的更新<br>通过数组.下标修改<br>    db.users.update({“uid”:2},{“$set”:{“email.0”:”tim.qq.com”}})<br>    等于 =<br>    db.users.find({“salary”:3000}).pretty()<br>    ⼩于 &lt;<br>    db.users.find({“salary”:{$lt:3000}}).pretty()<br>    ⼩于等于 &lt;=<br>    db.users.find({“salary”:{$lte:3000}}).pretty()<br>    ⼤于 &gt;<br>    db.users.find({“salary”:{$gt:3000}}).pretty()<br>    ⼤于等于 &gt;=<br>    db.users.find({“salary”:{$gte:3000}}).pretty()<br>    不等于 !=<br>    db.users.find({“salary”:{$ne:3000}}).pretty()<br>MongoDB 的 find() ⽅法可以传⼊多个键(key)，每个键(key)以逗号隔开，即常规 SQL 的 AND 条件<br>    db.users.find({“id”:2, “sex”: “M”}).pretty()<br>MongoDB OR 条件语句使⽤了关键字 $or,语法格式如下：<br>    db.users.find(<br>     {<br>     $or: [<br>         {key1: value1}, {key2:value2}<br>     ]<br>     }<br>     ).pretty()</p>
+<p>####MongoDB 应用：<br>NoSQL,全称是”Not Only Sql”,指的是⾮关系型的数据库。<br>⾮关系型数据库主要有这些特点:⾮关系型的、分布式的、开源的、⽔平可扩展的。<br>NoSQL 的拥护者们提倡运⽤⾮关系型的数据存储,通常的应⽤如:模式⾃由、⽀持简易复制、简<br>单的 API、⼤容量数据等。<br>MongoDB 是⼀个介于关系数据库和⾮关系数据库之间的产品,是⾮关系数据库当中功能最丰<br>富,最像关系数据库的。<br>MongoDB最⼤的特点：它⽀持的查询语⾔⾮常强⼤,其语法有点类似于⾯向对象的查询语⾔,<br>⼏乎可以实现类似关系数据库单表查询的绝⼤部分功能。它是⼀个⾯向集合的,模式⾃由的⽂<br>档型数据库。<br>1、 ⾯向集合(Collection-Orented)<br>意思是数据被分组存储在数据集中, 被称为⼀个集合(Collenction)。每个集合在数据库中 都有<br>⼀个唯⼀的标识名,并且可以包含⽆限数⽬的⽂档。集合的概念类似关系型数据库(RDBMS)⾥<br>的表(table),不同的是它不需要定义任何模式(schema)。<br>2、 模式⾃由(schema-free)<br>存储在 MongoDB 数据库中的⽂件,我们不需要知道它的任何结构定义。提了这 么多次”⽆模<br>式”或”模式⾃由”,它到是个什么概念呢?例如,下⾯两个记录可以存在于同⼀个集合⾥⾯:<br>    {“welcome” : “Beijing”}<br>    {“age” : 28}<br>3、 ⽂档型 意思是我们存储的数据是键-值对的集合,键是字符串,值可以是数据类型集合⾥的任<br>意类型, 包括数组和⽂档. ⽂件存储格式为 BSON(⼀种 JSON 的扩展)<br>适⽤场景<br>1 ⽹站数据:MongoDB ⾮常适合实时的插⼊,更新与查询,并具备⽹站实时数据存储所需的复制<br>及⾼度伸缩性<br>2 缓存:由于性能很⾼,MongoDB 也适合作为信息基础设施的缓存层。在系统重启之后, 由<br>MongoDB 搭建的持久化缓存层可以避免下层的数据源过载<br>3 ⼤尺⼨,低价值的数据:使⽤传统的关系型数据库存储⼀些数据时可能会⽐较昂贵,在此之前,很<br>多时候程序员往往会选择传统的⽂件进⾏存储<br>4 ⾼伸缩性的场景:MongoDB ⾮常适合由数⼗或数百台服务器组成的数据库。MongoDB的路<br>线图中已经包 对 MapReduce 引擎的内置⽀持<br>5 ⽤于对象及 JSON 数据的存储:MongoDB 的 BSON 数据格式⾮常适合⽂档化格式的存储及<br>查询<br>mongodb配置⽂件<br>    mongod.conf<br>    dbpath=/Users/carmack/data/mongo<br>启动mongod<br>    ./mongod -f mongod.cnf</p>
+<p>#####mongo客户端<br>进⼊客户端<br>    ./mongo<br>查看数据库命令<br>    show dbs<br>打开数据库<br>    use taobao<br>查看集合（对应mysql table)<br>    show collections<br>⽂档：⽂档(Document)是MongodDB中的核⼼概念，他是MongoDB逻辑存储的最⼩基本单<br>元， 对应mysql记录<br>集合：多个⽂档组成的集合 对应mysql table<br>数据库：多个集合组成的数据库 对应mysql database<br>MongodDB的数据类型是：BSON的数据类型<br>BSON：是Binary JSON是⼆进制的格式<br>创建数据库<br>    use newdb1<br>    show dbs<br>数据库并没有添加，当我们在给数据库中的集合插⼊⼀条⽂档的时候就会⾃动创建⼀条⽂档、⼀个集合、⼀<br>个数据库。<br>    db.users.insert({“name”: ‘carmack’})<br>    show colletions;<br>插⼊⼀条数据<br>    db.users.insert({“uid”:2,”uname”:”carmack”,”isvip”:true,”sex”:null,”favorite”:<br>    [“apple”,”banana”,1,2,3,4,5],”regtime”:new Date()})<br>查询数据<br>    db.users.find()<br>    db.users.findOne({“uid”:2})<br>删除数据<br>    db.users.remove({“uid”:2})<br>清空集合<br>    db.users.remove({})<br>删除集合<br>    db.users.drop()<br>更新⽂档<br>第⼀个⽂档为查询的⽂档，第⼆个⽂档为修改为什么⽂档, 后⾯的⽂档会覆盖我们要修改⽂档的整个内容<br>    db.users.update({“uid”:2},{“uname”:”jon”})<br>使⽤修改器$inc更新<br>对uid为2的⽤户增加100块钱⼯资<br>    db.users.update({“uid”:2},{“$inc”:{“salary”:100}})<br>减100<br>    db.users.update({“uid”:2},{“$inc”:{“salary”:-100}})<br>添加⼀个字段$set修改器<br>    db.users.update({“uid”:2},{“$set”:{“age”:18}})<br>删除⼀个字段$unset修改器<br>    db.users.update({“uid”:2},{“$unset”:{“age”:true}})<br>数组的更新<br>    db.users.update({“uid”:2},{“$push”:{“email”:”a”}})<br>$pushAll在元组中增加多个元素,但是他不检查元素是否存在<br>    db.users.update({“uid”:2},{“$pushAll”:{“email”:[“a”, “b”,”c”,”d”]}})<br>$addToSet 往数组中添加⼀个不重复的元素<br>    db.users.update({“uid”:2},{“$addToSet”:{“email”:”d”}})<br>添加多个不重复的元素，这时候就得需要⽤到<em>$eache</em>操作符了<br>    db.users.update({“uid”:2},{“$addToSet”:{“email”:{“$each”:[“e”,”g”,”f”,”d”]}}})<br><em>删除数组元素</em><br>    db.users.update({“uid”:2},{“$pop”:{“email”:-1}}) #从左侧删除⼀个元素<br>    db.users.update({“uid”:2},{“$pop”:{“email”:1}})#从右侧删除⼀个元素<br>    db.users.update({“uid”:2},{“$pull”:{“email”:”b”}}) #删除数组内的指定⼀个元素<br>    db.users.update({“uid”:2},{“$pullAll”:{“email”:[“b”,”c”]}}) #删除数组内指定的多个元素<br>数组元素的更新<br>通过数组.下标修改<br>    db.users.update({“uid”:2},{“$set”:{“email.0”:”tim.qq.com”}})<br>    等于 =<br>    db.users.find({“salary”:3000}).pretty()<br>    ⼩于 &lt;<br>    db.users.find({“salary”:{$lt:3000}}).pretty()<br>    ⼩于等于 &lt;=<br>    db.users.find({“salary”:{$lte:3000}}).pretty()<br>    ⼤于 &gt;<br>    db.users.find({“salary”:{$gt:3000}}).pretty()<br>    ⼤于等于 &gt;=<br>    db.users.find({“salary”:{$gte:3000}}).pretty()<br>    不等于 !=<br>    db.users.find({“salary”:{$ne:3000}}).pretty()<br>MongoDB 的 find() ⽅法可以传⼊多个键(key)，每个键(key)以逗号隔开，即常规 SQL 的 AND 条件<br>    db.users.find({“id”:2, “sex”: “M”}).pretty()<br>MongoDB OR 条件语句使⽤了关键字 $or,语法格式如下：<br>    db.users.find(<br>     {<br>     $or: [<br>         {key1: value1}, {key2:value2}<br>     ]<br>     }<br>     ).pretty()</p>
 
       
     </div><!-- .entry-content -->
@@ -183,7 +181,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/25/注意重点/" data-id="cjslphnr1001eqsveoel11eid" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/25/注意重点/" data-id="cjslpqkzo001izkve1yivyrts" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -233,7 +231,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/21/linux系统MySql操作/" data-id="cjslphns6001yqsve40668lke" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/21/linux系统MySql操作/" data-id="cjslpql0b001yzkved5e3daqj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -368,7 +366,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/linux中msql操作/" data-id="cjslphnpz000vqsveqjkxnp82" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/linux中msql操作/" data-id="cjslpqkz10010zkverglu1l4b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -425,7 +423,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/操作命令/" data-id="cjslphnsa0020qsvecplv02j0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/操作命令/" data-id="cjslpql0e0020zkve4preg4y9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -540,7 +538,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/16/flask项目部署/" data-id="cjslphnpt000qqsveliy8jk93" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/16/flask项目部署/" data-id="cjslpqkyu000vzkveabsb1lc8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -620,7 +618,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/15/django项目部署/" data-id="cjslphnqq0017qsve97s4pyb1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/15/django项目部署/" data-id="cjslpqkyr000szkve4xd2obhm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -738,7 +736,7 @@ location / {
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/24/day-04flask数据库、分页、文件上传/" data-id="cjslphnph000iqsve0v1d1sit" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/24/day-04flask数据库、分页、文件上传/" data-id="cjslpqkyc000izkveks99wy0r" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -863,7 +861,7 @@ return redirect(url_for(&apos;app.all_stu&apos;))
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjslphnrz001uqsvevfj25cxg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/01/23/day03flask框架（增、删、改、查）/" data-id="cjslpql09001wzkvepmj21q12" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
