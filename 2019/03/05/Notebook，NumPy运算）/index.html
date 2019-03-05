@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Jupyter Notebook
+##数据分析，基本知识
+# 计算程序运行的时间,明显比python程序运行快数十倍
+import numpy as np
+In [3]:
+
+%timeit my_arr = np.arange(1000)
+3.06 µs ± 26.2 ns per loop (me">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>Notebook，NumPy运算） | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Jupyter Notebook ##数据分析，基本知识 # 计算程序运行的时间,明显比python程序运行快数十倍 import numpy as np In [3]:  %timeit my_arr = np.arange(1000) 3.06 µs ± 26.2 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each) In [4">
+<meta name="keywords" content="数据分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notebook，NumPy运算）">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/Notebook，NumPy运算）/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="Jupyter Notebook ##数据分析，基本知识 # 计算程序运行的时间,明显比python程序运行快数十倍 import numpy as np In [3]:  %timeit my_arr = np.arange(1000) 3.06 µs ± 26.2 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each) In [4">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_15.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_16.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_17.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_18.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_19.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_20.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_21.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_22.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_23.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_24.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_25.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_26.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_27.png">
+<meta property="og:image" content="http://yoursite.com/images/数据分析%202_28.png">
+<meta property="og:updated_time" content="2019-03-05T11:32:27.670Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Notebook，NumPy运算）">
+<meta name="twitter:description" content="Jupyter Notebook ##数据分析，基本知识 # 计算程序运行的时间,明显比python程序运行快数十倍 import numpy as np In [3]:  %timeit my_arr = np.arange(1000) 3.06 µs ± 26.2 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each) In [4">
+<meta name="twitter:image" content="http://yoursite.com/images/数据分析%202_15.png">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="数据分析（ipython基础，运行jupyter-Notebook，NumPy运算）" class="数据分析（ipython基础，运行jupyter-Notebook，NumPy运算） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      Notebook，NumPy运算）
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/03/05/Notebook，NumPy运算）/" data-id="cjsvp44fq001xhwveglmjw09c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Jupyter Notebook</p>
+<p>##数据分析，基本知识</p>
+<pre><code># 计算程序运行的时间,明显比python程序运行快数十倍
+import numpy as np
+In [3]:
+
+%timeit my_arr = np.arange(1000)
+3.06 µs ± 26.2 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+In [4]:
+
+%timeit my_list = list(range(1000000))
+65.1 ms ± 1.14 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+In [6]:
+
+#图表的制作
+%matplotlib
+import matplotlib.pyplot as plt
+plt.plot(np.random.randn(50).cumsum())
+Using matplotlib backend: Qt5Agg
+Out[6]:
+[&lt;matplotlib.lines.Line2D at 0x3f945f8&gt;]
+In [12]:
+
+#随机生成2行3列的数据
+import numpy as np
+data1 = np.random.randn(2,3)
+data1
+Out[12]:
+array([[ 0.03331819,  2.58898836,  0.31529926],
+       [-0.46497438, -0.77640473, -0.29017283]])
+In [13]:
+
+#运算 + *
+# data * 10
+data1 + data1
+Out[13]:
+array([[ 0.06663638,  5.17797672,  0.63059851],
+       [-0.92994876, -1.55280946, -0.58034567]])
+In [16]:
+
+#取维度大小
+data.shape   #(2, 3)
+#取数据的数据类型
+data.dtype   #dtype(&apos;float64&apos;)
+Out[16]:
+dtype(&apos;float64&apos;)
+In [19]:
+
+#创建ndarray
+data = [6,  7.5, 8, 0, 1]
+arr1 = np.array(data)
+arr1   #array([6. , 7.5, 8. , 0. , 1. ])
+Out[19]:
+array([6. , 7.5, 8. , 0. , 1. ])
+In [20]:
+
+data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
+arr2 = np.array(data2)
+arr2
+Out[20]:
+array([[1, 2, 3, 4],
+       [5, 6, 7, 8]])
+In [23]:
+
+#取维度
+arr2.ndim  #2
+arr2.shape   #(2, 4)
+arr2.dtype   #dtype(&apos;int32&apos;)
+Out[23]:
+dtype(&apos;int32&apos;)
+In [35]:
+
+#zeros和ones分别可以创建指定⻓度或形状的全0或全1数组。empty可以创建没有任何具体值的数组
+np.zeros(10)   #array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
+np.zeros((3, 6))   #array([[0., 0., 0., 0., 0., 0.],
+                 #        [0., 0., 0., 0., 0., 0.],
+                #        [0., 0., 0., 0., 0., 0.]])
+
+np.empty((2, 3, 3))   #array([[[0., 0., 0.],
+                    #         [0., 0., 0.],
+                    #         [0., 0., 0.]],
+​
+                    #        [[0., 0., 0.],
+                    #         [0., 0., 0.],
+                    #         [0., 0., 0.]]])
+# np.ones(10)
+# np.arange(15)   #array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])
+​
+Out[35]:
+array([[[0., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.]],
+
+       [[0., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.]]])
+In [36]:
+
+arr = np.array([[1., 2., 3.], [4., 5., 6.]])
+arr
+Out[36]:
+array([[1., 2., 3.],
+       [4., 5., 6.]])
+In [37]:
+
+arr * arr
+Out[37]:
+array([[ 1.,  4.,  9.],
+       [16., 25., 36.]])
+In [38]:
+
+arr - arr
+Out[38]:
+array([[0., 0., 0.],
+       [0., 0., 0.]])
+In [39]:
+
+ 1 / arr
+Out[39]:
+array([[1.        , 0.5       , 0.33333333],
+       [0.25      , 0.2       , 0.16666667]])
+In [42]:
+
+#大小相同的数组之间的比较较会生成布尔值数组
+arr2 = np.array([[0., 4., 1.], [7., 2., 12.]])
+arr2
+arr2 &gt; arr   #array([[False,  True, False],
+            #        [ True, False,  True]])
+Out[42]:
+array([[False,  True, False],
+       [ True, False,  True]])
+In [46]:
+
+# 基本的索引和切片
+arr = np.arange(10)
+arr
+arr[5:8]   #array([5, 6, 7])
+arr[5:8] = 12   
+arr   #array([ 0,  1,  2,  3,  4, 12, 12, 12,  8,  9])
+​
+​
+Out[46]:
+array([ 0,  1,  2,  3,  4, 12, 12, 12,  8,  9])
+In [48]:
+
+#ndarray切⽚的⼀份副本⽽⾮视图，就需要明确地进⾏复制操作，例如arr[5:8].copy()
+arr2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+arr2d[2]  # array([7, 8, 9])
+# 两种方式式一样
+arr2d[0][2]   #3
+arr2d[0, 2]   #3
+​
+​
+Out[48]:
+3
+In [58]:
+
+arr3d = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+arr3d.shape   #(2, 2, 3)
+num = arr3d[0].copy()
+arr3d[0] = 42
+arr3d   #array([[[42, 42, 42],
+        #         [42, 42, 42]],
+​
+        #        [[ 7,  8,  9],
+        #         [10, 11, 12]]])
+arr3d[0] = num
+arr3d   #array([[[ 1,  2,  3],
+        #         [ 4,  5,  6]],
+​
+        #        [[ 7,  8,  9],
+        #         [10, 11, 12]]])
+Out[58]:
+array([[[ 1,  2,  3],
+        [ 4,  5,  6]],
+
+       [[ 7,  8,  9],
+        [10, 11, 12]]])
+In [59]:
+
+#切片索引
+arr2d
+​
+Out[59]:
+array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+In [60]:
+
+arr2d[:2]
+#array([[1, 2, 3],
+#        [4, 5, 6]])
+​
+Out[60]:
+array([[1, 2, 3],
+       [4, 5, 6]])
+In [61]:
+
+#一次传入多个切片
+arr2d[:2, 1:]   #array([[2, 3],
+                #        [5, 6]])
+Out[61]:
+array([[2, 3],
+       [5, 6]])
+In [64]:
+
+#将整数索引和切片混合；选取第二行的前两列
+arr2d[1, :2]   #array([4, 5])
+arr2d[:2, 2]   #array([3, 6])
+Out[64]:
+array([4, 5])
+In [79]:
+
+#布尔型索引
+#假设我们有一个用于存储数据的数组以及一个存储姓名的数组（含有重复项）
+names = np.array([&apos;Bob&apos;, &apos;Joe&apos;, &apos;Will&apos;, &apos;Bob&apos;, &apos;Will&apos;, &apos;Joe&apos;, &apos;Joe&apos;])
+datas = np.random.randn(7, 4)
+names   #array([&apos;Bob&apos;, &apos;Joe&apos;, &apos;Will&apos;, &apos;Bob&apos;, &apos;Will&apos;, &apos;Joe&apos;, &apos;Joe&apos;], dtype=&apos;&lt;U4&apos;)
+datas
+names == &apos;Bob&apos;   #array([ True, False, False,  True, False, False, False])
+datas[names == &apos;Bob&apos;]   #array([[ 0.06174578,  0.5164119 ,  1.58356094, -0.27317067],
+                    #        [-0.56949827,  1.88646682, -1.44514231, -0.39327907]])
+datas[names == &apos;Bob&apos;, 2:]   #array([[ 1.58356094, -0.27317067],
+                        #        [-1.44514231, -0.39327907]])
+datas[names == &apos;Bob&apos;, 3]
+names != &apos;Bob&apos;   #array([False,  True,  True, False,  True,  True,  True])
+datas[~(names == &apos;Bob&apos;)]
+mask = (names == &apos;Bob&apos;) | (names == &apos;Will&apos;)
+datas[datas &lt; 0] = 0
+datas
+Out[79]:
+array([[0.98692993, 1.84791653, 0.        , 1.02969194],
+       [0.85997072, 0.        , 0.12909483, 0.        ],
+       [0.        , 0.        , 0.        , 0.        ],
+       [0.        , 0.        , 0.        , 0.        ],
+       [1.14259454, 0.        , 0.62541887, 0.36469832],
+       [0.2290897 , 0.75465453, 0.42306473, 1.08250354],
+       [0.        , 0.        , 0.47466018, 0.        ]])
+In [83]:
+
+datas[names != &apos;Joe&apos;] = 7
+datas
+Out[83]:
+array([[7.        , 7.        , 7.        , 7.        ],
+       [0.85997072, 0.        , 0.12909483, 0.        ],
+       [7.        , 7.        , 7.        , 7.        ],
+       [7.        , 7.        , 7.        , 7.        ],
+       [7.        , 7.        , 7.        , 7.        ],
+       [0.2290897 , 0.75465453, 0.42306473, 1.08250354],
+       [0.        , 0.        , 0.47466018, 0.        ]])
+In [11]:
+
+#花式索引
+#花式索引（Fancy indexing）是一个NumPy术语，它指的是利用整数数组进行索引
+import numpy as np
+arr = np.empty((8, 4))
+for i in range(8):
+    arr[i] = i
+arr
+Out[11]:
+array([[0., 0., 0., 0.],
+       [1., 1., 1., 1.],
+       [2., 2., 2., 2.],
+       [3., 3., 3., 3.],
+       [4., 4., 4., 4.],
+       [5., 5., 5., 5.],
+       [6., 6., 6., 6.],
+       [7., 7., 7., 7.]])
+In [14]:
+
+#为了以特定顺序选取行子集，只需传入一个用于指定顺序的整数列表或ndarray即可
+arr[[4, 3, 0, 6]]
+Out[14]:
+array([[4., 4., 4., 4.],
+       [3., 3., 3., 3.],
+       [0., 0., 0., 0.],
+       [6., 6., 6., 6.]])
+In [15]:
+
+#使用负数索引将会从末尾开始选取行
+arr[[-3, -5, -7]]
+Out[15]:
+array([[5., 5., 5., 5.],
+       [3., 3., 3., 3.],
+       [1., 1., 1., 1.]])
+In [16]:
+
+# 一次传入多个索引数组会有一点特别。它返回的是一个一维数组，其中的元素对应各个索引元组
+arr = np.arange(32).reshape((8, 4))
+arr
+Out[16]:
+array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11],
+       [12, 13, 14, 15],
+       [16, 17, 18, 19],
+       [20, 21, 22, 23],
+       [24, 25, 26, 27],
+       [28, 29, 30, 31]])
+In [17]:
+
+# 最终选出的是元素(1,0)、(5,3)、(7,1)和(2,2)
+arr[[1, 5, 7, 2], [0, 3, 1, 2]]
+Out[17]:
+array([ 4, 23, 29, 10])
+In [18]:
+
+#获取1,5,7,2行，每行的元素按0, 3, 1, 2排序
+arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]]
+Out[18]:
+array([[ 4,  7,  5,  6],
+       [20, 23, 21, 22],
+       [28, 31, 29, 30],
+       [ 8, 11,  9, 10]])
+In [19]:
+
+# 数组转置和轴对换
+# 转置是重塑的一种特殊形式，它返回的是源数据的视图（不会进行任何复制操作）
+arr = np.arange(15).reshape((3, 5))
+arr
+Out[19]:
+array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14]])
+In [20]:
+
+#行和列对换
+arr.T
+Out[20]:
+array([[ 0,  5, 10],
+       [ 1,  6, 11],
+       [ 2,  7, 12],
+       [ 3,  8, 13],
+       [ 4,  9, 14]])
+In [21]:
+
+#利用np.dot计算矩阵内积
+arr = np.random.randn(6, 3)
+arr
+Out[21]:
+array([[ 1.30216619, -0.04003015, -0.39087988],
+       [ 0.31302486,  0.31911528, -0.64879012],
+       [ 1.12346274,  0.1112138 , -0.92633731],
+       [ 2.34111851,  0.62417767, -0.3045089 ],
+       [ 0.29200505, -0.60701405, -0.47213611],
+       [-0.77876649, -0.10067183, -0.73766422]])
+In [23]:
+
+arr.T
+Out[23]:
+array([[ 1.30216619,  0.31302486,  1.12346274,  2.34111851,  0.29200505,
+        -0.77876649],
+       [-0.04003015,  0.31911528,  0.1112138 ,  0.62417767, -0.60701405,
+        -0.10067183],
+       [-0.39087988, -0.64879012, -0.92633731, -0.3045089 , -0.47213611,
+        -0.73766422]])
+In [29]:
+
+np.dot(arr.T, arr)
+Out[29]:
+array([[ 9.22836997,  1.53513224, -2.02907284],
+       [ 1.53513224,  0.88400412, -0.12362575],
+       [-2.02907284, -0.12362575,  2.29160319]])
+In [ ]:
+</code></pre><p><img src="/images/数据分析 2_15.png" alt="">​<br><img src="/images/数据分析 2_16.png" alt=""><br><img src="/images/数据分析 2_17.png" alt=""><br><img src="/images/数据分析 2_18.png" alt=""><br><img src="/images/数据分析 2_19.png" alt=""><br><img src="/images/数据分析 2_20.png" alt=""><br><img src="/images/数据分析 2_21.png" alt=""><br><img src="/images/数据分析 2_22.png" alt=""><br><img src="/images/数据分析 2_23.png" alt=""><br><img src="/images/数据分析 2_24.png" alt=""><br><img src="/images/数据分析 2_25.png" alt=""><br><img src="/images/数据分析 2_26.png" alt=""><br><img src="/images/数据分析 2_27.png" alt=""><br><img src="/images/数据分析 2_28.png" alt=""></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/03/05/Notebook，NumPy运算）/">
+    <time datetime="2019-03-05T10:14:41.000Z" class="entry-date">
+        2019-03-05
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2019/03/05/数据分析（Pandas）/" rel="next">数据分析（Pandas） <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/05/Notebook，NumPy运算）/">Notebook，NumPy运算）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/05/数据分析（Pandas）/">数据分析（Pandas）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/Scrapy 2/">scrapy 2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/Scrapy 1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/26/pymango/">pymango</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据分析/">数据分析</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">6</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 14px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 14px;">flask框架</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据分析/" style="font-size: 12px;">数据分析</a> <a href="/tags/数据库/" style="font-size: 18px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/爬虫/" style="font-size: 16px;">爬虫</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

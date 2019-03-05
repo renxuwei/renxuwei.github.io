@@ -62,6 +62,558 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="数据分析（ipython基础，运行jupyter-Notebook，NumPy运算）" class="数据分析（ipython基础，运行jupyter-Notebook，NumPy运算） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/03/05/Notebook，NumPy运算）/">Notebook，NumPy运算）</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/03/05/Notebook，NumPy运算）/" data-id="cjsvp44fq001xhwveglmjw09c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Jupyter Notebook</p>
+<p>##数据分析，基本知识</p>
+<pre><code># 计算程序运行的时间,明显比python程序运行快数十倍
+import numpy as np
+In [3]:
+
+%timeit my_arr = np.arange(1000)
+3.06 µs ± 26.2 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+In [4]:
+
+%timeit my_list = list(range(1000000))
+65.1 ms ± 1.14 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+In [6]:
+
+#图表的制作
+%matplotlib
+import matplotlib.pyplot as plt
+plt.plot(np.random.randn(50).cumsum())
+Using matplotlib backend: Qt5Agg
+Out[6]:
+[&lt;matplotlib.lines.Line2D at 0x3f945f8&gt;]
+In [12]:
+
+#随机生成2行3列的数据
+import numpy as np
+data1 = np.random.randn(2,3)
+data1
+Out[12]:
+array([[ 0.03331819,  2.58898836,  0.31529926],
+       [-0.46497438, -0.77640473, -0.29017283]])
+In [13]:
+
+#运算 + *
+# data * 10
+data1 + data1
+Out[13]:
+array([[ 0.06663638,  5.17797672,  0.63059851],
+       [-0.92994876, -1.55280946, -0.58034567]])
+In [16]:
+
+#取维度大小
+data.shape   #(2, 3)
+#取数据的数据类型
+data.dtype   #dtype(&apos;float64&apos;)
+Out[16]:
+dtype(&apos;float64&apos;)
+In [19]:
+
+#创建ndarray
+data = [6,  7.5, 8, 0, 1]
+arr1 = np.array(data)
+arr1   #array([6. , 7.5, 8. , 0. , 1. ])
+Out[19]:
+array([6. , 7.5, 8. , 0. , 1. ])
+In [20]:
+
+data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
+arr2 = np.array(data2)
+arr2
+Out[20]:
+array([[1, 2, 3, 4],
+       [5, 6, 7, 8]])
+In [23]:
+
+#取维度
+arr2.ndim  #2
+arr2.shape   #(2, 4)
+arr2.dtype   #dtype(&apos;int32&apos;)
+Out[23]:
+dtype(&apos;int32&apos;)
+In [35]:
+
+#zeros和ones分别可以创建指定⻓度或形状的全0或全1数组。empty可以创建没有任何具体值的数组
+np.zeros(10)   #array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
+np.zeros((3, 6))   #array([[0., 0., 0., 0., 0., 0.],
+                 #        [0., 0., 0., 0., 0., 0.],
+                #        [0., 0., 0., 0., 0., 0.]])
+
+np.empty((2, 3, 3))   #array([[[0., 0., 0.],
+                    #         [0., 0., 0.],
+                    #         [0., 0., 0.]],
+​
+                    #        [[0., 0., 0.],
+                    #         [0., 0., 0.],
+                    #         [0., 0., 0.]]])
+# np.ones(10)
+# np.arange(15)   #array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])
+​
+Out[35]:
+array([[[0., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.]],
+
+       [[0., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.]]])
+In [36]:
+
+arr = np.array([[1., 2., 3.], [4., 5., 6.]])
+arr
+Out[36]:
+array([[1., 2., 3.],
+       [4., 5., 6.]])
+In [37]:
+
+arr * arr
+Out[37]:
+array([[ 1.,  4.,  9.],
+       [16., 25., 36.]])
+In [38]:
+
+arr - arr
+Out[38]:
+array([[0., 0., 0.],
+       [0., 0., 0.]])
+In [39]:
+
+ 1 / arr
+Out[39]:
+array([[1.        , 0.5       , 0.33333333],
+       [0.25      , 0.2       , 0.16666667]])
+In [42]:
+
+#大小相同的数组之间的比较较会生成布尔值数组
+arr2 = np.array([[0., 4., 1.], [7., 2., 12.]])
+arr2
+arr2 &gt; arr   #array([[False,  True, False],
+            #        [ True, False,  True]])
+Out[42]:
+array([[False,  True, False],
+       [ True, False,  True]])
+In [46]:
+
+# 基本的索引和切片
+arr = np.arange(10)
+arr
+arr[5:8]   #array([5, 6, 7])
+arr[5:8] = 12   
+arr   #array([ 0,  1,  2,  3,  4, 12, 12, 12,  8,  9])
+​
+​
+Out[46]:
+array([ 0,  1,  2,  3,  4, 12, 12, 12,  8,  9])
+In [48]:
+
+#ndarray切⽚的⼀份副本⽽⾮视图，就需要明确地进⾏复制操作，例如arr[5:8].copy()
+arr2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+arr2d[2]  # array([7, 8, 9])
+# 两种方式式一样
+arr2d[0][2]   #3
+arr2d[0, 2]   #3
+​
+​
+Out[48]:
+3
+In [58]:
+
+arr3d = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+arr3d.shape   #(2, 2, 3)
+num = arr3d[0].copy()
+arr3d[0] = 42
+arr3d   #array([[[42, 42, 42],
+        #         [42, 42, 42]],
+​
+        #        [[ 7,  8,  9],
+        #         [10, 11, 12]]])
+arr3d[0] = num
+arr3d   #array([[[ 1,  2,  3],
+        #         [ 4,  5,  6]],
+​
+        #        [[ 7,  8,  9],
+        #         [10, 11, 12]]])
+Out[58]:
+array([[[ 1,  2,  3],
+        [ 4,  5,  6]],
+
+       [[ 7,  8,  9],
+        [10, 11, 12]]])
+In [59]:
+
+#切片索引
+arr2d
+​
+Out[59]:
+array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+In [60]:
+
+arr2d[:2]
+#array([[1, 2, 3],
+#        [4, 5, 6]])
+​
+Out[60]:
+array([[1, 2, 3],
+       [4, 5, 6]])
+In [61]:
+
+#一次传入多个切片
+arr2d[:2, 1:]   #array([[2, 3],
+                #        [5, 6]])
+Out[61]:
+array([[2, 3],
+       [5, 6]])
+In [64]:
+
+#将整数索引和切片混合；选取第二行的前两列
+arr2d[1, :2]   #array([4, 5])
+arr2d[:2, 2]   #array([3, 6])
+Out[64]:
+array([4, 5])
+In [79]:
+
+#布尔型索引
+#假设我们有一个用于存储数据的数组以及一个存储姓名的数组（含有重复项）
+names = np.array([&apos;Bob&apos;, &apos;Joe&apos;, &apos;Will&apos;, &apos;Bob&apos;, &apos;Will&apos;, &apos;Joe&apos;, &apos;Joe&apos;])
+datas = np.random.randn(7, 4)
+names   #array([&apos;Bob&apos;, &apos;Joe&apos;, &apos;Will&apos;, &apos;Bob&apos;, &apos;Will&apos;, &apos;Joe&apos;, &apos;Joe&apos;], dtype=&apos;&lt;U4&apos;)
+datas
+names == &apos;Bob&apos;   #array([ True, False, False,  True, False, False, False])
+datas[names == &apos;Bob&apos;]   #array([[ 0.06174578,  0.5164119 ,  1.58356094, -0.27317067],
+                    #        [-0.56949827,  1.88646682, -1.44514231, -0.39327907]])
+datas[names == &apos;Bob&apos;, 2:]   #array([[ 1.58356094, -0.27317067],
+                        #        [-1.44514231, -0.39327907]])
+datas[names == &apos;Bob&apos;, 3]
+names != &apos;Bob&apos;   #array([False,  True,  True, False,  True,  True,  True])
+datas[~(names == &apos;Bob&apos;)]
+mask = (names == &apos;Bob&apos;) | (names == &apos;Will&apos;)
+datas[datas &lt; 0] = 0
+datas
+Out[79]:
+array([[0.98692993, 1.84791653, 0.        , 1.02969194],
+       [0.85997072, 0.        , 0.12909483, 0.        ],
+       [0.        , 0.        , 0.        , 0.        ],
+       [0.        , 0.        , 0.        , 0.        ],
+       [1.14259454, 0.        , 0.62541887, 0.36469832],
+       [0.2290897 , 0.75465453, 0.42306473, 1.08250354],
+       [0.        , 0.        , 0.47466018, 0.        ]])
+In [83]:
+
+datas[names != &apos;Joe&apos;] = 7
+datas
+Out[83]:
+array([[7.        , 7.        , 7.        , 7.        ],
+       [0.85997072, 0.        , 0.12909483, 0.        ],
+       [7.        , 7.        , 7.        , 7.        ],
+       [7.        , 7.        , 7.        , 7.        ],
+       [7.        , 7.        , 7.        , 7.        ],
+       [0.2290897 , 0.75465453, 0.42306473, 1.08250354],
+       [0.        , 0.        , 0.47466018, 0.        ]])
+In [11]:
+
+#花式索引
+#花式索引（Fancy indexing）是一个NumPy术语，它指的是利用整数数组进行索引
+import numpy as np
+arr = np.empty((8, 4))
+for i in range(8):
+    arr[i] = i
+arr
+Out[11]:
+array([[0., 0., 0., 0.],
+       [1., 1., 1., 1.],
+       [2., 2., 2., 2.],
+       [3., 3., 3., 3.],
+       [4., 4., 4., 4.],
+       [5., 5., 5., 5.],
+       [6., 6., 6., 6.],
+       [7., 7., 7., 7.]])
+In [14]:
+
+#为了以特定顺序选取行子集，只需传入一个用于指定顺序的整数列表或ndarray即可
+arr[[4, 3, 0, 6]]
+Out[14]:
+array([[4., 4., 4., 4.],
+       [3., 3., 3., 3.],
+       [0., 0., 0., 0.],
+       [6., 6., 6., 6.]])
+In [15]:
+
+#使用负数索引将会从末尾开始选取行
+arr[[-3, -5, -7]]
+Out[15]:
+array([[5., 5., 5., 5.],
+       [3., 3., 3., 3.],
+       [1., 1., 1., 1.]])
+In [16]:
+
+# 一次传入多个索引数组会有一点特别。它返回的是一个一维数组，其中的元素对应各个索引元组
+arr = np.arange(32).reshape((8, 4))
+arr
+Out[16]:
+array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11],
+       [12, 13, 14, 15],
+       [16, 17, 18, 19],
+       [20, 21, 22, 23],
+       [24, 25, 26, 27],
+       [28, 29, 30, 31]])
+In [17]:
+
+# 最终选出的是元素(1,0)、(5,3)、(7,1)和(2,2)
+arr[[1, 5, 7, 2], [0, 3, 1, 2]]
+Out[17]:
+array([ 4, 23, 29, 10])
+In [18]:
+
+#获取1,5,7,2行，每行的元素按0, 3, 1, 2排序
+arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]]
+Out[18]:
+array([[ 4,  7,  5,  6],
+       [20, 23, 21, 22],
+       [28, 31, 29, 30],
+       [ 8, 11,  9, 10]])
+In [19]:
+
+# 数组转置和轴对换
+# 转置是重塑的一种特殊形式，它返回的是源数据的视图（不会进行任何复制操作）
+arr = np.arange(15).reshape((3, 5))
+arr
+Out[19]:
+array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14]])
+In [20]:
+
+#行和列对换
+arr.T
+Out[20]:
+array([[ 0,  5, 10],
+       [ 1,  6, 11],
+       [ 2,  7, 12],
+       [ 3,  8, 13],
+       [ 4,  9, 14]])
+In [21]:
+
+#利用np.dot计算矩阵内积
+arr = np.random.randn(6, 3)
+arr
+Out[21]:
+array([[ 1.30216619, -0.04003015, -0.39087988],
+       [ 0.31302486,  0.31911528, -0.64879012],
+       [ 1.12346274,  0.1112138 , -0.92633731],
+       [ 2.34111851,  0.62417767, -0.3045089 ],
+       [ 0.29200505, -0.60701405, -0.47213611],
+       [-0.77876649, -0.10067183, -0.73766422]])
+In [23]:
+
+arr.T
+Out[23]:
+array([[ 1.30216619,  0.31302486,  1.12346274,  2.34111851,  0.29200505,
+        -0.77876649],
+       [-0.04003015,  0.31911528,  0.1112138 ,  0.62417767, -0.60701405,
+        -0.10067183],
+       [-0.39087988, -0.64879012, -0.92633731, -0.3045089 , -0.47213611,
+        -0.73766422]])
+In [29]:
+
+np.dot(arr.T, arr)
+Out[29]:
+array([[ 9.22836997,  1.53513224, -2.02907284],
+       [ 1.53513224,  0.88400412, -0.12362575],
+       [-2.02907284, -0.12362575,  2.29160319]])
+In [ ]:
+</code></pre><p><img src="/images/数据分析 2_15.png" alt="">​<br><img src="/images/数据分析 2_16.png" alt=""><br><img src="/images/数据分析 2_17.png" alt=""><br><img src="/images/数据分析 2_18.png" alt=""><br><img src="/images/数据分析 2_19.png" alt=""><br><img src="/images/数据分析 2_20.png" alt=""><br><img src="/images/数据分析 2_21.png" alt=""><br><img src="/images/数据分析 2_22.png" alt=""><br><img src="/images/数据分析 2_23.png" alt=""><br><img src="/images/数据分析 2_24.png" alt=""><br><img src="/images/数据分析 2_25.png" alt=""><br><img src="/images/数据分析 2_26.png" alt=""><br><img src="/images/数据分析 2_27.png" alt=""><br><img src="/images/数据分析 2_28.png" alt=""></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/03/05/Notebook，NumPy运算）/">
+    <time datetime="2019-03-05T10:14:41.000Z" class="entry-date">
+        2019-03-05
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-数据分析（Pandas）" class="post-数据分析（Pandas） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/03/05/数据分析（Pandas）/">数据分析（Pandas）</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/03/05/数据分析（Pandas）/" data-id="cjsvp44eq001dhwvewl0i5rh4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Jupyter Notebook</p>
+<p>##pandas(数据分析)</p>
+<h3 id="pandas的数据结构介绍"><a href="#pandas的数据结构介绍" class="headerlink" title="pandas的数据结构介绍"></a>pandas的数据结构介绍</h3><h4 id="两个主要数据结构：Series和DataFrame"><a href="#两个主要数据结构：Series和DataFrame" class="headerlink" title="两个主要数据结构：Series和DataFrame"></a>两个主要数据结构：Series和DataFrame</h4><pre><code>import pandas as pd
+In [69]:
+</code></pre><h4 id="Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相"><a href="#Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相" class="headerlink" title="Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相"></a>Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相</h4><h4 id="关的数据标签（即索引）组成"><a href="#关的数据标签（即索引）组成" class="headerlink" title="关的数据标签（即索引）组成"></a>关的数据标签（即索引）组成</h4><pre><code>obj = pd.Series([2,3,6,9])
+obj
+Out[69]:
+0    2
+1    3
+2    6
+3    9
+dtype: int64
+In [3]:
+</code></pre><h4 id="下标"><a href="#下标" class="headerlink" title="下标"></a>下标</h4><pre><code>obj.index   #RangeIndex(start=0, stop=4, step=1)   --（开始下标，结束下标，步长）
+Out[3]:
+RangeIndex(start=0, stop=4, step=1)
+In [4]:
+</code></pre><p>####获取值<br>    obj.values<br>    Out[4]:<br>    array([2, 3, 6, 9], dtype=int64)<br>    In [5]:</p>
+<h4 id="将下标改为index下标"><a href="#将下标改为index下标" class="headerlink" title="将下标改为index下标"></a>将下标改为index下标</h4><pre><code>s2 = pd.Series([2,4,77,8], index=[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;])
+s2
+Out[5]:
+a     2
+b     4
+c    77
+d     8
+dtype: int64
+In [6]:
+</code></pre><p>####获取下标为a,b的数据<br>    s2[[‘a’,’b’]]<br>    Out[6]:<br>    a    2<br>    b    4<br>    dtype: int64<br>    In [7]:</p>
+<h4 id="获取值大于3的数据"><a href="#获取值大于3的数据" class="headerlink" title="获取值大于3的数据"></a>获取值大于3的数据</h4><pre><code>s2[s2 &gt; 3]
+Out[7]:
+b     4
+c    77
+d     8
+dtype: int64
+In [8]:
+</code></pre><p>####直接求乘积<br>    s2 * 5<br>    Out[8]:<br>    a     10<br>    b     20<br>    c    385<br>    d     40<br>    dtype: int64<br>    In [9]:</p>
+<p>####in 判断是否在S2中<br>    ‘a’ in s2<br>    Out[9]:<br>    True<br>    In [10]:</p>
+<pre><code>&apos;v&apos; in s2   # 没有‘v’
+Out[10]:
+False
+In [11]:
+</code></pre><p>####创建<br>    d = {‘aa’: 80,’bb’:99,’cc’:79,’dd’:98}<br>    obj2 = pd.Series(d)<br>    obj2<br>    Out[11]:<br>    aa    80<br>    bb    99<br>    cc    79<br>    dd    98<br>    dtype: int64<br>    In [12]:</p>
+<p>####将下标顺序更改（类似于excel表格），并添加新的行<br>    l1 = [‘dd’,’cc’,’ff’,’aa’,’bb’]<br>    obj3 = pd.Series(d,index=l1)<br>    obj3<br>    Out[12]:<br>    dd    98.0<br>    cc    79.0<br>    ff     NaN<br>    aa    80.0<br>    bb    99.0<br>    dtype: float64<br>    In [13]:</p>
+<p>####判断不是为空的数据<br>    pd.notnull(obj3)<br>    Out[13]:<br>    dd     True<br>    cc     True<br>    ff    False<br>    aa     True<br>    bb     True<br>    dtype: bool<br>    In [15]:</p>
+<p>####判断为空的数据<br>    pd.isnull(obj3)<br>    Out[15]:<br>    dd    False<br>    cc    False<br>    ff     True<br>    aa    False<br>    bb    False<br>    dtype: bool<br>    In [16]:</p>
+<p>####数组相加<br>    obj3 + obj2<br>    Out[16]:<br>    aa    160.0<br>    bb    198.0<br>    cc    158.0<br>    dd    196.0<br>    ff      NaN<br>    dtype: float64<br>    In [71]:</p>
+<pre><code>type(obj3)
+Out[71]:
+pandas.core.series.Series
+In [72]:
+</code></pre><p>####添加obj3的名字为lession<br>    obj3.name = ‘lesson’<br>    obj3<br>    Out[72]:<br>    dd    98.0<br>    cc    79.0<br>    ff     NaN<br>    aa    80.0<br>    bb    99.0<br>    Name: lesson, dtype: float64<br>    In [23]:</p>
+<p>####更改下标<br>    obj.index = [‘m’,’v’,’i’,’y’]<br>    obj<br>    Out[23]:<br>    m    2<br>    v    3<br>    i    6<br>    y    9<br>    dtype: int64<br>    In [73]:</p>
+<p>####DataFrame：多组数据   – 类似于Excel</p>
+<h4 id="DataFrame是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数"><a href="#DataFrame是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数" class="headerlink" title="DataFrame是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数"></a>DataFrame是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数</h4><h4 id="值、字符串、布尔值等），DataFrame既有行索引也有列索引。"><a href="#值、字符串、布尔值等），DataFrame既有行索引也有列索引。" class="headerlink" title="值、字符串、布尔值等），DataFrame既有行索引也有列索引。"></a>值、字符串、布尔值等），DataFrame既有行索引也有列索引。</h4><h4 id="建DataFrame-传入一个由等长列表或NumPy数组组成的字典"><a href="#建DataFrame-传入一个由等长列表或NumPy数组组成的字典" class="headerlink" title="建DataFrame, 传入一个由等长列表或NumPy数组组成的字典"></a>建DataFrame, 传入一个由等长列表或NumPy数组组成的字典</h4><p>​<br>    data = {‘name’:[‘罗瑶’,’老衲’,’小胡’,’花花公子’,’西瓜’],’WEB’:[99,78,88,100,87],’爬虫’:[‘A’,’S’,’SS’,’SSS’,’A+’]}<br>    def1 = pd.DataFrame(data)<br>    def1<br>    Out[73]:<br>    name    WEB    爬虫<br>    0    罗瑶    99    A<br>    1    老衲    78    S<br>    2    小胡    88    SS<br>    3    花花公子    100    SSS<br>    4    西瓜    87    A+<br>    In [28]:</p>
+<p>####更换列的顺序<br>    pd.DataFrame(data, columns=[‘name’,’爬虫’,’WEB’])<br>    Out[28]:<br>    name    爬虫    WEB<br>    0    罗瑶    A    99<br>    1    老衲    S    78<br>    2    小胡    SS    88<br>    3    花花公子    SSS    100<br>    4    西瓜    A+    87<br>    In [29]:</p>
+<pre><code>def1.index
+Out[29]:
+RangeIndex(start=0, stop=5, step=1)
+In [32]:
+</code></pre><p>####添加新的列‘数据分析’，并且更改下标[‘a’,’b’,’c’,’d’,’e’]<br>    def2 = pd.DataFrame(data, columns=[‘name’,’爬虫’,’WEB’,’数据分析’], index=[‘a’,’b’,’c’,’d’,’e’])<br>    def2<br>    Out[32]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    NaN<br>    b    老衲    S    78    NaN<br>    c    小胡    SS    88    NaN<br>    d    花花公子    SSS    100    NaN<br>    e    西瓜    A+    87    NaN<br>    In [35]:</p>
+<p>####查询 列 数据（竖着查询）<br>    def2[[‘name’,’爬虫’]]<br>    Out[35]:<br>    name    爬虫<br>    a    罗瑶    A<br>    b    老衲    S<br>    c    小胡    SS<br>    d    花花公子    SSS<br>    e    西瓜    A+<br>    In [36]:</p>
+<p>####查询 行 数据（横着查询）<br>    def2.loc[‘a’]<br>    Out[36]:<br>    name     罗瑶<br>    爬虫        A<br>    WEB      99<br>    数据分析    NaN<br>    Name: a, dtype: object<br>    In [38]:</p>
+<h4 id="多行-查询"><a href="#多行-查询" class="headerlink" title="多行 查询"></a>多行 查询</h4><pre><code>def2.loc[[&apos;c&apos;,&apos;b&apos;]]
+Out[38]:
+name    爬虫    WEB    数据分析
+c    小胡    SS    88    NaN
+b    老衲    S    78    NaN
+In [39]:
+
+def2[&apos;数据分析&apos;]
+Out[39]:
+a    NaN
+b    NaN
+c    NaN
+d    NaN
+e    NaN
+Name: 数据分析, dtype: object
+In [42]:
+</code></pre><p>####更改数据分析列的数据<br>    def2[‘数据分析’]= 88<br>    def2<br>    Out[42]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    88<br>    b    老衲    S    78    88<br>    c    小胡    SS    88    88<br>    d    花花公子    SSS    100    88<br>    e    西瓜    A+    87    88<br>    In [47]:</p>
+<p>####更改数据分析列的数据<br>    import numpy as np<br>    def2[‘数据分析’]= np.arange(5)<br>    def2<br>    Out[47]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    0<br>    b    老衲    S    78    1<br>    c    小胡    SS    88    2<br>    d    花花公子    SSS    100    3<br>    e    西瓜    A+    87    4<br>    In [49]:</p>
+<p>####将‘数据分析’列数据，更换为空（np.nan）<br>    def2[‘数据分析’]= np.nan<br>    def2<br>    Out[49]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    NaN<br>    b    老衲    S    78    NaN<br>    c    小胡    SS    88    NaN<br>    d    花花公子    SSS    100    NaN<br>    e    西瓜    A+    87    NaN<br>    In [50]:</p>
+<p>####创建Series s1<br>    s1 = pd.Series([0,0], index=[‘b’,’d’])<br>    s1<br>    Out[50]:<br>    b    0<br>    d    0<br>    dtype: int64<br>    In [51]:</p>
+<p>####对应修改数据</p>
+<p>####如果赋值的是一个Series，就会精确匹配DataFrame的索引，所有的空位都将被填上缺失值<br>    def2[‘数据分析’]= s1<br>    def2<br>    Out[51]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    NaN<br>    b    老衲    S    78    0.0<br>    c    小胡    SS    88    NaN<br>    d    花花公子    SSS    100    0.0<br>    e    西瓜    A+    87    NaN<br>    In [74]:</p>
+<h4 id="创建新的列，并按组合条件添加数据"><a href="#创建新的列，并按组合条件添加数据" class="headerlink" title="创建新的列，并按组合条件添加数据"></a>创建新的列，并按组合条件添加数据</h4><pre><code>def2[&apos;高新&apos;] = (def2[&apos;WEB&apos;] &gt; 88) &amp; (def2[&apos;爬虫&apos;] == &apos;A&apos;)
+def2
+Out[74]:
+name    爬虫    WEB    数据分析    高新
+a    罗瑶    A    99    NaN    True
+b    老衲    S    78    0.0    False
+c    小胡    SS    88    NaN    False
+d    花花公子    SSS    100    0.0    False
+e    西瓜    A+    87    NaN    False
+In [68]:
+</code></pre><p>####更改刚添加数据（类似于三位运算符）<br>    def2[‘高新’] = np.where((def2[‘WEB’] &gt; 88) &amp; (def2[‘爬虫’] == ‘A’), ‘恭喜’, ‘加油’)<br>    def2<br>    Out[68]:<br>    name    爬虫    WEB    数据分析    高新<br>    a    罗瑶    A    99    NaN    恭喜<br>    b    老衲    S    78    0.0    加油<br>    c    小胡    SS    88    NaN    加油<br>    d    花花公子    SSS    100    0.0    加油<br>    e    西瓜    A+    87    NaN    加油<br>    In [66]:</p>
+<p>####为不存在的列赋值会创建出一个新列。关键字del用于删除列。<br>    del def2[‘高新’]<br>    def2<br>    Out[66]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    NaN<br>    b    老衲    S    78    0.0<br>    c    小胡    SS    88    NaN<br>    d    花花公子    SSS    100    0.0<br>    e    西瓜    A+    87    NaN</p>
+<p>​</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/03/05/数据分析（Pandas）/">
+    <time datetime="2019-03-05T10:13:30.000Z" class="entry-date">
+        2019-03-05
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-Scrapy 2" class="post-Scrapy 2 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +629,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/27/Scrapy 2/" data-id="cjssw1iez000868veb5er6fuh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/27/Scrapy 2/" data-id="cjsvp44d8000ehwvekrvgymrc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -115,7 +667,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/27/Scrapy 1/" data-id="cjssw1ihk000z68ve6w1urv4u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/27/Scrapy 1/" data-id="cjsvp44cy000chwve26fvrmqn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -162,7 +714,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/pymango/" data-id="cjssw1iif001568vewpnejls8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/pymango/" data-id="cjsvp44ei0017hwve7lltvpw4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -215,7 +767,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/mangoDB/" data-id="cjssw1iiv001g68veuxbmpkm6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/26/mangoDB/" data-id="cjsvp44ef0015hwvesc2o2p5m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -266,7 +818,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/25/注意重点/" data-id="cjssw1iiv001968vesnotf8n7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/25/注意重点/" data-id="cjsvp44f0001mhwved367acl3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -320,7 +872,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/21/linux系统MySql操作/" data-id="cjssw1ik6001y68veryo73jd3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/21/linux系统MySql操作/" data-id="cjsvp44fz0023hwvexnz3ufhp" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -455,7 +1007,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/linux中msql操作/" data-id="cjssw1iif001768ve65o073dh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/linux中msql操作/" data-id="cjsvp44ea0011hwve3fm5ai3e" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -512,7 +1064,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/操作命令/" data-id="cjssw1ik6002068ve21r573km" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/19/操作命令/" data-id="cjsvp44g10025hwvefcoaclgr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -612,204 +1164,6 @@
 
 
   
-    <article id="post-flask项目部署" class="post-flask项目部署 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/02/16/flask项目部署/">flask项目部署</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/16/flask项目部署/" data-id="cjssw1ih5000q68veanwzgdbl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>通过nohup挂载上去：</p>
-<p>1.安装项目文件：先在home下面的src文件夹下面，通过xftp6把本地项目文件放在服务器的src文件下面<br>或者在代码托管平台下载代码 git pull 地址</p>
-<p>2.安装虚拟环境：先进入home文件夹下面，然后进入文件env文件夹<br>virtualenv –no-site-packages -p /usr/local/python3/bin/python3 ajenv<br>3.下载环境需要的安装包<br>/home/env/ajenv/bin/pip3 install -r /home/src/aj/requirement.txt<br>4.在虚拟环境下运行manage.py<br>/home/env/ajenv/bin/python3 /home/src/aj/manage.py runserver -p 8080 -h 0.0.0.0<br>5.可以在浏览器中进入项目<br>netstat -lntp 查看端口的状态<br>创建一个文件：touch aj_start.sh<br>修改文件的内容为：/home/env/ajenv/bin/python3 /home/src/aj/manage.py runserver -p 8080 -h 0.0.0.0<br>6.杀掉相应的端口<br>给文件权限<br>method -R 777 aj_start.sh<br>7.挂载项目到后台：<br>nohup ./aj_start.sh &amp;<br>8.在浏览器中访问 39.96.18.59:8080/user/login/(但是现在没有传数据库，暂时不能从数据库中获取信息)<br>也可以在后台挂载</p>
-<p>通过nginx+uwsgi挂载aj项目<br>9.看一下是否配置好了文件<br>vim /etc/nginx/nginx.conf<br>在命令行输入set number 看上你第37行是否配置了.conf结尾的文件</p>
-<p>10.进入conf文件夹下面<br>cd /home/conf/<br>创建文件夹<br>touch ajnginx.conf</p>
-<p>11.编辑文件：<br>配置nginx中的文件</p>
-<p>vim ajnginx.conf</p>
-<p>在文件里面修改文件</p>
-<p>server {<br>    listen 8080;<br>    server_name 39.96.18.59;</p>
-<pre><code>access_log /home/logs/ajaccess.log;
-error_log /home/logs/ajerror.log;
-
-location / {
-    include uwsgi_params;
-    uwsgi_pass 127.0.0.1:8099;
-
-    uwsgi_param UWSGI_CHDIR /home/src/aj;
-    uwsgi_param UWSGI_SCRIPT manage:app;
-
-
-
-}
-</code></pre><p>}</p>
-<p>12.配置uwsgi文件：<br>创建文件夹<br>touch ajuwsgi.ini<br>编辑文件：<br>vim ajuwsgi.ini</p>
-<p>[uwsgi]<br>master = true<br>socket = 127.0.0.1:8099<br>chdir = /home/src/aj<br>pythonpath = /home/env/ajenv/bin/python3<br>callable = app<br>logto = /home/logs/ajuwsgi.log</p>
-<p>13.启动nginx<br>systemctl restart nginx<br>(如果出现错误，就需要systemctl status nginx查看状态，里面有出错的原因和位置)</p>
-<p>14.安装uwsgi<br>/home/env/ajenv/bin/pip3 install uwsgi</p>
-<p>15.启动命令：<br>/home/env/ajenv/bin/uwsgi –ini /home/conf/ajuwsgi.ini &amp;</p>
-<p>16.可以访问地址了</p>
-<p>17.如果启动出现问题，可以看文件：<br>cd /home/logs/<br>tail -f ajuwsgi.log</p>
-<p>可看到日志文件的最新内容</p>
-<p>18.数据库的配置和传输：<br>在数据库中本地数据库 结构同步到 服务器上相应的数据库<br>如果不行，可以数据传输</p>
-<p>19.解析路由：<br>cd /home/src/<br>cd aj<br>vim app/house_views.py<br>退出</p>
-<p>vim manage.py<br>添加路由：<br>from flask import render_template<br>@app.route(‘/‘)<br>def index():<br>    return render_template(‘index.html’)</p>
-<p>20.再通过ngnix启动uwsgi<br>/home/env/ajenv/bin/uwsgi –ini /home/conf/ajuwsgi.ini &amp;</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/02/16/flask项目部署/">
-    <time datetime="2019-02-16T01:20:25.000Z" class="entry-date">
-        2019-02-16
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask框架/">flask框架</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-django项目部署" class="post-django项目部署 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/02/15/django项目部署/">django项目部署</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/15/django项目部署/" data-id="cjssw1ih5000s68ve21t40olf" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h2><h3 id="项目流程"><a href="#项目流程" class="headerlink" title="项目流程"></a>项目流程</h3><p>项目从0到1的过程需要产品、测试、前端、后端、运维共同维护，如下展示项目的设计流程:</p>
-<p><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaxjqllhxj30u0143abn.jpg" alt=""></p>
-<p><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaxizzr70j30kg0h2n1i.jpg" alt=""></p>
-<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><p>前面有文章，不再赘述</p>
-<p>1.在云服务器中设置安全组开启3306端口</p>
-<p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzaugaz1jij30gi0glglx.jpg" alt="安全组"></p>
-<p>2.在数据库中将本地数据库的数据传输到阿里云数据库中</p>
-<p><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzav0gotdxj30r40iu0ui.jpg" alt=""></p>
-<p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzav2387zvj30pg0iuq3z.jpg" alt=""></p>
-<p>再通过Xftp软件将代码传到云服务器上</p>
-<p><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzav4q6229j30pl0k2ag3.jpg" alt=""></p>
-<p>将左边代码文件夹拖到右边/home/src目录下即可</p>
-<h3 id="安装python3-6"><a href="#安装python3-6" class="headerlink" title="安装python3.6"></a>安装python3.6</h3><p>在centos中，系统默认只提供python2.7的版本，但是项目我们使用的python3.6的版本。所有我们自己安装python3</p>
-<h4 id="安装Python3的方法"><a href="#安装Python3的方法" class="headerlink" title="安装Python3的方法"></a>安装Python3的方法</h4><p>首先安装依赖包</p>
-<p>安装Python3.6所需要的依赖包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y groupinstall &quot;Development tools&quot;</span><br><span class="line"></span><br><span class="line">yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</span><br></pre></td></tr></table></figure>
-<p>安装Python3.7还需额外安装依赖包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install libffi-devel -y</span><br></pre></td></tr></table></figure>
-<p>然后根据自己需求下载不同版本的Python3，我下载的是Python3.6.2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz</span><br><span class="line"></span><br><span class="line">然后解压压缩包，进入该目录，安装Python3</span><br><span class="line"></span><br><span class="line">tar -xvJf  Python-3.6.2.tar.xz</span><br><span class="line"></span><br><span class="line">cd Python-3.6.2</span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/python3</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>最后创建软链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/python3/bin/python3 /usr/bin/python3</span><br><span class="line"></span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3</span><br></pre></td></tr></table></figure>
-<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><h4 id="1-安装virtualenv"><a href="#1-安装virtualenv" class="headerlink" title="1. 安装virtualenv"></a>1. 安装virtualenv</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install python-virtualenv</span><br></pre></td></tr></table></figure>
-<h4 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2. 创建虚拟环境"></a>2. 创建虚拟环境</h4><p>在根目录下的home中创建</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /home</span><br><span class="line"># 创建四个文件目录（env中为环境目录，src为代码目录）</span><br><span class="line">mkdir conf env src log</span><br><span class="line">cd env</span><br><span class="line"># 在env中创建环境freshenv</span><br><span class="line">virtualenv --no-site-packages -p /usr/local/python3/bin/python3 freshenv</span><br><span class="line"># 安装项目所需要的库</span><br><span class="line">/home/env/freshenv/bin/pip3 install -r /home/src/fresh_shop/requirement.txt</span><br></pre></td></tr></table></figure>
-<h3 id="1-在测试环境中部署方式"><a href="#1-在测试环境中部署方式" class="headerlink" title="1. 在测试环境中部署方式"></a>1. 在测试环境中部署方式</h3><h4 id="1-1-home-src-fresh-shop-settings-py中修改"><a href="#1-1-home-src-fresh-shop-settings-py中修改" class="headerlink" title="1.1 /home/src/fresh_shop/settings.py中修改"></a>1.1 /home/src/fresh_shop/settings.py中修改</h4><p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzavjcbzgsj30md03zglh.jpg" alt=""></p>
-<h4 id="1-2-home-src-fresh-shop-urls-py"><a href="#1-2-home-src-fresh-shop-urls-py" class="headerlink" title="1.2 /home/src/fresh_shop/urls.py"></a>1.2 /home/src/fresh_shop/urls.py</h4><p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzavlqwk1xj30p60dvjri.jpg" alt=""></p>
-<h4 id="1-3-home-src-resh-shop-utils-middleware-py"><a href="#1-3-home-src-resh-shop-utils-middleware-py" class="headerlink" title="1.3 /home/src/resh_shop/utils/middleware.py"></a>1.3 /home/src/resh_shop/utils/middleware.py</h4><p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzavmigoo0j30oz0dgdg6.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 在/home/src/中创建freshshop.sh</span><br><span class="line">touch freshshop.sh</span><br><span class="line"># 在freshop.sh中写入启动命令（/home/env/freshenv/bin/python3 /home/src/fresh_shop/manage.py runserver 0.0.0.0:80</span><br><span class="line">）</span><br><span class="line">vim freshop.sh</span><br><span class="line"># 修改freshshop.sh的权限</span><br><span class="line">chmod -R 777 freshshop.sh</span><br><span class="line"># 启动服务器</span><br><span class="line">nohup ./freshshop.sh &amp;</span><br><span class="line"># src下面会自动生成nohup.out,请求都会写在里面</span><br></pre></td></tr></table></figure>
-<h3 id="2-正式环境中部署方式"><a href="#2-正式环境中部署方式" class="headerlink" title="2. 正式环境中部署方式"></a>2. 正式环境中部署方式</h3><p>正式环境中部署为nginx+uwsgi来部署django项目</p>
-<h4 id="2-1-安装nginx"><a href="#2-1-安装nginx" class="headerlink" title="2.1 安装nginx"></a>2.1 安装nginx</h4><p>a）添加nginx存储库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
-<p>b) 安装nginx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
-<p>c) 运行nginx</p>
-<p>Nginx不会自行启动。要运行Nginx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure>
-<p>nginx的运行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx 查看nginx的状态</span><br><span class="line">systemctl start/stop/enable/disable nginx 启动/关闭/设置开机启动/禁止开机启动</span><br></pre></td></tr></table></figure>
-<p>d）系统启动时启用Nginx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable nginx</span><br></pre></td></tr></table></figure>
-<p>e）如果您正在运行防火墙，请运行以下命令以允许HTTP和HTTPS通信：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=http </span><br><span class="line"></span><br><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line"></span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-<h4 id="3-配置uwsgi"><a href="#3-配置uwsgi" class="headerlink" title="3.配置uwsgi"></a>3.配置uwsgi</h4><h5 id="3-1-安装uwsgi"><a href="#3-1-安装uwsgi" class="headerlink" title="3.1 安装uwsgi"></a>3.1 安装uwsgi</h5><p>在虚拟环境中安装uwsgi，假设虚拟环境安装在/home/env/freshenv中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/env/freshenv/bin/pip install uwsgi</span><br></pre></td></tr></table></figure>
-<h4 id="4-配置项目代码，配置项目nginx，配置uwsgi-ini等"><a href="#4-配置项目代码，配置项目nginx，配置uwsgi-ini等" class="headerlink" title="4. 配置项目代码，配置项目nginx，配置uwsgi.ini等"></a>4. 配置项目代码，配置项目nginx，配置uwsgi.ini等</h4><p>本案例的配置文件，都习惯将每一个项目的配置文件，日志文件，虚拟环境放在一起，这样开发方便，运维也方便维护</p>
-<p>项目的目录结构如下：</p>
-<p>[<img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fzaw7wpc6mj30h80353yi.jpg" alt="图"></p>
-<p>其中：</p>
-<p>conf是配置文件，用于存放项目的nginx.conf文件，uwsgi.ini文件</p>
-<p>logs是日志文件，用于存放nginx的启动成功和失败文件，以及uwsgi的运行日志文件</p>
-<p>env是用于存放虚拟环境</p>
-<p>src是项目文件，该目录下上传的是目录代码</p>
-<p>在conf中创建两个文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch freshnginx.conf</span><br><span class="line">touch freshuwsgi.ini</span><br></pre></td></tr></table></figure>
-<h4 id="4-1-配置nginx-conf文件"><a href="#4-1-配置nginx-conf文件" class="headerlink" title="4.1 配置nginx.conf文件"></a>4.1 配置nginx.conf文件</h4><p><strong>首先</strong>：编写自己项目的nginx.conf文件如下：</p>
-<p>每一个项目对应有一个自己定义的nginx的配置文件，我定义为freshnginx.conf文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 1 server&#123;</span><br><span class="line"> 2     listen  80;</span><br><span class="line"> 3     server_name 39.108.58.209;</span><br><span class="line"> 4     access_log /home/logs/freshaccess.log;</span><br><span class="line"> 5     error_log /home/logs/fresherror.log;</span><br><span class="line"> 6 </span><br><span class="line"> 7     location / &#123;</span><br><span class="line"> 8         include uwsgi_params;</span><br><span class="line"> 9         uwsgi_pass 127.0.0.1:8890;</span><br><span class="line">10 &#125;</span><br><span class="line">11 </span><br><span class="line">12     location /static/ &#123;</span><br><span class="line">13         alias /home/src/fresh_shop/static/;</span><br><span class="line">14 &#125;</span><br><span class="line">15 </span><br><span class="line">16     location /media/ &#123;</span><br><span class="line">17         alias /home/src/fresh_shop/media/;</span><br><span class="line">18     &#125;</span><br><span class="line">19 &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>其次</strong>：修改总的nginx的配置文件，让总的nginx文件包含我们自定义的项目的freshnginx.conf文件</p>
-<p>总的nginx配置文件在：/etc/nginx/nginx.conf中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-<p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzawhp0rncj30hc0awmxq.jpg" alt=""></p>
-<p>以上步骤操作完成以后，需要重启nginx：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-<p>如果自定义的axfnginx.conf文件没有错误的话，查看nginx的运行状态会有如下的结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure>
-<p><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fzawkx4grcj30hh0augmf.jpg" alt=""></p>
-<h4 id="4-2-配置uwsgi文件"><a href="#4-2-配置uwsgi文件" class="headerlink" title="4.2 配置uwsgi文件"></a>4.2 配置uwsgi文件</h4><p>在conf文件夹下除了包含自定义的freshnginx.conf文件，还有我们定义的freshuwsgi.ini文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1 [uwsgi]</span><br><span class="line"># 守护进程</span><br><span class="line">2 master = true</span><br><span class="line"># 进程个数</span><br><span class="line">3 processes = 4</span><br><span class="line"># 项目地址</span><br><span class="line">4 chdir = /home/src/fresh_shop</span><br><span class="line"># 指定python版本</span><br><span class="line">5 pythonpath = /home/env/freshenv/bin/python3</span><br><span class="line"># 指定uwsgi文件</span><br><span class="line">6 module = fresh_shop.wsgi</span><br><span class="line"># 和nginx通信地址:端口</span><br><span class="line">7 socket = 127.0.0.1:8890</span><br><span class="line"># 日志文件地址</span><br><span class="line">8 logto = /home/logs/freshuwsgi.log</span><br></pre></td></tr></table></figure>
-<p>运行项目:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br><span class="line">/home/env/freshenv/bin/uwsgi --ini /home/conf/freshuwsgi.ini</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Linux文件颜色代表含义：</span><br><span class="line">蓝色表示目录</span><br><span class="line">绿色表示可执行文件</span><br><span class="line">红色表示压缩文件</span><br><span class="line">浅蓝色表示链接文件</span><br><span class="line">白色表示其他文件</span><br><span class="line">黄色是设备文件，包括block, char, fifo</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 更改权限</span><br><span class="line">chmod -R 777 freshshop.sh</span><br><span class="line">查看nginx状态</span><br><span class="line">systemctl status nginx</span><br><span class="line"># 删除文件</span><br><span class="line">rm -rf filename</span><br><span class="line"># 查看端口</span><br><span class="line">netstat -lntp</span><br><span class="line"># 强制关闭端口号</span><br><span class="line">kill -9 端口号 </span><br><span class="line"># 查看文件（直接到结尾，会实时更新，cat不会）</span><br><span class="line">tail -f freshuwsgi.log</span><br></pre></td></tr></table></figure>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/02/15/django项目部署/">
-    <time datetime="2019-02-15T07:02:09.000Z" class="entry-date">
-        2019-02-15
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -839,6 +1193,14 @@ location / {
       <ul>
         
           <li>
+            <a href="/2019/03/05/Notebook，NumPy运算）/">Notebook，NumPy运算）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/05/数据分析（Pandas）/">数据分析（Pandas）</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/27/Scrapy 2/">scrapy 2</a>
           </li>
         
@@ -850,14 +1212,6 @@ location / {
             <a href="/2019/02/26/pymango/">pymango</a>
           </li>
         
-          <li>
-            <a href="/2019/02/26/mangoDB/">mangoDB</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/25/注意重点/">注意重点</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -867,7 +1221,7 @@ location / {
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">6</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据分析/">数据分析</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">6</span></li></ul>
     </div>
   </aside>
 
@@ -876,7 +1230,7 @@ location / {
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Linux学习/" style="font-size: 12.5px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 12.5px;">flask框架</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据库/" style="font-size: 17.5px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a>
+      <a href="/tags/Linux学习/" style="font-size: 14px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 14px;">flask框架</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据分析/" style="font-size: 12px;">数据分析</a> <a href="/tags/数据库/" style="font-size: 18px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/爬虫/" style="font-size: 16px;">爬虫</a>
     </div>
   </aside>
 

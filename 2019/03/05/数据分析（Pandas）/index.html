@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Jupyter Notebook
+##pandas(数据分析)
+pandas的数据结构介绍两个主要数据结构：Series和DataFrameimport pandas as pd
+In [69]:
+Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相关的数据标">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>数据分析（Pandas） | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Jupyter Notebook ##pandas(数据分析) pandas的数据结构介绍两个主要数据结构：Series和DataFrameimport pandas as pd In [69]: Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相关的数据标签（即索引）组成obj = pd.Series([2,3,6,9]) obj Out[69]: 0">
+<meta name="keywords" content="数据分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析（Pandas）">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/数据分析（Pandas）/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="Jupyter Notebook ##pandas(数据分析) pandas的数据结构介绍两个主要数据结构：Series和DataFrameimport pandas as pd In [69]: Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相关的数据标签（即索引）组成obj = pd.Series([2,3,6,9]) obj Out[69]: 0">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-05T11:33:05.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据分析（Pandas）">
+<meta name="twitter:description" content="Jupyter Notebook ##pandas(数据分析) pandas的数据结构介绍两个主要数据结构：Series和DataFrameimport pandas as pd In [69]: Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相关的数据标签（即索引）组成obj = pd.Series([2,3,6,9]) obj Out[69]: 0">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-数据分析（Pandas）" class="post-数据分析（Pandas） post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      数据分析（Pandas）
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/03/05/数据分析（Pandas）/" data-id="cjsvp44eq001dhwvewl0i5rh4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Jupyter Notebook</p>
+<p>##pandas(数据分析)</p>
+<h3 id="pandas的数据结构介绍"><a href="#pandas的数据结构介绍" class="headerlink" title="pandas的数据结构介绍"></a>pandas的数据结构介绍</h3><h4 id="两个主要数据结构：Series和DataFrame"><a href="#两个主要数据结构：Series和DataFrame" class="headerlink" title="两个主要数据结构：Series和DataFrame"></a>两个主要数据结构：Series和DataFrame</h4><pre><code>import pandas as pd
+In [69]:
+</code></pre><h4 id="Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相"><a href="#Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相" class="headerlink" title="Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相"></a>Series是一种类似于一维数组的对象，它由一组数据（各种NumPy数据类型）以及一组与之相</h4><h4 id="关的数据标签（即索引）组成"><a href="#关的数据标签（即索引）组成" class="headerlink" title="关的数据标签（即索引）组成"></a>关的数据标签（即索引）组成</h4><pre><code>obj = pd.Series([2,3,6,9])
+obj
+Out[69]:
+0    2
+1    3
+2    6
+3    9
+dtype: int64
+In [3]:
+</code></pre><h4 id="下标"><a href="#下标" class="headerlink" title="下标"></a>下标</h4><pre><code>obj.index   #RangeIndex(start=0, stop=4, step=1)   --（开始下标，结束下标，步长）
+Out[3]:
+RangeIndex(start=0, stop=4, step=1)
+In [4]:
+</code></pre><p>####获取值<br>    obj.values<br>    Out[4]:<br>    array([2, 3, 6, 9], dtype=int64)<br>    In [5]:</p>
+<h4 id="将下标改为index下标"><a href="#将下标改为index下标" class="headerlink" title="将下标改为index下标"></a>将下标改为index下标</h4><pre><code>s2 = pd.Series([2,4,77,8], index=[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;])
+s2
+Out[5]:
+a     2
+b     4
+c    77
+d     8
+dtype: int64
+In [6]:
+</code></pre><p>####获取下标为a,b的数据<br>    s2[[‘a’,’b’]]<br>    Out[6]:<br>    a    2<br>    b    4<br>    dtype: int64<br>    In [7]:</p>
+<h4 id="获取值大于3的数据"><a href="#获取值大于3的数据" class="headerlink" title="获取值大于3的数据"></a>获取值大于3的数据</h4><pre><code>s2[s2 &gt; 3]
+Out[7]:
+b     4
+c    77
+d     8
+dtype: int64
+In [8]:
+</code></pre><p>####直接求乘积<br>    s2 * 5<br>    Out[8]:<br>    a     10<br>    b     20<br>    c    385<br>    d     40<br>    dtype: int64<br>    In [9]:</p>
+<p>####in 判断是否在S2中<br>    ‘a’ in s2<br>    Out[9]:<br>    True<br>    In [10]:</p>
+<pre><code>&apos;v&apos; in s2   # 没有‘v’
+Out[10]:
+False
+In [11]:
+</code></pre><p>####创建<br>    d = {‘aa’: 80,’bb’:99,’cc’:79,’dd’:98}<br>    obj2 = pd.Series(d)<br>    obj2<br>    Out[11]:<br>    aa    80<br>    bb    99<br>    cc    79<br>    dd    98<br>    dtype: int64<br>    In [12]:</p>
+<p>####将下标顺序更改（类似于excel表格），并添加新的行<br>    l1 = [‘dd’,’cc’,’ff’,’aa’,’bb’]<br>    obj3 = pd.Series(d,index=l1)<br>    obj3<br>    Out[12]:<br>    dd    98.0<br>    cc    79.0<br>    ff     NaN<br>    aa    80.0<br>    bb    99.0<br>    dtype: float64<br>    In [13]:</p>
+<p>####判断不是为空的数据<br>    pd.notnull(obj3)<br>    Out[13]:<br>    dd     True<br>    cc     True<br>    ff    False<br>    aa     True<br>    bb     True<br>    dtype: bool<br>    In [15]:</p>
+<p>####判断为空的数据<br>    pd.isnull(obj3)<br>    Out[15]:<br>    dd    False<br>    cc    False<br>    ff     True<br>    aa    False<br>    bb    False<br>    dtype: bool<br>    In [16]:</p>
+<p>####数组相加<br>    obj3 + obj2<br>    Out[16]:<br>    aa    160.0<br>    bb    198.0<br>    cc    158.0<br>    dd    196.0<br>    ff      NaN<br>    dtype: float64<br>    In [71]:</p>
+<pre><code>type(obj3)
+Out[71]:
+pandas.core.series.Series
+In [72]:
+</code></pre><p>####添加obj3的名字为lession<br>    obj3.name = ‘lesson’<br>    obj3<br>    Out[72]:<br>    dd    98.0<br>    cc    79.0<br>    ff     NaN<br>    aa    80.0<br>    bb    99.0<br>    Name: lesson, dtype: float64<br>    In [23]:</p>
+<p>####更改下标<br>    obj.index = [‘m’,’v’,’i’,’y’]<br>    obj<br>    Out[23]:<br>    m    2<br>    v    3<br>    i    6<br>    y    9<br>    dtype: int64<br>    In [73]:</p>
+<p>####DataFrame：多组数据   – 类似于Excel</p>
+<h4 id="DataFrame是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数"><a href="#DataFrame是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数" class="headerlink" title="DataFrame是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数"></a>DataFrame是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数</h4><h4 id="值、字符串、布尔值等），DataFrame既有行索引也有列索引。"><a href="#值、字符串、布尔值等），DataFrame既有行索引也有列索引。" class="headerlink" title="值、字符串、布尔值等），DataFrame既有行索引也有列索引。"></a>值、字符串、布尔值等），DataFrame既有行索引也有列索引。</h4><h4 id="建DataFrame-传入一个由等长列表或NumPy数组组成的字典"><a href="#建DataFrame-传入一个由等长列表或NumPy数组组成的字典" class="headerlink" title="建DataFrame, 传入一个由等长列表或NumPy数组组成的字典"></a>建DataFrame, 传入一个由等长列表或NumPy数组组成的字典</h4><p>​<br>    data = {‘name’:[‘罗瑶’,’老衲’,’小胡’,’花花公子’,’西瓜’],’WEB’:[99,78,88,100,87],’爬虫’:[‘A’,’S’,’SS’,’SSS’,’A+’]}<br>    def1 = pd.DataFrame(data)<br>    def1<br>    Out[73]:<br>    name    WEB    爬虫<br>    0    罗瑶    99    A<br>    1    老衲    78    S<br>    2    小胡    88    SS<br>    3    花花公子    100    SSS<br>    4    西瓜    87    A+<br>    In [28]:</p>
+<p>####更换列的顺序<br>    pd.DataFrame(data, columns=[‘name’,’爬虫’,’WEB’])<br>    Out[28]:<br>    name    爬虫    WEB<br>    0    罗瑶    A    99<br>    1    老衲    S    78<br>    2    小胡    SS    88<br>    3    花花公子    SSS    100<br>    4    西瓜    A+    87<br>    In [29]:</p>
+<pre><code>def1.index
+Out[29]:
+RangeIndex(start=0, stop=5, step=1)
+In [32]:
+</code></pre><p>####添加新的列‘数据分析’，并且更改下标[‘a’,’b’,’c’,’d’,’e’]<br>    def2 = pd.DataFrame(data, columns=[‘name’,’爬虫’,’WEB’,’数据分析’], index=[‘a’,’b’,’c’,’d’,’e’])<br>    def2<br>    Out[32]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    NaN<br>    b    老衲    S    78    NaN<br>    c    小胡    SS    88    NaN<br>    d    花花公子    SSS    100    NaN<br>    e    西瓜    A+    87    NaN<br>    In [35]:</p>
+<p>####查询 列 数据（竖着查询）<br>    def2[[‘name’,’爬虫’]]<br>    Out[35]:<br>    name    爬虫<br>    a    罗瑶    A<br>    b    老衲    S<br>    c    小胡    SS<br>    d    花花公子    SSS<br>    e    西瓜    A+<br>    In [36]:</p>
+<p>####查询 行 数据（横着查询）<br>    def2.loc[‘a’]<br>    Out[36]:<br>    name     罗瑶<br>    爬虫        A<br>    WEB      99<br>    数据分析    NaN<br>    Name: a, dtype: object<br>    In [38]:</p>
+<h4 id="多行-查询"><a href="#多行-查询" class="headerlink" title="多行 查询"></a>多行 查询</h4><pre><code>def2.loc[[&apos;c&apos;,&apos;b&apos;]]
+Out[38]:
+name    爬虫    WEB    数据分析
+c    小胡    SS    88    NaN
+b    老衲    S    78    NaN
+In [39]:
+
+def2[&apos;数据分析&apos;]
+Out[39]:
+a    NaN
+b    NaN
+c    NaN
+d    NaN
+e    NaN
+Name: 数据分析, dtype: object
+In [42]:
+</code></pre><p>####更改数据分析列的数据<br>    def2[‘数据分析’]= 88<br>    def2<br>    Out[42]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    88<br>    b    老衲    S    78    88<br>    c    小胡    SS    88    88<br>    d    花花公子    SSS    100    88<br>    e    西瓜    A+    87    88<br>    In [47]:</p>
+<p>####更改数据分析列的数据<br>    import numpy as np<br>    def2[‘数据分析’]= np.arange(5)<br>    def2<br>    Out[47]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    0<br>    b    老衲    S    78    1<br>    c    小胡    SS    88    2<br>    d    花花公子    SSS    100    3<br>    e    西瓜    A+    87    4<br>    In [49]:</p>
+<p>####将‘数据分析’列数据，更换为空（np.nan）<br>    def2[‘数据分析’]= np.nan<br>    def2<br>    Out[49]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    NaN<br>    b    老衲    S    78    NaN<br>    c    小胡    SS    88    NaN<br>    d    花花公子    SSS    100    NaN<br>    e    西瓜    A+    87    NaN<br>    In [50]:</p>
+<p>####创建Series s1<br>    s1 = pd.Series([0,0], index=[‘b’,’d’])<br>    s1<br>    Out[50]:<br>    b    0<br>    d    0<br>    dtype: int64<br>    In [51]:</p>
+<p>####对应修改数据</p>
+<p>####如果赋值的是一个Series，就会精确匹配DataFrame的索引，所有的空位都将被填上缺失值<br>    def2[‘数据分析’]= s1<br>    def2<br>    Out[51]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    NaN<br>    b    老衲    S    78    0.0<br>    c    小胡    SS    88    NaN<br>    d    花花公子    SSS    100    0.0<br>    e    西瓜    A+    87    NaN<br>    In [74]:</p>
+<h4 id="创建新的列，并按组合条件添加数据"><a href="#创建新的列，并按组合条件添加数据" class="headerlink" title="创建新的列，并按组合条件添加数据"></a>创建新的列，并按组合条件添加数据</h4><pre><code>def2[&apos;高新&apos;] = (def2[&apos;WEB&apos;] &gt; 88) &amp; (def2[&apos;爬虫&apos;] == &apos;A&apos;)
+def2
+Out[74]:
+name    爬虫    WEB    数据分析    高新
+a    罗瑶    A    99    NaN    True
+b    老衲    S    78    0.0    False
+c    小胡    SS    88    NaN    False
+d    花花公子    SSS    100    0.0    False
+e    西瓜    A+    87    NaN    False
+In [68]:
+</code></pre><p>####更改刚添加数据（类似于三位运算符）<br>    def2[‘高新’] = np.where((def2[‘WEB’] &gt; 88) &amp; (def2[‘爬虫’] == ‘A’), ‘恭喜’, ‘加油’)<br>    def2<br>    Out[68]:<br>    name    爬虫    WEB    数据分析    高新<br>    a    罗瑶    A    99    NaN    恭喜<br>    b    老衲    S    78    0.0    加油<br>    c    小胡    SS    88    NaN    加油<br>    d    花花公子    SSS    100    0.0    加油<br>    e    西瓜    A+    87    NaN    加油<br>    In [66]:</p>
+<p>####为不存在的列赋值会创建出一个新列。关键字del用于删除列。<br>    del def2[‘高新’]<br>    def2<br>    Out[66]:<br>    name    爬虫    WEB    数据分析<br>    a    罗瑶    A    99    NaN<br>    b    老衲    S    78    0.0<br>    c    小胡    SS    88    NaN<br>    d    花花公子    SSS    100    0.0<br>    e    西瓜    A+    87    NaN</p>
+<p>​</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/03/05/数据分析（Pandas）/">
+    <time datetime="2019-03-05T10:13:30.000Z" class="entry-date">
+        2019-03-05
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2019/03/05/Notebook，NumPy运算）/" rel="prev"><span class="meta-nav">←</span> Notebook，NumPy运算）</a></span>
+    
+    
+        <span class="nav-next"><a href="/2019/02/27/Scrapy 2/" rel="next">scrapy 2 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/05/Notebook，NumPy运算）/">Notebook，NumPy运算）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/05/数据分析（Pandas）/">数据分析（Pandas）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/Scrapy 2/">scrapy 2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/Scrapy 1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/26/pymango/">pymango</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据分析/">数据分析</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">6</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 14px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 14px;">flask框架</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据分析/" style="font-size: 12px;">数据分析</a> <a href="/tags/数据库/" style="font-size: 18px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/爬虫/" style="font-size: 16px;">爬虫</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
