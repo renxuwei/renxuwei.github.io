@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="链表基本概述
+linkedlist链表创建    class Node(object):        def init(self, data):            self.data = data            self.next = None
+    def set_data(sel">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>linkedlist链表及自动换测试 | Ren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="链表基本概述 linkedlist链表创建    class Node(object):        def init(self, data):            self.data = data            self.next = None     def set_data(self, data):         self.data = data      def set_ne">
+<meta name="keywords" content="数据分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linkedlist链表及自动换测试">
+<meta property="og:url" content="http://yoursite.com/2019/03/15/linkedlist链表及自动换测试/index.html">
+<meta property="og:site_name" content="Ren">
+<meta property="og:description" content="链表基本概述 linkedlist链表创建    class Node(object):        def init(self, data):            self.data = data            self.next = None     def set_data(self, data):         self.data = data      def set_ne">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图2019fcrwf0311145621.png">
+<meta property="og:updated_time" content="2019-03-15T11:15:51.936Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linkedlist链表及自动换测试">
+<meta name="twitter:description" content="链表基本概述 linkedlist链表创建    class Node(object):        def init(self, data):            self.data = data            self.next = None     def set_data(self, data):         self.data = data      def set_ne">
+<meta name="twitter:image" content="http://yoursite.com/images/QQ截图2019fcrwf0311145621.png">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Ren" rel="home">Ren</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-linkedlist链表及自动换测试" class="post-linkedlist链表及自动换测试 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      linkedlist链表及自动换测试
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/03/15/linkedlist链表及自动换测试/" data-id="cjt9z9zrl000wgkvelbz3jxts" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>链表基本概述<br><img src="/images/QQ截图2019fcrwf0311145621.png" alt=""></p>
+<p>linkedlist链表创建<br>    class Node(object):<br>        def <strong>init</strong>(self, data):<br>            self.data = data<br>            self.next = None</p>
+<pre><code>    def set_data(self, data):
+        self.data = data
+
+    def set_next(self, node):
+        self.next = node
+
+    def __repr__(self):
+        return self.data
+
+class LinkedList(object):
+    def __init__(self):
+        self.head = None
+
+    def append_item(self, item):
+        &quot;&quot;&quot;
+        添加节点
+        :param item:
+        :return:
+        &quot;&quot;&quot;
+        node = Node(item)
+        if self.head == None:
+            self.head = node
+            return
+        h_node = self.head
+        while True:
+            if h_node.next is None:
+                h_node.set_next(node)
+                break
+            h_node = h_node.next
+
+    def remove_item(self, item):
+        &quot;&quot;&quot;
+        移除指定链表节点
+        :param item:
+        :return:
+        &quot;&quot;&quot;
+        h_node = self.head
+        if h_node.data == item:
+            self.head = h_node.next
+        else:
+            while (h_node):
+                if h_node.next.data == item:
+                    h_node.set_next(h_node.next.next)
+                h_node = h_node.next
+
+
+    def remove_by_index(self, index):
+        &quot;&quot;&quot;
+        移除对应下标index的节点
+        :param index:
+        :return:
+        &quot;&quot;&quot;
+        h_node = self.head
+        if index == 0:
+            self.head = h_node.next
+        else:
+            for _ in range(index-1):
+                h_node = h_node.next
+
+            h_node.set_next(h_node.next.next)
+
+    def add_item(self, item, index):
+        &quot;&quot;&quot;
+        添加节点到链表的指定位置
+        :param item:
+        :param index:
+        :return:
+        &quot;&quot;&quot;
+        h_node = self.head
+        a_node = Node(item)
+
+        if index == 0:
+            a_node.set_next(h_node)
+            self.head = a_node
+        else:
+            for _ in range(index-1):
+                print(1)
+                h_node = h_node.next
+            a_node.set_next(h_node.next)
+            h_node.set_next(a_node)
+
+
+    def size(self):
+        &quot;&quot;&quot;
+        获取链表长度
+        :return:
+        &quot;&quot;&quot;
+        h_node = self.head
+        flag = 0
+        while h_node:
+            h_node = h_node.next
+            flag += 1
+        return flag
+
+    def get_item(self, index):
+        &quot;&quot;&quot;
+        通过下标获取对应节点的值
+        :param index:
+        :return:
+        &quot;&quot;&quot;
+        h_node = self.head
+        if index == 0:
+            return h_node.data
+        else:
+            for _ in range(index):
+                h_node = h_node.next
+            return h_node.data
+
+
+    def index(self, item):
+        &quot;&quot;&quot;
+        获取指定节点下标
+        :param item:
+        :return:
+        &quot;&quot;&quot;
+        h_node = self.head
+        list1 = []
+        flag = 0
+        while h_node:
+            if h_node.data == item:
+                list1.append(flag)
+            flag += 1
+            h_node = h_node.next
+        return list1
+
+
+    def __repr__(self):
+        &quot;&quot;&quot;
+        输出魔法方法
+        :return:
+        &quot;&quot;&quot;
+        h_node = self.head
+        list1 = []
+        while (h_node):
+            list1.append(h_node.data)
+            h_node = h_node.next
+        print(str(list1))
+        print(type(str(list1)))
+        return str(list1)
+
+# 链表对象
+link1 =  LinkedList()
+
+# 添加三个节点
+link1.append_item([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;])
+link1.append_item(&apos;hoan&apos;)
+link1.append_item(&apos;pete&apos;)
+
+# 移除pete
+link1.remove_item(&apos;pete&apos;)
+
+# 移除下标为1的节点
+link1.remove_by_index(1)
+print(link1)
+
+# 获取下标为0的节点数据
+print(link1.get_item(0))
+# 获取值为hoan的节点下标
+print(link1.index(&apos;hoan&apos;))
+# 获取链表长度
+print(link1.size())
+# 添加
+link1.append_item(&apos;pete&apos;)
+# 指定下标添加节点
+link1.add_item(&apos;somnus&apos;,1)
+link1.add_item(&apos;somnus&apos;,1)
+
+# 插入头节点
+link1.add_item(&apos;第一&apos;,0)
+#
+print(link1.index(&apos;pete&apos;))
+
+# 获取值为somnus的节点下标
+print(&apos;index:%s&apos; % link1.index(&apos;somnus&apos;))
+print(link1)
+
+# 获取下标为2的节点
+print(link1.get_item(2))
+print(link1.size())
+# 移除当前头节点
+link1.remove_by_index(0)
+print(link1)
+</code></pre><p>linkedlist表自动化测试<br>    import unittest<br>    from linkedlist import LinkedList</p>
+<pre><code>class TestIlinkedIist(unittest.TestCase):
+
+    def test_append_item(self):
+        l = LinkedList()
+        l.append_item(&apos;a&apos;)
+
+        num = l.get_item(0)
+        self.assertTrue(num == &apos;a&apos;)
+
+        size = l.size()
+        self.assertTrue(size == 1)
+
+        l.append_item([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;])
+        size = l.size()
+        self.assertTrue(size == 2)
+
+        size = l.size()
+        self.assertTrue(size == 2)
+
+        re = l.__repr__()
+        self.assertTrue(re == str([&apos;a&apos;, [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]]))
+
+        l.append_item(3)
+        l.append_item(5)
+
+
+    def test_remove_item(self):
+        ll = LinkedList()
+        ll.append_item(&apos;a&apos;)
+        ll.append_item([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;])
+        ll.append_item(3.5)
+        ll.append_item(5)
+
+        rell= ll.__repr__()
+        self.assertTrue(rell == str([&apos;a&apos;, [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;],3.5, 5]))
+
+        ll.remove_item(3.5)
+        nu = ll.size()
+        self.assertTrue(nu == 3)
+
+        rell = ll.__repr__()
+        self.assertTrue(rell == str([&apos;a&apos;, [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;], 5]))
+
+        ge = ll.get_item(1)
+        self.assertTrue(ge == [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;])
+
+
+if __name__ == &apos;__main__&apos;:
+    unittest.main()
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/03/15/linkedlist链表及自动换测试/">
+    <time datetime="2019-03-15T11:10:41.000Z" class="entry-date">
+        2019-03-15
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2019/03/15/国际化（多种语言切换）/" rel="prev"><span class="meta-nav">←</span> 国际化（多种语言切换）</a></span>
+    
+    
+        <span class="nav-next"><a href="/2019/03/05/Notebook，NumPy运算）/" rel="next">Notebook，NumPy运算） <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/15/国际化（多种语言切换）/">国际化（多种语言切换）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/linkedlist链表及自动换测试/">linkedlist链表及自动换测试</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/05/Notebook，NumPy运算）/">Notebook，NumPy运算）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/05/数据分析（Pandas）/">数据分析（Pandas）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/Scrapy 2/">scrapy 2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux学习/">Linux学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask框架/">flask框架</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据分析/">数据分析</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">6</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Linux学习/" style="font-size: 12.5px;">Linux学习</a> <a href="/tags/flask框架/" style="font-size: 12.5px;">flask框架</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据分析/" style="font-size: 12.5px;">数据分析</a> <a href="/tags/数据库/" style="font-size: 17.5px;">数据库</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
